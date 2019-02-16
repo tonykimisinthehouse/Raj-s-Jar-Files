@@ -122,8 +122,13 @@ public class Player {
      * Sets the player's credits.
      *
      * @param credits the new credits
+     * @throws java.lang.IllegalArgumentException if credits are negative
      */
     public void setCredits(int credits) {
+        if (credits < 0) {
+            throw new IllegalArgumentException(
+                    "Cannot set credits to a negative number.");
+        }
         this.credits = credits;
     }
 
