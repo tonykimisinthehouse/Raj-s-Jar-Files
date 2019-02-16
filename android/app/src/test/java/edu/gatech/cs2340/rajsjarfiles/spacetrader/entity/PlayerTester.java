@@ -116,4 +116,15 @@ public class PlayerTester {
         Player player = new PlayerBuilder("Thomas").setPoints(new int[] {2, 2, 4, 8}).build();
         player.setCredits(-2);
     }
+
+    /**
+     * Prints out player with toString()
+     */
+    @Test(timeout = TIMEOUT)
+    public void playerToString() {
+        Player player = new PlayerBuilder("Justin").setPoints(new int[]{2, 2, 4, 8})
+            .setCredits(1200).setShip(new Ship(ShipType.BEETLE)).build();
+        System.out.println(player.toString());
+    }
+
 }

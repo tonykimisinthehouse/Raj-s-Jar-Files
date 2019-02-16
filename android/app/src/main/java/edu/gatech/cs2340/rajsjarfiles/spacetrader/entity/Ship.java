@@ -51,4 +51,9 @@ public class Ship {
 
         return this.shipType == s.shipType;
     }
+
+    @Override
+    public String toString() {
+        return shipType.toString();
+    }
 }

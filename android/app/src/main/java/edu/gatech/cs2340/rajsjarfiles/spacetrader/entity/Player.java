@@ -160,4 +160,15 @@ public class Player {
     public void setNoShip() {
         this.ship = null;
     }
+
+    @Override
+    public String toString() {
+        return "The player's name is " + getName() + " with stats:\n"
+                + " - Pilot: " + getPilot() + "\n"
+                + " - Engineer: " + getEngineer() + "\n"
+                + " - Trade: " + getTrade() + "\n"
+                + " - Fight: " + getFight() + "\n"
+                + "They also have " + getCredits() + " credits and they fly a "
+                + getShip().toString();
+    }
 }
