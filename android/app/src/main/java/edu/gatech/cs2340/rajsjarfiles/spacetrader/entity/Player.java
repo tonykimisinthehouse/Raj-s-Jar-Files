@@ -6,7 +6,7 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity;
  * Uses the builder pattern.
  */
 public class Player {
-    private static int MAX_POINTS = 16;
+    private static final int MAX_POINTS = 16;
 
     private String name;
 
@@ -21,6 +21,14 @@ public class Player {
 
     private Ship ship;
 
+    /**
+     * Player constructor with all arguments.
+     *
+     * @param name the player's name
+     * @param points the player's points
+     * @param credits the player's credits
+     * @param ship the player's ship
+     */
     public Player(String name, int[] points, int credits, Ship ship) {
         this.name = name;
         setPoints(points); //may be invalid so use the method
@@ -28,30 +36,53 @@ public class Player {
         this.ship = ship;
     }
 
+    /**
+     * @return the player's name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets the player's name.
+     *
+     * @param name the new name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * @return the player's points
+     */
     public int[] getPoints() {
         return points;
     }
 
+    /**
+     * @return the player's pilot points
+     */
     public int getPilot() {
         return points[0];
     }
 
+    /**
+     * @return the player's engineer points
+     */
     public int getEngineer() {
         return points[1];
     }
 
+    /**
+     * @return the player's trade points
+     */
     public int getTrade() {
         return points[2];
     }
 
+    /**
+     * @return the player's fight points
+     */
     public int getFight() {
         return points[3];
     }
@@ -80,14 +111,25 @@ public class Player {
         this.points = points;
     }
 
+    /**
+     * @return the player's credits
+     */
     public int getCredits() {
         return credits;
     }
 
+    /**
+     * Sets the player's credits.
+     *
+     * @param credits the new credits
+     */
     public void setCredits(int credits) {
         this.credits = credits;
     }
 
+    /**
+     * @return the player's ship
+     */
     public Ship getShip() {
         return ship;
     }
@@ -95,13 +137,14 @@ public class Player {
     /**
      * Sets the player's ship to a new ship.
      *
-     * @param ship
+     * @param ship the new ship
      * @throws java.lang.IllegalArgumentException when ship is null
      */
     public void setShip(Ship ship) {
         if (ship == null) {
             throw new IllegalArgumentException(
-                    "Cannot set ship to null with this method. Use setNoShip().");
+                    "Cannot set ship to null with this method. Use setNoShip()."
+            );
         }
         this.ship = ship;
     }
