@@ -1,33 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:padding="20dp"
+    tools:context="edu.gatech.cs2340.rajsjarfiles.spacetrader.MainActivity"
+    android:background="@drawable/main_header_selector">
 
-    <android.support.design.widget.AppBarLayout
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:text="Embark on Your Journey."
+        android:textFontWeight="800"
+        android:textSize="32dp"
+        android:layout_marginBottom="32dp"
+        android:textColor="@android:color/white"
+        />
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your name:"
+        android:textColor="@android:color/white"
+        />
 
-    </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_main" />
+    <EditText
+        android:id="@+id/player_name_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="22dp"
+        android:textColor="@android:color/white"
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:text="Skill Points (Total 16 pts):"
+        android:layout_marginBottom="12dp"
+        android:textColor="@android:color/white"
 
-</android.support.design.widget.CoordinatorLayout>
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        >
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:textColor="@android:color/white"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:text="Pilot"
+                android:textColor="@android:color/white"
+                />
+            <EditText
+                android:id="@+id/pilot_skill_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="22dp"
+
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Fighter"
+                android:textColor="@android:color/white"
+                />
+            <EditText
+                android:id="@+id/fighter_skill_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="22dp"
+        >
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+            <TextView
+                android:id="@+id/trader_skill_input"
+                android:layout_width="match_parent"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:text="Trader"
+                android:textColor="@android:color/white"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:text="Engineer"
+                android:textColor="@android:color/white"
+
+                />
+            <EditText
+                android:id="@+id/engineer_skill_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:textColor="@android:color/white"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="difficulty:"
+        android:layout_marginBottom="12dp"
+        android:textColor="@android:color/white"
+
+        />
+    <Spinner
+        android:id="@+id/difficulty_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+        android:layout_marginBottom="22dp"
+        android:textColor="@android:color/white"
+
+        />
+    <Button
+        android:id="@+id/submit_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Let's Go"
+
+        android:radius="5dp"
+        android:textColor="@android:color/white"
+        android:background="#17EAD9"
+
+        />
+
+</LinearLayout>
