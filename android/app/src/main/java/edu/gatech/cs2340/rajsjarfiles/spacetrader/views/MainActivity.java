@@ -120,9 +120,13 @@ public class MainActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(getApplicationContext(),
-                    "Your inputs are valid.",
+                    "Check LogCat! (Command + 6)",
                     Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void onExit(View view) {
+        this.finish();
     }
 
 }
