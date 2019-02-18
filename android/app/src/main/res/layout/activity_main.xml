@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    tools:context="edu.gatech.cs2340.rajsjarfiles.spacetrader.MainActivity"
+    tools:context="edu.gatech.cs2340.rajsjarfiles.spacetrader.views.MainActivity"
     android:background="@drawable/main_header_selector">
 
 
@@ -71,6 +71,7 @@
                 android:id="@+id/pilot_skill_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:textColor="@android:color/white"
                 />
         </LinearLayout>
@@ -93,6 +94,7 @@
                 android:id="@+id/fighter_skill_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:textColor="@android:color/white"
                 />
         </LinearLayout>
@@ -123,6 +125,7 @@
                 android:id="@+id/trader_skill_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:textColor="@android:color/white"
                 />
         </LinearLayout>
@@ -176,6 +179,7 @@
         android:radius="5dp"
         android:textColor="@android:color/white"
         android:background="#17EAD9"
+        android:onClick="onSave"/>
 
         />
 
