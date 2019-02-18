@@ -80,6 +80,7 @@
                 android:id="@+id/pilot_skill_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAlignment="center"
                 android:inputType="number"
                 android:textColor="@android:color/white"
                 />
@@ -103,6 +104,7 @@
                 android:id="@+id/fighter_skill_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAlignment="center"
                 android:inputType="number"
                 android:textColor="@android:color/white"
                 />
@@ -120,9 +122,7 @@
             android:layout_width="1dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp">
+            android:orientation="vertical">
             <TextView
                 android:layout_width="match_parent"
                 android:textAlignment="center"
@@ -134,6 +134,7 @@
                 android:id="@+id/trader_skill_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAlignment="center"
                 android:inputType="number"
                 android:textColor="@android:color/white"
                 />
@@ -156,6 +157,7 @@
                 android:id="@+id/engineer_skill_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAlignment="center"
                 android:inputType="number"
                 android:textColor="@android:color/white"
                 />
