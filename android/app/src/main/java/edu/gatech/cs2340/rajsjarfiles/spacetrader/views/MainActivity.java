@@ -39,19 +39,41 @@ public class MainActivity extends AppCompatActivity {
 
     private MainViewModel viewModel;
 
+    /**
+     * Method that return new Textwatcher to set.
+     *
+     * @param editText represents the EditText in activity_main.xml
+     * @param index indicates the type of skill points
+     * @return
+     */
     private TextWatcher getTextWatcher(final EditText editText, final int index) {
         return new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
-
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
-
             @Override
             public void afterTextChanged(Editable editable) {
                 validateCreditEntries(editText, index);
             }
         };
+    }
+
+    /**
+     * Helper method that update remaining credit indicator based on the remaining skill points
+     * @param editText represents the EditText in activity_main.xml
+     * @param index indicates the type of skill points
+     */
+    private void validateCreditEntries(EditText editText, int index) {
+        int result = viewModel.calculateRemainingCredit(editText, index);
+        TextView creditIndicator = findViewById(R.id.skill_point_indicator);
+        if (result == -1) {
+            creditIndicator.setText("YOU EXCEEDED MAX SKILL POINTS");
+        } else if (result == 0) {
+            creditIndicator.setText("You have no pts remaining");
+        } else {
+            creditIndicator.setText("You have " + String.valueOf(result) + "pts remaining");
+        }
     }
 
     @Override
@@ -92,41 +114,6 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void onSave(View view) {
-
-//        if (!viewModel.playerNameValid(editPlayerName)) {
-//            Toast.makeText(getApplicationContext(),
-//                    "Check if your name slot is blank",
-//                    Toast.LENGTH_SHORT).show();
-//        } else if (!viewModel.skillPointsInputValid(
-//                editPilotPoints,
-//                editFighterPoints,
-//                editTraderPoints,
-//                editEngineerPoints
-//        )) {
-//            Toast.makeText(getApplicationContext(),
-//                    "Check if any of your skill point slot is blank",
-//                    Toast.LENGTH_SHORT).show();
-//        } else if (!viewModel.skillPointsInputValid(
-//                editPilotPoints,
-//                editFighterPoints,
-//                editTraderPoints,
-//                editEngineerPoints)) {
-//            Toast.makeText(getApplicationContext(),
-//                    "Check if you used exactly 16 skill points",
-//                    Toast.LENGTH_SHORT).show();
-//        }
-//
-//        viewModel.setupGame(
-//                editPlayerName.getText().toString(),
-//                Integer.parseInt(editPilotPoints.getText().toString()),
-//                Integer.parseInt(editFighterPoints.getText().toString()),
-//                Integer.parseInt(editTraderPoints.getText().toString()),
-//                Integer.parseInt(editEngineerPoints.getText().toString()),
-//                (GameDifficulty) difficultySpinner.getSelectedItem()
-//        );
-//
-
-
         Boolean isValid = viewModel.isValid(
                 editPlayerName,
                 editPilotPoints,
@@ -145,15 +132,5 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void validateCreditEntries(EditText editText, int index) {
-        int result = viewModel.calculateRemainingCredit(editText, index);
-        TextView creditIndicator = findViewById(R.id.skill_point_indicator);
-        if (result == -1) {
-            creditIndicator.setText("YOU EXCEEDED MAX SKILL POINTS");
-        } else if (result == 0) {
-            creditIndicator.setText("You have no pts remaining");
-        } else {
-                creditIndicator.setText("You have " + String.valueOf(result) + "pts remaining");
-        }
-    }
+
 }
