@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         editPilotPoints = findViewById(R.id.pilot_skill_input);
         editPilotPoints.addTextChangedListener(getTextWatcher(editPilotPoints, 0));
         editFighterPoints = findViewById(R.id.fighter_skill_input);
-        editPilotPoints.addTextChangedListener(getTextWatcher(editFighterPoints, 1));
+        editFighterPoints.addTextChangedListener(getTextWatcher(editFighterPoints, 1));
         editTraderPoints = findViewById(R.id.trader_skill_input);
         editTraderPoints.addTextChangedListener(getTextWatcher(editTraderPoints, 2));
         editEngineerPoints = findViewById(R.id.engineer_skill_input);
