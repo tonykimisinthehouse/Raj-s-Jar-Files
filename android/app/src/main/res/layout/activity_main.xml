@@ -44,6 +44,15 @@
         android:text="Skill Points (Total 16 pts):"
         android:layout_marginBottom="12dp"
         android:textColor="@android:color/white"
+        />
+
+    <TextView
+        android:id="@+id/skill_point_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You have 16 pts remaining"
+        android:layout_marginBottom="12dp"
+        android:textColor="@android:color/holo_red_light"
 
         />
 

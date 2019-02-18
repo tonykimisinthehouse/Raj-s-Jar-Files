@@ -3,6 +3,7 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -16,6 +17,8 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 public class MainViewModel extends AndroidViewModel {
     public Model model;
     int defaultCredit = 1000;
+    private static final int MAX_CREDIT = 16;
+    private int[] points = new int[4];
 
     /**
      * MainViewModel constructor with all arguments.
@@ -77,36 +80,18 @@ public class MainViewModel extends AndroidViewModel {
 //    }
 
 
-
-    /**
-     * Checks if the user input are all valid and passes in the parameters if
-     * they are all valid.
-     *
-     * @param editPlayerName represents the value from the EditText for playerName
-     *                       in activity_main.xml
-     * @param editPilotPoints represents the value from the EditText for pilotPoints
-     *                        in activity_main.xml
-     * @param editFighterPoints represents the value from the EditText for fighterPoints
-     *                          in activity_main.xml
-     * @param editTraderPoints represents the value from the EditText for traderPoints
-     *                         in activity_main.xml
-     * @param editEngineerPoints represents the value from the EditText for engineerPoints
-     *                           in activity_main.xml
-     * @param difficultySpinner represents the value from the Spinner for gameDifficulty
-     *                          in activity_main.xml
-     * @return Returns boolean of whether the valids were valid or not.
-     */
     public Boolean isValid(EditText editPlayerName,
                            EditText editPilotPoints,
                            EditText editFighterPoints,
                            EditText editTraderPoints,
-                           EditText editEngineerPoints,
-                           Spinner difficultySpinner) {
+                           EditText editEngineerPoints) {
 
+        // Validate Name
         String playerName = editPlayerName.getText().toString();
         if (playerName == null) {return false;}
-        if (playerName.length() < 0) {return false;}
+        if (playerName.length() <= 0) {return false;}
 
+        // Validate Points
         if (editPilotPoints.getText().length() == 0 ||
         editFighterPoints.getText().length() == 0 ||
         editTraderPoints.getText().length() == 0 ||
@@ -119,17 +104,38 @@ public class MainViewModel extends AndroidViewModel {
         int traderPoints = Integer.parseInt(editTraderPoints.getText().toString());
         int engineerPoints = Integer.parseInt(editEngineerPoints.getText().toString());
 
-        if ((pilotPoints + fighterPoints + traderPoints + engineerPoints) != 16) {
-            return  false;
-        }
-        int[] points = {pilotPoints,
-                    fighterPoints,
-                    traderPoints,
-                    engineerPoints};
-        GameDifficulty difficulty = (GameDifficulty) difficultySpinner.getSelectedItem();
+        // Validate max points
+        return (pilotPoints + fighterPoints + traderPoints + engineerPoints) == MAX_CREDIT;
+    }
 
-        model = new Model(
-                playerName, points, defaultCredit, new Ship(), difficulty);
-        return true;
+    public void createNewModel(EditText editTextName, Spinner difficultySpinner) {
+        String playerName = editTextName.getText().toString();
+        GameDifficulty difficulty = (GameDifficulty) difficultySpinner.getSelectedItem();
+        model = new Model(playerName, points, defaultCredit, new Ship(), difficulty);
+    }
+
+    private int getTotalPoints() {
+        int total = 0;
+        for (int item : points) {
+            total += item;
+        }
+        return total;
+    }
+
+    public int calculateRemainingCredit(EditText editSomePoints, int index) {
+        int somePoints;
+        if (editSomePoints.getText().toString().equals("")) {
+            somePoints = 0;
+        } else {
+            somePoints = Integer.parseInt(editSomePoints.getText().toString());
+        }
+        points[index] = somePoints;
+        int totalItem = getTotalPoints();
+        if (totalItem <= MAX_CREDIT) {
+            Log.d("calc remaining",String.valueOf(MAX_CREDIT - totalItem));
+            return MAX_CREDIT - totalItem;
+        } else {
+            return -1;
+        }
     }
 }

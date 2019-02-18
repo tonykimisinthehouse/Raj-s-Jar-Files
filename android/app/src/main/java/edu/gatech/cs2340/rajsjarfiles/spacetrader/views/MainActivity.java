@@ -3,11 +3,14 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.views;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Arrays;
@@ -36,6 +39,20 @@ public class MainActivity extends AppCompatActivity {
 
     private MainViewModel viewModel;
 
+    private TextWatcher getTextWatcher(final EditText editText, final int index) {
+        return new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                validateCreditEntries(editText, index);
+            }
+        };
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,16 +60,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-
-
         /*
          * Grab the dialog widgets so we can get info for later
          */
         editPlayerName = findViewById(R.id.player_name_input);
+
         editPilotPoints = findViewById(R.id.pilot_skill_input);
+        editPilotPoints.addTextChangedListener(getTextWatcher(editPilotPoints, 0));
         editFighterPoints = findViewById(R.id.fighter_skill_input);
+        editPilotPoints.addTextChangedListener(getTextWatcher(editFighterPoints, 1));
         editTraderPoints = findViewById(R.id.trader_skill_input);
+        editTraderPoints.addTextChangedListener(getTextWatcher(editTraderPoints, 2));
         editEngineerPoints = findViewById(R.id.engineer_skill_input);
+        editEngineerPoints.addTextChangedListener(getTextWatcher(editEngineerPoints, 3));
         difficultySpinner = findViewById(R.id.difficulty_spinner);
 
         /*
@@ -112,17 +132,28 @@ public class MainActivity extends AppCompatActivity {
                 editPilotPoints,
                 editFighterPoints,
                 editTraderPoints,
-                editEngineerPoints,
-                difficultySpinner);
-        if (isValid == false) {
+                editEngineerPoints);
+        if (!isValid) {
             Toast.makeText(getApplicationContext(),
                     "Your inputs are invalid.",
                     Toast.LENGTH_SHORT).show();
         } else {
+            viewModel.createNewModel(editPlayerName, difficultySpinner);
             Toast.makeText(getApplicationContext(),
                     "Your inputs are valid.",
                     Toast.LENGTH_SHORT).show();
         }
     }
 
+    private void validateCreditEntries(EditText editText, int index) {
+        int result = viewModel.calculateRemainingCredit(editText, index);
+        TextView creditIndicator = findViewById(R.id.skill_point_indicator);
+        if (result == -1) {
+            creditIndicator.setText("YOU EXCEEDED MAX SKILL POINTS");
+        } else if (result == 0) {
+            creditIndicator.setText("You have no pts remaining");
+        } else {
+                creditIndicator.setText("You have " + String.valueOf(result) + "pts remaining");
+        }
+    }
 }
