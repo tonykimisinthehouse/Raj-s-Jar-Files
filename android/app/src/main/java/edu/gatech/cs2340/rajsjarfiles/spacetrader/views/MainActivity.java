@@ -132,5 +132,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void onExit(View view) {
+        this.finish();
+    }
 
 }

@@ -189,6 +189,7 @@
         android:id="@+id/submit_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="22dp"
         android:text="Let's Go"
 
         android:radius="5dp"
@@ -197,5 +198,18 @@
         android:onClick="onSave"/>
 
         />
+
+    <Button
+        android:id="@+id/exit_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Exit"
+
+        android:radius="5dp"
+        android:textColor="@android:color/white"
+        android:background="#130CB7"
+        android:onClick="onExit"/>
+
+    />
 
 </LinearLayout>
