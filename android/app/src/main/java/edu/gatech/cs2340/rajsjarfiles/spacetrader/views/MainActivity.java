@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (result == 0) {
             creditIndicator.setText("You have no pts remaining");
         } else {
-            creditIndicator.setText("You have " + String.valueOf(result) + "pts remaining");
+            creditIndicator.setText("You have " + String.valueOf(result) + " pts remaining");
         }
     }
 

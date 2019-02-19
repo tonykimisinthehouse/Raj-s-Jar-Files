@@ -82,6 +82,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:inputType="number"
+                android:maxLength="2"
                 android:textColor="@android:color/white"
                 />
         </LinearLayout>
@@ -106,6 +107,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:inputType="number"
+                android:maxLength="2"
                 android:textColor="@android:color/white"
                 />
         </LinearLayout>
@@ -136,6 +138,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:inputType="number"
+                android:maxLength="2"
                 android:textColor="@android:color/white"
                 />
         </LinearLayout>
@@ -159,6 +162,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:inputType="number"
+                android:maxLength="2"
                 android:textColor="@android:color/white"
                 />
         </LinearLayout>
@@ -167,7 +171,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="difficulty:"
+        android:text="Difficulty:"
         android:layout_marginBottom="12dp"
         android:textColor="@android:color/white"
 
