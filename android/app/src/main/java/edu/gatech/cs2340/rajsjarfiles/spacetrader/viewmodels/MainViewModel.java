@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.Spinner;
-
+import java.util.regex.Pattern;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.GameDifficulty;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.Ship;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
@@ -55,6 +55,9 @@ public class MainViewModel extends AndroidViewModel {
         String playerName = editPlayerName.getText().toString();
         if (playerName == null) {return false;}
         if (playerName.length() <= 0) {return false;}
+        // Regular expression for accepting alphabets, white spaces only
+        String regexForName = "^[a-zA-Z\\s]*$";
+        if (!Pattern.matches(regexForName,playerName)) {return false;}
 
         // Validate Points
         if (editPilotPoints.getText().length() == 0 ||
