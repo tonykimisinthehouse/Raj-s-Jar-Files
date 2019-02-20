@@ -10,3 +10,4 @@ public enum GameDifficulty {
     HARD,
     IMPOSSIBLE;
 }
+
