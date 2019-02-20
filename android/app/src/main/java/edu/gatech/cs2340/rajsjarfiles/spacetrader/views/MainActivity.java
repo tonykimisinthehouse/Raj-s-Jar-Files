@@ -13,8 +13,8 @@ import android.widget.Toast;
 import java.util.Arrays;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.GameDifficulty;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.Player;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.GameDifficulty;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels.MainViewModel;
 
 /**

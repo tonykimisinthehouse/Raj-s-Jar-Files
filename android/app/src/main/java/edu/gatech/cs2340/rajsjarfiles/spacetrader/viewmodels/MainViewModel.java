@@ -6,8 +6,8 @@ import android.support.annotation.NonNull;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.GameDifficulty;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.Ship;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.GameDifficulty;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 
 /**

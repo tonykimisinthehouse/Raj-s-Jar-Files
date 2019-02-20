@@ -2,11 +2,11 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.model;
 
 import android.util.Log;
 
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.Game;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.GameDifficulty;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.PlayerBuilder;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.Player;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.Ship;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.Game;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.GameDifficulty;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.PlayerBuilder;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
 
 /**
  * Creates a player and model with the valid inputs.

@@ -1,7 +1,11 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity;
 
-import org.junit.Before;
 import org.junit.Test;
+
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.PlayerBuilder;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.ShipType;
 
 import static org.junit.Assert.*;
 
