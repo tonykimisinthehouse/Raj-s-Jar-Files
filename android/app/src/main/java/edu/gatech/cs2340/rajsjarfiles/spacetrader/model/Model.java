@@ -31,7 +31,7 @@ public class Model {
             Ship ship,
             GameDifficulty difficulty) {
         player = new PlayerBuilder(name, points, credits, ship).build();
-        game = new Game(difficulty, player);
+        game = new Game(difficulty);
         Log.i("Model", player.toString());
         Log.i("Model", game.toString());
     }
