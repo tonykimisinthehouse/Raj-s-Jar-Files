@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
+import java.util.HashSet;
 import java.util.Random;
 
 /**
@@ -59,6 +60,15 @@ public class Planet {
         return Math.abs(this.orbitRadius - other.orbitRadius);
     }
 
+    @Override
+    public String toString() {
+        return name + ": Radius "
+                + radius + ", orbit radius: "
+                + orbitRadius + ".";
+    }
+
+    //static methods
+
     private static Random rand = new Random();
 
     /**
@@ -83,10 +93,26 @@ public class Planet {
         return Math.abs(p1.getOrbitRadius() - p2.getOrbitRadius());
     }
 
-    @Override
-    public String toString() {
-        return name + ": Radius "
-                + radius + ", orbit radius: "
-                + orbitRadius + ".";
+    /**
+     * Returns an array of random planets given a size.
+     *
+     * @param size the number of planets to generate
+     * @return the array of planets
+     */
+    public static Planet[] generatePlanets(int size) {
+        Planet[] planets = new Planet[size];
+
+        HashSet<String> nameSet = new HashSet<>();
+        int orbitRadius = 0;
+        for (int i = 0; i < planets.length; i++) {
+            orbitRadius += rand.nextInt(2) + 1;
+            String name = Names.generateName();
+            while (!nameSet.add(name)) {
+                name = Names.generateName();
+            }
+            planets[i] = new Planet(name, orbitRadius);
+        }
+
+        return planets;
     }
 }

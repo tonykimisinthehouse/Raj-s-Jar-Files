@@ -35,11 +35,4 @@ public class SolarSystemTester {
 
         assertEquals(5, Planet.distBetween(p1, p2));
     }
-
-//    @Test (timeout = TIMEOUT)
-//    public void testPlanetGetRandomRadius() {
-//        for (int i = 0; i < 1000; i++) {
-//            assertTrue(Planet.getRandomRadius() >= 1);
-//        }
-//    }
 }
