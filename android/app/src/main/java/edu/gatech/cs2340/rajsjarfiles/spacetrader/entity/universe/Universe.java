@@ -1,5 +1,10 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
+import java.util.HashSet;
+
+/**
+ * Represents the entire universe of the game.
+ */
 public class Universe {
     private static final int MAX_SOLAR_SYSTEMS = 20;
 
@@ -11,7 +16,23 @@ public class Universe {
         createUniverse();
     }
 
+    /**
+     * Constructor to create the universe.
+     */
     public void createUniverse() {
+        for (int i = 0; i < solarSystem.length; i++) {
+            HashSet<String> nameSet = new HashSet<>();
+            HashSet<Coordinate> coordSet = new HashSet<>();
+            String name = Names.generateName();
+            Coordinate coordinate = new Coordinate();
+            while (!nameSet.add(name)) {
+                name = Names.generateName();
+            }
+            while (!coordSet.add(coordinate)) {
+                coordinate = new Coordinate();
+            }
+            solarSystem[i] = new SolarSystem(name,coordinate);
+        }
         //generate all solar systems with no duplicate names
         //see solar system generating planets for example
     }

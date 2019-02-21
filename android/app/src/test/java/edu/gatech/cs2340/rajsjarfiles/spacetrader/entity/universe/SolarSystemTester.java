@@ -14,7 +14,7 @@ public class SolarSystemTester {
     @Test
     public void testSolarSystemGeneration() {
         for (int i = 0; i < 100; i++) {
-            SolarSystem s = new SolarSystem();
+            SolarSystem s = new SolarSystem("Raj", new Coordinate());
             System.out.println(s.toString());
         }
     }
