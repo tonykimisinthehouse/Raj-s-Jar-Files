@@ -82,10 +82,10 @@ public class Planet {
 
     @Override
     public String toString() {
-        return name
+        return String.format("%20s", name)
                 + ": Radius " + radius
-                + ", orbit radius: " + orbitRadius
-                + ", tech level: " + techLevel.toString()
+                + String.format(", orbit radius: %2d", orbitRadius)
+                + String.format(", tech level: %16s", techLevel.toString())
                 + ", resource class: " + resourceClass.toString()
                 + ".";
     }

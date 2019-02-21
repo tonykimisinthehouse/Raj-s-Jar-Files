@@ -11,9 +11,9 @@ import static org.junit.Assert.assertTrue;
 public class SolarSystemTester {
     private static final int TIMEOUT = 200;
 
-    @Test (timeout = TIMEOUT)
+    @Test
     public void testSolarSystemGeneration() {
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 100; i++) {
             SolarSystem s = new SolarSystem();
             System.out.println(s.toString());
         }

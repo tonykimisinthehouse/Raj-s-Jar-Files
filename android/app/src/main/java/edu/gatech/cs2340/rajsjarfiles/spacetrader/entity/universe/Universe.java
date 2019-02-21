@@ -20,7 +20,7 @@ public class Universe {
     public String toString() {
         String ret = "The universe:\n";
         for (int i = 0; i < solarSystem.length; i++) {
-            ret += solarSystem[i].toString() + "\n";
+            ret += "- " + solarSystem[i].toString() + "\n";
         }
         return ret;
     }
