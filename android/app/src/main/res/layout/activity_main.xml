@@ -43,6 +43,15 @@
         android:text="Skill Points (Total 16 pts):"
         android:layout_marginBottom="12dp"
         android:textColor="@android:color/white"
+        />
+
+    <TextView
+        android:id="@+id/skill_point_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You have 16 pts remaining"
+        android:layout_marginBottom="12dp"
+        android:textColor="@android:color/holo_red_light"
 
         />
 
@@ -70,7 +79,9 @@
                 android:id="@+id/pilot_skill_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAlignment="center"
                 android:inputType="number"
+                android:maxLength="2"
                 android:textColor="@android:color/white"
                 />
         </LinearLayout>
@@ -93,7 +104,9 @@
                 android:id="@+id/fighter_skill_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAlignment="center"
                 android:inputType="number"
+                android:maxLength="2"
                 android:textColor="@android:color/white"
                 />
         </LinearLayout>
@@ -110,9 +123,7 @@
             android:layout_width="1dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp">
+            android:orientation="vertical">
             <TextView
                 android:layout_width="match_parent"
                 android:textAlignment="center"
@@ -124,7 +135,9 @@
                 android:id="@+id/trader_skill_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAlignment="center"
                 android:inputType="number"
+                android:maxLength="2"
                 android:textColor="@android:color/white"
                 />
         </LinearLayout>
@@ -146,7 +159,9 @@
                 android:id="@+id/engineer_skill_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAlignment="center"
                 android:inputType="number"
+                android:maxLength="2"
                 android:textColor="@android:color/white"
                 />
         </LinearLayout>
@@ -155,7 +170,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="difficulty:"
+        android:text="Difficulty:"
         android:layout_marginBottom="12dp"
         android:textColor="@android:color/white"
 
