@@ -21,14 +21,18 @@ public class Game {
         universe = new Universe();
     }
 
-    public GameDifficulty getGameDiff() { return gameDiff;}
-
-    public Universe getUniverse() {
-        return universe;
+    /**
+     * @return the game difficulty
+     */
+    public GameDifficulty getGameDiff() {
+        return gameDiff;
     }
 
-    public void setUniverse(Universe universe) {
-        this.universe = universe;
+    /**
+     * @return the universe
+     */
+    public Universe getUniverse() {
+        return universe;
     }
 
     @Override
