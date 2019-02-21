@@ -1,22 +1,37 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game;
 
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Universe;
+
 /**
  * Represents a model of the game.
  */
 public class Game {
     private GameDifficulty gameDiff;
 
+    private Universe universe;
+
     /**
-     * Two arg constructor for creating a game.
+     * One arg constructor for creating a game.
      *
      * @param gameDiff the game difficulty
      */
     public Game(GameDifficulty gameDiff) {
         this.gameDiff = gameDiff;
+
+        universe = new Universe();
     }
 
     public GameDifficulty getGameDiff() { return gameDiff;}
 
+    public Universe getUniverse() {
+        return universe;
+    }
+
+    public void setUniverse(Universe universe) {
+        this.universe = universe;
+    }
+
+    @Override
     public String toString() {
         return "The game difficulty is set to " + getGameDiff().toString();
     }
