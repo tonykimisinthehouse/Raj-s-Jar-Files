@@ -35,7 +35,7 @@ public class Universe {
             while (!coordSet.add(coordinate)) {
                 coordinate = new Coordinate();
             }
-            solarSystem[i] = new SolarSystem(name,coordinate);
+            solarSystem[i] = new SolarSystem(name, coordinate);
         }
     }
 
