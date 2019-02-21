@@ -21,26 +21,25 @@ public class SolarSystemTester {
 
     @Test (timeout = TIMEOUT)
     public void testPlanetCreation() {
-        Planet planet = new Planet("Thomas-Centauri", 3, 13);
+        Planet planet = new Planet("Thomas-Centauri", 13);
         assertEquals("Thomas-Centauri", planet.getName());
-        assertEquals(3, planet.getRadius());
         assertEquals(13, planet.getOrbitRadius());
     }
 
     @Test (timeout = TIMEOUT)
     public void testDist() {
-        Planet p1 = new Planet("Justin", 3, 7);
-        Planet p2 = new Planet("Raj", 4, 2);
+        Planet p1 = new Planet("Justin", 7);
+        Planet p2 = new Planet("Raj", 2);
 
         assertEquals(5, p1.getDist(p2));
 
         assertEquals(5, Planet.distBetween(p1, p2));
     }
 
-    @Test (timeout = TIMEOUT)
-    public void testPlanetGetRandomRadius() {
-        for (int i = 0; i < 1000; i++) {
-            assertTrue(Planet.getRandomRadius() >= 1);
-        }
-    }
+//    @Test (timeout = TIMEOUT)
+//    public void testPlanetGetRandomRadius() {
+//        for (int i = 0; i < 1000; i++) {
+//            assertTrue(Planet.getRandomRadius() >= 1);
+//        }
+//    }
 }

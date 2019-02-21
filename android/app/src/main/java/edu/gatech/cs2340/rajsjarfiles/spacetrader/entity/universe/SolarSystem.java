@@ -22,13 +22,12 @@ public class SolarSystem {
         HashSet<String> nameSet = new HashSet<>();
         int orbitRadius = 0;
         for (int i = 0; i < planets.length; i++) {
-            int radius = Planet.getRandomRadius();
             orbitRadius += rand.nextInt(2) + 1;
             String name = Names.generateName();
-            while(!nameSet.add(name)) {
+            while (!nameSet.add(name)) {
                 name = Names.generateName();
             }
-            planets[i] = new Planet(name, radius, orbitRadius);
+            planets[i] = new Planet(name, orbitRadius);
         }
     }
 
