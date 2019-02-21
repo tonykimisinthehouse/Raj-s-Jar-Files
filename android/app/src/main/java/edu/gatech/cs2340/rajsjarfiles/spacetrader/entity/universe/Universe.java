@@ -11,15 +11,19 @@ public class Universe {
     //using an array because the size won't change
     private SolarSystem[] solarSystem;
 
+    /**
+     * Constructor to create the universe.
+     */
     public Universe() {
         solarSystem = new SolarSystem[MAX_SOLAR_SYSTEMS];
         createUniverse();
     }
 
     /**
-     * Constructor to create the universe.
+     * Method that creates a universe with multiple solar systems with unique
+     * names and coordinates.
      */
-    public void createUniverse() {
+    private void createUniverse() {
         for (int i = 0; i < solarSystem.length; i++) {
             HashSet<String> nameSet = new HashSet<>();
             HashSet<Coordinate> coordSet = new HashSet<>();
