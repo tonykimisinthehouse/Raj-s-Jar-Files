@@ -14,6 +14,9 @@ public class Planet {
     private int radius;         //radius of planet itself
     private int orbitRadius;    //distance from center
 
+    private TechLevel techLevel;
+    private ResourceClassification resourceClass;
+
     /**
      * Creates a planet with a given name, radius, and orbit radius (how far
      * it is from the center of the solar system).
@@ -25,6 +28,9 @@ public class Planet {
         this.name = name;
         this.radius = getRandomRadius();
         this.orbitRadius = orbitRadius;
+        this.techLevel = TechLevel.getRandomTechLevel();
+        this.resourceClass =
+                ResourceClassification.getRandomResourceClass();
     }
 
     //no setters because the fields shouldn't change
@@ -48,6 +54,20 @@ public class Planet {
      */
     public int getOrbitRadius() {
         return orbitRadius;
+    }
+
+    /**
+     * @return the planet's tech level
+     */
+    public TechLevel getTechLevel() {
+        return techLevel;
+    }
+
+    /**
+     * @return the planet's resource classification
+     */
+    public ResourceClassification getResourceClass() {
+        return resourceClass;
     }
 
     /**
