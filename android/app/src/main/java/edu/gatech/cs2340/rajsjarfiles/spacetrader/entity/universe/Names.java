@@ -2,6 +2,9 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
 import java.util.Random;
 
+/**
+ * All of the possible names for the planets and solar system.
+ */
 public class Names {
     public static final String[] NAMES = new String[] {
             "Acamar",
@@ -131,6 +134,11 @@ public class Names {
 
     private static Random rand = new Random();
 
+    /**
+     * Generates a random name that is used for planets and solar systems.
+     *
+     * @return a name.
+     */
     public static String generateName() {
         String name = "";
         int addMod = rand.nextInt(7);

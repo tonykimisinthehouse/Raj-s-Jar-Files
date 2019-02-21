@@ -14,11 +14,22 @@ public class Coordinate {
     private static Random rand = new Random();
 
     /**
-     * Two arg constructor for a coordinate.
+     * No arg constructor that makes a coordinate with random coordinates.
      */
     public Coordinate() {
         x = rand.nextInt(MAX_X) - (MAX_X / 2 - 1);
         y = rand.nextInt(MAX_Y) - (MAX_Y / 2 - 1);
+    }
+
+    /**
+     * Two arg constructor for a coordinate that uses given parameters.
+     *
+     * @param x the x value for the coordinate.
+     * @param y the y value for the coordinate.
+     */
+    public Coordinate(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
     /**

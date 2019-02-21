@@ -25,9 +25,17 @@ public class SolarSystem {
                 MAX_PLANETS - MIN_PLANETS + 1) + MIN_PLANETS);
     }
 
+    /**
+     * @return the name of the solar system.
+     */
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         String ret = "";
+        ret += getName() + "\n";
         for (int i = 0; i < planets.length; i++) {
             ret += "   - " + planets[i].toString() + "\n";
         }

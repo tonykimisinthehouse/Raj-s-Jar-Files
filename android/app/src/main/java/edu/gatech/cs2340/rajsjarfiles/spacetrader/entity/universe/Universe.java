@@ -37,8 +37,6 @@ public class Universe {
             }
             solarSystem[i] = new SolarSystem(name,coordinate);
         }
-        //generate all solar systems with no duplicate names
-        //see solar system generating planets for example
     }
 
     @Override
