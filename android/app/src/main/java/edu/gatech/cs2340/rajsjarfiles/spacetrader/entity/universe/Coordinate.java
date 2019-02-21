@@ -9,6 +9,14 @@ public class Coordinate {
         this.y = y;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
     public double distTo(Coordinate c) {
         int dx = c.x - x;
         int dy = c.y - y;

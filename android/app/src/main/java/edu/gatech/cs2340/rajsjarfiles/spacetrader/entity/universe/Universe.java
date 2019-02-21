@@ -12,6 +12,16 @@ public class Universe {
     }
 
     public void createUniverse() {
+        //generate all solar systems with no duplicate names
+        //see solar system generating planets for example
+    }
 
+    @Override
+    public String toString() {
+        String ret = "The universe:\n";
+        for (int i = 0; i < solarSystem.length; i++) {
+            ret += solarSystem[i].toString() + "\n";
+        }
+        return ret;
     }
 }
