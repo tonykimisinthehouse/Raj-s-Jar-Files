@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity;
+package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
 import org.junit.Test;
 

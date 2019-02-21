@@ -24,7 +24,7 @@ public class MainViewModel extends AndroidViewModel {
     /**
      * MainViewModel constructor with all arguments.
      *
-     * @param application represents the application ocntext
+     * @param application represents the application context
      */
     public MainViewModel(@NonNull Application application) {
         super(application);

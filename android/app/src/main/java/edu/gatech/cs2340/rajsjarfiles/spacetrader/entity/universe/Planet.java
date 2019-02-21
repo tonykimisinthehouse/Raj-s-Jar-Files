@@ -20,10 +20,6 @@ public class Planet {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getRadius() {
         return radius;
     }
@@ -32,12 +28,20 @@ public class Planet {
         return orbitRadius;
     }
 
+    public int getDist(Planet other) {
+        return Math.abs(this.orbitRadius - other.orbitRadius);
+    }
+
     private static Random rand = new Random();
 
     public static int getRandomRadius() {
         return rand.nextInt(
                 MAX_RADIUS - MIN_RADIUS + 1)
                 + MIN_RADIUS;
+    }
+
+    public static int distBetween(Planet p1, Planet p2) {
+        return Math.abs(p1.getOrbitRadius() - p2.getOrbitRadius());
     }
 
     @Override
