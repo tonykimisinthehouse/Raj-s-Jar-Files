@@ -11,12 +11,16 @@ public class SolarSystem {
 
     //using an array because the size won't change
     private Planet[] planets;
+    private String name;
+    private Coordinate coordinate;
 
     /**
      * Constructor to create a solar system.
      */
-    public SolarSystem() {
+    public SolarSystem(String name, Coordinate coordinate) {
         Random rand = new Random();
+        this.name = name;
+        this.coordinate = coordinate;
         planets = Planet.generatePlanets(rand.nextInt(
                 MAX_PLANETS - MIN_PLANETS + 1) + MIN_PLANETS);
     }

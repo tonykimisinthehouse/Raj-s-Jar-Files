@@ -1,21 +1,24 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
+import java.util.Random;
+
 /**
  * Represents a coordinate in the universe.
  */
 public class Coordinate {
     private int x;
     private int y;
+    private static final int MAX_X = 150;
+    private static final int MAX_Y = 100;
+
+    private static Random rand = new Random();
 
     /**
      * Two arg constructor for a coordinate.
-     *
-     * @param x the x coordinate
-     * @param y the y coordinate
      */
-    public Coordinate(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public Coordinate() {
+        x = rand.nextInt(MAX_X) - (MAX_X / 2 - 1);
+        y = rand.nextInt(MAX_Y) - (MAX_Y / 2 - 1);
     }
 
     /**

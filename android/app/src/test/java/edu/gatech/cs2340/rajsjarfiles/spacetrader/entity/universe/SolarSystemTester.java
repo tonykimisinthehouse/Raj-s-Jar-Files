@@ -14,7 +14,7 @@ public class SolarSystemTester {
     @Test (timeout = TIMEOUT)
     public void testSolarSystemGeneration() {
         for (int i = 0; i < 1000; i++) {
-            SolarSystem s = new SolarSystem();
+            SolarSystem s = new SolarSystem("Raj");
             System.out.println(s.toString());
         }
     }
