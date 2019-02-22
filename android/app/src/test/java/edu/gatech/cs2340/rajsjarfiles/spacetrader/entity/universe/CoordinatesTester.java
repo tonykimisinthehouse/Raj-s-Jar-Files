@@ -8,9 +8,15 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Coordinate;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Tests the Coordinates class.
+ */
 public class CoordinatesTester {
     private static final int TIMEOUT = 10000;
 
+    /**
+     * Tests for hashcode collisions.
+     */
     @Test (timeout = TIMEOUT)
     public void testCoordinates() {
         HashSet<Coordinate> hs = new HashSet<>();
@@ -24,6 +30,9 @@ public class CoordinatesTester {
         System.out.println(collisions + " collisions with hashcode.");
     }
 
+    /**
+     * Checks that the coordinate distance calculations are correct.
+     */
     @Test (timeout = TIMEOUT)
     public void testDistTo() {
         Coordinate c = new Coordinate(0, 0);
