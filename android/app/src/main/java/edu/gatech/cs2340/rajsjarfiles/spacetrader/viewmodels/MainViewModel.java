@@ -6,9 +6,10 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.GameDifficulty;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
 import java.util.regex.Pattern;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.GameDifficulty;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.Ship;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 
 /**
@@ -23,7 +24,7 @@ public class MainViewModel extends AndroidViewModel {
     /**
      * MainViewModel constructor with all arguments.
      *
-     * @param application represents the application ocntext
+     * @param application represents the application context
      */
     public MainViewModel(@NonNull Application application) {
         super(application);

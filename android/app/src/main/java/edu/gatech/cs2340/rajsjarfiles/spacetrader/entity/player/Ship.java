@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity;
+package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 
 /**
  * Represents a ship that a character or enemy can use.

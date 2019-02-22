@@ -1,4 +1,6 @@
-package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity;
+package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
+
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
 
 /**
  * Represents the user's player.
