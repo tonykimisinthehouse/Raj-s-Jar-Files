@@ -16,6 +16,9 @@ public class SolarSystem {
 
     /**
      * Constructor to create a solar system.
+     *
+     * @param name the system's name
+     * @param coordinate the system's coordinate in the universe
      */
     public SolarSystem(String name, Coordinate coordinate) {
         Random rand = new Random();
@@ -26,10 +29,17 @@ public class SolarSystem {
     }
 
     /**
-     * @return the name of the solar system.
+     * @return the name of the solar system
      */
     public String getName() {
         return name;
+    }
+
+    /**
+     * @return the coordinate of this solar system
+     */
+    public Coordinate getCoordinate() {
+        return coordinate;
     }
 
     @Override
