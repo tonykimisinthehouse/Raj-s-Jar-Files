@@ -15,4 +15,14 @@ public class UniverseTester {
         Universe uni = new Universe();
         System.out.println(uni.toString());
     }
+
+    /**
+     * Creates many universes to reach name collision code.
+     */
+    @Test
+    public void testUniverseCreationRandom() {
+        for (int i = 0; i < 1000; i++) {
+            Universe uni = new Universe();
+        }
+    }
 }

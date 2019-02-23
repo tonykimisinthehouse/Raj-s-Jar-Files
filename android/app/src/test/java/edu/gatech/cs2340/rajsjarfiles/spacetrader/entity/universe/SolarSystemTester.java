@@ -15,6 +15,16 @@ public class SolarSystemTester {
     private static final int TIMEOUT = 200;
 
     /**
+     * Tests two-arg constructor.
+     */
+    @Test (timeout = TIMEOUT)
+    public void testTwoArgConstructor() {
+        SolarSystem ss = new SolarSystem("Thomas", new Coordinate(3, -4));
+        assertEquals("Thomas", ss.getName());
+        assertEquals(new Coordinate(3, -4), ss.getCoordinate());
+    }
+
+    /**
      * Checks for correct solar system generation.
      */
     @Test
@@ -23,29 +33,5 @@ public class SolarSystemTester {
             SolarSystem s = new SolarSystem("Raj", new Coordinate());
             System.out.println(s.toString());
         }
-    }
-
-    /**
-     * Verifies that the names and orbit radii for planets are correct.
-     */
-    @Test (timeout = TIMEOUT)
-    public void testPlanetCreation() {
-        Planet planet = new Planet("Thomas-Centauri", 13);
-        assertEquals("Thomas-Centauri", planet.getName());
-        assertEquals(13, planet.getOrbitRadius());
-    }
-
-    /**
-     * Verifies that the testDist() method correct computes the distances
-     * between planets.
-     */
-    @Test (timeout = TIMEOUT)
-    public void testDist() {
-        Planet p1 = new Planet("Justin", 7);
-        Planet p2 = new Planet("Raj", 2);
-
-        assertEquals(5, p1.getDist(p2));
-
-        assertEquals(5, Planet.distBetween(p1, p2));
     }
 }
