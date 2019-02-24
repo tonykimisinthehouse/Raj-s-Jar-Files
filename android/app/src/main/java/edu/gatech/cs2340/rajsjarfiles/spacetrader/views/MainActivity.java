@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.views;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -129,6 +130,9 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),
                     "Your inputs are valid.",
                     Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(view.getContext(), GameActivity.class);
+            startActivity(intent);
         }
     }
 
