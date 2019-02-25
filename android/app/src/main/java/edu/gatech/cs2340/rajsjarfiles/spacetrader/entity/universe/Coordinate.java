@@ -78,6 +78,11 @@ public class Coordinate {
         return h;
     }
 
+    @Override
+    public String toString() {
+        return "(" + x + ", " + y + ")";
+    }
+
     /**
      * Static method for finding the distance between two coordinates.
      *

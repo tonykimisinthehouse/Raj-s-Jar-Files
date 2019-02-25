@@ -45,7 +45,7 @@ public class SolarSystem {
     @Override
     public String toString() {
         String ret = "";
-        ret += getName() + "\n";
+        ret += String.format("%-12s", getName()) + " " + getCoordinate() + " " + "\n";
         for (int i = 0; i < planets.length; i++) {
             ret += "   - " + planets[i].toString() + "\n";
         }

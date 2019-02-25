@@ -2,6 +2,7 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.model;
 
 import android.util.Log;
 
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.LogCustom;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.Game;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.GameDifficulty;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.PlayerBuilder;
@@ -33,6 +34,7 @@ public class Model {
         player = new PlayerBuilder(name, points, credits, ship).build();
         game = new Game(difficulty);
         Log.i("Model", player.toString());
-        Log.i("Model", game.toString());
+//        Log.i("Model", game.toString());
+        LogCustom.largeLog("Model", game.toString());
     }
 }

@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".views.GameActivity"
+            android:label="@string/title_activity_game"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".views.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
