@@ -2,6 +2,8 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
 import org.junit.Test;
 
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.planet.Planet;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;

@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.rajsjarfiles.spacetrader;
+package edu.gatech.cs2340.rajsjarfiles.spacetrader.utility;
 
 import android.util.Log;
 

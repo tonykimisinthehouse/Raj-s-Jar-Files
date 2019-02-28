@@ -2,7 +2,7 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.model;
 
 import android.util.Log;
 
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.LogCustom;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.utility.LogCustom;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.Game;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.GameDifficulty;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.PlayerBuilder;

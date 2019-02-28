@@ -2,6 +2,8 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
 import java.util.Random;
 
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.planet.Planet;
+
 /**
  * Represents a solar system in the universe.
  */

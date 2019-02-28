@@ -1,20 +1,24 @@
-package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
+package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.planet;
 
 import java.util.HashSet;
 import java.util.Random;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Names;
+
 
 /**
  * Represents a planet within a solar system.
  */
 public class Planet {
-    private static final int MIN_RADIUS = 1;        //these are relative
-    private static final int MAX_RADIUS = 5;
-
     private String name;
     private int radius;         //radius of planet itself
     private int orbitRadius;    //distance from center
 
+    private static final int MIN_RADIUS = 1;        //these are relative
+    private static final int MAX_RADIUS = 5;
+
     private TechLevel techLevel;
+    private Habitats habitats;
+    private Species species;
     private ResourceClassification resourceClass;
 
     /**
@@ -28,9 +32,12 @@ public class Planet {
         this.name = name;
         this.radius = getRandomRadius();
         this.orbitRadius = orbitRadius;
+
         this.techLevel = TechLevel.getRandomTechLevel();
+        this.habitats = Habitats.getRandomHabitat();
         this.resourceClass =
-                ResourceClassification.getRandomResourceClass();
+                ResourceClassification.getRandomResourceClass(this.habitats);
+        this.species = this.habitats.getRandomHabitableSpecie();
     }
 
     //no setters because the fields shouldn't change
@@ -87,6 +94,8 @@ public class Planet {
                 + String.format(", orbit radius: %2d", orbitRadius)
                 + String.format(" | tech level: %-16s", techLevel.toString())
                 + " | resource class: " + resourceClass.toString()
+                + " | species: " + species.toString()
+                + " | habitat: " + habitats.toString()
                 + ".";
     }
 
