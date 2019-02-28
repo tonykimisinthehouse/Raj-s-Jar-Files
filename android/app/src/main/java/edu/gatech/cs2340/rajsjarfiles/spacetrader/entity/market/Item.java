@@ -1,6 +1,6 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market;
 
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Event;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.planet.Event;
 
 public enum Item {
     WATER();

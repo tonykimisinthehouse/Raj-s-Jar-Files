@@ -24,18 +24,27 @@ public enum Habitats {
 
     CONTINENTAL(
             Arrays.asList(
-                    Species.HUMANOID, Species.REPTILIAN, Species.FUNGOID, Species.MACHINE),
+                    Species.HUMANOID,
+                    Species.REPTILIAN,
+                    Species.FUNGOID,
+                    Species.MACHINE),
                     null),
 
     ARCTIC(
             Arrays.asList(
                     Species.HUMANOID),
             Arrays.asList(
-                    ResourceClassification.RICH_SOIL)),
+                    ResourceClassification.RICH_SOIL,
+                    ResourceClassification.LOTS_OF_HERBS)),
 
-    TOMB(Arrays.asList(
-            Species.MACHINE),
-            null);
+    TOMB(
+            Arrays.asList(
+                    Species.MACHINE),
+            Arrays.asList(
+                    ResourceClassification.LOTS_OF_HERBS,
+                    ResourceClassification.RICH_SOIL,
+                    ResourceClassification.RICH_FAUNA,
+                    ResourceClassification.WEIRD_MUSHROOMS));
 
     ArrayList<Species> habitableSpecies = new ArrayList<>();
     ArrayList<ResourceClassification> impossibleResources = new ArrayList<>();

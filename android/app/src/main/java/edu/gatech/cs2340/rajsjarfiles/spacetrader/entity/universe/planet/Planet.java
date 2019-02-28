@@ -92,10 +92,10 @@ public class Planet {
         return String.format("%-16s", name)
                 + "| Radius: " + radius
                 + String.format(", orbit radius: %2d", orbitRadius)
-                + String.format(" | tech level: %-16s", techLevel.toString())
-                + " | resource class: " + resourceClass.toString()
-                + " | species: " + species.toString()
-                + " | habitat: " + habitats.toString()
+                + String.format(" | tech level: %-20s", techLevel.toString())
+                + String.format(" | resource class: %-20s",resourceClass.toString())
+                + String.format(" | species: %-10s", species.toString())
+                + String.format(" | habitat: %s", habitats.toString())
                 + ".";
     }
 

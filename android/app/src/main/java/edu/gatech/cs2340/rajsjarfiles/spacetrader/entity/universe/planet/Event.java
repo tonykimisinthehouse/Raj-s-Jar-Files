@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market;
+package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.planet;
 
 public enum Event {
     DROUGHT,
