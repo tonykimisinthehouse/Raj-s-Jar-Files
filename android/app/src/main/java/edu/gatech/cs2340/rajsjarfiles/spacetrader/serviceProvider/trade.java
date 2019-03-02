@@ -2,8 +2,17 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.serviceProvider;
 
 public class trade {
 
-
-    public Boolean checkUserCanPurchase (int marketPrice,
+    /**
+     * Makes sure that the user can make the purchase that he/she has requested.
+     * @param marketPrice the price the market is selling at
+     * @param quantity the number of items the user wants to buy
+     * @param currentCredit the amount of credit the user has
+     * @param quantity the number of items the user wants to buy
+     * @param currentStock the number of items the user has in his/her cargo
+     * @param cargoCapacity the cargo capacity of the ship
+     * @return boolean of whether the user made the purchase or not
+     */
+    public Boolean makePurchase (int marketPrice,
                                         int quantity,
                                         int currentCredit,
                                         int currentStock,
@@ -22,8 +31,8 @@ public class trade {
      * Makes sure that the user cannot buy more goods than you have money
      * @param marketPrice the price the market is selling at
      * @param quantity the number of items the user wants to buy
-     * @param credit the amount of credit the user has
-     * @return
+     * @param currentCredit the amount of credit the user has
+     * @return boolean of whether the user has enough credit
      */
     public Boolean checkCreditEnough(int marketPrice, int quantity, int currentCredit) {
         if (marketPrice * quantity > currentCredit ) {
@@ -38,7 +47,7 @@ public class trade {
      * @param quantity the number of items the user wants to buy
      * @param currentStock the number of items the user has in his/her cargo
      * @param cargoCapacity the cargo capacity of the ship
-     * @return
+     * @return boolean of whether the user has enough cargo capcity
      */
     public Boolean checkCargoCapacityEnough(int quantity, int currentStock, int cargoCapacity) {
         if (quantity + currentStock > cargoCapacity) {
@@ -47,5 +56,7 @@ public class trade {
             return true;
         }
     }
+
+
 }
 
