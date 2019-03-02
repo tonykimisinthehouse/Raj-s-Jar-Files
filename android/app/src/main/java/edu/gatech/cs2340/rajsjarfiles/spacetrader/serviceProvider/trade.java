@@ -58,5 +58,19 @@ public class trade {
     }
 
 
+    /**
+     * Makes sure the user cannot sell more goods than he/she has.
+     * @param quantitySelling
+     * @param currentStock
+     * @return boolean of whether the user made the sell or not.
+     */
+    public Boolean makeSale(int quantitySelling, int currentStock) {
+        if (quantitySelling > currentStock) {
+            return false;
+        }
+        // do something.
+        return true;
+    }
+
 }
 
