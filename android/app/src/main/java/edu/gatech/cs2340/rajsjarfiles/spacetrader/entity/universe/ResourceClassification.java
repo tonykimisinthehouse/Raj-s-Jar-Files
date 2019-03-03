@@ -27,7 +27,6 @@ public enum ResourceClassification {
 
     ARTISTIC(10),
     WARLIKE(30),
-
     LIFELESS(5),
     DESERT(10);
 

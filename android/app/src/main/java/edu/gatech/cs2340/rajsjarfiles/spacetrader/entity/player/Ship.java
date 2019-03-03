@@ -1,10 +1,13 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Good;
+
 /**
  * Represents a ship that a character or enemy can use.
  */
 public class Ship {
     private ShipType shipType;
+    private Good[] cargo;
 
     /**
      * Default constructor that sets ShipType to GNAT.

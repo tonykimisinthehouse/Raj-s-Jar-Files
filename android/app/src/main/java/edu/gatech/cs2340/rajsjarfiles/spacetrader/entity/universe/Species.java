@@ -12,7 +12,6 @@ public enum Species {
     FUNGOID, // Fungi
     REPTILIAN; // Reptile
 
-
     /**
      * Get Random species that can live in certain habitats
      *

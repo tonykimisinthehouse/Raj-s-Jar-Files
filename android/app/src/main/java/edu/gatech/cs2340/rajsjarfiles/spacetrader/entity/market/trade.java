@@ -12,11 +12,12 @@ public class trade {
      * @param cargoCapacity the cargo capacity of the ship
      * @return boolean of whether the user made the purchase or not
      */
-    public Boolean makePurchase (int marketPrice,
-                                        int quantity,
-                                        int currentCredit,
-                                        int currentStock,
-                                        int cargoCapacity) {
+    public Boolean makePurchase (
+            int marketPrice,
+            int quantity,
+            int currentCredit,
+            int currentStock,
+            int cargoCapacity) {
         if (checkCreditEnough(marketPrice, quantity, currentCredit)
                 && checkCargoCapacityEnough(quantity, currentStock, cargoCapacity)) {
             // Do something with ship cargo and user credit
@@ -24,8 +25,6 @@ public class trade {
         } else {
             return false;
         }
-
-
     }
     /**
      * Makes sure that the user cannot buy more goods than you have money
@@ -47,7 +46,7 @@ public class trade {
      * @param quantity the number of items the user wants to buy
      * @param currentStock the number of items the user has in his/her cargo
      * @param cargoCapacity the cargo capacity of the ship
-     * @return boolean of whether the user has enough cargo capcity
+     * @return boolean of whether the user has enough cargo capacity
      */
     public Boolean checkCargoCapacityEnough(int quantity, int currentStock, int cargoCapacity) {
         if (quantity + currentStock > cargoCapacity) {
