@@ -1,6 +1,6 @@
-package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.planet;
+package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market;
 
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.TradeGoods;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.TradeGoods;
 import java.util.EnumMap;
 import java.util.Random;
 

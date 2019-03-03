@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.rajsjarfiles.spacetrader.serviceProvider;
+package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market;
 
 public class trade {
 

@@ -10,13 +10,26 @@ import java.util.Random;
 public enum ResourceClassification {
 
     NO_SPECIAL_RESOURCES(35),
+
     MINERAL_RICH(10),
+    MINERAL_POOR(10),
+
     LOTS_OF_WATER(10),
+
     RICH_SOIL(10),
+    POOR_SOIL(10),
+
     RICH_FAUNA(10),
+
     WEIRD_MUSHROOMS(10),
+
     LOTS_OF_HERBS(10),
-    LIFELESS(5);
+
+    ARTISTIC(10),
+    WARLIKE(30),
+
+    LIFELESS(5),
+    DESERT(10);
 
     //ARTISTIC,
     //WARLIKE,
