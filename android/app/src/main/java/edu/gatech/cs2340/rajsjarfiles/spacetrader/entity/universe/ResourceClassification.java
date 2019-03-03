@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.planet;
+package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,31 +21,50 @@ public enum ResourceClassification {
     //ARTISTIC,
     //WARLIKE,
 
-    private int prob;
-
-    ResourceClassification(int prob) {
-        this.prob = prob;
-    }
-
-   private static Random rand = new Random();
+    // Probability of having certain resources in a planet
+    private int probOfHavingResource;
 
     /**
-     * Returns a random resource class. The implementation may vary
-     * (different weights for each class).
+     * Constructor for resource classification enum class
      *
-     * @return a random tech level
+     * @param prob probability of having this resource in a planet
+     */
+    ResourceClassification(int prob) {
+        this.probOfHavingResource = prob;
+    }
+
+    /**
+     * Set probability of resource to exists in a planet
+     *
+     * @param prob probability of resource to exists
+     */
+    public void setProbability(int prob) {
+        this.probOfHavingResource = prob;
+    }
+
+    /**
+     * Get random resource classification for certain habitats.
+     * @param habitats habitat of a planet where the resource is allocated
+     * @return single random resource classification
      */
     public static ResourceClassification getRandomResourceClass(Habitats habitats) {
+        Random rand = new Random();
+
+        // List that store possible resource classification
         List<ResourceClassification> pr = new ArrayList<>();
+
+        // Filter out resources that are possible to exists in this habitat
         for (ResourceClassification resource : ResourceClassification.values()) {
             if (resource != null &&
                     !habitats.impossibleResources.contains(resource)) {
                 pr.add(resource);
             }
         }
+
+        // Randomize the choice but taking care of the probability
         ArrayList<Integer> distributionResource = new ArrayList<>();
         for (ResourceClassification r : pr) {
-            for (int i = 0; i < r.prob; i++) {
+            for (int i = 0; i < r.probOfHavingResource; i++) {
                 distributionResource.add(r.ordinal());
             }
         }

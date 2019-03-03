@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.planet;
+package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
 import java.util.Random;
 
