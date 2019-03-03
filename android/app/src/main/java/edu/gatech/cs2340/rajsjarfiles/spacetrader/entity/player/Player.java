@@ -1,5 +1,10 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Good;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.TradeGoods;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Planet;
+
 /**
  * Represents the user's player.
  *
@@ -7,7 +12,6 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
  */
 public class Player {
     private static final int MAX_POINTS = 16;
-
     private String name;
 
     /**
@@ -18,8 +22,8 @@ public class Player {
      */
     private int[] points;
     private int credits;
-
     private Ship ship;
+    private Planet planet;
 
     /**
      * Player constructor with all arguments.
@@ -31,6 +35,64 @@ public class Player {
         setPoints(builder.points);
         setCredits(builder.credits);
         setShip(builder.ship);
+    }
+
+    public boolean makePurchase(TradeGoods good, int quantity) {
+        if (planet.getMarketplace().hasGoods(good, quantity)) {
+            if (checkCreditEnough(planet.getMarketplace().getPriceForPurchase(good, quantity))) {
+                if (checkCargoCapacityEnough(quantity)) {
+                    if (planet.getMarketplace().makePurchase(good,quantity)) {
+                        ship.addToCargo(good,quantity);
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean makeSales(TradeGoods good, int quantity) {
+        if (ship.hasGoods(good, quantity)) {
+            if (planet.getMarketplace().canSell(good)) {
+                earnCredits(planet.getMarketplace().makeSales(good,quantity));
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Earn credit
+     * @param amount of credit earned.
+     */
+    public void earnCredits(int amount) {
+        credits += amount;
+    }
+
+    /**
+     * Makes sure that the user cannot buy more goods than you have money
+     * @param marketPrice the price the market is selling at
+     * @return boolean of whether the user has enough credit
+     */
+    public Boolean checkCreditEnough(int marketPrice) {
+        if (marketPrice > credits ) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    /**
+     * Makes sure the user cannot buy more goods than the cargo capacity
+     * @param quantity the number of items the user wants to buy
+     * @return boolean of whether the user has enough cargo capacity
+     */
+    public Boolean checkCargoCapacityEnough(int quantity) {
+        if (quantity > ship.getAvailableCargoCapacity()) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     /**

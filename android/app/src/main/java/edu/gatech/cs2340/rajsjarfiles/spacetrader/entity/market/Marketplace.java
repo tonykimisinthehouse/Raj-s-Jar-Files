@@ -26,6 +26,7 @@ public class Marketplace{
     private Species sp;
     private Events ev;
 
+
     /**
      * Constructor for marketplace
      * @param pn planet name
@@ -64,6 +65,47 @@ public class Marketplace{
 
     public EnumMap<TradeGoods, Item> getTradeGoodsEnumMap() {
         return getTradeGoodsEnumMap();
+    }
+
+    public boolean makePurchase(TradeGoods good, int quantity) {
+        if (hasGoods(good, quantity)) {
+            tradeGoods2Buy.get(good).buyQuantity(quantity);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean hasGoods(TradeGoods good, int quantity) {
+        if (tradeGoods2Buy.containsKey(good)) {
+            return tradeGoods2Buy.get(good).getQuantity() >= quantity;
+        }
+        return false;
+    }
+
+    public int getPriceForPurchase(TradeGoods good, int quantity) {
+        if (!tradeGoods2Buy.containsKey(good)) {
+            throw new java.lang.IllegalArgumentException("Good not found from the market");
+        }
+        return tradeGoods2Buy.get(good).getPrice() * quantity;
+    }
+
+
+    public int makeSales(TradeGoods good, int quantity) {
+        if (!canSell(good)) {
+            throw new java.lang.IllegalArgumentException("Good not found from the market");
+        }
+        Item item = new Item.ItemBuilder(good)
+                .resourceClass(rc)
+                .techLevel(tl)
+                .event(ev)
+                .calculatePrice()
+                .calculateQuantity()
+                .build();
+        return item.getPrice();
+    }
+
+    public boolean canSell(TradeGoods good) {
+        return tl.ordinal() >= good.getMTLU();
     }
 
     @Override

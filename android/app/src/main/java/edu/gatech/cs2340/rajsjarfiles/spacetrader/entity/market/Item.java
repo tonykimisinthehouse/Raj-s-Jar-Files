@@ -10,19 +10,18 @@ public class Item {
 
     private static Random rand = new Random();
 
-    private String name;
+    private Good good;
     private int quantity;
     private int price;
-    private boolean toBeBought;
 
     Item(ItemBuilder builder) {
-        name = builder.good.getName();
+        good = builder.good;
         quantity = builder.quantity;
         price = builder.price;
     }
 
     public String getName() {
-        return name;
+        return good.getName();
     }
 
     public int getPrice() {
@@ -31,6 +30,10 @@ public class Item {
 
     public int getQuantity() {
         return quantity;
+    }
+
+    public void buyQuantity(int quantityToBuy) {
+        quantity = quantity - quantityToBuy;
     }
 
     public static class ItemBuilder{
@@ -104,7 +107,6 @@ public class Item {
             quantity = rand.nextInt(maxQuantity - minQuantity) + minQuantity;
             return this;
         }
-
         public Item build() {
             return new Item(this);
         }
