@@ -2,8 +2,6 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
 import org.junit.Test;
 
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.planet.Planet;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -19,7 +17,7 @@ public class PlanetTester {
      */
     @Test (timeout = TIMEOUT)
     public void testConstructor() {
-        Planet planet = new Planet("Raj", 3);
+        Planet planet = new Planet.PlanetBuilder("Raj", 3).build();
         assertEquals("Raj", planet.getName());
         assertTrue(planet.getRadius() > 0);
         assertEquals(3, planet.getOrbitRadius());
@@ -32,7 +30,7 @@ public class PlanetTester {
      */
     @Test (timeout = TIMEOUT)
     public void testPlanetCreation() {
-        Planet planet = new Planet("Thomas-Centauri", 13);
+        Planet planet = new Planet.PlanetBuilder("Thomas-Centauri", 13).build();
         assertEquals("Thomas-Centauri", planet.getName());
         assertEquals(13, planet.getOrbitRadius());
     }
@@ -43,8 +41,8 @@ public class PlanetTester {
      */
     @Test (timeout = TIMEOUT)
     public void testDist() {
-        Planet p1 = new Planet("Justin", 7);
-        Planet p2 = new Planet("Raj", 2);
+        Planet p1 = new Planet.PlanetBuilder("Justin", 7).build();
+        Planet p2 = new Planet.PlanetBuilder("Raj", 2).build();
 
         assertEquals(5, p1.getDist(p2));
 

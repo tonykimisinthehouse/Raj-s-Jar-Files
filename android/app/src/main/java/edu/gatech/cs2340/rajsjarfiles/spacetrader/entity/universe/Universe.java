@@ -27,10 +27,10 @@ public class Universe {
         for (int i = 0; i < solarSystem.length; i++) {
             HashSet<String> nameSet = new HashSet<>();
             HashSet<Coordinate> coordSet = new HashSet<>();
-            String name = Names.generateName();
+            String name = PlanetNames.generateName();
             Coordinate coordinate = new Coordinate();
             while (!nameSet.add(name)) {
-                name = Names.generateName();
+                name = PlanetNames.generateName();
             }
             while (!coordSet.add(coordinate)) {
                 coordinate = new Coordinate();
