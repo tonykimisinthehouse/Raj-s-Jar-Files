@@ -2,11 +2,6 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 
 import org.junit.Test;
 
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.PlayerBuilder;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.ShipType;
-
 import static org.junit.Assert.*;
 
 public class PlayerTester {
@@ -17,8 +12,11 @@ public class PlayerTester {
      */
     @Test(timeout = TIMEOUT)
     public void playerBuilderTest() {
-        Player player = new PlayerBuilder("Justin").setPoints(new int[]{2, 2, 4, 8})
-                .setCredits(1200).setShip(new Ship(ShipType.BEETLE)).build();
+        Player player = new Player.PlayerBuilder("Justin")
+                .points(new int[]{2, 2, 4, 8})
+                .credits(1200)
+                .ship(new Ship(ShipType.BEETLE))
+                .build();
         assertEquals("Justin", player.getName());
         assertArrayEquals(new int[] {2, 2, 4, 8}, player.getPoints());
         assertEquals(2, player.getPilot());
@@ -34,7 +32,7 @@ public class PlayerTester {
      */
     @Test(timeout = TIMEOUT)
     public void playerBuilderTestNoArgs() {
-        Player player = new PlayerBuilder("Justin").build();
+        Player player = new Player.PlayerBuilder("Justin").build();
         assertEquals("Justin", player.getName());
         assertArrayEquals(new int[] {4, 4, 4, 4}, player.getPoints());
         assertEquals(4, player.getPilot());
@@ -50,7 +48,7 @@ public class PlayerTester {
      */
     @Test(timeout = TIMEOUT)
     public void playerTestSetName() {
-        Player player = new PlayerBuilder("Justin").build();
+        Player player = new Player.PlayerBuilder("Justin").build();
         player.setName("Raj");
         assertEquals("Raj", player.getName());
     }
@@ -60,7 +58,7 @@ public class PlayerTester {
      */
     @Test(timeout = TIMEOUT, expected = java.lang.IllegalArgumentException.class)
     public void playerBuilderIllegalPointsSumLess() {
-        Player player = new PlayerBuilder("Thomas").setPoints(new int[] {1, 2, 3, 4}).build();
+        Player player = new Player.PlayerBuilder("Thomas").points(new int[] {1, 2, 3, 4}).build();
     }
 
     /**
@@ -68,7 +66,7 @@ public class PlayerTester {
      */
     @Test(timeout = TIMEOUT, expected = java.lang.IllegalArgumentException.class)
     public void playerBuilderIllegalPointsSumMore() {
-        Player player = new PlayerBuilder("Thomas").setPoints(new int[] {1, 2, 20, 4}).build();
+        Player player = new Player.PlayerBuilder("Thomas").points(new int[] {1, 2, 20, 4}).build();
     }
 
     /**
@@ -76,7 +74,7 @@ public class PlayerTester {
      */
     @Test(timeout = TIMEOUT, expected = java.lang.IllegalArgumentException.class)
     public void playerBuilderIllegalPointsNegative() {
-        Player player = new PlayerBuilder("Thomas").setPoints(new int[] {2, -2, 7, 1}).build();
+        Player player = new Player.PlayerBuilder("Thomas").points(new int[] {2, -2, 7, 1}).build();
     }
 
     /**
@@ -84,7 +82,7 @@ public class PlayerTester {
      */
     @Test(timeout = TIMEOUT, expected = java.lang.IllegalArgumentException.class)
     public void playerSetNullShipWrong() {
-        Player player = new PlayerBuilder("Thomas").setPoints(new int[] {2, 2, 4, 8}).build();
+        Player player = new Player.PlayerBuilder("Thomas").points(new int[] {2, 2, 4, 8}).build();
         player.setShip(null);
     }
 
@@ -93,10 +91,10 @@ public class PlayerTester {
      */
     @Test(timeout = TIMEOUT)
     public void playerSetNullShipCorrect() {
-        Player player = new PlayerBuilder("Thomas").setPoints(new int[] {2, 2, 4, 8}).build();
+        Player player = new Player.PlayerBuilder("Thomas").points(new int[] {2, 2, 4, 8}).build();
         player.setNoShip();
 
-        Player player1 = new PlayerBuilder("Justin").build();
+        Player player1 = new Player.PlayerBuilder("Justin").build();
         player1.setShip(new Ship(ShipType.FIREFLY));
 
         assertEquals(new Ship(ShipType.FIREFLY), player1.getShip());
@@ -107,7 +105,7 @@ public class PlayerTester {
      */
     @Test(timeout = TIMEOUT)
     public void playerSetCredits() {
-        Player player = new PlayerBuilder("Thomas").setPoints(new int[] {2, 2, 4, 8}).build();
+        Player player = new Player.PlayerBuilder("Thomas").points(new int[] {2, 2, 4, 8}).build();
         player.setCredits(1222);
         assertEquals(1222, player.getCredits());
     }
@@ -117,7 +115,7 @@ public class PlayerTester {
      */
     @Test(timeout = TIMEOUT, expected = java.lang.IllegalArgumentException.class)
     public void playerSetCreditsNegative() {
-        Player player = new PlayerBuilder("Thomas").setPoints(new int[] {2, 2, 4, 8}).build();
+        Player player = new Player.PlayerBuilder("Thomas").points(new int[] {2, 2, 4, 8}).build();
         player.setCredits(-2);
     }
 
@@ -126,8 +124,11 @@ public class PlayerTester {
      */
     @Test(timeout = TIMEOUT)
     public void playerToString() {
-        Player player = new PlayerBuilder("Justin").setPoints(new int[]{2, 2, 4, 8})
-            .setCredits(1200).setShip(new Ship(ShipType.BEETLE)).build();
+        Player player = new Player.PlayerBuilder("Justin")
+                .points(new int[]{2, 2, 4, 8})
+                .credits(1200)
+                .ship(new Ship(ShipType.BEETLE))
+                .build();
         System.out.println(player.toString());
     }
 

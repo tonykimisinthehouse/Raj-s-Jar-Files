@@ -24,16 +24,13 @@ public class Player {
     /**
      * Player constructor with all arguments.
      *
-     * @param name the player's name
-     * @param points the player's points
-     * @param credits the player's credits
-     * @param ship the player's ship
+     * @param builder the Player builder
      */
-    public Player(String name, int[] points, int credits, Ship ship) {
-        this.name = name;
-        setPoints(points); //may be invalid so use the method
-        this.credits = credits;
-        this.ship = ship;
+    public Player(PlayerBuilder builder) {
+        setName(builder.name);
+        setPoints(builder.points);
+        setCredits(builder.credits);
+        setShip(builder.ship);
     }
 
     /**
@@ -170,5 +167,67 @@ public class Player {
                 + " - Fight: " + getFight() + "\n"
                 + "They also have " + getCredits() + " credits and they fly a "
                 + getShip().toString();
+    }
+
+    public static class PlayerBuilder {
+
+        private final String name;
+        private int[] points;
+        private int credits;
+        private Ship ship;
+
+        /**
+         * One arg constructor for the Player Builder pattern.
+         * Gives other fields default values.
+         *
+         * @param name the player's name
+         */
+        public PlayerBuilder(String name) {
+            this.name = name;
+            this.points = new int[] {4,4,4,4};
+            this.credits = 1000;
+            this.ship = new Ship(ShipType.GNAT);
+        }
+
+        /**
+         * Sets the builder's points.
+         *
+         * @param points the new points
+         * @return the builder object
+         */
+        public PlayerBuilder points(int[] points) {
+            this.points = points;
+            return this;
+        }
+
+        /**
+         * Sets the builder's credits.
+         *
+         * @param credits the new credits
+         * @return the builder object
+         */
+        public PlayerBuilder credits(int credits) {
+            this.credits = credits;
+            return this;
+        }
+
+        /**
+         * Sets the builder's ship.
+         * @param ship the new ship
+         * @return the builder object
+         */
+        public PlayerBuilder ship(Ship ship) {
+            this.ship = ship;
+            return this;
+        }
+
+        /**
+         * Builds the Player object.
+         *
+         * @return the new Player object
+         */
+        public Player build() {
+            return new Player(this);
+        }
     }
 }
