@@ -53,6 +53,12 @@ public class Ship {
         } else {
             cargo.put(good, quantity);
         }
+        usedCap += quantity;
+    }
+
+    public void sellCargo(Good good, int quantity) {
+        cargo.put(good,cargo.get(good) - quantity);
+        usedCap -= quantity;
     }
 
     public boolean hasGoods(Good good, int quantity) {

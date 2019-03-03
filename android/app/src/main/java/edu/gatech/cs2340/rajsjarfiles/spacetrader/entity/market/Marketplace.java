@@ -89,7 +89,6 @@ public class Marketplace{
         return tradeGoods2Buy.get(good).getPrice() * quantity;
     }
 
-
     public int makeSales(TradeGoods good, int quantity) {
         if (!canSell(good)) {
             throw new java.lang.IllegalArgumentException("Good not found from the market");

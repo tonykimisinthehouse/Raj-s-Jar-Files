@@ -54,6 +54,7 @@ public class Player {
     public boolean makeSales(TradeGoods good, int quantity) {
         if (ship.hasGoods(good, quantity)) {
             if (planet.getMarketplace().canSell(good)) {
+                ship.sellCargo(good,quantity);
                 earnCredits(planet.getMarketplace().makeSales(good,quantity));
                 return true;
             }
