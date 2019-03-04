@@ -11,6 +11,7 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Good;
 public class Ship {
     private ShipType shipType;
     private HashMap<Good,Integer> cargo;
+
     private int totalCap;
     private int usedCap;
 
@@ -47,7 +48,11 @@ public class Ship {
         return totalCap;
     }
 
-    public void addToCargo(Good good, int quantity) {
+    public int getAvailableCargoCapacity() {
+        return totalCap - usedCap;
+    }
+
+    public void addGood(Good good, int quantity) {
         if (cargo.containsKey(good)) {
             cargo.put(good, cargo.get(good) + quantity);
         } else {
@@ -56,7 +61,7 @@ public class Ship {
         usedCap += quantity;
     }
 
-    public void sellCargo(Good good, int quantity) {
+    public void sellGood(Good good, int quantity) {
         cargo.put(good,cargo.get(good) - quantity);
         usedCap -= quantity;
     }
@@ -68,10 +73,6 @@ public class Ship {
             }
         }
         return false;
-    }
-
-    public int getAvailableCargoCapacity() {
-        return totalCap - usedCap;
     }
 
     /**

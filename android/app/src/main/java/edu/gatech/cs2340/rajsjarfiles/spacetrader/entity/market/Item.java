@@ -24,6 +24,14 @@ public class Item {
         return good.getName();
     }
 
+    public Good getGood() {
+        return this.good;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
     public int getPrice() {
         return price;
     }
@@ -32,19 +40,15 @@ public class Item {
         return quantity;
     }
 
-    public void buyQuantity(int quantityToBuy) {
-        quantity = quantity - quantityToBuy;
-    }
-
     public static class ItemBuilder{
         private Good good;
-        private int quantity;
-        private int price;
+        private int quantity = 0;
+        private int price = 0;
         private ResourceClassification resourceClass;
         private Events events;
         private TechLevel techLevel;
 
-        ItemBuilder(TradeGoods tg) {
+       public ItemBuilder(Good tg) {
             this.good = tg;
         }
 
@@ -107,6 +111,12 @@ public class Item {
             quantity = rand.nextInt(maxQuantity - minQuantity) + minQuantity;
             return this;
         }
+
+        public ItemBuilder quantity(int quantity) {
+            this.quantity = quantity;
+            return this;
+        }
+
         public Item build() {
             return new Item(this);
         }

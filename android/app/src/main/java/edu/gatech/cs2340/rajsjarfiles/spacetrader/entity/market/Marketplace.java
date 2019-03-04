@@ -3,6 +3,9 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market;
 import java.util.EnumMap;
 import java.util.Random;
 
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.MarketTransactionValidator;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionOrder;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionResult;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Events;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Habitats;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.ResourceClassification;
@@ -25,7 +28,6 @@ public class Marketplace{
     private ResourceClassification rc;
     private Species sp;
     private Events ev;
-
 
     /**
      * Constructor for marketplace
@@ -63,48 +65,18 @@ public class Marketplace{
         }
     }
 
+    public TechLevel getTl() {
+        return tl;
+    }
+
     public EnumMap<TradeGoods, Item> getTradeGoodsEnumMap() {
         return getTradeGoodsEnumMap();
     }
 
-    public boolean makePurchase(TradeGoods good, int quantity) {
-        if (hasGoods(good, quantity)) {
-            tradeGoods2Buy.get(good).buyQuantity(quantity);
-            return true;
-        }
-        return false;
-    }
-
-    public boolean hasGoods(TradeGoods good, int quantity) {
-        if (tradeGoods2Buy.containsKey(good)) {
-            return tradeGoods2Buy.get(good).getQuantity() >= quantity;
-        }
-        return false;
-    }
-
-    public int getPriceForPurchase(TradeGoods good, int quantity) {
-        if (!tradeGoods2Buy.containsKey(good)) {
-            throw new java.lang.IllegalArgumentException("Good not found from the market");
-        }
-        return tradeGoods2Buy.get(good).getPrice() * quantity;
-    }
-
-    public int makeSales(TradeGoods good, int quantity) {
-        if (!canSell(good)) {
-            throw new java.lang.IllegalArgumentException("Good not found from the market");
-        }
-        Item item = new Item.ItemBuilder(good)
-                .resourceClass(rc)
-                .techLevel(tl)
-                .event(ev)
-                .calculatePrice()
-                .calculateQuantity()
-                .build();
-        return item.getPrice();
-    }
-
-    public boolean canSell(TradeGoods good) {
-        return tl.ordinal() >= good.getMTLU();
+    // Validate transaction.
+    public TransactionResult validateTransaction(TransactionOrder to) {
+        MarketTransactionValidator tv = new MarketTransactionValidator(this);
+        return tv.validateNTransaction(to);
     }
 
     @Override

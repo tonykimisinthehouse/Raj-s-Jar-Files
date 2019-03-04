@@ -3,6 +3,9 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Good;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.TradeGoods;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionOrder;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionResult;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionType;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Planet;
 
 /**
@@ -23,7 +26,7 @@ public class Player {
     private int[] points;
     private int credits;
     private Ship ship;
-    private Planet planet;
+    private Planet planet; // Planet that the player is currently on.
 
     /**
      * Player constructor with all arguments.
@@ -37,37 +40,61 @@ public class Player {
         setShip(builder.ship);
     }
 
-    public boolean makePurchase(TradeGoods good, int quantity) {
-        if (planet.getMarketplace().hasGoods(good, quantity)) {
-            if (checkCreditEnough(planet.getMarketplace().getPriceForPurchase(good, quantity))) {
-                if (checkCargoCapacityEnough(quantity)) {
-                    if (planet.getMarketplace().makePurchase(good,quantity)) {
-                        ship.addToCargo(good,quantity);
-                        return true;
-                    }
-                }
-            }
+    private boolean makePurchase(Good good, int quantity) {
+        TransactionOrder newTransactionOrder = new TransactionOrder(
+                good,
+                quantity,
+                this,
+                TransactionType.BUY);
+
+        TransactionResult newTransactionResult = planet.getMarketplace()
+                .validateTransaction(newTransactionOrder);
+
+        if (newTransactionResult.getisTransactionSuccess()) {
+            Item item = newTransactionResult.getItem();
+            ship.addGood(item.getGood(),
+                    item.getQuantity());
+            useCredits(item.getPrice() * item.getQuantity());
         }
-        return false;
+
+        return newTransactionResult.getisTransactionSuccess();
+
     }
 
     public boolean makeSales(TradeGoods good, int quantity) {
-        if (ship.hasGoods(good, quantity)) {
-            if (planet.getMarketplace().canSell(good)) {
-                ship.sellCargo(good,quantity);
-                earnCredits(planet.getMarketplace().makeSales(good,quantity));
-                return true;
-            }
+        TransactionOrder newTransactionOrder = new TransactionOrder(
+                good,
+                quantity,
+                this,
+                TransactionType.SELL);
+
+        TransactionResult newTransactionResult = planet.getMarketplace()
+                .validateTransaction(newTransactionOrder);
+
+        if (newTransactionResult.getisTransactionSuccess()) {
+            Item item = newTransactionResult.getItem();
+            ship.sellGood(item.getGood(),
+                    item.getQuantity());
+            earnCredits(item.getPrice() * item.getQuantity());
         }
-        return false;
+
+        return newTransactionResult.getisTransactionSuccess();
     }
 
     /**
      * Earn credit
      * @param amount of credit earned.
      */
-    public void earnCredits(int amount) {
+    private void earnCredits(int amount) {
         credits += amount;
+    }
+
+    /**
+     * Use credit
+     * @param amount of credit earned.
+     */
+    private void useCredits(int amount) {
+        credits -= amount;
     }
 
     /**
