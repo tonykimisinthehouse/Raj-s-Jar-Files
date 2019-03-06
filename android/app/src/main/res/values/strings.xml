@@ -2,4 +2,9 @@
     <string name="app_name">SpaceTrader</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_game">GameActivity</string>
+    <string name="title_activity_start">StartActivity</string>
+    <string name="title_activity_travel">TravelActivity</string>
+    <string name="title_activity_market">MarketActivity</string>
+    <string name="title_activity_ship">ShipActivity</string>
+    <string name="title_activity_ship_market">ShipMarketActivity</string>
 </resources>
