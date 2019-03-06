@@ -1,7 +1,6 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 
 import java.util.HashMap;
-import java.util.HashSet;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Good;
 
@@ -44,15 +43,34 @@ public class Ship {
         usedCap = 0;
     }
 
+    /**
+     * Get total cargo capacity of the ship.
+     *
+     * @return total cargo capacity
+     */
     public int getCargoCapacity() {
         return totalCap;
     }
 
+    /**
+     * Get available cargo capacity of the ship.
+     *
+     * @return available cargo capacity
+     */
     public int getAvailableCargoCapacity() {
         return totalCap - usedCap;
     }
 
+    /**
+     * Add quantity of goods to the cargo.
+     *
+     * @param good good to add.
+     * @param quantity quantity of good to buy.
+     */
     public void addGood(Good good, int quantity) {
+        if (getAvailableCargoCapacity() < quantity) {
+            throw new java.lang.IllegalArgumentException("Not enough cargo");
+        }
         if (cargo.containsKey(good)) {
             cargo.put(good, cargo.get(good) + quantity);
         } else {
@@ -61,6 +79,12 @@ public class Ship {
         usedCap += quantity;
     }
 
+    /**
+     * Sell quantity of goods from the cargo.
+     *
+     * @param good good to sell.
+     * @param quantity quantity of good to sell.
+     */
     public void sellGood(Good good, int quantity) {
         cargo.put(good,cargo.get(good) - quantity);
         usedCap -= quantity;

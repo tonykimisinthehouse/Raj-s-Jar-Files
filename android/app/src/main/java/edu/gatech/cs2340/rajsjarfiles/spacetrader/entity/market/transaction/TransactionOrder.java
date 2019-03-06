@@ -4,28 +4,57 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Good;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
 
+/**
+ * Represent the transaction order
+ */
 public class TransactionOrder {
 
-    private Item item;
-    private Player initiator;
-    private TransactionType transactionType;
 
+    private Item item; // Good + quantity to be transacted.
+    private Player initiator; // The initiator of this transaction.
+    private TransactionType transactionType; // The type of the transaction (buy or sell)
+
+    /**
+     * Constructor for the transaction order
+     *
+     * @param good good to transact
+     * @param quantity quantity of good to transact
+     * @param initiator initiator of this transaction
+     * @param transactionType the type of this transaction
+     */
     public TransactionOrder(Good good, int quantity, Player initiator, TransactionType transactionType) {
+
+        // Combine good and its quantity
         this.item = new Item.ItemBuilder(good)
                 .quantity(quantity)
                 .build();
         this.initiator = initiator;
         this.transactionType = transactionType;
     }
+
+    /**
+     * Get Item of this transaction
+     *
+     * @return item
+     */
     public Item getItem() {
         return item;
     }
+
+    /**
+     * Get initiator of this transaction
+     *
+     * @return
+     */
     public Player getInitiator() {
         return initiator;
     }
-    public int getInitiaorCredits() {
-        return initiator.getCredits();
-    }
+
+    /**
+     * Get Transaction type of this transaction
+     *
+     * @return
+     */
     public TransactionType getTransactionType() {
         return transactionType;
     }

@@ -3,18 +3,20 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Events;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.ResourceClassification;
 
+/**
+ * Interface for good (tradeGoods, other goods, ship etc)
+ */
 public interface Good {
-
-    public String getName();
-    public int getMTLP();
-    public int getMTLU();
-    public int getTTP();
-    public int getBasePrice();
-    public int getIPL();
-    public int getVar();
-    public Events getIE();
-    public ResourceClassification getCR();
-    public ResourceClassification getER();
-    public int getMTL();
-    public int getMTH();
+    String getName();
+    int getMTLP();
+    int getMTLU();
+    int getTTP();
+    int getBasePrice();
+    int getIPL();
+    int getVar();
+    Events getIE();
+    ResourceClassification getCR();
+    ResourceClassification getER();
+    int getMTL();
+    int getMTH();
 }

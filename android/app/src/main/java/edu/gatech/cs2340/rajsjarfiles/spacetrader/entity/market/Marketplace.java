@@ -1,7 +1,6 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market;
 
 import java.util.EnumMap;
-import java.util.Random;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.MarketTransactionValidator;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionOrder;
@@ -18,8 +17,8 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.TechLevel;
  *  attributes
  */
 public class Marketplace{
-    private static Random rand = new Random();
 
+    // EnumMap that store trade goods and its quantity
     private EnumMap<TradeGoods, Item> tradeGoods2Buy;
 
     private String planetName;
@@ -31,6 +30,7 @@ public class Marketplace{
 
     /**
      * Constructor for marketplace
+     *
      * @param pn planet name
      * @param tl tech level
      * @param ev events
@@ -50,8 +50,9 @@ public class Marketplace{
 
         tradeGoods2Buy = new EnumMap<>(TradeGoods.class);
 
-        // Indexing total goods
+        // Build item list for this marketplace based on its tech level.
         for (TradeGoods goods : TradeGoods.values()) {
+            // Check minimum tech level to produce certain goods
             if (tl.ordinal() >= goods.getMTLP()) {
                 Item item = new Item.ItemBuilder(goods)
                         .resourceClass(rc)
@@ -65,19 +66,30 @@ public class Marketplace{
         }
     }
 
-    public TechLevel getTl() {
-        return tl;
-    }
-
-    public EnumMap<TradeGoods, Item> getTradeGoodsEnumMap() {
-        return getTradeGoodsEnumMap();
-    }
-
     // Validate transaction.
     public TransactionResult validateTransaction(TransactionOrder to) {
         MarketTransactionValidator tv = new MarketTransactionValidator(this);
         return tv.validateNTransaction(to);
     }
+
+    /**
+     * Getter for getting tech level of the planet which the marketplace is located.
+     *
+     * @return techlevel of the planet which the marketplace is located
+     */
+    public TechLevel getTl() {
+        return tl;
+    }
+
+    /**
+     * Getter for whole index of goods that this marketplace has.
+     *
+     * @return enumMap containing index of goods that this marketplace has.
+     */
+    public EnumMap<TradeGoods, Item> getTradeGoodsEnumMap() {
+        return getTradeGoodsEnumMap();
+    }
+
 
     @Override
     public String toString() {
@@ -85,8 +97,9 @@ public class Marketplace{
         str += "\n/////////////////// Goods for buying /////////////////////\n";
         for (Item item: tradeGoods2Buy.values()) {
             str += String.format("Name: %-7s\n", item.getName());
-            str += String.format("| price: %-5d\n",item.getPrice());
-            str += String.format("| quantity: %-3d\n", item.getQuantity());
+            str += String.format("| price: %-5d",item.getPrice());
+            str += String.format("| quantity: %-3d", item.getQuantity());
+            str += "\n";
         }
         return str;
     }

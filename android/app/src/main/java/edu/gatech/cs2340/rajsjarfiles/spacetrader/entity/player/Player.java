@@ -2,7 +2,6 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Good;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.TradeGoods;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionOrder;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionResult;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionType;
@@ -40,49 +39,71 @@ public class Player {
         setShip(builder.ship);
     }
 
+    /**
+     * Method that allows player to buy certain good.
+     *
+     * @param good good to buy
+     * @param quantity quantity of good to buy
+     * @return true if the transaction was successful.
+     */
     private boolean makePurchase(Good good, int quantity) {
+        // Create new Transaction Order
         TransactionOrder newTransactionOrder = new TransactionOrder(
                 good,
                 quantity,
                 this,
                 TransactionType.BUY);
 
+        // Get Transaction order
         TransactionResult newTransactionResult = planet.getMarketplace()
                 .validateTransaction(newTransactionOrder);
 
+        // Use credit, Get Good to cargo based on the transaction result (success, fail)
         if (newTransactionResult.getisTransactionSuccess()) {
             Item item = newTransactionResult.getItem();
-            ship.addGood(item.getGood(),
-                    item.getQuantity());
+            // Add good to the cargo
+            ship.addGood(item.getGood(), item.getQuantity());
+            // Use credits
             useCredits(item.getPrice() * item.getQuantity());
         }
 
+        // Return if the transaction is success or not.
         return newTransactionResult.getisTransactionSuccess();
-
     }
 
-    public boolean makeSales(TradeGoods good, int quantity) {
+    /**
+     *  Method that allows player to sell certain good.
+     *
+     * @param good good to sell
+     * @param quantity quantity of good to sell
+     * @return true if the transaction was successful
+     */
+    public boolean makeSales(Good good, int quantity) {
+        // Create new transaction.
         TransactionOrder newTransactionOrder = new TransactionOrder(
                 good,
                 quantity,
                 this,
                 TransactionType.SELL);
 
+        // Get transaction result.
         TransactionResult newTransactionResult = planet.getMarketplace()
                 .validateTransaction(newTransactionOrder);
 
+        // Remove cargo, and earn credit based on the transaction result
         if (newTransactionResult.getisTransactionSuccess()) {
             Item item = newTransactionResult.getItem();
-            ship.sellGood(item.getGood(),
-                    item.getQuantity());
+            // Sell goods from cargo.
+            ship.sellGood(item.getGood(), item.getQuantity());
+            // Earn credits.
             earnCredits(item.getPrice() * item.getQuantity());
         }
-
         return newTransactionResult.getisTransactionSuccess();
     }
 
     /**
      * Earn credit
+     *
      * @param amount of credit earned.
      */
     private void earnCredits(int amount) {
@@ -91,6 +112,7 @@ public class Player {
 
     /**
      * Use credit
+     *
      * @param amount of credit earned.
      */
     private void useCredits(int amount) {
@@ -99,6 +121,7 @@ public class Player {
 
     /**
      * Makes sure that the user cannot buy more goods than you have money
+     *
      * @param marketPrice the price the market is selling at
      * @return boolean of whether the user has enough credit
      */
@@ -112,6 +135,7 @@ public class Player {
 
     /**
      * Makes sure the user cannot buy more goods than the cargo capacity
+     *
      * @param quantity the number of items the user wants to buy
      * @return boolean of whether the user has enough cargo capacity
      */
@@ -131,8 +155,6 @@ public class Player {
     }
 
     /**
-     * Sets the player's name.
-     *
      * @param name the new name
      */
     public void setName(String name) {
@@ -259,6 +281,9 @@ public class Player {
                 + getShip().toString();
     }
 
+    /**
+     * Builder for building player object
+     */
     public static class PlayerBuilder {
 
         private final String name;

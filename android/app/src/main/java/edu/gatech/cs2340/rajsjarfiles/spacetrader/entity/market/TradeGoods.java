@@ -121,6 +121,11 @@ public enum TradeGoods implements Good{
      * (not on a planet)*/
     private final int MTH;
 
+    /**
+     * Constructor for TradeGoods
+     *
+     * @param builder builder object for TradeGoods
+     */
     TradeGoods(TradeGoodsBuilder builder) {
         this.name = builder.name;
         this.MTLP = builder.MTLP;
@@ -136,7 +141,7 @@ public enum TradeGoods implements Good{
         this.MTH = builder.MTH;
     }
 
-
+    /////// GETTER ////////
     public String getName() {
         return name;
     }
@@ -188,6 +193,9 @@ public enum TradeGoods implements Good{
         return name;
     }
 
+    /**
+     * Builder for TradeGoods
+     */
     private static class TradeGoodsBuilder{
         private String name;
         private int MTLP;
