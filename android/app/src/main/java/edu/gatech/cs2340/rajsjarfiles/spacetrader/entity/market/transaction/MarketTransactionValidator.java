@@ -34,7 +34,9 @@ public class MarketTransactionValidator implements TransactionValidator {
             if (!hasGoods(to)) return false;
 
             // Add marketplace price to the good.
-            to.getItem().setPrice(marketplace.getTradeGoodsEnumMap().get(to.getItem()).getPrice());
+            to.getItem().setPrice(marketplace.getTradeGoodsEnumMap()
+                    .get(to.getItem().getGood())
+                    .getPrice());
 
             int price = to.getItem().getPrice();
             int quantity = to.getItem().getQuantity();
@@ -56,7 +58,9 @@ public class MarketTransactionValidator implements TransactionValidator {
             if (!playerHasGoods(to)) return false;
 
             // Update price for selling goods
-            to.getItem().setPrice(marketplace.getTradeGoodsEnumMap().get(to.getItem()).getPrice());
+            to.getItem().setPrice(marketplace.getTradeGoodsEnumMap()
+                    .get(to.getItem().getGood())
+                    .getPrice());
 
             // Should the market now have sold good??????????????????????
 

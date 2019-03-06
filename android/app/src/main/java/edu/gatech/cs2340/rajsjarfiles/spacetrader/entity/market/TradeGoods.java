@@ -12,8 +12,7 @@ public enum TradeGoods implements Good{
             .IE(Events.DROUGHT)
             .CR(ResourceClassification.LOTS_OF_WATER)
             .ER(ResourceClassification.DESERT)
-            .MTL(30)
-            .MTH(50)
+            .MTL(30).MTH(50)
     )
     ,
     FURS(new TradeGoodsBuilder("Furs")

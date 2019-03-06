@@ -36,6 +36,6 @@ public class TransactionResult {
      * @return  Item that are being transacted
      */
     public Item getItem() {
-        return this.getItem();
+        return this.item;
     }
 }

@@ -6,9 +6,7 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.Mark
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionOrder;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionResult;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Events;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Habitats;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.ResourceClassification;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Species;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.TechLevel;
 
 
@@ -23,9 +21,7 @@ public class Marketplace{
 
     private String planetName;
     private TechLevel tl;
-    private Habitats ha;
     private ResourceClassification rc;
-    private Species sp;
     private Events ev;
 
     /**
@@ -34,18 +30,14 @@ public class Marketplace{
      * @param pn planet name
      * @param tl tech level
      * @param ev events
-     * @param ha habitats
      * @param rc resource class
-     * @param sp species
      */
     public Marketplace(String pn,
-            TechLevel tl, Events ev, Habitats ha, ResourceClassification rc, Species sp) {
+            TechLevel tl, Events ev, ResourceClassification rc) {
 
         this.planetName = pn;
         this.tl = tl;
-        this.ha = ha;
         this.rc = rc;
-        this.sp = sp;
         this.ev = ev;
 
         tradeGoods2Buy = new EnumMap<>(TradeGoods.class);
@@ -87,7 +79,7 @@ public class Marketplace{
      * @return enumMap containing index of goods that this marketplace has.
      */
     public EnumMap<TradeGoods, Item> getTradeGoodsEnumMap() {
-        return getTradeGoodsEnumMap();
+        return tradeGoods2Buy;
     }
 
 

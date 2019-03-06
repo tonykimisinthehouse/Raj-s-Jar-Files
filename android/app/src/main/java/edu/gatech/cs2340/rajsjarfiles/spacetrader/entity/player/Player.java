@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 
+import android.media.Image;
+
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Good;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionOrder;
@@ -37,6 +39,16 @@ public class Player {
         setPoints(builder.points);
         setCredits(builder.credits);
         setShip(builder.ship);
+        setPlanet(builder.planet);
+    }
+
+    /**
+     * Setter for planet which the player is on.
+     *
+     * @param planet that the player is on.
+     */
+    public void setPlanet(Planet planet) {
+        this.planet = planet;
     }
 
     /**
@@ -46,7 +58,7 @@ public class Player {
      * @param quantity quantity of good to buy
      * @return true if the transaction was successful.
      */
-    private boolean makePurchase(Good good, int quantity) {
+    public boolean makePurchase(Good good, int quantity) {
         // Create new Transaction Order
         TransactionOrder newTransactionOrder = new TransactionOrder(
                 good,
@@ -290,6 +302,7 @@ public class Player {
         private int[] points;
         private int credits;
         private Ship ship;
+        private Planet planet;
 
         /**
          * One arg constructor for the Player Builder pattern.
@@ -333,6 +346,16 @@ public class Player {
          */
         public PlayerBuilder ship(Ship ship) {
             this.ship = ship;
+            return this;
+        }
+
+        /**
+         * Sets the builder's planet.
+         * @param planet planet
+         * @return the builder object
+         */
+        public PlayerBuilder planet(Planet planet) {
+            this.planet = planet;
             return this;
         }
 
