@@ -1,10 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/main_header_selector"
-    tools:context=".views.GameActivity">
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context="edu.gatech.cs2340.rajsjarfiles.spacetrader.views.TravelActivity">
 
-</android.support.design.widget.CoordinatorLayout>
+    <Button
+        android:id="@+id/button_fly"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:background="@android:drawable/ic_menu_send" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="150sp"
+        app:srcCompat="@drawable/planet" />
+
+    <TextView
+        android:id="@+id/indicator_planet_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:gravity="center"
+        android:text="AXR - CENTAURI"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@android:color/white"
+        android:textFontWeight="800"
+        android:textSize="36sp" />
+
+    <TextView
+        android:id="@+id/indicator_orbit_radius"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Orbit Radius: 3"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/indicator_tech_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Tech Level: Renaissance"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/indicator_resources"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Resources: Poor Soil"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="30sp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="75sp"
+            android:background="@android:drawable/ic_menu_sort_by_size" />
+
+        <Button
+            android:id="@+id/button_trade"
+            android:layout_width="wrap_content"
+            android:layout_height="75sp"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="0dp"
+            android:background="@android:drawable/stat_notify_sync" />
+
+    </RelativeLayout>
+
+</LinearLayout>
