@@ -8,7 +8,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context="edu.gatech.cs2340.rajsjarfiles.spacetrader.views.StartActivity">
+    tools:context="edu.gatech.cs2340.rajsjarfiles.spacetrader.views.TravelActivity">
 
     <!-- TODO add UI elements here -->
 

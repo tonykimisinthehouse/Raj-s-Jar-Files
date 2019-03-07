@@ -7,6 +7,4 @@
     android:background="@drawable/main_header_selector"
     tools:context=".views.GameActivity">
 
-
-
 </android.support.design.widget.CoordinatorLayout>
