@@ -26,16 +26,12 @@
             android:label="@string/title_activity_travel"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".views.StartActivity"
-            android:label="@string/title_activity_start"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".views.GameActivity"
             android:label="@string/title_activity_game"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".views.MainActivity"
-            android:label="@string/title_activity_main"
+            android:name=".views.StartActivity"
+            android:label="@string/title_activity_start"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

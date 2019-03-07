@@ -15,18 +15,18 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 /**
  * Represents the view model for Main Activity.
  */
-public class MainViewModel extends AndroidViewModel {
+public class StartViewModel extends AndroidViewModel {
     public Model model;
     int defaultCredit = 1000;
     private static final int MAX_CREDIT = 16;
     private int[] points = new int[4];
 
     /**
-     * MainViewModel constructor with all arguments.
+     * StartViewModel constructor with all arguments.
      *
      * @param application represents the application context
      */
-    public MainViewModel(@NonNull Application application) {
+    public StartViewModel(@NonNull Application application) {
         super(application);
     }
 
@@ -35,15 +35,15 @@ public class MainViewModel extends AndroidViewModel {
      * they are all valid.
      *
      * @param editPlayerName represents the value from the EditText for playerName
-     *                       in activity_main.xml
+     *                       in activity_start.xml
      * @param editPilotPoints represents the value from the EditText for pilotPoints
-     *                        in activity_main.xml
+     *                        in activity_start.xml
      * @param editFighterPoints represents the value from the EditText for fighterPoints
-     *                          in activity_main.xml
+     *                          in activity_start.xml
      * @param editTraderPoints represents the value from the EditText for traderPoints
-     *                         in activity_main.xml
+     *                         in activity_start.xml
      * @param editEngineerPoints represents the value from the EditText for engineerPoints
-     *                           in activity_main.xml
+     *                           in activity_start.xml
      * @return Returns boolean of whether the valids were valid or not.
      */
     public Boolean isValid(EditText editPlayerName,
@@ -81,9 +81,9 @@ public class MainViewModel extends AndroidViewModel {
      * Create new model with player information
      *
      * @param editTextName represents the value from the EditText for playerName
-     *      *                       in activity_main.xml
+     *      *                       in activity_start.xml
      * @param difficultySpinner represents the value from the Spinner for gameDifficulty
-     *      *                       in activity_main.xml
+     *      *                       in activity_start.xml
      */
     public void createNewModel(EditText editTextName, Spinner difficultySpinner) {
         String playerName = editTextName.getText().toString();
@@ -108,7 +108,7 @@ public class MainViewModel extends AndroidViewModel {
     /**
      * Calculate remaining skills points that the user have
      *
-     * @param editSomePoints represents the value from the EditText in activity_main.xml
+     * @param editSomePoints represents the value from the EditText in activity_start.xml
      * @param index indicates the type of skill points
      * @return the remaining skill points. If it exceeds max skill points, return -1
      */
