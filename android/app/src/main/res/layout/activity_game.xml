@@ -69,10 +69,10 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button_menu"
+            android:id="@+id/button_map"
             android:layout_width="wrap_content"
             android:layout_height="75sp"
-            android:background="@android:drawable/ic_menu_sort_by_size" />
+            android:background="@android:drawable/ic_dialog_map" />
 
         <Button
             android:id="@+id/button_trade"
