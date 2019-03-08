@@ -35,7 +35,8 @@ public final class Model {
     }
 
     /**
-     * Initializer for model
+     * Singleton initializer for model
+     *
      * @param name The player name the user has chosen.
      * @param points The allocation of skill points the user has chosen
      * @param credits The amount of credit the user has.
@@ -46,10 +47,14 @@ public final class Model {
         if (model == null) {
             model = new Model(name, points, credits, ship, difficulty);
         } else {
-            // just return already created model
+            // if the instance is created, should not create another instance.
         }
     }
 
+    /**
+     * Getter for model instance
+     * @return model
+     */
     public static Model getModel() {
         return model;
     }
