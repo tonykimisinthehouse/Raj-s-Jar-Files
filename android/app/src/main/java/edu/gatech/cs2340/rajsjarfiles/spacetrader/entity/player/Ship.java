@@ -105,6 +105,16 @@ public class Ship {
         return this.shipType == s.shipType;
     }
 
+    public String getGoods() {
+        String str = "\n["+this.shipType.toString()+"]";
+        str += "\n/////////////////// Goods on ship /////////////////////\n";
+        for (Good good: this.cargo.keySet()) {
+            str += String.format("Name: %-7s\n", good.getName());
+            str += String.format("| price: %-5d\n",good.getBasePrice());
+        }
+        return str;
+    }
+
     @Override
     public String toString() {
         return shipType.toString();

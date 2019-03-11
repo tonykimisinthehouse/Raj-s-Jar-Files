@@ -248,6 +248,13 @@ public class Player {
         this.ship = null;
     }
 
+    /**
+     * @return The planet this player is currently on
+     */
+    public Planet getPlanet() {
+        return this.planet;
+    }
+
     @Override
     public String toString() {
         return "The player's name is " + getName() + " with stats:\n"
