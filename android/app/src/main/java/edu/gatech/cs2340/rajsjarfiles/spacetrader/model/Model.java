@@ -12,6 +12,11 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
  * Creates a player and model with the valid inputs.
  */
 public class Model {
+    /**
+     * Singleton reference to the main object.
+     */
+    public static Model current;
+
     private Player player;
     private Game game;
 
@@ -31,6 +36,9 @@ public class Model {
             Ship ship,
             GameDifficulty difficulty) {
 
+        // Set singleton reference
+        Model.current = this;
+
         player = new Player.PlayerBuilder(name)
                 .points(points)
                 .credits(credits)
@@ -42,4 +50,13 @@ public class Model {
 //        Log.i("Model", game.toString());
         LogCustom.largeLog("Model", game.toString());
     }
+
+    public Player getPlayer() {
+        return this.player;
+    }
+
+    public Game getGame() {
+        return this.game;
+    }
+
 }
