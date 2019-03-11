@@ -3,20 +3,14 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
-import android.util.Log;
-import android.widget.EditText;
-import android.widget.Spinner;
 
-import java.util.regex.Pattern;
-
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.GameDifficulty;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 
 /**
  * Represents the view model for Main Activity.
  */
-public class GameViewModel extends AndroidViewModel {
+public class ShipMarketViewModel extends AndroidViewModel {
 
     /**
      * Backing model
@@ -28,7 +22,7 @@ public class GameViewModel extends AndroidViewModel {
      *
      * @param application represents the application context
      */
-    public GameViewModel(@NonNull Application application) {
+    public ShipMarketViewModel(@NonNull Application application) {
         super(application);
     }
 
