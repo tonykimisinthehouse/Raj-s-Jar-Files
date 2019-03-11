@@ -4,17 +4,20 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.CheckedTextView;
+import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.helper.ListViewItemCheckboxBaseAdapter;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.helper.ListViewItemDTO;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels.ShipMarketViewModel;
+
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
 
 public class ShipMarketActivity extends AppCompatActivity {
 
@@ -23,11 +26,8 @@ public class ShipMarketActivity extends AppCompatActivity {
      */
     private ShipMarketViewModel viewModel;
 
-    private ListView selectorGoodsForSale;
-    private ListView selectorGoodsOnShip;
-
-    private List<ListViewItemDTO> listGoodsForSale;
-    private List<ListViewItemDTO> listGoodsOnShip;
+    private ListView viewGoodsForSale;
+    private ListView viewGoodsOnShip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +41,23 @@ public class ShipMarketActivity extends AppCompatActivity {
     }
 
     private void assignViews() {
-        this.selectorGoodsForSale = findViewById(R.id.goodsForSale);
-        this.selectorGoodsOnShip = findViewById(R.id.goodsOnShip);
+        this.viewGoodsForSale = findViewById(R.id.selector_goods_for_sale);
+        this.viewGoodsOnShip = findViewById(R.id.selector_goods_on_ship);
+        this.viewGoodsForSale.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Get user-selected item
+                ListViewItemDTO item = (ListViewItemDTO) parent.getAdapter().getItem(position);
+
+                // Get checkbox state
+                CheckBox box = (CheckBox) view.findViewById(R.id.list_view_item_checkbox);
+                boolean checked = box.isChecked();
+
+                // Toggle checkbox state
+                item.setChecked(!checked);
+                box.setChecked(!checked);
+            }
+        });
     }
 
     private void updateGoods() {
@@ -53,18 +68,30 @@ public class ShipMarketActivity extends AppCompatActivity {
             String goodsOnShip = player.getShip().getGoods();
 
             // Split by newlines to get arrays
-            this.listGoodsForSale = new ArrayList<>();
-            this.listGoodsOnShip = new ArrayList<>();
+            List<ListViewItemDTO> listGoodsForSale = new ArrayList<>();
+            List<ListViewItemDTO> listGoodsOnShip = new ArrayList<>();
             for (String desc : goodsForSale.split("\n")) {
                 ListViewItemDTO item = new ListViewItemDTO();
                 item.setItemText(desc);
-                this.listGoodsForSale.add(item);
+                listGoodsForSale.add(item);
             }
             for (String desc : goodsOnShip.split("\n")) {
                 ListViewItemDTO item = new ListViewItemDTO();
                 item.setItemText(desc);
-                this.listGoodsOnShip.add(item);
+                listGoodsOnShip.add(item);
             }
+
+            final ListViewItemCheckboxBaseAdapter adapterGoodsForSale = new
+                    ListViewItemCheckboxBaseAdapter(this, listGoodsForSale);
+            final ListViewItemCheckboxBaseAdapter adapterGoodsOnShip = new
+                    ListViewItemCheckboxBaseAdapter(this, listGoodsOnShip);
+
+            adapterGoodsForSale.notifyDataSetChanged();
+            adapterGoodsOnShip.notifyDataSetChanged();
+
+            // Set data on views
+            this.viewGoodsForSale.setAdapter(adapterGoodsForSale);
+            this.viewGoodsOnShip.setAdapter(adapterGoodsOnShip);
         }
         catch (NullPointerException e) {
             e.printStackTrace();

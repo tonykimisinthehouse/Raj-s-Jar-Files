@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels.GameViewModel;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
 
 /**
  * Main activity while playing the game
