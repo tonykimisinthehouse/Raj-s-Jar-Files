@@ -11,6 +11,9 @@ import java.util.List;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
 
+/**
+ * @see "https://www.dev2qa.com/android-custom-listview-with-checkbox-example/"
+ */
 public class ListViewItemCheckboxBaseAdapter extends BaseAdapter {
 
     private List<ListViewItemDTO> listViewItemDtoList = null;

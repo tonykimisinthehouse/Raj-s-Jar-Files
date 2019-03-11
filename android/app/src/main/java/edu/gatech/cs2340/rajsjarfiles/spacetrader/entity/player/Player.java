@@ -38,9 +38,12 @@ public class Player {
         setPoints(builder.points);
         setCredits(builder.credits);
         setShip(builder.ship);
+
+        // tmp
+        this.planet = new Planet.PlanetBuilder("Raj", 3).build();
     }
 
-    private boolean makePurchase(Good good, int quantity) {
+    public boolean makePurchase(Good good, int quantity) {
         TransactionOrder newTransactionOrder = new TransactionOrder(
                 good,
                 quantity,

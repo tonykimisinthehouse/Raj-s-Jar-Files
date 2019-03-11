@@ -1,9 +1,12 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Good;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
 
 /**
  * Represents a ship that a character or enemy can use.
@@ -105,14 +108,14 @@ public class Ship {
         return this.shipType == s.shipType;
     }
 
-    public String getGoods() {
-        String str = "\n["+this.shipType.toString()+"]";
-        str += "\n/////////////////// Goods on ship /////////////////////\n";
-        for (Good good: this.cargo.keySet()) {
-            str += String.format("Name: %-7s\n", good.getName());
-            str += String.format("| price: %-5d\n",good.getBasePrice());
+    public Collection<Item> getGoods() {
+        ArrayList<Item> items = new ArrayList<>();
+        for (Good good : this.cargo.keySet()) {
+            // Build a new item based on this good
+            Item item = new Item.ItemBuilder(good).build();
+            items.add(item);
         }
-        return str;
+        return items;
     }
 
     @Override

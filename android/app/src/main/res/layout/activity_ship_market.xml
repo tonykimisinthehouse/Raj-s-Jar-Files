@@ -30,6 +30,7 @@
         android:textSize="18sp"
         android:textAlignment="center" />
 
+    <!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -52,5 +53,6 @@
             android:text="^ Sell Goods" />
 
     </LinearLayout>
+    -->
 
 </LinearLayout>

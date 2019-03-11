@@ -36,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="22dp"
         android:gravity="center"
+        android:text="boi"
         android:textColor="@android:color/white" />
 
     <TextView
@@ -82,6 +83,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:inputType="number"
+                android:text="4"
                 android:maxLength="2"
                 android:textAlignment="center"
                 android:textColor="@android:color/white" />
@@ -108,6 +110,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:inputType="number"
+                android:text="4"
                 android:maxLength="2"
                 android:textAlignment="center"
                 android:textColor="@android:color/white" />
@@ -140,6 +143,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:inputType="number"
+                android:text="4"
                 android:maxLength="2"
                 android:textAlignment="center"
                 android:textColor="@android:color/white" />
@@ -166,6 +170,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:inputType="number"
+                android:text="4"
                 android:maxLength="2"
                 android:textAlignment="center"
                 android:textColor="@android:color/white" />
