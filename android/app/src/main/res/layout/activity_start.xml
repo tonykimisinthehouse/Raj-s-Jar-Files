@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
 
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main_header_selector"
+    android:gravity="center"
+    android:orientation="vertical"
     android:padding="20dp"
-    tools:context="edu.gatech.cs2340.rajsjarfiles.spacetrader.views.MainActivity"
-    android:background="@drawable/main_header_selector">
+    tools:context="edu.gatech.cs2340.rajsjarfiles.spacetrader.views.StartActivity">
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Embark on Your Journey."
-        android:textFontWeight="800"
-        android:textSize="32dp"
         android:layout_marginBottom="32dp"
+        android:gravity="center"
+        android:text="Embark on Your Journey."
+        android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@android:color/white"
-        />
+        android:textFontWeight="800"
+        android:textSize="32dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="Your name:"
-        android:textColor="@android:color/white"
-        />
+        android:textColor="@android:color/white" />
 
 
     <EditText
@@ -34,23 +35,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="22dp"
-        android:textColor="@android:color/white"
-        />
+        android:gravity="center"
+        android:text="boi"
+        android:textColor="@android:color/white" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Skill Points (Total 16 pts):"
         android:layout_marginBottom="12dp"
-        android:textColor="@android:color/white"
-        />
+        android:text="Skill Points (Total 16 pts):"
+        android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/skill_point_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="You have 16 pts remaining"
         android:layout_marginBottom="12dp"
+        android:text="You have 16 pts remaining"
         android:textColor="@android:color/holo_red_light"
 
         />
@@ -61,54 +62,58 @@
         android:orientation="horizontal"
 
         >
+
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:orientation="vertical"
-            android:textColor="@android:color/white"
-            >
+            android:textColor="@android:color/white">
+
             <TextView
                 android:layout_width="match_parent"
-                android:textAlignment="center"
                 android:layout_height="wrap_content"
                 android:text="Pilot"
-                android:textColor="@android:color/white"
-                />
+                android:textAlignment="center"
+                android:textColor="@android:color/white" />
+
             <EditText
                 android:id="@+id/pilot_skill_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
+                android:gravity="center"
                 android:inputType="number"
+                android:text="4"
                 android:maxLength="2"
-                android:textColor="@android:color/white"
-                />
+                android:textAlignment="center"
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_marginBottom="22dp"
+            android:layout_weight="1"
 
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
                 android:text="Fighter"
-                android:textColor="@android:color/white"
-                />
+                android:textAlignment="center"
+                android:textColor="@android:color/white" />
+
             <EditText
                 android:id="@+id/fighter_skill_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
+                android:gravity="center"
                 android:inputType="number"
+                android:text="4"
                 android:maxLength="2"
-                android:textColor="@android:color/white"
-                />
+                android:textAlignment="center"
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
     </LinearLayout>
@@ -116,94 +121,102 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginBottom="22dp"
-        >
+        android:orientation="horizontal">
+
         <LinearLayout
             android:layout_width="1dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
-                android:textAlignment="center"
                 android:layout_height="wrap_content"
                 android:text="Trader"
-                android:textColor="@android:color/white"
-                />
+                android:textAlignment="center"
+                android:textColor="@android:color/white" />
+
             <EditText
                 android:id="@+id/trader_skill_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
+                android:gravity="center"
                 android:inputType="number"
+                android:text="4"
                 android:maxLength="2"
-                android:textColor="@android:color/white"
-                />
+                android:textAlignment="center"
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="1dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
-                android:textAlignment="center"
                 android:layout_height="wrap_content"
                 android:text="Engineer"
+                android:textAlignment="center"
                 android:textColor="@android:color/white"
 
                 />
+
             <EditText
                 android:id="@+id/engineer_skill_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
+                android:gravity="center"
                 android:inputType="number"
+                android:text="4"
                 android:maxLength="2"
-                android:textColor="@android:color/white"
-                />
+                android:textAlignment="center"
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
     </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Difficulty:"
         android:layout_marginBottom="12dp"
-        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:text="Difficulty:"
 
-        />
+        android:textColor="@android:color/white" />
+
     <Spinner
         android:id="@+id/difficulty_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:spinnerMode="dropdown"
         android:layout_marginBottom="22dp"
-        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:spinnerMode="dropdown"
 
-        />
+        android:textColor="@android:color/white" />
+
     <Button
         android:id="@+id/submit_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="22dp"
-        android:text="Let's Go"
-
-        android:radius="5dp"
-        android:textColor="@android:color/white"
         android:background="#17EAD9"
-        android:onClick="onSave"/>
+
+        android:onClick="onSave"
+        android:radius="5dp"
+        android:text="Let's Go"
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/exit_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Exit"
-
-        android:radius="5dp"
-        android:textColor="@android:color/white"
         android:background="#130CB7"
-        android:onClick="onExit"/>
+
+        android:onClick="onExit"
+        android:radius="5dp"
+        android:text="Exit"
+        android:textColor="@android:color/white" />
 </LinearLayout>

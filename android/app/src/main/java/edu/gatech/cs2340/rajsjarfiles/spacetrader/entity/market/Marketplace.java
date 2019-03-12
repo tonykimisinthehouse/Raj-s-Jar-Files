@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market;
 
+import java.util.Collection;
 import java.util.EnumMap;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.MarketTransactionValidator;
@@ -83,11 +84,15 @@ public class Marketplace{
     }
 
 
+    public Collection<Item> getGoods() {
+        return tradeGoods2Buy.values();
+    }
+
     @Override
     public String toString() {
         String str = "\n["+planetName+"]";
         str += "\n/////////////////// Goods for buying /////////////////////\n";
-        for (Item item: tradeGoods2Buy.values()) {
+        for (Item item: this.getGoods()) {
             str += String.format("Name: %-7s\n", item.getName());
             str += String.format("| price: %-5d",item.getPrice());
             str += String.format("| quantity: %-3d", item.getQuantity());

@@ -1,7 +1,5 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 
-import android.media.Image;
-
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Good;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionOrder;
@@ -48,7 +46,9 @@ public class Player {
      * @param planet that the player is on.
      */
     public void setPlanet(Planet planet) {
-        this.planet = planet;
+        //this.planet = planet;
+        // tmp
+        this.planet = new Planet.PlanetBuilder("Raj", 3).build();
     }
 
     /**
@@ -280,6 +280,13 @@ public class Player {
      */
     public void setNoShip() {
         this.ship = null;
+    }
+
+    /**
+     * @return The planet this player is currently on
+     */
+    public Planet getPlanet() {
+        return this.planet;
     }
 
     @Override
