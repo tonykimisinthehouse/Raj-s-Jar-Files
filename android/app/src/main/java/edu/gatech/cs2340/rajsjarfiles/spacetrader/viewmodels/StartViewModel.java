@@ -73,8 +73,15 @@ public class StartViewModel extends AndroidViewModel {
         int traderPoints = Integer.parseInt(editTraderPoints.getText().toString());
         int engineerPoints = Integer.parseInt(editEngineerPoints.getText().toString());
 
-        // Validate max points
-        return (pilotPoints + fighterPoints + traderPoints + engineerPoints) == MAX_CREDIT;
+        // Validate max points and assign them
+        if ((pilotPoints + fighterPoints + traderPoints + engineerPoints) == MAX_CREDIT) {
+            points[0] = pilotPoints;
+            points[1] = fighterPoints;
+            points[2] = traderPoints;
+            points[3] = engineerPoints;
+            return true;
+        }
+        return false;
     }
 
     /**
