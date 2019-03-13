@@ -48,7 +48,6 @@ public class Model {
                 .build();
 
         Log.i("Model", player.toString());
-//        Log.i("Model", game.toString());
         LogCustom.largeLog("Model", game.toString());
     }
 

@@ -3,7 +3,6 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.views;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.ColorFilter;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -42,17 +41,10 @@ public class GameActivity extends AppCompatActivity {
         techLevelIndicator.setText("Tech Level: " + viewModel.getPlanetTechLevel());
         resourceIndicator.setText("Resources: " + viewModel.getPlanetResources());
 
-        // Planet Image
+        // Set filter on planet Image
         ImageView imageView = findViewById(R.id.imageView);
-
         imageView.setColorFilter(Color.parseColor(viewModel.getPlanetColorHex()), PorterDuff.Mode.MULTIPLY); //Desert
-        //imageView.setColorFilter(Color.parseColor("#0099ff"), PorterDuff.Mode.MULTIPLY); //Ocean
-        //imageView.setColorFilter(Color.parseColor("#33cc33"), PorterDuff.Mode.MULTIPLY); //Continental
-        //imageView.setColorFilter(Color.parseColor("#ffffff"), PorterDuff.Mode.MULTIPLY); //Arctic
-        //imageView.setColorFilter(Color.parseColor("#cc3300"), PorterDuff.Mode.MULTIPLY); //TOMB
     }
-
-
 
     public void openMarket(View view) {
         Intent intent = new Intent(view.getContext(), ShipMarketActivity.class);

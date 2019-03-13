@@ -44,6 +44,7 @@ public enum Habitats {
     ArrayList<Species> habitableSpecies = new ArrayList<>();
     // Store list of impossible resources
     ArrayList<ResourceClassification> impossibleResources = new ArrayList<>();
+    // Color of the habitat in hex
     String colorHex;
 
     /**

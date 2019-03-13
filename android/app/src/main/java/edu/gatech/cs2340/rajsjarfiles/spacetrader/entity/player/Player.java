@@ -323,7 +323,7 @@ public class Player {
             this.points = new int[] {4,4,4,4};
             this.credits = 1000;
             this.ship = new Ship(ShipType.GNAT);
-            this.planet = Model.current.getGame().getUniverse().getRandomSolarSystem().getRandomPlanet();
+            this.planet = null;
         }
 
         /**
@@ -374,6 +374,9 @@ public class Player {
          * @return the new Player object
          */
         public Player build() {
+            if (this.planet == null) {
+                this.planet = Model.current.getGame().getUniverse().getRandomSolarSystem().getRandomPlanet();
+            }
             return new Player(this);
         }
     }

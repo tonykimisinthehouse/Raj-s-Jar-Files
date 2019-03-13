@@ -1,13 +1,6 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market;
 
-import java.util.Random;
-
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Events;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.ResourceClassification;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.TechLevel;
-
 public class Item {
-
 
     private Good good; //Types of good
     private int quantity; //Quantity of good

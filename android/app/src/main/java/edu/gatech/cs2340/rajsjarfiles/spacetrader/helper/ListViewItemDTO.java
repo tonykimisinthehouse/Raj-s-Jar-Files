@@ -1,6 +1,5 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.helper;
 
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Good;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
 
 /**
