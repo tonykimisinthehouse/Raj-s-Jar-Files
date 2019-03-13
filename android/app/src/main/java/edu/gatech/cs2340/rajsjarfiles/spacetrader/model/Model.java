@@ -2,10 +2,9 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.model;
 
 import android.util.Log;
 
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.LogCustom;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.utility.LogCustom;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.Game;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.GameDifficulty;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.PlayerBuilder;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
 
@@ -26,8 +25,19 @@ public final class Model {
      * @param ship The ship the user has chosen
      * @param difficulty The Game Difficulty the user has chosen
      */
-    private Model(String name, int[] points, int credits, Ship ship, GameDifficulty difficulty) {
-        player = new PlayerBuilder(name, points, credits, ship).build();
+    public Model(
+            String name,
+            int[] points,
+            int credits,
+            Ship ship,
+            GameDifficulty difficulty) {
+
+        player = new Player.PlayerBuilder(name)
+                .points(points)
+                .credits(credits)
+                .ship(ship)
+                .build();
+
         game = new Game(difficulty);
         Log.i("Model", player.toString());
 //        Log.i("Model", game.toString());
