@@ -32,7 +32,7 @@ public class TransactionTester {
                 .ship(new Ship(ShipType.BEETLE))
                 .build();
 
-        assertEquals(planet.getMarketplace().getTl(), tl);
+        assertEquals(planet.getMarketplace().getTechLevel(), tl);
         assertNotNull(planet.getMarketplace());
         // No credit
         assertFalse(player.makePurchase(TradeGoods.FOOD, 1));
@@ -54,7 +54,7 @@ public class TransactionTester {
                 .ship(new Ship(ShipType.BEETLE))
                 .build();
 
-        assertEquals(planet.getMarketplace().getTl(), tl);
+        assertEquals(planet.getMarketplace().getTechLevel(), tl);
         assertNotNull(planet.getMarketplace());
 
         // Must be true
@@ -77,7 +77,7 @@ public class TransactionTester {
                 .ship(new Ship(ShipType.BEETLE))
                 .build();
 
-        assertEquals(planet.getMarketplace().getTl(), tl);
+        assertEquals(planet.getMarketplace().getTechLevel(), tl);
         assertNotNull(planet.getMarketplace());
 
         // False since it go overs the cargo capacity

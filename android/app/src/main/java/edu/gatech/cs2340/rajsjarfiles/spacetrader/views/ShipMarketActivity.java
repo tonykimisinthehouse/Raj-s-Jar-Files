@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Good;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.helper.ListViewItemCheckboxBaseAdapter;
@@ -86,12 +85,12 @@ public class ShipMarketActivity extends AppCompatActivity {
 
                     // Buy
                     if (buyNotSell) {
-                        Model.current.getPlayer().makePurchase(item.getGood().getGood(), 1);
+                        boolean result = Model.current.getPlayer().makePurchase(item.getGood().getGood(), 1);
                     }
 
                     // Sell
                     else {
-                        Model.current.getPlayer().getShip().sellGood(item.getGood().getGood(), 1);
+                        boolean result = Model.current.getPlayer().makeSales(item.getGood().getGood(), 1);
                     }
 
                     // Reload goods
@@ -105,12 +104,13 @@ public class ShipMarketActivity extends AppCompatActivity {
         // Get latest string representations of goods
         try {
             Player player = Model.current.getPlayer();
-            Collection<Item> goodsForSale = player.getPlanet().getMarketplace().getGoods();
-            Collection<Item> goodsOnShip = player.getShip().getGoods();
+            Collection<Item> goodsForSale = player.getPlanet().getMarketplace().getItems();
+            Collection<Item> goodsOnShip = player.getShip().getCargoGoods();
 
             // Split by newlines to get arrays
             List<ListViewItemDTO> listGoodsForSale = new ArrayList<>();
             List<ListViewItemDTO> listGoodsOnShip = new ArrayList<>();
+
             for (Item item : goodsForSale) {
                 ListViewItemDTO view = new ListViewItemDTO();
                 view.setGood(item);

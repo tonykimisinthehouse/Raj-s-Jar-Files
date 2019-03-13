@@ -12,7 +12,7 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
  */
 public class Ship {
     private ShipType shipType;
-    private HashMap<Good,Integer> cargo;
+    private HashMap<Good,Item> cargo;
 
     private int totalCap;
     private int usedCap;
@@ -67,17 +67,20 @@ public class Ship {
     /**
      * Add quantity of goods to the cargo.
      *
-     * @param good good to add.
-     * @param quantity quantity of good to buy.
+     * @param item to add in the cargo
      */
-    public void addGood(Good good, int quantity) {
+    public void addGood(Item item) {
+        int quantity = item.getQuantity();
+        int price = item.getPrice();
+        Good good = item.getGood();
+
         if (getAvailableCargoCapacity() < quantity) {
             throw new java.lang.IllegalArgumentException("Not enough cargo");
         }
         if (cargo.containsKey(good)) {
-            cargo.put(good, cargo.get(good) + quantity);
+            cargo.get(good).addQuantity(quantity);
         } else {
-            cargo.put(good, quantity);
+            cargo.put(good, new Item.ItemBuilder(good).price(price).quantity(quantity).build());
         }
         usedCap += quantity;
     }
@@ -85,17 +88,20 @@ public class Ship {
     /**
      * Sell quantity of goods from the cargo.
      *
-     * @param good good to sell.
-     * @param quantity quantity of good to sell.
+     * @param item item to sell from the cargo
      */
-    public void sellGood(Good good, int quantity) {
-        cargo.put(good,cargo.get(good) - quantity);
-        usedCap -= quantity;
+    public void sellGood(Item item) {
+        Good good = item.getGood();
+        int quantity = item.getQuantity();
+        if (hasGoods(good, quantity)) {
+            cargo.get(good).subQuantity(quantity);
+            usedCap -= quantity;
+        }
     }
 
     public boolean hasGoods(Good good, int quantity) {
         if (cargo.containsKey(good)) {
-            if (cargo.get(good) >= quantity) {
+            if (cargo.get(good).getQuantity() >= quantity) {
                 return true;
             }
         }
@@ -132,11 +138,14 @@ public class Ship {
         return this.shipType == s.shipType;
     }
 
-    public Collection<Item> getGoods() {
-        ArrayList<Item> items = new ArrayList<>();
+    public Collection<Item> getCargoGoods() {
+        Collection<Item> items = new ArrayList<>();
         for (Good good : this.cargo.keySet()) {
             // Build a new item based on this good
-            Item item = new Item.ItemBuilder(good).build();
+            Item item = new Item.ItemBuilder(good)
+                    .quantity(this.cargo.get(good).getQuantity())
+                    .price(this.cargo.get(good).getPrice())
+                    .build();
             items.add(item);
         }
         return items;

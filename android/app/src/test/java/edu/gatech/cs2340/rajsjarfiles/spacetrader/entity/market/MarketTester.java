@@ -34,18 +34,18 @@ public class MarketTester {
                 Habitats.getRandomHabitat()
         );
         Marketplace marketplace = new Marketplace("Bob", tl, event, rc);
-        assertEquals(tl, marketplace.getTl());
+        assertEquals(tl, marketplace.getTechLevel());
 
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.WATER));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.FURS));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.WATER));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.FURS));
 
-        assertFalse(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.FOOD));
-        assertFalse(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.ORE));
-        assertFalse(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.GAMES));
-        assertFalse(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.FIREARMS));
-        assertFalse(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.MEDICINE));
-        assertFalse(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.NARCOTICS));
-        assertFalse(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.ROBOTS));
+        assertFalse(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.FOOD));
+        assertFalse(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.ORE));
+        assertFalse(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.GAMES));
+        assertFalse(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.FIREARMS));
+        assertFalse(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.MEDICINE));
+        assertFalse(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.NARCOTICS));
+        assertFalse(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.ROBOTS));
 
     }
 
@@ -58,18 +58,18 @@ public class MarketTester {
                 Habitats.getRandomHabitat()
         );
         Marketplace marketplace = new Marketplace("Bob", tl, event, rc);
-        assertEquals(tl, marketplace.getTl());
+        assertEquals(tl, marketplace.getTechLevel());
 
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.WATER));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.FURS));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.FOOD));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.WATER));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.FURS));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.FOOD));
 
-        assertFalse(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.ORE));
-        assertFalse(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.GAMES));
-        assertFalse(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.FIREARMS));
-        assertFalse(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.MEDICINE));
-        assertFalse(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.NARCOTICS));
-        assertFalse(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.ROBOTS));
+        assertFalse(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.ORE));
+        assertFalse(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.GAMES));
+        assertFalse(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.FIREARMS));
+        assertFalse(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.MEDICINE));
+        assertFalse(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.NARCOTICS));
+        assertFalse(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.ROBOTS));
     }
 
     @Test(timeout = TIMEOUT)
@@ -81,18 +81,18 @@ public class MarketTester {
                 Habitats.getRandomHabitat()
         );
         Marketplace marketplace = new Marketplace("Bob", tl, event, rc);
-        assertEquals(tl, marketplace.getTl());
+        assertEquals(tl, marketplace.getTechLevel());
 
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.WATER));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.FURS));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.FOOD));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.ORE));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.WATER));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.FURS));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.FOOD));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.ORE));
 
-        assertFalse(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.GAMES));
-        assertFalse(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.FIREARMS));
-        assertFalse(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.MEDICINE));
-        assertFalse(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.NARCOTICS));
-        assertFalse(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.ROBOTS));
+        assertFalse(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.GAMES));
+        assertFalse(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.FIREARMS));
+        assertFalse(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.MEDICINE));
+        assertFalse(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.NARCOTICS));
+        assertFalse(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.ROBOTS));
     }
 
     @Test(timeout = TIMEOUT)
@@ -104,18 +104,18 @@ public class MarketTester {
                 Habitats.getRandomHabitat()
         );
         Marketplace marketplace = new Marketplace("Bob", tl, event, rc);
-        assertEquals(tl, marketplace.getTl());
+        assertEquals(tl, marketplace.getTechLevel());
 
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.WATER));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.FURS));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.FOOD));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.ORE));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.GAMES));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.FIREARMS));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.WATER));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.FURS));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.FOOD));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.ORE));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.GAMES));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.FIREARMS));
 
-        assertFalse(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.MEDICINE));
-        assertFalse(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.NARCOTICS));
-        assertFalse(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.ROBOTS));
+        assertFalse(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.MEDICINE));
+        assertFalse(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.NARCOTICS));
+        assertFalse(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.ROBOTS));
     }
 
     @Test(timeout = TIMEOUT)
@@ -127,18 +127,18 @@ public class MarketTester {
                 Habitats.getRandomHabitat()
         );
         Marketplace marketplace = new Marketplace("Bob", tl, event, rc);
-        assertEquals(tl, marketplace.getTl());
+        assertEquals(tl, marketplace.getTechLevel());
 
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.WATER));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.FURS));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.FOOD));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.ORE));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.GAMES));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.FIREARMS));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.MEDICINE));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.WATER));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.FURS));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.FOOD));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.ORE));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.GAMES));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.FIREARMS));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.MEDICINE));
 
-        assertFalse(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.NARCOTICS));
-        assertFalse(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.ROBOTS));
+        assertFalse(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.NARCOTICS));
+        assertFalse(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.ROBOTS));
     }
 
     @Test(timeout = TIMEOUT)
@@ -150,18 +150,18 @@ public class MarketTester {
                 Habitats.getRandomHabitat()
         );
         Marketplace marketplace = new Marketplace("Bob", tl, event, rc);
-        assertEquals(tl, marketplace.getTl());
+        assertEquals(tl, marketplace.getTechLevel());
 
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.WATER));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.FURS));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.FOOD));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.ORE));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.GAMES));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.FIREARMS));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.MEDICINE));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.NARCOTICS));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.WATER));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.FURS));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.FOOD));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.ORE));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.GAMES));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.FIREARMS));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.MEDICINE));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.NARCOTICS));
 
-        assertFalse(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.ROBOTS));
+        assertFalse(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.ROBOTS));
     }
 
     @Test(timeout = TIMEOUT)
@@ -173,17 +173,17 @@ public class MarketTester {
                 Habitats.getRandomHabitat()
         );
         Marketplace marketplace = new Marketplace("Bob", tl, event, rc);
-        assertEquals(tl, marketplace.getTl());
+        assertEquals(tl, marketplace.getTechLevel());
 
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.WATER));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.FURS));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.FOOD));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.ORE));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.GAMES));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.FIREARMS));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.MEDICINE));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.NARCOTICS));
-        assertTrue(marketplace.getTradeGoodsEnumMap().containsKey(TradeGoods.ROBOTS));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.WATER));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.FURS));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.FOOD));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.ORE));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.GAMES));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.FIREARMS));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.MEDICINE));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.NARCOTICS));
+        assertTrue(marketplace.getTradeGoodsInMarket().containsKey(TradeGoods.ROBOTS));
     }
 
 

@@ -74,7 +74,7 @@ public class Player {
         if (newTransactionResult.getisTransactionSuccess()) {
             Item item = newTransactionResult.getItem();
             // Add good to the cargo
-            ship.addGood(item.getGood(), item.getQuantity());
+            ship.addGood(item);
             // Use credits
             useCredits(item.getPrice() * item.getQuantity());
         }
@@ -106,7 +106,7 @@ public class Player {
         if (newTransactionResult.getisTransactionSuccess()) {
             Item item = newTransactionResult.getItem();
             // Sell goods from cargo.
-            ship.sellGood(item.getGood(), item.getQuantity());
+            ship.sellGood(item);
             // Earn credits.
             earnCredits(item.getPrice() * item.getQuantity());
         }
