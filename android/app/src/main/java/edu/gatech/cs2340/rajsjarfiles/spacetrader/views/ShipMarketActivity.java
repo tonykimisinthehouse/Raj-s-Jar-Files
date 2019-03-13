@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ public class ShipMarketActivity extends AppCompatActivity {
      */
     private ShipMarketViewModel viewModel;
 
+    private TextView viewCreditCount;
     private ListView viewGoodsForSale;
     private ListView viewGoodsOnShip;
 
@@ -46,6 +48,7 @@ public class ShipMarketActivity extends AppCompatActivity {
     }
 
     private void assignViews() {
+        this.viewCreditCount = findViewById(R.id.view_credit_count);
         this.viewGoodsForSale = findViewById(R.id.selector_goods_for_sale);
         this.viewGoodsOnShip = findViewById(R.id.selector_goods_on_ship);
         this.viewGoodsForSale.setOnItemClickListener(listener);
@@ -104,6 +107,7 @@ public class ShipMarketActivity extends AppCompatActivity {
         // Get latest string representations of goods
         try {
             Player player = Model.current.getPlayer();
+            int credits = player.getCredits();
             Collection<Item> goodsForSale = player.getPlanet().getMarketplace().getItems();
             Collection<Item> goodsOnShip = player.getShip().getCargoGoods();
 
@@ -137,6 +141,7 @@ public class ShipMarketActivity extends AppCompatActivity {
             adapterGoodsOnShip.notifyDataSetChanged();
 
             // Set data on views
+            this.viewCreditCount.setText(credits + " credits");
             this.viewGoodsForSale.setAdapter(adapterGoodsForSale);
             this.viewGoodsOnShip.setAdapter(adapterGoodsOnShip);
         }
