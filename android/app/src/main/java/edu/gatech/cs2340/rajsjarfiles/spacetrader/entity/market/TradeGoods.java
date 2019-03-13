@@ -24,7 +24,7 @@ public enum TradeGoods implements Good{
     ,
     FOOD(new TradeGoodsBuilder("Food")
             .MTLP(1).MTLU(0).TTP(1).BasePrice(100).IPL(5).Var(5)
-            .IE(Events.CROPFAIL)
+            .IE(Events.CROP_FAIL)
             .CR(ResourceClassification.RICH_SOIL)
             .ER(ResourceClassification.POOR_SOIL)
             .MTL(90).MTH(160))
@@ -59,7 +59,7 @@ public enum TradeGoods implements Good{
     ,
     MACHINES (new TradeGoodsBuilder("Machines")
             .MTLP(4).MTLU(3).TTP(5).BasePrice(900).IPL(-30).Var(5)
-            .IE(Events.LACKOFWORKERS)
+            .IE(Events.LACK_OF_WORKERS)
             .CR(null)
             .ER(null)
             .MTL(400).MTH(700))
@@ -73,7 +73,7 @@ public enum TradeGoods implements Good{
     ,
     ROBOTS (new TradeGoodsBuilder("Robots")
             .MTLP(6).MTLU(5).TTP(7).BasePrice(5000).IPL(-150).Var(100)
-            .IE(Events.LACKOFWORKERS)
+            .IE(Events.LACK_OF_WORKERS)
             .CR(null)
             .ER(null)
             .MTL(3000).MTH(5000));
