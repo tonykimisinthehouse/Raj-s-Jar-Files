@@ -70,10 +70,15 @@ public class Planet {
         return resourceClass;
     }
 
+    public Habitats getHabitat() {
+        return habitats;
+    }
+
     /**
      * @return planet's market place
      */
     public Marketplace getMarketplace(){ return marketplace; }
+
     /**
      * Returns the "distance" in terms of orbit radius to another planet.
      *

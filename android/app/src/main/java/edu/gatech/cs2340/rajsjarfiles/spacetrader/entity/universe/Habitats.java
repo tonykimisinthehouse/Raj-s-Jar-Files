@@ -14,32 +14,37 @@ public enum Habitats {
             Arrays.asList(
                     ResourceClassification.LOTS_OF_WATER,
                     ResourceClassification.RICH_SOIL,
-                    ResourceClassification.LOTS_OF_HERBS)),
+                    ResourceClassification.LOTS_OF_HERBS),
+            "#ffff00"),
 
     OCEAN(Arrays.asList(Species.FUNGOID),
             Arrays.asList(
                     ResourceClassification.LOTS_OF_HERBS,
-                    ResourceClassification.RICH_SOIL)),
+                    ResourceClassification.RICH_SOIL),
+            "#0099ff"),
 
     CONTINENTAL(Arrays.asList(Species.HUMANOID, Species.REPTILIAN, Species.FUNGOID, Species.MACHINE),
-                    null),
+                    null,
+            "#33cc33"),
 
     ARCTIC(Arrays.asList(Species.HUMANOID),
             Arrays.asList(
                     ResourceClassification.RICH_SOIL,
-                    ResourceClassification.LOTS_OF_HERBS)),
-
+                    ResourceClassification.LOTS_OF_HERBS),
+            "#ffffff"),
     TOMB(Arrays.asList(Species.MACHINE),
             Arrays.asList(
                     ResourceClassification.LOTS_OF_HERBS,
                     ResourceClassification.RICH_SOIL,
                     ResourceClassification.RICH_FAUNA,
-                    ResourceClassification.WEIRD_MUSHROOMS));
+                    ResourceClassification.WEIRD_MUSHROOMS),
+            "#cc3300");
 
     // Store list of habitable species
     ArrayList<Species> habitableSpecies = new ArrayList<>();
     // Store list of impossible resources
     ArrayList<ResourceClassification> impossibleResources = new ArrayList<>();
+    String colorHex;
 
     /**
      * Constructor for enum class Habitats
@@ -47,9 +52,10 @@ public enum Habitats {
      * @param species list of species that can live in this habitats
      * @param impossibleResource list of special resources that cannot exists in this habitats
      */
-     Habitats(List<Species> species, List<ResourceClassification> impossibleResource) {
+     Habitats(List<Species> species, List<ResourceClassification> impossibleResource, String colorHex) {
         this.habitableSpecies.addAll(species);
         if (impossibleResource != null) impossibleResources.addAll(impossibleResource);
+        this.colorHex = colorHex;
     }
 
     /**
@@ -61,5 +67,9 @@ public enum Habitats {
         Random rand = new Random();
         Habitats[] rh = Habitats.values();
         return rh[rand.nextInt(rh.length)];
+    }
+
+    public String getColorHex() {
+        return colorHex;
     }
 }

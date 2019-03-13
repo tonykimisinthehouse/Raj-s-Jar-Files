@@ -66,7 +66,6 @@ public class MarketTransactionValidator implements TransactionValidator {
             // Update price for selling goods
             order.getItem().setPrice(marketPrice);
 
-            // TODO what to do after the player sells good to the market?
             marketplace.getItem(goodInOrder).addQuantity(quantityInOrder);
 
             return true;

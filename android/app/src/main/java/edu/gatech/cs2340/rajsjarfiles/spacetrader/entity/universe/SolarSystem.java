@@ -51,4 +51,9 @@ public class SolarSystem {
         }
         return ret;
     }
+
+    public Planet getRandomPlanet() {
+        Random rand = new Random();
+        return planets[rand.nextInt(planets.length)];
+    }
 }

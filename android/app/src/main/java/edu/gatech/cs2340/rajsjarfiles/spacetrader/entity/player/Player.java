@@ -6,6 +6,7 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.Tran
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionResult;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionType;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Planet;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 
 /**
  * Represents the user's player.
@@ -46,9 +47,9 @@ public class Player {
      * @param planet that the player is on.
      */
     public void setPlanet(Planet planet) {
-        //this.planet = planet;
+        this.planet = planet;
         // tmp
-        this.planet = new Planet.PlanetBuilder("Raj", 3).build();
+        //this.planet = new Planet.PlanetBuilder("Raj", 3).build();
     }
 
     /**
@@ -322,6 +323,7 @@ public class Player {
             this.points = new int[] {4,4,4,4};
             this.credits = 1000;
             this.ship = new Ship(ShipType.GNAT);
+            this.planet = Model.current.getGame().getUniverse().getRandomSolarSystem().getRandomPlanet();
         }
 
         /**
