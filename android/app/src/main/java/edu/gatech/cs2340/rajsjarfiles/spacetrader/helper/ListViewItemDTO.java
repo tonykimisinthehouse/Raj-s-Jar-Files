@@ -32,7 +32,7 @@ public class ListViewItemDTO {
 
     public void setGood(Item good) {
         this.good = good;
-        this.itemText = good.getName();
+        this.itemText = good.getName() + " x" + good.getQuantity() + " - $" + good.getPrice();
     }
 
 }
