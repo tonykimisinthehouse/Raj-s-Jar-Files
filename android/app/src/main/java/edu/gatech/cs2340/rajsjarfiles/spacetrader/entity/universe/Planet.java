@@ -157,20 +157,6 @@ public class Planet {
         public PlanetBuilder(String name, int orbitRadius) {
             this.name = name;
             this.orbitRadius = orbitRadius;
-            this.radius = getRandomRadius();
-            this.techLevel = TechLevel.getRandomTechLevel();
-            this.habitats = Habitats.getRandomHabitat();
-            this.resourceClass = ResourceClassification.getRandomResourceClass(this.habitats);
-            this.species = Species.getRandomHabitableSpecies(this.habitats);
-            this.event = Events.getRandomEvent();
-            this.marketplace = new Marketplace(
-                    this.name,
-                    this.techLevel,
-                    this.event,
-                    this.habitats,
-                    this.resourceClass,
-                    this.species
-            );
         }
 
         /**
@@ -234,6 +220,25 @@ public class Planet {
          * @return planet
          */
         public Planet build() {
+            if (this.habitats == null) {
+                this.habitats = Habitats.getRandomHabitat();
+                this.resourceClass = ResourceClassification.getRandomResourceClass(this.habitats);
+                this.species = Species.getRandomHabitableSpecies(this.habitats);
+            }
+            if (this.techLevel == null) {
+                this.techLevel = TechLevel.getRandomTechLevel();
+            }
+            if (this.event == null) {
+                this.event = Events.getRandomEvent();
+            }
+            if (this.marketplace == null) {
+                this.marketplace = new Marketplace(
+                        this.name,
+                        this.techLevel,
+                        this.event,
+                        this.resourceClass
+                );
+            }
             return new Planet(this);
         }
 
