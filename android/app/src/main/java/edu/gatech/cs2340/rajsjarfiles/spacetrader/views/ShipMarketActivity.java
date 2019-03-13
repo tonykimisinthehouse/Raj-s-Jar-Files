@@ -112,14 +112,20 @@ public class ShipMarketActivity extends AppCompatActivity {
             List<ListViewItemDTO> listGoodsOnShip = new ArrayList<>();
 
             for (Item item : goodsForSale) {
-                ListViewItemDTO view = new ListViewItemDTO();
-                view.setGood(item);
-                listGoodsForSale.add(view);
+                // Only add with a positive quantity of item
+                if (item.getQuantity() > 0) {
+                    ListViewItemDTO view = new ListViewItemDTO();
+                    view.setGood(item);
+                    listGoodsForSale.add(view);
+                }
             }
             for (Item item : goodsOnShip) {
-                ListViewItemDTO view = new ListViewItemDTO();
-                view.setGood(item);
-                listGoodsOnShip.add(view);
+                // Only add with a positive quantity of item
+                if (item.getQuantity() > 0) {
+                    ListViewItemDTO view = new ListViewItemDTO();
+                    view.setGood(item);
+                    listGoodsOnShip.add(view);
+                }
             }
 
             final ListViewItemCheckboxBaseAdapter adapterGoodsForSale = new
