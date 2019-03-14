@@ -35,6 +35,8 @@ public class ShipMarketActivity extends AppCompatActivity {
     private TextView viewCreditCount;
     private ListView viewGoodsForSale;
     private ListView viewGoodsOnShip;
+    private TextView viewCargoCapacity;
+    private TextView viewPlanetName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,8 @@ public class ShipMarketActivity extends AppCompatActivity {
         this.viewGoodsOnShip = findViewById(R.id.selector_goods_on_ship);
         this.viewGoodsForSale.setOnItemClickListener(listener);
         this.viewGoodsOnShip.setOnItemClickListener(listener);
+        this.viewCargoCapacity = findViewById(R.id.view_cargo_capacity);
+        this.viewPlanetName = findViewById(R.id.view_planet);
     }
 
     private final AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
@@ -108,6 +112,8 @@ public class ShipMarketActivity extends AppCompatActivity {
         try {
             Player player = Model.current.getPlayer();
             int credits = player.getCredits();
+            int totalCargoCapacity = player.getShip().getCargoCapacity();
+            int availableCargoCapacity = player.getShip().getAvailableCargoCapacity();
             Collection<Item> goodsForSale = player.getPlanet().getMarketplace().getItems();
             Collection<Item> goodsOnShip = player.getShip().getCargoGoods();
 
@@ -141,9 +147,12 @@ public class ShipMarketActivity extends AppCompatActivity {
             adapterGoodsOnShip.notifyDataSetChanged();
 
             // Set data on views
-            this.viewCreditCount.setText(credits + " credits");
+            this.viewCreditCount.setText("Credits: " + credits);
             this.viewGoodsForSale.setAdapter(adapterGoodsForSale);
             this.viewGoodsOnShip.setAdapter(adapterGoodsOnShip);
+
+            this.viewCargoCapacity.setText("Capacity: " + (totalCargoCapacity - availableCargoCapacity) + "/" + totalCargoCapacity);
+            this.viewPlanetName.setText(Model.current.getPlayer().getPlanet().getName() + " Marketplace");
         }
         catch (NullPointerException e) {
             Log.e("RAJ", e.getMessage());
