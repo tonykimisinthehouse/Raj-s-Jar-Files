@@ -63,6 +63,15 @@
         android:textSize="18sp" />
 
     <TextView
+        android:id="@+id/indicator_species"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Species: Humanoid"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <TextView
         android:id="@+id/indicator_event"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -70,6 +79,8 @@
         android:text="Event: Boredom"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
+
+
 
     <RelativeLayout
         android:layout_width="match_parent"

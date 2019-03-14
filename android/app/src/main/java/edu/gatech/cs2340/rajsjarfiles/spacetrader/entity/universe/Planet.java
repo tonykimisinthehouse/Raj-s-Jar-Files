@@ -74,6 +74,10 @@ public class Planet {
         return habitats;
     }
 
+    public Species getSpecies() {
+        return species;
+    }
+
     /**
      * @return planet's market place
      */

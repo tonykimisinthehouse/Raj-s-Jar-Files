@@ -36,11 +36,13 @@ public class GameActivity extends AppCompatActivity {
         TextView techLevelIndicator = findViewById(R.id.indicator_tech_level);
         TextView resourceIndicator = findViewById(R.id.indicator_resources);
         TextView eventIndicator = findViewById(R.id.indicator_event);
+        TextView speciesIndicator = findViewById(R.id.indicator_species);
 
         planetNameIndicator.setText(viewModel.getPlanetName());
         orbitRadiusIndicator.setText("Orbit Radius: " + String.valueOf(viewModel.getPlanetOrbitRadius()));
         techLevelIndicator.setText("Tech Level: " + viewModel.getPlanetTechLevel());
         resourceIndicator.setText("Resources: " + viewModel.getPlanetResources());
+        speciesIndicator.setText("Species: " + viewModel.getPlanetSpecies());
         eventIndicator.setText("Event: " + viewModel.getPlanetEvent());
 
         // Set filter on planet Image

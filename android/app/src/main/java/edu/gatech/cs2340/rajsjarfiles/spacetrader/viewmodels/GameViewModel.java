@@ -47,6 +47,10 @@ public class GameViewModel extends AndroidViewModel {
         return Model.current.getPlayer().getPlanet().getMarketplace().getEvent().toString();
     }
 
+    public String getPlanetSpecies() {
+        return Model.current.getPlayer().getPlanet().getSpecies().toString();
+    }
+
     public String getPlanetColorHex() {
         return Model.current.getPlayer().getPlanet().getHabitat().getColorHex();
     }
