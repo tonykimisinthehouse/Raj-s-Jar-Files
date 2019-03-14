@@ -1,10 +1,15 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.views;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.ColorRes;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
@@ -47,6 +52,7 @@ public class ShipMarketActivity extends AppCompatActivity {
 
         this.assignViews();
         this.updateGoods();
+        this.alertDialog();
     }
 
     private void assignViews() {
@@ -169,4 +175,39 @@ public class ShipMarketActivity extends AppCompatActivity {
         // TODO tell ship to sell
     }
 
+    private void alertDialog() {
+        // Show dialog alerting price increase
+        StringBuilder stringBuilder = new StringBuilder();
+
+        Player player = Model.current.getPlayer();
+        Collection<Item> goodsForSale = player.getPlanet().getMarketplace().getItems();
+        for (Item item : goodsForSale) {
+            if (item.getGood().getIE() == player.getPlanet().getMarketplace().getEvent()) {
+                int percentageIncrease = (item.getPrice() - item.getGood().getBasePrice()) / item.getGood().getBasePrice() * 100;
+                stringBuilder.append("- " + item.getGood().getName()+ " is in shortage. ("+ (percentageIncrease)+"% price increase)\n");
+            }
+        }
+
+        // Show dialog only when there is an surging item
+        if (stringBuilder.length() != 0) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("DUE TO " + player.getPlanet().getMarketplace().getEvent().toString() + ", FOLLOWING ITEMS ARE UNDER PRICE SURGE!");
+            builder.setMessage(stringBuilder.toString());
+            builder.setCancelable(true);
+            builder.setNegativeButton("Ok", new DialogInterface.OnClickListener(){
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast.makeText(getApplicationContext(), "Good Luck!", Toast.LENGTH_SHORT).show();
+                }
+            });
+            final AlertDialog dialog = builder.create();
+            dialog.setOnShowListener( new DialogInterface.OnShowListener() {
+                @Override
+                public void onShow(DialogInterface arg0) {
+                    dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.RED);
+                }
+            });
+            dialog.show();
+        }
+    }
 }
