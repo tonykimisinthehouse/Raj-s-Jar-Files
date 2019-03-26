@@ -11,10 +11,14 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
 /**
  * Creates a player and model with the valid inputs.
  */
-public final class Model {
+public class Model {
+    /**
+     * Singleton reference to the main object.
+     */
+    public static Model current;
+
     private Player player;
     private Game game;
-    private static Model model;
 
     /**
      * Constructor for creating a player and model with the valid inputs.
@@ -32,40 +36,27 @@ public final class Model {
             Ship ship,
             GameDifficulty difficulty) {
 
+        // Set singleton reference
+        Model.current = this;
+
+        game = new Game(difficulty);
+
         player = new Player.PlayerBuilder(name)
                 .points(points)
                 .credits(credits)
                 .ship(ship)
                 .build();
 
-        game = new Game(difficulty);
         Log.i("Model", player.toString());
-//        Log.i("Model", game.toString());
         LogCustom.largeLog("Model", game.toString());
     }
 
-    /**
-     * Singleton initializer for model
-     *
-     * @param name The player name the user has chosen.
-     * @param points The allocation of skill points the user has chosen
-     * @param credits The amount of credit the user has.
-     * @param ship The ship the user has chosen
-     * @param difficulty The Game Difficulty the user has chosen
-     */
-    public static synchronized void init(String name, int[] points, int credits, Ship ship, GameDifficulty difficulty) {
-        if (model == null) {
-            model = new Model(name, points, credits, ship, difficulty);
-        } else {
-            // if the instance is created, should not create another instance.
-        }
+    public Player getPlayer() {
+        return this.player;
     }
 
-    /**
-     * Getter for model instance
-     * @return model
-     */
-    public static Model getModel() {
-        return model;
+    public Game getGame() {
+        return this.game;
     }
+
 }

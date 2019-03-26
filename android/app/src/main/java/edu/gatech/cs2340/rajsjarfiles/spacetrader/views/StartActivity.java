@@ -19,12 +19,12 @@ import java.util.Arrays;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.GameDifficulty;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels.MainViewModel;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels.StartViewModel;
 
 /**
- * Represents the Activity file for content_main.xml
+ * Represents the Activity file for content_start.xml
  */
-public class MainActivity extends AppCompatActivity {
+public class StartActivity extends AppCompatActivity {
 
     private EditText editPlayerName;
     private EditText editPilotPoints;
@@ -38,12 +38,12 @@ public class MainActivity extends AppCompatActivity {
      */
     private Player player;
 
-    private MainViewModel viewModel;
+    private StartViewModel viewModel;
 
     /**
      * Method that return new Textwatcher to set.
      *
-     * @param editText represents the EditText in activity_main.xml
+     * @param editText represents the EditText in activity_start.xml
      * @param index indicates the type of skill points
      * @return
      */
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Helper method that update remaining credit indicator based on the remaining skill points
-     * @param editText represents the EditText in activity_main.xml
+     * @param editText represents the EditText in activity_start.xml
      * @param index indicates the type of skill points
      */
     private void validateCreditEntries(EditText editText, int index) {
@@ -80,9 +80,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_start);
 
-        viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(StartViewModel.class);
         /*
          * Grab the dialog widgets so we can get info for later
          */
