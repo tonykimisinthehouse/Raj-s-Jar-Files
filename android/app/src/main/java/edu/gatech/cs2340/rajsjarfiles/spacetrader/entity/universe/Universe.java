@@ -1,12 +1,13 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Random;
 
 /**
  * Represents the entire universe of the game.
  */
-public class Universe {
+public class Universe implements Serializable {
     private static final int MAX_SOLAR_SYSTEMS = 20;
 
     //using an array because the size won't change

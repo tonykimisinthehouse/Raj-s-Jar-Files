@@ -16,7 +16,7 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
 /**
  * Main activity while playing the game
  */
-public class GameActivity extends AppCompatActivity {
+public class GameActivity extends BaseActivity {
 
     /**
      * View model for Game activity

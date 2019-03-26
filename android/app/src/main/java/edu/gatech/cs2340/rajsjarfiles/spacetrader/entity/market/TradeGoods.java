@@ -1,12 +1,14 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market;
 
+import java.io.Serializable;
+
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Events;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.ResourceClassification;
 
 /**
  * Represents all the trade goods in our Space Trader Game.
  */
-public enum TradeGoods implements Good{
+public enum TradeGoods implements Good, Serializable {
     WATER(new TradeGoodsBuilder("Water")
             .MTLP(0).MTLU(0).TTP(2).BasePrice(30).IPL(3).Var(4)
             .IE(Events.DROUGHT)

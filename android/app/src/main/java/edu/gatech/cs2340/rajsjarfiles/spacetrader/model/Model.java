@@ -2,6 +2,8 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.model;
 
 import android.util.Log;
 
+import java.io.Serializable;
+
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.utility.LogCustom;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.Game;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.GameDifficulty;
@@ -11,7 +13,7 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
 /**
  * Creates a player and model with the valid inputs.
  */
-public class Model {
+public class Model implements Serializable {
     /**
      * Singleton reference to the main object.
      */

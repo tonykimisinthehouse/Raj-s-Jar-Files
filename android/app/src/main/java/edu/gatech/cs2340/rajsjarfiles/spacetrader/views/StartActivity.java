@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,12 +20,14 @@ import java.util.Arrays;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.GameDifficulty;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.ModelSaver;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels.StartViewModel;
 
 /**
  * Represents the Activity file for content_start.xml
  */
-public class StartActivity extends AppCompatActivity {
+public class StartActivity extends BaseActivity {
 
     private EditText editPlayerName;
     private EditText editPilotPoints;
@@ -81,6 +84,16 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+
+        //load model initially
+        Model model = ModelSaver.loadBinaryModel(this.getFilesDir().toString());
+        if (model != null) {
+            Model.current = model;
+            Log.d("StartActivity-Load", Model.current.getGame().toString());
+            Log.d("StartActivity-Load", Model.current.getPlayer().toString());
+            Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+            startActivity(intent);
+        }
 
         viewModel = ViewModelProviders.of(this).get(StartViewModel.class);
         /*

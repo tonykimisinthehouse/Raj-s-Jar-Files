@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -10,9 +11,9 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
 /**
  * Represents a ship that a character or enemy can use.
  */
-public class Ship {
+public class Ship implements Serializable {
     private ShipType shipType;
-    private HashMap<Good,Item> cargo;
+    private HashMap<Good, Item> cargo;
 
     private int totalCap;
     private int usedCap;
@@ -21,7 +22,7 @@ public class Ship {
      * Default constructor that sets ShipType to GNAT.
      */
     public Ship() {
-        this(10,ShipType.GNAT);
+        this(10, ShipType.GNAT);
     }
 
     /**
@@ -30,7 +31,7 @@ public class Ship {
      * @param shipType the ship type
      */
     public Ship(ShipType shipType) {
-        this(10,shipType);
+        this(10, shipType);
     }
 
     /**

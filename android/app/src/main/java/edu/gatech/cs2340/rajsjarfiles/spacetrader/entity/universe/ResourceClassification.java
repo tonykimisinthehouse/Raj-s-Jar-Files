@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -7,7 +8,7 @@ import java.util.Random;
 /**
  * Represents a planet's resource classification.
  */
-public enum ResourceClassification {
+public enum ResourceClassification implements Serializable {
 
     NO_SPECIAL_RESOURCES(35),
 

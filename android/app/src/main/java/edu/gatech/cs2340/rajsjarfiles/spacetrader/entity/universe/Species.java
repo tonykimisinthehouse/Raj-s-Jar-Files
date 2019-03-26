@@ -1,11 +1,12 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  * Represents species
  */
-public enum Species {
+public enum Species implements Serializable {
 
     HUMANOID, // Human
     MACHINE, // Machine

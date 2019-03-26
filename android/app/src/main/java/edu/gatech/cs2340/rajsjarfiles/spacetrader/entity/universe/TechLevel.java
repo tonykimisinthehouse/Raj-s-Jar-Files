@@ -1,11 +1,12 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  * Represents a planet's technological level.
  */
-public enum TechLevel {
+public enum TechLevel implements Serializable {
     PRE_AGRICULTURE,
     AGRICULTURE,
     MEDIEVAL,

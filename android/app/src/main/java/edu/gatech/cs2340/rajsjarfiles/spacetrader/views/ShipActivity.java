@@ -9,7 +9,7 @@ import android.view.View;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
 
-public class ShipActivity extends AppCompatActivity {
+public class ShipActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

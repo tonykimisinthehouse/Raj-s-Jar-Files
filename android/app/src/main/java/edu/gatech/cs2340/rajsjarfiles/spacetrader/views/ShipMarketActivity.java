@@ -30,7 +30,7 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels.ShipMarketViewModel
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
 
-public class ShipMarketActivity extends AppCompatActivity {
+public class ShipMarketActivity extends BaseActivity {
 
     /**
      * View model for ShipMarket activity

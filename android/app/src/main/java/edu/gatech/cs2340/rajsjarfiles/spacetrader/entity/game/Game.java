@@ -1,11 +1,13 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game;
 
+import java.io.Serializable;
+
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Universe;
 
 /**
  * Represents a model of the game.
  */
-public class Game {
+public class Game implements Serializable {
     private GameDifficulty gameDiff;
 
     private Universe universe;
