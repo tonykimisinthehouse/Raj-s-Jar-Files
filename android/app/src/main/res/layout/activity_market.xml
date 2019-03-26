@@ -10,6 +10,58 @@
     android:padding="20dp"
     tools:context="edu.gatech.cs2340.rajsjarfiles.spacetrader.views.MarketActivity">
 
-    <!-- TODO add UI elements here -->
+    <ListView
+        android:id="@+id/selector_goods_for_sale"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="/////////////////// Goods for buying /////////////////////"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="18sp" />
+
+    <ListView
+        android:id="@+id/selector_goods_on_ship"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="/////////////////// Goods on ship /////////////////////"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/view_credit_count"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        android:textAlignment="center"
+        android:textSize="36sp"
+        android:text="$0" />
+
+    <!--
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5">
+
+        <Button
+            android:id="@+id/button_buy_goods"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="buyGoods"
+            android:text="$ Buy Goods" />
+
+        <Button
+            android:id="@+id/button_sell_goods"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="sellGoods"
+            android:text="^ Sell Goods" />
+
+    </LinearLayout>
+    -->
 
 </LinearLayout>

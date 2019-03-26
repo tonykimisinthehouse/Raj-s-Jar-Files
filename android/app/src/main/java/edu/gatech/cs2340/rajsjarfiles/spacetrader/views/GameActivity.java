@@ -28,7 +28,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void openMarket(View view) {
-        Intent intent = new Intent(view.getContext(), ShipMarketActivity.class);
+        Intent intent = new Intent(view.getContext(), MarketActivity.class);
         startActivity(intent);
     }
 
