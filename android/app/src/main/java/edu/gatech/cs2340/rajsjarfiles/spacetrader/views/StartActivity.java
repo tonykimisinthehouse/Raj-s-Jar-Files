@@ -93,6 +93,7 @@ public class StartActivity extends BaseActivity {
             Log.d("StartActivity-Load", Model.current.getPlayer().toString());
             Intent intent = new Intent(getApplicationContext(), GameActivity.class);
             startActivity(intent);
+            this.overridePendingTransition(0, 0);
         }
 
         viewModel = ViewModelProviders.of(this).get(StartViewModel.class);
