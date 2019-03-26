@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,24 +31,36 @@ public class GameActivity extends BaseActivity {
 
         // Indicators
         TextView planetNameIndicator = findViewById(R.id.indicator_planet_name);
-        TextView orbitRadiusIndicator = findViewById(R.id.indicator_orbit_radius);
+        TextView orbitRadiusIndicator = findViewById(
+                R.id.indicator_orbit_radius);
         TextView techLevelIndicator = findViewById(R.id.indicator_tech_level);
         TextView resourceIndicator = findViewById(R.id.indicator_resources);
         TextView eventIndicator = findViewById(R.id.indicator_event);
         TextView speciesIndicator = findViewById(R.id.indicator_species);
 
         planetNameIndicator.setText(viewModel.getPlanetName());
-        orbitRadiusIndicator.setText("Orbit Radius: " + String.valueOf(viewModel.getPlanetOrbitRadius()));
-        techLevelIndicator.setText("Tech Level: " + viewModel.getPlanetTechLevel());
-        resourceIndicator.setText("Resources: " + viewModel.getPlanetResources());
+        orbitRadiusIndicator.setText("Orbit Radius: "
+                + String.valueOf(viewModel.getPlanetOrbitRadius()));
+        techLevelIndicator.setText(
+                "Tech Level: " + viewModel.getPlanetTechLevel());
+        resourceIndicator.setText(
+                "Resources: " + viewModel.getPlanetResources());
         speciesIndicator.setText("Species: " + viewModel.getPlanetSpecies());
         eventIndicator.setText("Event: " + viewModel.getPlanetEvent());
 
         // Set filter on planet Image
         ImageView imageView = findViewById(R.id.imageView);
-        imageView.setColorFilter(Color.parseColor(viewModel.getPlanetColorHex()), PorterDuff.Mode.MULTIPLY); //Desert
+        imageView.setColorFilter(
+                Color.parseColor(
+                        viewModel.getPlanetColorHex()),
+                PorterDuff.Mode.MULTIPLY); //Desert
     }
 
+    /**
+     * Opens the market activity.
+     *
+     * @param view the current view
+     */
     public void openMarket(View view) {
         Intent intent = new Intent(view.getContext(), ShipMarketActivity.class);
         startActivity(intent);
