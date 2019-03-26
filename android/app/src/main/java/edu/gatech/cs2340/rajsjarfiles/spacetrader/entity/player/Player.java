@@ -377,7 +377,7 @@ public class Player implements Serializable {
          */
         public Player build() {
             if (this.planet == null) {
-                this.planet = Model.current.getGame().getUniverse().getRandomSolarSystem().getRandomPlanet();
+                this.planet = Model.getCurrent().getGame().getUniverse().getRandomSolarSystem().getRandomPlanet();
             }
             return new Player(this);
         }

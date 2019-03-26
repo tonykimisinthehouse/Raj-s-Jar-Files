@@ -23,21 +23,21 @@ public class GameViewModel extends AndroidViewModel {
      * @return the name of the planet the player is currently on
      */
     public String getPlanetName() {
-        return Model.current.getPlayer().getPlanet().getName();
+        return Model.getCurrent().getPlayer().getPlanet().getName();
     }
 
     /**
      * @return the orbit radius of the planet the player is currently on
      */
     public int getPlanetOrbitRadius() {
-        return Model.current.getPlayer().getPlanet().getOrbitRadius();
+        return Model.getCurrent().getPlayer().getPlanet().getOrbitRadius();
     }
 
     /**
      * @return the resources of the planet the player is currently on
      */
     public String getPlanetResources() {
-        return Model.current.getPlayer().
+        return Model.getCurrent().getPlayer().
                 getPlanet().getResourceClass().toString();
     }
 
@@ -45,14 +45,15 @@ public class GameViewModel extends AndroidViewModel {
      * @return the tech level of the planet the player is currently on
      */
     public String getPlanetTechLevel() {
-        return Model.current.getPlayer().getPlanet().getTechLevel().toString();
+        return Model.getCurrent().getPlayer().
+                getPlanet().getTechLevel().toString();
     }
 
     /**
      * @return the planet event of the planet the player is currently on
      */
     public String getPlanetEvent() {
-        return Model.current.getPlayer().
+        return Model.getCurrent().getPlayer().
                 getPlanet().getMarketplace().getEvent().toString();
     }
 
@@ -60,13 +61,15 @@ public class GameViewModel extends AndroidViewModel {
      * @return the species on the planet the player is currently on
      */
     public String getPlanetSpecies() {
-        return Model.current.getPlayer().getPlanet().getSpecies().toString();
+        return Model.getCurrent().getPlayer().
+                getPlanet().getSpecies().toString();
     }
 
     /**
      * @return the color of the planet the player is currently on
      */
     public String getPlanetColorHex() {
-        return Model.current.getPlayer().getPlanet().getHabitat().getColorHex();
+        return Model.getCurrent().getPlayer().
+                getPlanet().getHabitat().getColorHex();
     }
 }

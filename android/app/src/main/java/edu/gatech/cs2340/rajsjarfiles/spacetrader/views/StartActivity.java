@@ -3,7 +3,6 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.views;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -88,9 +87,9 @@ public class StartActivity extends BaseActivity {
         //load model initially
         Model model = ModelSaver.loadBinaryModel(this.getFilesDir().toString());
         if (model != null) {
-            Model.current = model;
-            Log.d("StartActivity-Load", Model.current.getGame().toString());
-            Log.d("StartActivity-Load", Model.current.getPlayer().toString());
+            Model.setCurrent(model);
+            Log.d("StartActivity-Load", Model.getCurrent().getGame().toString());
+            Log.d("StartActivity-Load", Model.getCurrent().getPlayer().toString());
             Intent intent = new Intent(getApplicationContext(), GameActivity.class);
             startActivity(intent);
             this.overridePendingTransition(0, 0);

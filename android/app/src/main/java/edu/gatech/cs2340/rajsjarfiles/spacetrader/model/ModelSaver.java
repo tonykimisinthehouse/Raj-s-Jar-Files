@@ -30,7 +30,7 @@ public class ModelSaver {
 
             ObjectOutputStream out = new ObjectOutputStream(
                     new FileOutputStream(file));
-            out.writeObject(Model.current);
+            out.writeObject(Model.getCurrent());
             out.close();
         } catch (IOException e) {
             Log.e("ModelSaver", "Error writing an entry from binary file", e);
@@ -56,7 +56,7 @@ public class ModelSaver {
             ObjectInputStream in = new ObjectInputStream(
                     new FileInputStream(file));
             model = (Model) in.readObject();
-            Model.current = model;
+            Model.setCurrent(model);
             in.close();
         } catch (IOException e) {
             Log.e("ModelSaver", "Error reading an entry from binary file", e);

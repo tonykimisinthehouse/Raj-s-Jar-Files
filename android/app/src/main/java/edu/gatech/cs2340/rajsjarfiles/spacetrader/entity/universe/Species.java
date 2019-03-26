@@ -21,7 +21,8 @@ public enum Species implements Serializable {
      */
     public static Species getRandomHabitableSpecies(Habitats habitats) {
         Random rand = new Random();
-        return habitats.habitableSpecies.get(rand.nextInt(habitats.habitableSpecies.size()));
+        return habitats.getHabitableSpecies().
+                get(rand.nextInt(habitats.getHabitableSpecies().size()));
     }
 }
 

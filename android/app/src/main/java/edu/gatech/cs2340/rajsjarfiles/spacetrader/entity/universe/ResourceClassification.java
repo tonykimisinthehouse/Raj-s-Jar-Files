@@ -69,7 +69,7 @@ public enum ResourceClassification implements Serializable {
         // Filter out resources that are possible to exists in this habitat
         for (ResourceClassification resource : ResourceClassification.values()) {
             if (resource != null &&
-                    !habitats.impossibleResources.contains(resource)) {
+                    !habitats.getImpossibleResources().contains(resource)) {
                 pr.add(resource);
             }
         }

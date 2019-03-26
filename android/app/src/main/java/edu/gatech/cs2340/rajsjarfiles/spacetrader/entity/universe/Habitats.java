@@ -23,7 +23,8 @@ public enum Habitats {
                     ResourceClassification.RICH_SOIL),
             "#0099ff"),
 
-    CONTINENTAL(Arrays.asList(Species.HUMANOID, Species.REPTILIAN, Species.FUNGOID, Species.MACHINE),
+    CONTINENTAL(Arrays.asList(Species.HUMANOID, Species.REPTILIAN,
+            Species.FUNGOID, Species.MACHINE),
                     null,
             "#33cc33"),
 
@@ -41,22 +42,43 @@ public enum Habitats {
             "#cc3300");
 
     // Store list of habitable species
-    ArrayList<Species> habitableSpecies = new ArrayList<>();
+    private ArrayList<Species> habitableSpecies = new ArrayList<>();
     // Store list of impossible resources
-    ArrayList<ResourceClassification> impossibleResources = new ArrayList<>();
+    private ArrayList<ResourceClassification> impossibleResources =
+            new ArrayList<>();
     // Color of the habitat in hex
-    String colorHex;
+    private String colorHex;
 
     /**
      * Constructor for enum class Habitats
      *
      * @param species list of species that can live in this habitats
-     * @param impossibleResource list of special resources that cannot exists in this habitats
+     * @param impossibleResource list of special
+     *                           resources that cannot exists in this habitats
+     * @param colorHex color tint of the planet
      */
-     Habitats(List<Species> species, List<ResourceClassification> impossibleResource, String colorHex) {
+    Habitats(List<Species> species,
+             List<ResourceClassification> impossibleResource,
+             String colorHex) {
         this.habitableSpecies.addAll(species);
-        if (impossibleResource != null) impossibleResources.addAll(impossibleResource);
+        if (impossibleResource != null) {
+            impossibleResources.addAll(impossibleResource);
+        }
         this.colorHex = colorHex;
+    }
+
+    /**
+     * @return the habitable species
+     */
+    public List<Species> getHabitableSpecies() {
+        return habitableSpecies;
+    }
+
+    /**
+     * @return the impossible resources
+     */
+    public List<ResourceClassification> getImpossibleResources() {
+        return impossibleResources;
     }
 
     /**
@@ -70,6 +92,9 @@ public enum Habitats {
         return rh[rand.nextInt(rh.length)];
     }
 
+    /**
+     * @return the color tint for the planet based on the habitat
+     */
     public String getColorHex() {
         return colorHex;
     }
