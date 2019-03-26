@@ -10,7 +10,7 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 /**
  * Represents the view model for Main Activity.
  */
-public class ShipMarketViewModel extends AndroidViewModel {
+public class MarketViewModel extends AndroidViewModel {
 
     /**
      * Backing model
@@ -22,7 +22,7 @@ public class ShipMarketViewModel extends AndroidViewModel {
      *
      * @param application represents the application context
      */
-    public ShipMarketViewModel(@NonNull Application application) {
+    public MarketViewModel(@NonNull Application application) {
         super(application);
     }
 
