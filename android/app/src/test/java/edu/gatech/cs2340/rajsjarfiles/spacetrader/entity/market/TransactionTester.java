@@ -121,7 +121,7 @@ public class TransactionTester {
                 .ship(new Ship(ShipType.BEETLE))
                 .build();
 
-        player.getShip().addGood(TradeGoods.ROBOTS, 10);
+        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.ROBOTS).quantity(10).build());
         assertTrue(player.getShip().hasGoods(TradeGoods.ROBOTS,10));
 
         // False since the player does not have much goods.
@@ -144,7 +144,7 @@ public class TransactionTester {
                 .ship(new Ship(ShipType.BEETLE))
                 .build();
 
-        player.getShip().addGood(TradeGoods.ROBOTS, 10);
+        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.ROBOTS).quantity(10).build());
         assertTrue(player.getShip().hasGoods(TradeGoods.ROBOTS,10));
 
         // False since the player does not have that goods.
@@ -167,7 +167,7 @@ public class TransactionTester {
                 .ship(new Ship(ShipType.BEETLE))
                 .build();
 
-        player.getShip().addGood(TradeGoods.ROBOTS, 10);
+        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.ROBOTS).quantity(10).build());
         assertTrue(player.getShip().hasGoods(TradeGoods.ROBOTS,10));
 
         // True since the player has goods.

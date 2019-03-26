@@ -39,15 +39,15 @@ public class Model {
         // Set singleton reference
         Model.current = this;
 
+        game = new Game(difficulty);
+
         player = new Player.PlayerBuilder(name)
                 .points(points)
                 .credits(credits)
                 .ship(ship)
                 .build();
 
-        game = new Game(difficulty);
         Log.i("Model", player.toString());
-//        Log.i("Model", game.toString());
         LogCustom.largeLog("Model", game.toString());
     }
 

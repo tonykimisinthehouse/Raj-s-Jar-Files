@@ -2,9 +2,13 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.views;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels.GameViewModel;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
@@ -25,6 +29,25 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
         viewModel = ViewModelProviders.of(this).get(GameViewModel.class);
+
+        // Indicators
+        TextView planetNameIndicator = findViewById(R.id.indicator_planet_name);
+        TextView orbitRadiusIndicator = findViewById(R.id.indicator_orbit_radius);
+        TextView techLevelIndicator = findViewById(R.id.indicator_tech_level);
+        TextView resourceIndicator = findViewById(R.id.indicator_resources);
+        TextView eventIndicator = findViewById(R.id.indicator_event);
+        TextView speciesIndicator = findViewById(R.id.indicator_species);
+
+        planetNameIndicator.setText(viewModel.getPlanetName());
+        orbitRadiusIndicator.setText("Orbit Radius: " + String.valueOf(viewModel.getPlanetOrbitRadius()));
+        techLevelIndicator.setText("Tech Level: " + viewModel.getPlanetTechLevel());
+        resourceIndicator.setText("Resources: " + viewModel.getPlanetResources());
+        speciesIndicator.setText("Species: " + viewModel.getPlanetSpecies());
+        eventIndicator.setText("Event: " + viewModel.getPlanetEvent());
+
+        // Set filter on planet Image
+        ImageView imageView = findViewById(R.id.imageView);
+        imageView.setColorFilter(Color.parseColor(viewModel.getPlanetColorHex()), PorterDuff.Mode.MULTIPLY); //Desert
     }
 
     public void openMarket(View view) {

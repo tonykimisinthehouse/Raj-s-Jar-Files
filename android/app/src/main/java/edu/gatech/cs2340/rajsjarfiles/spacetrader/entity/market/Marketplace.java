@@ -115,6 +115,10 @@ public class Marketplace{
         return techLevel;
     }
 
+    public Events getEvent() {
+        return event;
+    }
+
     /**
      * Getter for whole index of goods that this marketplace has.
      *

@@ -1,8 +1,11 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.views;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -21,7 +24,7 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.helper.ListViewItemCheckboxBaseAdapter;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.helper.ListViewItemDTO;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels.ShipMarketViewModel;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels.MarketViewModel;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
 
@@ -30,21 +33,24 @@ public class MarketActivity extends AppCompatActivity {
     /**
      * View model for ShipMarket activity
      */
-    private ShipMarketViewModel viewModel;
+    private MarketViewModel viewModel;
 
     private TextView viewCreditCount;
     private ListView viewGoodsForSale;
     private ListView viewGoodsOnShip;
+    private TextView viewCargoCapacity;
+    private TextView viewPlanetName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_market);
 
-        this.viewModel = ViewModelProviders.of(this).get(ShipMarketViewModel.class);
+        this.viewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
 
         this.assignViews();
         this.updateGoods();
+        this.alertDialog();
     }
 
     private void assignViews() {
@@ -53,6 +59,8 @@ public class MarketActivity extends AppCompatActivity {
         this.viewGoodsOnShip = findViewById(R.id.selector_goods_on_ship);
         this.viewGoodsForSale.setOnItemClickListener(listener);
         this.viewGoodsOnShip.setOnItemClickListener(listener);
+        this.viewCargoCapacity = findViewById(R.id.view_cargo_capacity);
+        this.viewPlanetName = findViewById(R.id.view_planet);
     }
 
     private final AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
@@ -108,6 +116,8 @@ public class MarketActivity extends AppCompatActivity {
         try {
             Player player = Model.current.getPlayer();
             int credits = player.getCredits();
+            int totalCargoCapacity = player.getShip().getCargoCapacity();
+            int availableCargoCapacity = player.getShip().getAvailableCargoCapacity();
             Collection<Item> goodsForSale = player.getPlanet().getMarketplace().getItems();
             Collection<Item> goodsOnShip = player.getShip().getCargoGoods();
 
@@ -141,9 +151,12 @@ public class MarketActivity extends AppCompatActivity {
             adapterGoodsOnShip.notifyDataSetChanged();
 
             // Set data on views
-            this.viewCreditCount.setText(credits + " credits");
+            this.viewCreditCount.setText("Credits: " + credits);
             this.viewGoodsForSale.setAdapter(adapterGoodsForSale);
             this.viewGoodsOnShip.setAdapter(adapterGoodsOnShip);
+
+            this.viewCargoCapacity.setText("Capacity: " + (totalCargoCapacity - availableCargoCapacity) + "/" + totalCargoCapacity);
+            this.viewPlanetName.setText(Model.current.getPlayer().getPlanet().getName() + " Marketplace");
         }
         catch (NullPointerException e) {
             Log.e("RAJ", e.getMessage());
@@ -160,4 +173,39 @@ public class MarketActivity extends AppCompatActivity {
         // TODO tell ship to sell
     }
 
+    private void alertDialog() {
+        // Show dialog alerting price increase
+        StringBuilder stringBuilder = new StringBuilder();
+
+        Player player = Model.current.getPlayer();
+        Collection<Item> goodsForSale = player.getPlanet().getMarketplace().getItems();
+        for (Item item : goodsForSale) {
+            if (item.getGood().getIE() == player.getPlanet().getMarketplace().getEvent()) {
+                int percentageIncrease = (item.getPrice() - item.getGood().getBasePrice()) / item.getGood().getBasePrice() * 100;
+                stringBuilder.append("- " + item.getGood().getName()+ " is in shortage. ("+ (percentageIncrease)+"% price increase)\n");
+            }
+        }
+
+        // Show dialog only when there is an surging item
+        if (stringBuilder.length() != 0) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("DUE TO " + player.getPlanet().getMarketplace().getEvent().toString() + ", FOLLOWING ITEMS ARE UNDER PRICE SURGE!");
+            builder.setMessage(stringBuilder.toString());
+            builder.setCancelable(true);
+            builder.setNegativeButton("Ok", new DialogInterface.OnClickListener(){
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast.makeText(getApplicationContext(), "Good Luck!", Toast.LENGTH_SHORT).show();
+                }
+            });
+            final AlertDialog dialog = builder.create();
+            dialog.setOnShowListener( new DialogInterface.OnShowListener() {
+                @Override
+                public void onShow(DialogInterface arg0) {
+                    dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.RED);
+                }
+            });
+            dialog.show();
+        }
+    }
 }

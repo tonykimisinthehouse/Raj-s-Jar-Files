@@ -5,11 +5,11 @@ import java.util.Random;
 public enum Events {
     DROUGHT,
     COLD,
-    CROPFAIL,
+    CROP_FAIL,
     WAR,
     BOREDOM,
     PLAGUE,
-    LACKOFWORKERS;
+    LACK_OF_WORKERS;
 
     public static Events getRandomEvent() {
         Random rand = new Random();

@@ -33,13 +33,14 @@ public class MarketTransactionValidator implements TransactionValidator {
         int quantityInOrder = order.getItem().getQuantity();
         Player playerInOrder = order.getInitiator();
 
-        int marketPrice = marketplace.getMarketPrice(goodInOrder);
-        int marketQuantity = marketplace.getMarketQuantity(goodInOrder);
+
 
         if (order.getTransactionType() == TransactionType.BUY) {
 
             // Check if the market place has good
             if (!hasGoods(order)) return false;
+
+            int marketPrice = marketplace.getMarketPrice(goodInOrder);
 
             // Check if the initiator has enough credits
             if (!playerInOrder.checkCreditEnough(marketPrice * quantityInOrder))return false;
@@ -64,9 +65,9 @@ public class MarketTransactionValidator implements TransactionValidator {
             if (!playerHasGoods(order)) return false;
 
             // Update price for selling goods
+            int marketPrice = marketplace.getMarketPrice(goodInOrder);
             order.getItem().setPrice(marketPrice);
 
-            // TODO what to do after the player sells good to the market?
             marketplace.getItem(goodInOrder).addQuantity(quantityInOrder);
 
             return true;

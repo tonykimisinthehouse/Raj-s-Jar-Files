@@ -17,7 +17,6 @@ public class Game {
      */
     public Game(GameDifficulty gameDiff) {
         this.gameDiff = gameDiff;
-
         universe = new Universe();
     }
 
@@ -35,9 +34,11 @@ public class Game {
         return universe;
     }
 
+
     @Override
     public String toString() {
         return "The game difficulty is set to " + getGameDiff().toString()
                 + ".\n" + universe.toString();
     }
+
 }
