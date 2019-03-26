@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
 import java.util.HashSet;
+import java.util.Random;
 
 /**
  * Represents the entire universe of the game.
@@ -37,6 +38,11 @@ public class Universe {
             }
             solarSystem[i] = new SolarSystem(name, coordinate);
         }
+    }
+
+    public SolarSystem getRandomSolarSystem() {
+        Random rand = new Random();
+        return solarSystem[rand.nextInt(solarSystem.length)];
     }
 
     @Override

@@ -1,6 +1,11 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
+import android.util.Log;
+
 import java.util.Random;
+
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Marketplace;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.utility.LogCustom;
 
 
 /**
@@ -15,6 +20,7 @@ public class Planet {
     private Habitats habitats;
     private Species species;
     private ResourceClassification resourceClass;
+    private Marketplace marketplace;
 
     public Planet(PlanetBuilder builder) {
         this.name = builder.name;
@@ -24,6 +30,7 @@ public class Planet {
         this.habitats = builder.habitats;
         this.species = builder.species;
         this.resourceClass = builder.resourceClass;
+        this.marketplace = builder.marketplace;
     }
 
     //no setters because the fields shouldn't change
@@ -63,6 +70,19 @@ public class Planet {
         return resourceClass;
     }
 
+    public Habitats getHabitat() {
+        return habitats;
+    }
+
+    public Species getSpecies() {
+        return species;
+    }
+
+    /**
+     * @return planet's market place
+     */
+    public Marketplace getMarketplace(){ return marketplace; }
+
     /**
      * Returns the "distance" in terms of orbit radius to another planet.
      *
@@ -75,6 +95,7 @@ public class Planet {
 
     @Override
     public String toString() {
+        LogCustom.largeLog("Market", marketplace.toString());
         return String.format("%-16s", name)
                 + "| Radius: " + radius
                 + String.format(", orbit radius: %2d", orbitRadius)
@@ -132,6 +153,8 @@ public class Planet {
         private Habitats habitats;
         private Species species;
         private ResourceClassification resourceClass;
+        private Marketplace marketplace;
+        private Events event;
 
         /**
          * Creates a planet with a given name, radius, and orbit radius (how far
@@ -143,11 +166,6 @@ public class Planet {
         public PlanetBuilder(String name, int orbitRadius) {
             this.name = name;
             this.orbitRadius = orbitRadius;
-            this.radius = getRandomRadius();
-            this.techLevel = TechLevel.getRandomTechLevel();
-            this.habitats = Habitats.getRandomHabitat();
-            this.resourceClass = ResourceClassification.getRandomResourceClass(this.habitats);
-            this.species = Species.getRandomHabitableSpecies(this.habitats);
         }
 
         /**
@@ -211,6 +229,25 @@ public class Planet {
          * @return planet
          */
         public Planet build() {
+            if (this.habitats == null) {
+                this.habitats = Habitats.getRandomHabitat();
+                this.resourceClass = ResourceClassification.getRandomResourceClass(this.habitats);
+                this.species = Species.getRandomHabitableSpecies(this.habitats);
+            }
+            if (this.techLevel == null) {
+                this.techLevel = TechLevel.getRandomTechLevel();
+            }
+            if (this.event == null) {
+                this.event = Events.getRandomEvent();
+            }
+            if (this.marketplace == null) {
+                this.marketplace = new Marketplace(
+                        this.name,
+                        this.techLevel,
+                        this.event,
+                        this.resourceClass
+                );
+            }
             return new Planet(this);
         }
 

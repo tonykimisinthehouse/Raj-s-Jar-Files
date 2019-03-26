@@ -42,6 +42,16 @@ public class SolarSystem {
         return coordinate;
     }
 
+    /**
+     * Get random planet from the solar system
+     *
+     * @return random planet
+     */
+    public Planet getRandomPlanet() {
+        Random rand = new Random();
+        return planets[rand.nextInt(planets.length)];
+    }
+
     @Override
     public String toString() {
         String ret = "";
@@ -51,4 +61,6 @@ public class SolarSystem {
         }
         return ret;
     }
+
+
 }

@@ -10,12 +10,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".views.ShipActivity"
+            android:label="@string/title_activity_ship"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".views.MarketActivity"
+            android:label="@string/title_activity_market"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".views.TravelActivity"
+            android:label="@string/title_activity_travel"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".views.GameActivity"
             android:label="@string/title_activity_game"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".views.MainActivity"
-            android:label="@string/title_activity_main"
+            android:name=".views.StartActivity"
+            android:label="@string/title_activity_start"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
