@@ -20,6 +20,11 @@ public class Planet {
     private ResourceClassification resourceClass;
     private Marketplace marketplace;
 
+    /**
+     * Creates a planet using a planet builder.
+     *
+     * @param builder the planet builder
+     */
     public Planet(PlanetBuilder builder) {
         this.name = builder.name;
         this.radius = builder.radius;
@@ -68,10 +73,16 @@ public class Planet {
         return resourceClass;
     }
 
+    /**
+     * @return the planet's habitat
+     */
     public Habitats getHabitat() {
         return habitats;
     }
 
+    /**
+     * @return the species on the planet
+     */
     public Species getSpecies() {
         return species;
     }
@@ -79,7 +90,9 @@ public class Planet {
     /**
      * @return planet's market place
      */
-    public Marketplace getMarketplace(){ return marketplace; }
+    public Marketplace getMarketplace() {
+        return marketplace;
+    }
 
     /**
      * Returns the "distance" in terms of orbit radius to another planet.
@@ -98,7 +111,8 @@ public class Planet {
                 + "| Radius: " + radius
                 + String.format(", orbit radius: %2d", orbitRadius)
                 + String.format(" | tech level: %-20s", techLevel.toString())
-                + String.format(" | resource class: %-20s",resourceClass.toString())
+                + String.format(" | resource class: %-20s",
+                resourceClass.toString())
                 + String.format(" | species: %-10s", species.toString())
                 + String.format(" | habitat: %s", habitats.toString())
                 + ".";
@@ -229,7 +243,8 @@ public class Planet {
         public Planet build() {
             if (this.habitats == null) {
                 this.habitats = Habitats.getRandomHabitat();
-                this.resourceClass = ResourceClassification.getRandomResourceClass(this.habitats);
+                this.resourceClass = ResourceClassification.
+                        getRandomResourceClass(this.habitats);
                 this.species = Species.getRandomHabitableSpecies(this.habitats);
             }
             if (this.techLevel == null) {

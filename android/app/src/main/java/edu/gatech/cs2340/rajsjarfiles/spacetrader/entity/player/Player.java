@@ -71,7 +71,8 @@ public class Player {
         TransactionResult newTransactionResult = planet.getMarketplace()
                 .validateTransaction(newTransactionOrder);
 
-        // Use credit, Get Good to cargo based on the transaction result (success, fail)
+        // Use credit, Get Good to cargo based on the transaction
+        // result (success, fail)
         if (newTransactionResult.getisTransactionSuccess()) {
             Item item = newTransactionResult.getItem();
             // Add good to the cargo
@@ -139,7 +140,7 @@ public class Player {
      * @return boolean of whether the user has enough credit
      */
     public Boolean checkCreditEnough(int marketPrice) {
-        if (marketPrice > credits ) {
+        if (marketPrice > credits) {
             return false;
         } else {
             return true;
@@ -320,7 +321,7 @@ public class Player {
          */
         public PlayerBuilder(String name) {
             this.name = name;
-            this.points = new int[] {4,4,4,4};
+            this.points = new int[] {4, 4, 4, 4};
             this.credits = 1000;
             this.ship = new Ship(ShipType.GNAT);
             this.planet = null;
@@ -375,7 +376,8 @@ public class Player {
          */
         public Player build() {
             if (this.planet == null) {
-                this.planet = Model.getCurrent().getGame().getUniverse().getRandomSolarSystem().getRandomPlanet();
+                this.planet = Model.getCurrent().getGame().getUniverse().
+                        getRandomSolarSystem().getRandomPlanet();
             }
             return new Player(this);
         }

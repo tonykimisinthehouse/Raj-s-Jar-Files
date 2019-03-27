@@ -80,7 +80,8 @@ public class Ship {
         if (cargo.containsKey(good)) {
             cargo.get(good).addQuantity(quantity);
         } else {
-            cargo.put(good, new Item.ItemBuilder(good).price(price).quantity(quantity).build());
+            cargo.put(good, new Item.ItemBuilder(good).price(price).
+                    quantity(quantity).build());
         }
         usedCap += quantity;
     }
@@ -99,6 +100,13 @@ public class Ship {
         }
     }
 
+    /**
+     * Determines if the ship has a certain number of a good
+     *
+     * @param good the good
+     * @param quantity the number of goods
+     * @return whether or not the ship has that many goods
+     */
     public boolean hasGoods(Good good, int quantity) {
         if (cargo.containsKey(good)) {
             if (cargo.get(good).getQuantity() >= quantity) {
@@ -138,6 +146,9 @@ public class Ship {
         return this.shipType == s.shipType;
     }
 
+    /**
+     * @return a collection of the ship's cargo items
+     */
     public Collection<Item> getCargoGoods() {
         Collection<Item> items = new ArrayList<>();
         for (Good good : this.cargo.keySet()) {

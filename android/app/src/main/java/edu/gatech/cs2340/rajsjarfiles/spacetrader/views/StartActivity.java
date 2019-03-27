@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,7 +18,6 @@ import java.util.Arrays;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.GameDifficulty;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels.StartViewModel;
 
 /**
@@ -46,14 +44,17 @@ public class StartActivity extends BaseActivity {
      *
      * @param editText represents the EditText in activity_start.xml
      * @param index indicates the type of skill points
-     * @return
+     * @return the new TextWatcher
      */
-    private TextWatcher getTextWatcher(final EditText editText, final int index) {
+    private TextWatcher getTextWatcher(
+            final EditText editText, final int index) {
         return new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+            public void beforeTextChanged(
+                    CharSequence charSequence, int i, int i1, int i2) { }
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+            public void onTextChanged(
+                    CharSequence charSequence, int i, int i1, int i2) { }
             @Override
             public void afterTextChanged(Editable editable) {
                 validateCreditEntries(editText, index);
@@ -62,7 +63,9 @@ public class StartActivity extends BaseActivity {
     }
 
     /**
-     * Helper method that update remaining credit indicator based on the remaining skill points
+     * Helper method that update remaining credit indicator based on
+     * the remaining skill points
+     *
      * @param editText represents the EditText in activity_start.xml
      * @param index indicates the type of skill points
      */
@@ -74,7 +77,8 @@ public class StartActivity extends BaseActivity {
         } else if (result == 0) {
             creditIndicator.setText("You have no pts remaining");
         } else {
-            creditIndicator.setText("You have " + String.valueOf(result) + " pts remaining");
+            creditIndicator.setText(
+                    "You have " + String.valueOf(result) + " pts remaining");
         }
     }
 
@@ -90,21 +94,27 @@ public class StartActivity extends BaseActivity {
         editPlayerName = findViewById(R.id.player_name_input);
 
         editPilotPoints = findViewById(R.id.pilot_skill_input);
-        editPilotPoints.addTextChangedListener(getTextWatcher(editPilotPoints, 0));
+        editPilotPoints.addTextChangedListener(
+                getTextWatcher(editPilotPoints, 0));
         editFighterPoints = findViewById(R.id.fighter_skill_input);
-        editFighterPoints.addTextChangedListener(getTextWatcher(editFighterPoints, 1));
+        editFighterPoints.addTextChangedListener(
+                getTextWatcher(editFighterPoints, 1));
         editTraderPoints = findViewById(R.id.trader_skill_input);
-        editTraderPoints.addTextChangedListener(getTextWatcher(editTraderPoints, 2));
+        editTraderPoints.addTextChangedListener(
+                getTextWatcher(editTraderPoints, 2));
         editEngineerPoints = findViewById(R.id.engineer_skill_input);
-        editEngineerPoints.addTextChangedListener(getTextWatcher(editEngineerPoints, 3));
+        editEngineerPoints.addTextChangedListener(
+                getTextWatcher(editEngineerPoints, 3));
         difficultySpinner = findViewById(R.id.difficulty_spinner);
 
         /*
          * Set up the dropdown menu for the spinner
          */
-        ArrayAdapter<GameDifficulty> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,
+        ArrayAdapter<GameDifficulty> adapter = new ArrayAdapter<>(
+                this, android.R.layout.simple_spinner_dropdown_item,
                 Arrays.asList(GameDifficulty.values()));
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(
+                android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(adapter);
 
         Button submitButton = (Button) findViewById(R.id.submit_button);
@@ -113,7 +123,7 @@ public class StartActivity extends BaseActivity {
     /**
      * Method for hooking up the view with viewmodel that does the logic.
      *
-     * @param view
+     * @param view the current view
      */
     public void onSave(View view) {
         Boolean isValid = viewModel.isValid(

@@ -66,10 +66,16 @@ public class Model {
         Model.current = current;
     }
 
+    /**
+     * @return the player object
+     */
     public Player getPlayer() {
         return this.player;
     }
 
+    /**
+     * @return the game object
+     */
     public Game getGame() {
         return this.game;
     }
