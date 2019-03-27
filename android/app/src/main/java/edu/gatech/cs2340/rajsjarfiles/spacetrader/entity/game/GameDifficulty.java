@@ -1,11 +1,9 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game;
 
-import java.io.Serializable;
-
 /**
  * Represents game difficulty.
  */
-public enum GameDifficulty implements Serializable {
+public enum GameDifficulty {
     BEGINNER,
     EASY,
     NORMAL,

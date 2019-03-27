@@ -1,11 +1,9 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market;
 
-import java.io.Serializable;
-
 /**
  * Represents an item that can be sold on a planet.
  */
-public class Item implements Serializable {
+public class Item {
 
     private Good good; //Types of good
     private int quantity; //Quantity of good

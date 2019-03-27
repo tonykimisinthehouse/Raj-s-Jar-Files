@@ -1,6 +1,5 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -11,7 +10,7 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
 /**
  * Represents a ship that a character or enemy can use.
  */
-public class Ship implements Serializable {
+public class Ship {
     private ShipType shipType;
     private HashMap<Good, Item> cargo;
 

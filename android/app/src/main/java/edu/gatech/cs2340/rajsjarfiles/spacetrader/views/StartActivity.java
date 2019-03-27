@@ -20,7 +20,6 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.GameDifficulty;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.ModelSaver;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels.StartViewModel;
 
 /**
@@ -83,17 +82,6 @@ public class StartActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-
-        //load model initially
-        Model model = ModelSaver.loadBinaryModel(this.getFilesDir().toString());
-        if (model != null) {
-            Model.setCurrent(model);
-            Log.d("StartActivity-Load", Model.getCurrent().getGame().toString());
-            Log.d("StartActivity-Load", Model.getCurrent().getPlayer().toString());
-            Intent intent = new Intent(getApplicationContext(), GameActivity.class);
-            startActivity(intent);
-            this.overridePendingTransition(0, 0);
-        }
 
         viewModel = ViewModelProviders.of(this).get(StartViewModel.class);
         /*

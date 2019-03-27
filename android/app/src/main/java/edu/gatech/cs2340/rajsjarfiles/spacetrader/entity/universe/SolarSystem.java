@@ -1,12 +1,11 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
-import java.io.Serializable;
 import java.util.Random;
 
 /**
  * Represents a solar system in the universe.
  */
-public class SolarSystem implements Serializable {
+public class SolarSystem {
     public static final int MIN_PLANETS = 1;
     public static final int MAX_PLANETS = 10;
 

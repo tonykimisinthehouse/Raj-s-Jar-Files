@@ -1,12 +1,11 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
-import java.io.Serializable;
 import java.util.Random;
 
 /**
  * Represents a coordinate in the universe.
  */
-public class Coordinate implements Serializable {
+public class Coordinate {
     private int x;
     private int y;
     private static final int MAX_X = 150;
