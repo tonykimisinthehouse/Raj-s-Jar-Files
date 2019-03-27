@@ -44,7 +44,7 @@ public class TransactionOrder {
     /**
      * Get initiator of this transaction
      *
-     * @return
+     * @return the initiator
      */
     public Player getInitiator() {
         return initiator;
@@ -53,7 +53,7 @@ public class TransactionOrder {
     /**
      * Get Transaction type of this transaction
      *
-     * @return
+     * @return the type
      */
     public TransactionType getTransactionType() {
         return transactionType;

@@ -36,9 +36,8 @@ public enum TradeGoods implements Good {
             .IE(Events.BOREDOM)
             .CR(ResourceClassification.ARTISTIC)
             .ER(null)
-            .MTL(160).MTH(270))
-    ,
-    FIREARMS(new TradeGoodsBuilder("Firearms")
+            .MTL(160).MTH(270)
+    ), FIREARMS(new TradeGoodsBuilder("Firearms")
             .MTLP(3).MTLU(1).TTP(5).BasePrice(1250).IPL(-75).Var(100)
             .IE(Events.WAR)
             .CR(ResourceClassification.WARLIKE)
@@ -148,7 +147,9 @@ public enum TradeGoods implements Good {
         return TTP;
     }
 
-    public int getBasePrice() { return BasePrice; }
+    public int getBasePrice() {
+        return BasePrice;
+    }
 
     public int getIPL() {
         return IPL;
@@ -186,7 +187,7 @@ public enum TradeGoods implements Good {
     /**
      * Builder for TradeGoods
      */
-    private static class TradeGoodsBuilder{
+    private static class TradeGoodsBuilder {
         private String name;
         private int MTLP;
         private int MTLU;
