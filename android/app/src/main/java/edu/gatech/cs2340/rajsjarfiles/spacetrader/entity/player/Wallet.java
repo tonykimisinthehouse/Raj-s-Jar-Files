@@ -11,10 +11,12 @@ public class Wallet {
     private int credits;
     private Player owner;
 
+    ///////////////////////////// CONSTRUCTOR /////////////////////////////
     Wallet(int credits) {
         this.credits = credits;
     }
 
+    ///////////////////////////// BASE OPERATION /////////////////////////////
     /**
      * Method that allows player to buy certain good.
      *
@@ -78,6 +80,8 @@ public class Wallet {
         return newTransactionResult.getisTransactionSuccess();
     }
 
+
+    ///////////////////////////// OWNER OPERATION /////////////////////////////
     public void setOwner(Player owner) {
         this.owner = owner;
     }
@@ -86,6 +90,7 @@ public class Wallet {
         return owner;
     }
 
+    ///////////////////////////// CREDIT OPERATION /////////////////////////////
     /**
      * @return the player's credits
      */

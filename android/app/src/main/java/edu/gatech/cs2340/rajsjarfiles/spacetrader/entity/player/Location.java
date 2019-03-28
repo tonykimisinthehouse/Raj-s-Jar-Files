@@ -31,7 +31,7 @@ public class Location {
      *
      * @param planet that the player is on.
      */
-    public void setPlanet(Planet planet) {
+    private void setPlanet(Planet planet) {
         this.planet = planet;
     }
 

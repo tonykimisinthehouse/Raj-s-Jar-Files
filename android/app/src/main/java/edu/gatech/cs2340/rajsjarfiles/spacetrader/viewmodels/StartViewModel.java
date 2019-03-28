@@ -17,8 +17,6 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
  */
 public class StartViewModel extends AndroidViewModel {
     public Model model;
-    // TODO testing credit
-    int defaultCredit = 999999;
     private static final int MAX_CREDIT = 16;
     private int[] points = new int[4];
 
@@ -102,7 +100,7 @@ public class StartViewModel extends AndroidViewModel {
     public void createNewModel(EditText editTextName, Spinner difficultySpinner) {
         String playerName = editTextName.getText().toString();
         GameDifficulty difficulty = (GameDifficulty) difficultySpinner.getSelectedItem();
-        model = new Model(playerName, points, defaultCredit, new Ship(), difficulty);
+        model = new Model(playerName, points, new Ship(), difficulty);
     }
 
     /**

@@ -13,7 +13,6 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
  */
 public class Model {
     private static Model current;
-
     private Player player;
     private Game game;
 
@@ -29,7 +28,6 @@ public class Model {
     public Model(
             String name,
             int[] points,
-            int credits,
             Ship ship,
             GameDifficulty difficulty) {
 
@@ -40,7 +38,6 @@ public class Model {
 
         player = new Player.PlayerBuilder(name)
                 .points(points)
-                .credits(credits)
                 .ship(ship)
                 .build();
 

@@ -40,6 +40,7 @@ public class Player {
 //        }
 //    }
 
+    ///////////////////////////// CONSTRUCTORS /////////////////////////////
     /**
      * Player constructor with all arguments.
      *
@@ -53,6 +54,7 @@ public class Player {
         setLocation(builder.location);
     }
 
+    ///////////////////////////// SHIP OPERATION /////////////////////////////
     /**
      * Makes sure the user cannot buy more goods than the cargo capacity
      *
@@ -67,6 +69,55 @@ public class Player {
         }
     }
 
+    /**
+     * @return the player's ship
+     */
+    public Ship getShip() {
+        return ship;
+    }
+
+    /**
+     * Sets the player's ship to a new ship.
+     *
+     * @param ship the new ship
+     * @throws java.lang.IllegalArgumentException when ship is null
+     */
+    public void setShip(Ship ship) {
+        if (ship == null) {
+            throw new IllegalArgumentException(
+                    "Cannot set ship to null with this method. Use setNoShip()."
+            );
+        }
+        this.ship = ship;
+    }
+
+    /**
+     * Sets ship to null if a player has no ship.
+     */
+    public void setNoShip() {
+        this.ship = null;
+    }
+
+    ///////////////////////////// WALLET OPERATION /////////////////////////////
+    public Wallet getWallet() {
+        return this.wallet;
+    }
+
+    public void setWallet(Wallet wallet) {
+        this.wallet = wallet;
+        this.wallet.setOwner(this);
+    }
+
+    ///////////////////////////// LOCATION OPERATION /////////////////////////////
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public Location getLocation() {
+        return this.location;
+    }
+
+    ///////////////////////////// PLAYER ATTRIBUTES /////////////////////////////
     /**
      * @return the player's name
      */
@@ -140,52 +191,6 @@ public class Player {
         this.points = points;
     }
 
-    /**
-     * @return the player's ship
-     */
-    public Ship getShip() {
-        return ship;
-    }
-
-    /**
-     * Sets the player's ship to a new ship.
-     *
-     * @param ship the new ship
-     * @throws java.lang.IllegalArgumentException when ship is null
-     */
-    public void setShip(Ship ship) {
-        if (ship == null) {
-            throw new IllegalArgumentException(
-                    "Cannot set ship to null with this method. Use setNoShip()."
-            );
-        }
-        this.ship = ship;
-    }
-
-    /**
-     * Sets ship to null if a player has no ship.
-     */
-    public void setNoShip() {
-        this.ship = null;
-    }
-
-    public Wallet getWallet() {
-        return this.wallet;
-    }
-
-    public void setWallet(Wallet wallet) {
-        this.wallet = wallet;
-        this.wallet.setOwner(this);
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
-    public Location getLocation() {
-        return this.location;
-    }
-
     @Override
     public String toString() {
         return "The player's name is " + getName() + " with stats:\n"
@@ -218,7 +223,7 @@ public class Player {
             // Default Values
             this.name = name;
             this.points = new int[] {4, 4, 4, 4};
-            this.wallet = new Wallet(1000);
+            this.wallet = new Wallet(9999); //TODO STUB CREDIT AMOUNT
             this.ship = new Ship(ShipType.GNAT);
             this.location = new Location();
         }
@@ -252,16 +257,6 @@ public class Player {
          */
         public PlayerBuilder ship(Ship ship) {
             this.ship = ship;
-            return this;
-        }
-
-        /**
-         * Sets the builder's planet.
-         * @param planet planet
-         * @return the builder object
-         */
-        public PlayerBuilder planet(Planet planet) {
-            this.location.setPlanet(planet);
             return this;
         }
 
