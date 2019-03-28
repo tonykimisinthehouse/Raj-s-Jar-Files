@@ -16,6 +16,7 @@ public class Ship {
 
     private int totalCap;
     private int usedCap;
+    private int fuel;
 
     /**
      * Default constructor that sets ShipType to GNAT.
@@ -44,6 +45,18 @@ public class Ship {
         this.shipType = shipType;
         totalCap =  cargoSize;
         usedCap = 0;
+        fuel = 999999; //TODO STUB FUEL AMOUNT
+    }
+
+    public boolean hasFuels(int requiredFuel) {
+        return fuel >= requiredFuel;
+    }
+
+
+    public void subFuel(int fuelUsed) {
+        if (hasFuels(fuelUsed)) {
+            fuel -= fuelUsed;
+        }
     }
 
     /**
