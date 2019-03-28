@@ -26,6 +26,32 @@ public class Location {
         this.solarSystem = solarSystem;
     }
 
+    public SolarSystem getSolarSystem() {
+        return this.solarSystem;
+    }
+
+    public int checkIfTravelPossible (SolarSystem destinationSS, Planet destinationP) {
+        // Yes possible (between planet)
+        if (checkIfTravelInSS(destinationSS)) {
+            return 0;
+        } else {
+            if (planet.getIsWarpZone()) {
+                // Yes possible (between solar system)
+                return 1;
+            }
+        }
+        return -1;
+    }
+
+    private boolean checkIfTravelInSS (SolarSystem destinationSS) {
+        return solarSystem.equals(destinationSS);
+    }
+
+    public int calculateFuelRq (Planet destinationP) {
+        int distance = planet.getDist(destinationP);
+        return distance * 5;
+    }
+
     /**
      * Setter for planet which the player is on.
      *

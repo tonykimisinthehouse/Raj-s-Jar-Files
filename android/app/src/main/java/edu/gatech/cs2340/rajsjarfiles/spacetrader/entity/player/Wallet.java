@@ -80,7 +80,6 @@ public class Wallet {
         return newTransactionResult.getisTransactionSuccess();
     }
 
-
     ///////////////////////////// OWNER OPERATION /////////////////////////////
     public void setOwner(Player owner) {
         this.owner = owner;
@@ -126,7 +125,7 @@ public class Wallet {
      *
      * @param amount of credit earned.
      */
-    private void useCredits(int amount) {
+    public void useCredits(int amount) {
         credits -= amount;
     }
 

@@ -27,6 +27,19 @@ public class SolarSystem {
         this.coordinate = coordinate;
         planets = generatePlanets(rand.nextInt(
                 MAX_PLANETS - MIN_PLANETS + 1) + MIN_PLANETS);
+        assignWarpZone();
+    }
+
+    private void assignWarpZone() {
+        int maxRadius = Integer.MIN_VALUE;
+        Planet maxPlanet = planets[0];
+        for(Planet planet : planets) {
+            if (planet.getRadius() > maxRadius) {
+                maxRadius = planet.getRadius();
+                maxPlanet = planet;
+            }
+        }
+        maxPlanet.setIsWarpZone(true);
     }
 
     /**
@@ -73,6 +86,15 @@ public class SolarSystem {
         return planets[rand.nextInt(planets.length)];
     }
 
+    public Planet getPlanetWithWarp() {
+        for (Planet planet : planets) {
+            if (planet.getIsWarpZone()) {
+                return planet;
+            }
+        }
+        return planets[0];
+    }
+
     @Override
     public String toString() {
         String ret = "";
@@ -83,4 +105,18 @@ public class SolarSystem {
         }
         return ret;
     }
+
+    @Override
+    public boolean equals(Object that) {
+        if (that == this) {
+            return true;
+        }
+        if (!(that instanceof Coordinate)) {
+            return false;
+        }
+        SolarSystem ss = (SolarSystem) that;
+        return this.name == ss.name
+                && this.getCoordinate().equals(ss.getCoordinate());
+    }
+
 }

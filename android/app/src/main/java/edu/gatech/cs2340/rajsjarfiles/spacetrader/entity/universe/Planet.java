@@ -3,6 +3,7 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 import java.util.Random;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Marketplace;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.utility.LogCustom;
 
 
@@ -11,9 +12,11 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.utility.LogCustom;
  */
 public class Planet {
     private String name;
+
     private int radius;         //radius of planet itself
     private int orbitRadius;    //distance from center
     private int orbitAngle;     //angle from center
+    private boolean isWarpZone = false;
 
     private TechLevel techLevel;
     private Habitats habitats;
@@ -23,6 +26,7 @@ public class Planet {
 
     static Random rand = new Random();
 
+    ///////////////////////////// CONSTRUCTOR /////////////////////////////
     /**
      * Creates a planet using a planet builder.
      *
@@ -42,6 +46,7 @@ public class Planet {
 
     //no setters because the fields shouldn't change
 
+    ///////////////////////////// PLANET INFO /////////////////////////////
     /**
      * @return the planet's name
      */
@@ -67,6 +72,15 @@ public class Planet {
         return orbitAngle;
     }
 
+    public void setIsWarpZone(Boolean bool) {
+        this.isWarpZone = bool;
+    }
+
+    public boolean getIsWarpZone() {
+        return isWarpZone;
+    }
+
+    ///////////////////////////// PLANET SPECIFICATION /////////////////////////////
     /**
      * @return the planet's tech level
      */
@@ -102,6 +116,8 @@ public class Planet {
         return marketplace;
     }
 
+
+    ///////////////////////////// PLANET UTILITY /////////////////////////////
     /**
      * Returns the "distance" in terms of orbit radius to another planet.
      *
@@ -120,6 +136,18 @@ public class Planet {
         return c;
     }
 
+    /**
+     * Returns the distance between two given planets.
+     *
+     * @param p1 the first planet
+     * @param p2 the second planet
+     * @return the distance between the two planets
+     */
+    public static int distBetween(Planet p1, Planet p2) {
+        return p1.getDist(p2);
+    }
+
+    ///////////////////////////// OVERRIDE FUNCTION /////////////////////////////
     @Override
     public String toString() {
         LogCustom.largeLog("Market", marketplace.toString());
@@ -134,15 +162,17 @@ public class Planet {
                 + ".";
     }
 
-    /**
-     * Returns the distance between two given planets.
-     *
-     * @param p1 the first planet
-     * @param p2 the second planet
-     * @return the distance between the two planets
-     */
-    public static int distBetween(Planet p1, Planet p2) {
-        return p1.getDist(p2);
+    @Override
+    public boolean equals(Object that) {
+        if (that == this) {
+            return true;
+        }
+        if (!(that instanceof Coordinate)) {
+            return false;
+        }
+        Planet p = (Planet) that;
+        return this.name == p.name
+                && this.radius == p.radius;
     }
 
     /**
