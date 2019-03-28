@@ -38,15 +38,22 @@ public class MarketTransactionValidator implements TransactionValidator {
         if (order.getTransactionType() == TransactionType.BUY) {
 
             // Check if the market place has good
-            if (!hasGoods(order)) return false;
+            if (!hasGoods(order)) {
+                return false;
+            }
 
             int marketPrice = marketplace.getMarketPrice(goodInOrder);
 
             // Check if the initiator has enough credits
-            if (!playerInOrder.checkCreditEnough(marketPrice * quantityInOrder))return false;
+            if (!playerInOrder.checkCreditEnough(
+                    marketPrice * quantityInOrder)) {
+                return false;
+            }
 
             // Check if the initiator has enough cargo capacity
-            if (!playerInOrder.checkCargoCapacityEnough(quantityInOrder)) return false;
+            if (!playerInOrder.checkCargoCapacityEnough(quantityInOrder)) {
+                return false;
+            }
 
             // Set a market price to the good that the player is trying to buy
             order.getItem().setPrice(marketPrice);
@@ -56,13 +63,17 @@ public class MarketTransactionValidator implements TransactionValidator {
 
             return true;
 
-        } else{
+        } else {
 
             // If the good can be sold in certain market
-            if (!isSellPossible(order)) return false;
+            if (!isSellPossible(order)) {
+                return false;
+            }
 
             // If the player has goods to sell
-            if (!playerHasGoods(order)) return false;
+            if (!playerHasGoods(order)) {
+                return false;
+            }
 
             // Update price for selling goods
             int marketPrice = marketplace.getMarketPrice(goodInOrder);
@@ -81,7 +92,8 @@ public class MarketTransactionValidator implements TransactionValidator {
      */
     public TransactionResult validateNTransaction(TransactionOrder order) {
         Boolean isTransSuccess = validate(order);
-        TransactionResult result = new TransactionResult(isTransSuccess, order.getItem());
+        TransactionResult result =
+                new TransactionResult(isTransSuccess, order.getItem());
         return result;
     }
 
@@ -93,7 +105,8 @@ public class MarketTransactionValidator implements TransactionValidator {
     private boolean hasGoods(TransactionOrder order) {
         Good good = order.getItem().getGood();
         if (marketplace.getTradeGoodsInMarket().containsKey(good)) {
-            return marketplace.getItem(good).getQuantity() >= order.getItem().getQuantity();
+            return marketplace.getItem(good).getQuantity()
+                    >= order.getItem().getQuantity();
         }
         return false;
     }
@@ -109,7 +122,9 @@ public class MarketTransactionValidator implements TransactionValidator {
     }
 
     /**
-     * Check if the player has enough goods that they demand on their transaction order.
+     * Check if the player has enough goods that they
+     * demand on their transaction order.
+     * 
      * @param order transaction order
      * @return true if the player has enough goods that can sell.
      */

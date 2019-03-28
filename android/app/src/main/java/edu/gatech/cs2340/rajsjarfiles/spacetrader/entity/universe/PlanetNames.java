@@ -168,6 +168,12 @@ public class PlanetNames {
         return name;
     }
 
+    /**
+     * Generates a certain number of names.
+     *
+     * @param numOfNames the amount of names
+     * @return an array of the names
+     */
     public static String[] generateName(int numOfNames) {
         String[] nameList = new String[numOfNames];
         HashSet<String> nameSet = new HashSet<>();

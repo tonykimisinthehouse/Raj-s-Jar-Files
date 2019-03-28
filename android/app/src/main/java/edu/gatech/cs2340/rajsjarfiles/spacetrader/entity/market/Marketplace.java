@@ -13,10 +13,10 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.TechLevel;
 
 
 /**
- *  Representation of a Planet's Marketplace based on the planet's tech level and trade good's
- *  attributes
+ *  Representation of a Planet's Marketplace based on the planet's
+ *  tech level and trade good's attributes
  */
-public class Marketplace{
+public class Marketplace {
 
     private static Random rand = new Random();
 
@@ -36,8 +36,8 @@ public class Marketplace{
      * @param event events
      * @param resource resource class
      */
-    public Marketplace(String pn,
-                       TechLevel techLevel, Events event, ResourceClassification resource) {
+    public Marketplace(String pn, TechLevel techLevel,
+                       Events event, ResourceClassification resource) {
 
         this.planetName = pn;
         this.techLevel = techLevel;
@@ -59,11 +59,18 @@ public class Marketplace{
         }
     }
 
+    /**
+     * Calcuate the price of a good based on all the factors.
+     *
+     * @param good the good
+     * @return the price of the good
+     */
     private int calculatePrice(Good good) {
         int basePrice = good.getBasePrice();
-        int dynamicPrice = good.getIPL() * (techLevel.ordinal() - good.getMTLP());
+        int dynamicPrice = good.getIPL()
+                * (techLevel.ordinal() - good.getMTLP());
         int variancePrice = (basePrice * rand.nextInt(good.getVar())) / 10;
-        int finalPrice = basePrice + dynamicPrice +variancePrice;
+        int finalPrice = basePrice + dynamicPrice + variancePrice;
 
         if (resource == good.getCR()) {
             finalPrice = finalPrice / 3 * 2;
@@ -80,6 +87,13 @@ public class Marketplace{
         return finalPrice;
     }
 
+    /**
+     * Calculate the quantity of the good available on a planet
+     * based on the factors.
+     *
+     * @param good the good
+     * @return the quantity
+     */
     private int calculateQuantity(Good good) {
         int maxQuantity = 30;
         int minQuantity = 1;
@@ -102,12 +116,14 @@ public class Marketplace{
 
     // Validate transaction.
     public TransactionResult validateTransaction(TransactionOrder to) {
-        MarketTransactionValidator validator = new MarketTransactionValidator(this);
+        MarketTransactionValidator validator
+                = new MarketTransactionValidator(this);
         return validator.validateNTransaction(to);
     }
 
     /**
-     * Getter for getting tech level of the planet which the marketplace is located.
+     * Getter for getting tech level of the planet which the
+     * marketplace is located.
      *
      * @return techlevel of the planet which the marketplace is located
      */
@@ -128,28 +144,52 @@ public class Marketplace{
         return tradeGoodsInMarketMap;
     }
 
+    /**
+     * @return the items available in this market
+     */
     public Collection<Item> getItems() {
         return tradeGoodsInMarketMap.values();
     }
 
+    /**
+     * Returns the item the good is associated with.
+     *
+     * @param good the good
+     * @return the item associated with the good
+     */
     public Item getItem(Good good) {
-        return tradeGoodsInMarketMap.get((TradeGoods)good);
+        return tradeGoodsInMarketMap.get((TradeGoods) good);
     }
 
+    //getMarketPrice and getMarketQuantity could probably be static...
+
+    /**
+     * Returns the market price of a good.
+     *
+     * @param good the good
+     * @return the market price
+     */
     public int getMarketPrice(Good good) {
         return tradeGoodsInMarketMap.get(good).getPrice();
     }
 
+    /**
+     * Returns the market quantity of a good.
+     *
+     * @param good the good
+     * @return the market quantity
+     */
     public int getMarketQuantity(Good good) {
         return tradeGoodsInMarketMap.get(good).getPrice();
     }
+
     @Override
     public String toString() {
-        String str = "\n["+planetName+"]";
+        String str = "\n[" + planetName + "]";
         str += "\n/////////////////// Goods for buying /////////////////////\n";
         for (Item item: this.getItems()) {
             str += String.format("Name: %-7s\n", item.getGoodName());
-            str += String.format("| price: %-5d",item.getPrice());
+            str += String.format("| price: %-5d", item.getPrice());
             str += String.format("| quantity: %-3d", item.getQuantity());
             str += "\n";
         }
