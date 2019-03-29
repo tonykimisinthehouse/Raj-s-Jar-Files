@@ -39,6 +39,12 @@ public class Item {
         this.quantity += quantity;
     }
     public void subQuantity(int quantity) {this.quantity -= quantity; }
+
+    @Override
+    public String toString() {
+        return quantity + " " + good.getName() + " at " + price + " units each.";
+    }
+
     public static class ItemBuilder{
         private Good good;
         private int quantity = 1;

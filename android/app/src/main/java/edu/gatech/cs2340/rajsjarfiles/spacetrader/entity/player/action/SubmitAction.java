@@ -17,7 +17,24 @@ public class SubmitAction implements PlayerEncounterAction {
         String retString = "";
 
         //police check your stuff
+        Ship playerShip = player.getShip();
+        if (playerShip.hasIllegalGoods()) {
+            retString += "The police find illegal goods in your cargo hold "
+                    + "and confiscate all your goods.\n"; //all or just illegal?
+            retString += "You pay a fine.\n";
 
-        return "";
+            retString += "Your ship was: \n";
+            retString += playerShip.toString() + "\n\n";
+            playerShip.removeIllegalGoods();
+
+            retString += "Your ship is now: \n";
+            retString += playerShip.toString() + "\n\n";
+        } else {
+            retString += "The police find nothing illegal in your cargo hold "
+                    + "and bid you a nice day.";
+        }
+
+        es.conclude();
+        return retString;
     }
 }

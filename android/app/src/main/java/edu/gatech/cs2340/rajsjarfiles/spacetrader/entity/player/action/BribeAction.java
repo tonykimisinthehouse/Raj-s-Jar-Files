@@ -16,12 +16,12 @@ public class BribeAction implements PlayerEncounterAction {
     public String doAction(Player player, Ship otherShip, EncounterState es) {
         String retString = "";
 
-        retString += "You bribe the police with 50% of your money.";
-        retString += "You had " + player.getCredits() + " credits.";
+        retString += "You bribe the police with 50% of your money.\n";
+        retString += "You had " + player.getCredits() + " credits.\n";
         player.setCredits(player.getCredits() / 2);
-        retString += "You now have " + player.getCredits() + " credits.";
+        retString += "You now have " + player.getCredits() + " credits.\n";
 
-        es.setOver(true);
+        es.conclude();
 
         return retString;
     }

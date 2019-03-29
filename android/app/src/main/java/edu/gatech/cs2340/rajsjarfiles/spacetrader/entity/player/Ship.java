@@ -161,10 +161,45 @@ public class Ship {
         return items;
     }
 
+    /**
+     * @return whether or not the ship's cargo has illegal goods
+     */
+    public boolean hasIllegalGoods() {
+        for (Good good : Good.ILLEGAL_GOODS) {
+            if (cargo.containsKey(good)) {
+                if (cargo.get(good).getQuantity() > 0) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Removes all illegal goods from the ship's cargo.
+     */
+    public void removeIllegalGoods() {
+        for (Good good : Good.ILLEGAL_GOODS) {
+            if (cargo.containsKey(good)) {
+                if (cargo.get(good).getQuantity() > 0) {
+                    cargo.get(good).setQuantity(0);
+                }
+            }
+        }
+    }
+
+    /**
+     * @return the health of the ship
+     */
     public int getHealth() {
         return health;
     }
 
+    /**
+     * Sets the health of the ship to a specific amount.
+     *
+     * @param health the new health
+     */
     public void setHealth(int health) {
         this.health = health;
     }
@@ -183,6 +218,39 @@ public class Ship {
         return health <= 0;
     }
 
+    /**
+     * Takes damage from a specific weapon.
+     *
+     * @param w the weapon
+     * @return whether or not the ship is destroyed
+     */
+    public boolean takeDamage(Weapon w) {
+        health -= w.getStrength();
+        if (health <= 0) {
+            health = 0;
+        }
+        return health <= 0;
+    }
+
+    /**
+     * Attacks another ship.
+     *
+     * @param other the other ship
+     * @return whether or not the other ship is destroyed
+     */
+    public boolean attackShip(Ship other) {
+        for (Weapon w : getWeapons()) {
+            int playerHit = rand.nextInt(10);
+            if (playerHit < 8) { // this will depend on the player points
+                boolean dead = other.takeDamage(w);
+                if (dead) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public void addWeapon(Weapon w) {
         if (weapons.size() < shipType.getMaxWeaponSlots()) {
             weapons.add(w);
@@ -195,7 +263,13 @@ public class Ship {
 
     @Override
     public String toString() {
-        return shipType.toString();
+        String ret = "";
+        ret += "The ship is a " + shipType.toString() + "\n";
+        for (Item i : getCargoGoods()) {
+            ret += i.toString() + "\n";
+        }
+
+        return ret;
     }
 
     private static Random rand = new Random();

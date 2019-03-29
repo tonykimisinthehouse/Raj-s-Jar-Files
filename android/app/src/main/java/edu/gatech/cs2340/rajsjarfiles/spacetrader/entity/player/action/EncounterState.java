@@ -14,4 +14,8 @@ public class EncounterState {
     public void setOver(boolean over) {
         isOver = over;
     }
+
+    public void conclude() {
+        isOver = true;
+    }
 }

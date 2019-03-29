@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import java.util.Scanner;
 
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.TradeGoods;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Weapon;
@@ -22,6 +24,9 @@ public class BattleTest {
         Player.PlayerBuilder playerBuilder = new Player.PlayerBuilder("Justin");
         Player player = new Player(playerBuilder);
         player.getShip().addWeapon(Weapon.PULSE_LASER);
+        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.NARCOTICS).quantity(1).price(2).build());
+        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.FIREARMS).quantity(4).price(4).build());
+        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.ORE).quantity(2).price(18).build());
 
         BattleManager bm = new PoliceBattleManager(player);
         System.out.println(bm.startBattle());

@@ -187,6 +187,18 @@ public enum TradeGoods implements Good{
         return MTH;
     }
 
+    /**
+     * @return whether this good is illegal or not
+     */
+    public boolean isIllegal() {
+        for (Good g : Good.ILLEGAL_GOODS) {
+            if (this.name == g.getName()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return name;
