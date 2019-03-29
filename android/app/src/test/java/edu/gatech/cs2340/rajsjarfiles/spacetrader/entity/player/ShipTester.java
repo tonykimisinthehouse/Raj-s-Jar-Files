@@ -2,6 +2,8 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 
 import org.junit.Test;
 
+import java.util.List;
+
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.ShipType;
 
@@ -79,5 +81,26 @@ public class ShipTester {
         assertEquals(3, ship1.getWeapons().size());
         ship1.addWeapon(Weapon.PULSE_LASER);
         assertEquals(3, ship1.getWeapons().size());
+    }
+
+    @Test(timeout = TIMEOUT)
+    public void testGetRandomShipWithWeapons() {
+        for (int j = 0; j < 200; j++) {
+            Ship ship = Ship.getRandomShipWithWeapons();
+
+            assertTrue(ship.getWeapons().size() > 0);
+            assertTrue("Enemy ships should not start with 0 health.",
+                    ship.getHealth() > 0);
+            assertTrue("Enemy ships should not have more health than max.",
+                    ship.getHealth() <= ship.getShipType().getMaxHealth());
+        }
+    }
+
+    @Test(timeout = TIMEOUT)
+    public void testGetShipsWithWeapons() {
+        List<ShipType> ships = ShipType.getShipsWithWeapons();
+        for (ShipType s : ships) {
+            assertTrue(s.getMaxWeaponSlots() > 0);
+        }
     }
 }

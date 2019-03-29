@@ -210,7 +210,8 @@ public class Ship {
     }
 
     /**
-     * @return a random instance of a ship that has weapons
+     * @return a random instance of a ship that has weapons and is slightly
+     * damaged (up to half its health can be gone)
      */
     public static Ship getRandomShipWithWeapons() {
         ShipType st = ShipType.getShipsWithWeapons().
@@ -219,10 +220,19 @@ public class Ship {
         Ship ship = new Ship(0, st);
 
         //add weapons to the ship
-        int numWeaponsToAdd = rand.nextInt(st.getMaxWeaponSlots());
+        int numWeaponsToAdd;
+
+        if (st.getMaxWeaponSlots() == 1) {
+            numWeaponsToAdd = 1;
+        } else {
+            numWeaponsToAdd = rand.nextInt(st.getMaxWeaponSlots() - 1) + 1;
+        }
         for (int i = 0; i < numWeaponsToAdd; i++) {
             ship.addWeapon(Weapon.getRandomWeapon());
         }
+
+        ship.setHealth(rand.nextInt(st.getMaxHealth() / 2)
+                + st.getMaxHealth() / 2);
         return ship;
     }
 }
