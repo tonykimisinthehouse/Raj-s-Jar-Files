@@ -80,7 +80,7 @@ public class TravelActivity extends BaseActivity {
             player.travel(system, system.getPlanetByName(planetName));
 
             // Close this activity
-            TravelActivity.this.moveTaskToBack(true);
+            TravelActivity.this.finish();
         }
     };
 
