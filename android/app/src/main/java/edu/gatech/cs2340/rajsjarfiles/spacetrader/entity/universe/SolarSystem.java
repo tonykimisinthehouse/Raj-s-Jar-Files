@@ -63,8 +63,8 @@ public class SolarSystem {
 
         int orbitRadius = 0, orbitAngle = 0;
         for (int i = 0; i < nameList.length; i++) {
-            orbitRadius += rand.nextInt(2) + 1; // Assign orbit radius
-            orbitAngle = rand.nextInt(361);
+            orbitRadius = rand.nextInt(4) + 1;
+            orbitAngle = rand.nextInt(360);
             planets[i] = new Planet.PlanetBuilder(nameList[i], orbitRadius, orbitAngle).build();
         }
         return planets;

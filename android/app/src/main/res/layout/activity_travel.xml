@@ -12,8 +12,33 @@
 
     <!-- TODO add UI elements here -->
 
+    <TextView
+        android:id="@+id/solarSystemText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Solar System Map"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <edu.gatech.cs2340.rajsjarfiles.spacetrader.views.MapView
+        android:id="@+id/solarSystemMapView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/solarSystemText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Solar System List"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
     <GridView
         android:id="@+id/destinationGrid"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
 </LinearLayout>

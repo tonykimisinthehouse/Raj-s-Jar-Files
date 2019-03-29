@@ -180,7 +180,7 @@ public class Planet {
      */
     public static class PlanetBuilder {
 
-        private static final int MIN_RADIUS = 1;
+        private static final int MIN_RADIUS = 2;
         private static final int MAX_RADIUS = 5;
 
         private final String name;

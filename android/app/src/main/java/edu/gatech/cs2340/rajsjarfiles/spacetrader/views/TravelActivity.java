@@ -1,18 +1,22 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.views;
 
-import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.Game;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Location;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
@@ -22,7 +26,6 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels.TravelViewModel;
 
 public class TravelActivity extends BaseActivity {
-
     /**
      * View model for Travel activity
      */
@@ -40,10 +43,9 @@ public class TravelActivity extends BaseActivity {
 
         viewModel = ViewModelProviders.of(this).get(TravelViewModel.class);
 
-        // Display reachable planets
         GridView destinationGrid = findViewById(R.id.destinationGrid);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, getDestinations());
+                android.R.layout.simple_list_item_1, getDestinations());;
         destinationGrid.setAdapter(adapter);
         destinationGrid.setOnItemClickListener(clickListener);
     }
@@ -54,7 +56,6 @@ public class TravelActivity extends BaseActivity {
         Player player = model.getPlayer();
         Location location = player.getLocation();
         Planet currentPlanet = location.getPlanet();
-        Ship ship = player.getShip();
 
         // Get current planets
         Planet[] planets = player.getLocation().getSolarSystem().getPlanets();
@@ -65,7 +66,9 @@ public class TravelActivity extends BaseActivity {
             // If there is enough fuel to reach: current planet --> new planet
             if (location.checkIfTravelPossible(location.getSolarSystem(), planet) != -1) {
             //if (planet.getDist(currentPlanet) <= ship.getFuel()) {
-                this.destinations.add(planet.getName());
+                if (!planet.equals(currentPlanet)) {
+                    this.destinations.add(planet.getName());
+                }
             }
         }
         return this.destinations;
@@ -85,5 +88,5 @@ public class TravelActivity extends BaseActivity {
             TravelActivity.this.finish();
         }
     };
-
 }
+
