@@ -48,7 +48,7 @@ public class Location {
     }
 
     public int calculateFuelRq (Planet destinationP) {
-        int distance = planet.getDist(destinationP);
+        int distance = this.planet.getDist(destinationP);
         return distance * 5;
     }
 

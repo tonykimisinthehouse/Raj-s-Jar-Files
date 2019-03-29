@@ -3,6 +3,7 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.views;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -56,7 +57,7 @@ public class TravelActivity extends BaseActivity {
         Ship ship = player.getShip();
 
         // Get current planets
-        Planet[] planets = model.getGame().getUniverse().getRandomSolarSystem().getPlanets();
+        Planet[] planets = player.getLocation().getSolarSystem().getPlanets();
 
         // Make a list of reachable planets
         this.destinations = new ArrayList<>();
@@ -77,6 +78,7 @@ public class TravelActivity extends BaseActivity {
             String planetName = TravelActivity.this.destinations.get(i);
             Player player = Model.getCurrent().getPlayer();
             SolarSystem system = player.getLocation().getSolarSystem();
+            Log.d("Sonny", system.getPlanetByName(planetName).toString());
             player.travel(system, system.getPlanetByName(planetName));
 
             // Close this activity

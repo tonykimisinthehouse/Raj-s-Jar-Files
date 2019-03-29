@@ -126,7 +126,7 @@ public class Planet {
      */
     public int getDist(Planet other) {
         // Use cosine rule (c^2 = a^2 + b^2 - 2ab*cos(c))
-        int angleRaw = Math.abs(this.orbitAngle - other.orbitAngle);
+        int angleRaw = Math.abs(orbitAngle - other.getOrbitAngle());
         int angle = (angleRaw <= 180 ? angleRaw : 360 - angleRaw);
 
         int a = this.orbitRadius;

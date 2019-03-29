@@ -50,7 +50,6 @@ public class Ship {
         fuel = 999999; //TODO STUB FUEL AMOUNT
     }
 
-
     ///////////////////////////// FUEL OPERATION /////////////////////////////
     public boolean hasFuels(int requiredFuel) {
         return fuel >= requiredFuel;
@@ -65,7 +64,6 @@ public class Ship {
     public int getFuel() {
        return this.fuel;
     }
-
 
     ///////////////////////////// CARGO OPERATION /////////////////////////////
     /**
