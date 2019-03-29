@@ -40,24 +40,9 @@ public class ShipActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
 
-        this.locationIndicator.setText("Location: " + /*viewModel.*/getPlayerLocation());
-        this.fuelRemainingIndicator.setText("Fuel Remaining: " + /*viewModel.*/getFuelRemaining());
-        this.cargoHoldIndicator.setText("Cargo Hold Usage: " + /*viewModel.*/getCargoHoldUsage());
-    }
-
-    private String getPlayerLocation() {
-        return Model.getCurrent().getPlayer().getLocation().getPlanet().getName();
-    }
-
-    private int getFuelRemaining() {
-        return Model.getCurrent().getPlayer().getShip().getFuel();
-    }
-
-    private String getCargoHoldUsage() {
-        Ship ship = Model.getCurrent().getPlayer().getShip();
-        int total = ship.getCargoCapacity();
-        int used = total - ship.getAvailableCargoCapacity();
-        return used + "/" + total;
+        this.locationIndicator.setText("Location: " + viewModel.getPlayerLocation());
+        this.fuelRemainingIndicator.setText("Fuel Remaining: " + viewModel.getFuelRemaining());
+        this.cargoHoldIndicator.setText("Cargo Hold Usage: " + viewModel.getCargoHoldUsage());
     }
 
     public void chooseDestination(View view) {

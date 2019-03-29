@@ -2,10 +2,13 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.view.View;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.views.TravelActivity;
 
 /**
  * Represents the view model for Ship Activity.
