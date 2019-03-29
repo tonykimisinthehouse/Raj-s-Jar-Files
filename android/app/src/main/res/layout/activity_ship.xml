@@ -10,6 +10,31 @@
     android:padding="20dp"
     tools:context="edu.gatech.cs2340.rajsjarfiles.spacetrader.views.ShipActivity">
 
-    <!-- TODO add UI elements here -->
+    <TextView
+        android:id="@+id/indicator_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Location: /dev/null"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/indicator_fuel_remaining"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Fuel Remaining: 1000 Wh"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/indicator_cargo_hold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Cargo Hold Usage: 1/10"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
 
 </LinearLayout>

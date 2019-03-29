@@ -62,6 +62,10 @@ public class Ship {
         }
     }
 
+    public int getFuel() {
+       return this.fuel;
+    }
+
 
     ///////////////////////////// CARGO OPERATION /////////////////////////////
     /**

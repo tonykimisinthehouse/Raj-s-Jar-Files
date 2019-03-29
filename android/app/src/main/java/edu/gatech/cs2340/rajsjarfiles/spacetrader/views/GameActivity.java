@@ -31,38 +31,51 @@ public class GameActivity extends BaseActivity {
 
         // Indicators
         TextView planetNameIndicator = findViewById(R.id.indicator_planet_name);
-        TextView orbitRadiusIndicator = findViewById(
-                R.id.indicator_orbit_radius);
+        TextView orbitRadiusIndicator = findViewById(R.id.indicator_orbit_radius);
         TextView techLevelIndicator = findViewById(R.id.indicator_tech_level);
         TextView resourceIndicator = findViewById(R.id.indicator_resources);
         TextView eventIndicator = findViewById(R.id.indicator_event);
         TextView speciesIndicator = findViewById(R.id.indicator_species);
 
         planetNameIndicator.setText(viewModel.getPlanetName());
-        orbitRadiusIndicator.setText("Orbit Radius: "
-                + String.valueOf(viewModel.getPlanetOrbitRadius()));
-        techLevelIndicator.setText(
-                "Tech Level: " + viewModel.getPlanetTechLevel());
-        resourceIndicator.setText(
-                "Resources: " + viewModel.getPlanetResources());
+        orbitRadiusIndicator.setText("Orbit Radius: " + String.valueOf(viewModel.getPlanetOrbitRadius()));
+        techLevelIndicator.setText("Tech Level: " + viewModel.getPlanetTechLevel());
+        resourceIndicator.setText("Resources: " + viewModel.getPlanetResources());
         speciesIndicator.setText("Species: " + viewModel.getPlanetSpecies());
         eventIndicator.setText("Event: " + viewModel.getPlanetEvent());
 
         // Set filter on planet Image
         ImageView imageView = findViewById(R.id.imageView);
-        imageView.setColorFilter(
-                Color.parseColor(
-                        viewModel.getPlanetColorHex()),
-                PorterDuff.Mode.MULTIPLY); //Desert
+        imageView.setColorFilter(Color.parseColor(viewModel.getPlanetColorHex()), PorterDuff.Mode.MULTIPLY); //Desert
+    }
+
+
+    /**
+     * Opens the Map activity.
+     *
+     * @param view the button view
+     */
+    public void openMap(View view) {
+        // TODO start map activity
     }
 
     /**
-     * Opens the market activity.
+     * Opens the Market activity.
      *
-     * @param view the current view
+     * @param view the button view
      */
     public void openMarket(View view) {
         Intent intent = new Intent(view.getContext(), MarketActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Opens the Ship activity.
+     *
+     * @param view the button view
+     */
+    public void openShip(View view) {
+        Intent intent = new Intent(view.getContext(), ShipActivity.class);
         startActivity(intent);
     }
 
