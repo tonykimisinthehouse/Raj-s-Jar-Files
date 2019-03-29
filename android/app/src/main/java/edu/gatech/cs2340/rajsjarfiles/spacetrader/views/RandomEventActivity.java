@@ -21,7 +21,7 @@ public class RandomEventActivity extends AppCompatActivity {
         Random rand = new Random();
         int chance = rand.nextInt(100);
         Intent intent;
-        if (chance >= 0 && chance <= 99) {
+        if (chance >= 0 && chance <= 4) {
             intent = new Intent(getBaseContext(), PoliceActivity.class);
         } else if (chance > 4 && chance <= 9) {
             intent = new Intent(getBaseContext(), PirateActivity.class);
