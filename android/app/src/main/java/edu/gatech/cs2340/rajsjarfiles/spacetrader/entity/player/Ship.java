@@ -16,6 +16,7 @@ public class Ship {
 
     private int totalCap;
     private int usedCap;
+    private int fuelRemaining;
 
     /**
      * Default constructor that sets ShipType to GNAT.
@@ -44,6 +45,7 @@ public class Ship {
         this.shipType = shipType;
         totalCap =  cargoSize;
         usedCap = 0;
+        fuelRemaining = 0;
     }
 
     /**
@@ -149,6 +151,10 @@ public class Ship {
             items.add(item);
         }
         return items;
+    }
+
+    public int getFuelRemaining() {
+        return this.fuelRemaining;
     }
 
     @Override

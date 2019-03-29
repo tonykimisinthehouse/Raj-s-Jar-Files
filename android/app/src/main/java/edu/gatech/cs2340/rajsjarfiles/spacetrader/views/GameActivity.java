@@ -50,8 +50,17 @@ public class GameActivity extends AppCompatActivity {
         imageView.setColorFilter(Color.parseColor(viewModel.getPlanetColorHex()), PorterDuff.Mode.MULTIPLY); //Desert
     }
 
+    public void openMap(View view) {
+        // TODO start map activity
+    }
+
     public void openMarket(View view) {
         Intent intent = new Intent(view.getContext(), MarketActivity.class);
+        startActivity(intent);
+    }
+
+    public void openShip(View view) {
+        Intent intent = new Intent(view.getContext(), ShipActivity.class);
         startActivity(intent);
     }
 
