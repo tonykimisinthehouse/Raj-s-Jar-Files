@@ -100,7 +100,7 @@ public class StartViewModel extends AndroidViewModel {
     public void createNewModel(EditText editTextName, Spinner difficultySpinner) {
         String playerName = editTextName.getText().toString();
         GameDifficulty difficulty = (GameDifficulty) difficultySpinner.getSelectedItem();
-        model = new Model(playerName, points, new Ship(), difficulty);
+        model = new Model(playerName, points, difficulty);
     }
 
     /**

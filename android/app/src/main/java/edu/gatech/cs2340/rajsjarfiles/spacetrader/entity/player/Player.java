@@ -1,13 +1,7 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Good;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionOrder;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionResult;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionType;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Planet;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.SolarSystem;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 
 /**
  * Represents the user's player.
@@ -52,11 +46,7 @@ public class Player {
      * @return boolean of whether the user has enough cargo capacity
      */
     public Boolean checkCargoCapacityEnough(int quantity) {
-        if (quantity > ship.getAvailableCargoCapacity()) {
-            return false;
-        } else {
-            return true;
-        }
+        return quantity <= ship.getAvailableCargoCapacity();
     }
 
     /**
@@ -247,7 +237,7 @@ public class Player {
             this.points = new int[] {4, 4, 4, 4};
             this.wallet = new Wallet(9999); //TODO STUB CREDIT AMOUNT
             this.ship = new Ship(ShipType.GNAT);
-            this.location = new Location();
+            this.location = null;
         }
 
         /**
@@ -258,6 +248,11 @@ public class Player {
          */
         public PlayerBuilder points(int[] points) {
             this.points = points;
+            return this;
+        }
+
+        public PlayerBuilder location(SolarSystem ss) {
+            this.location = new Location(ss);
             return this;
         }
 
@@ -288,6 +283,9 @@ public class Player {
          * @return the new Player object
          */
         public Player build() {
+            if (location == null) {
+                location = new Location();
+            }
             return new Player(this);
         }
     }
