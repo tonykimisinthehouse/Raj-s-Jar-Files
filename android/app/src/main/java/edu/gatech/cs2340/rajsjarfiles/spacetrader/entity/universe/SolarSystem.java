@@ -9,6 +9,8 @@ public class SolarSystem {
     public static final int MIN_PLANETS = 1;
     public static final int MAX_PLANETS = 10;
 
+    static Random rand = new Random();
+
     //using an array because the size won't change
     private Planet[] planets;
     private String name;
@@ -21,11 +23,43 @@ public class SolarSystem {
      * @param coordinate the system's coordinate in the universe
      */
     public SolarSystem(String name, Coordinate coordinate) {
-        Random rand = new Random();
         this.name = name;
         this.coordinate = coordinate;
-        planets = Planet.generatePlanets(rand.nextInt(
+        planets = generatePlanets(rand.nextInt(
                 MAX_PLANETS - MIN_PLANETS + 1) + MIN_PLANETS);
+        assignWarpZone();
+    }
+
+    private void assignWarpZone() {
+        int maxRadius = Integer.MIN_VALUE;
+        Planet maxPlanet = planets[0];
+        for(Planet planet : planets) {
+            if (planet.getRadius() > maxRadius) {
+                maxRadius = planet.getRadius();
+                maxPlanet = planet;
+            }
+        }
+        maxPlanet.setIsWarpZone(true);
+    }
+
+    /**
+     * Returns an array of random planets given a size.
+     *
+     * @param size the number of planets to generate
+     * @return the array of planets
+     */
+    public static Planet[] generatePlanets(int size) {
+
+        Planet[] planets = new Planet[size];
+        String[] nameList = PlanetNames.generateName(planets.length);
+
+        int orbitRadius = 0, orbitAngle = 0;
+        for (int i = 0; i < nameList.length; i++) {
+            orbitRadius += rand.nextInt(2) + 1; // Assign orbit radius
+            orbitAngle = rand.nextInt(361);
+            planets[i] = new Planet.PlanetBuilder(nameList[i], orbitRadius, orbitAngle).build();
+        }
+        return planets;
     }
 
     /**
@@ -52,6 +86,15 @@ public class SolarSystem {
         return planets[rand.nextInt(planets.length)];
     }
 
+    public Planet getPlanetWithWarp() {
+        for (Planet planet : planets) {
+            if (planet.getIsWarpZone()) {
+                return planet;
+            }
+        }
+        return planets[0];
+    }
+
     @Override
     public String toString() {
         String ret = "";
@@ -63,5 +106,17 @@ public class SolarSystem {
         return ret;
     }
 
+    @Override
+    public boolean equals(Object that) {
+        if (that == this) {
+            return true;
+        }
+        if (!(that instanceof Coordinate)) {
+            return false;
+        }
+        SolarSystem ss = (SolarSystem) that;
+        return this.name == ss.name
+                && this.getCoordinate().equals(ss.getCoordinate());
+    }
 
 }

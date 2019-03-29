@@ -3,6 +3,7 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 import java.util.Random;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Marketplace;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.utility.LogCustom;
 
 
@@ -11,8 +12,11 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.utility.LogCustom;
  */
 public class Planet {
     private String name;
+
     private int radius;         //radius of planet itself
     private int orbitRadius;    //distance from center
+    private int orbitAngle;     //angle from center
+    private boolean isWarpZone = false;
 
     private TechLevel techLevel;
     private Habitats habitats;
@@ -20,6 +24,9 @@ public class Planet {
     private ResourceClassification resourceClass;
     private Marketplace marketplace;
 
+    static Random rand = new Random();
+
+    ///////////////////////////// CONSTRUCTOR /////////////////////////////
     /**
      * Creates a planet using a planet builder.
      *
@@ -29,6 +36,7 @@ public class Planet {
         this.name = builder.name;
         this.radius = builder.radius;
         this.orbitRadius = builder.orbitRadius;
+        this.orbitAngle = builder.orbitAngle;
         this.techLevel = builder.techLevel;
         this.habitats = builder.habitats;
         this.species = builder.species;
@@ -38,6 +46,7 @@ public class Planet {
 
     //no setters because the fields shouldn't change
 
+    ///////////////////////////// PLANET INFO /////////////////////////////
     /**
      * @return the planet's name
      */
@@ -59,6 +68,19 @@ public class Planet {
         return orbitRadius;
     }
 
+    public int getOrbitAngle() {
+        return orbitAngle;
+    }
+
+    public void setIsWarpZone(Boolean bool) {
+        this.isWarpZone = bool;
+    }
+
+    public boolean getIsWarpZone() {
+        return isWarpZone;
+    }
+
+    ///////////////////////////// PLANET SPECIFICATION /////////////////////////////
     /**
      * @return the planet's tech level
      */
@@ -67,16 +89,9 @@ public class Planet {
     }
 
     /**
-     * @return the planet's resource classification
-     */
-    public ResourceClassification getResourceClass() {
-        return resourceClass;
-    }
-
-    /**
      * @return the planet's habitat
      */
-    public Habitats getHabitat() {
+    public Habitats getHabitats() {
         return habitats;
     }
 
@@ -88,12 +103,21 @@ public class Planet {
     }
 
     /**
+     * @return the planet's resource classification
+     */
+    public ResourceClassification getResourceClass() {
+        return resourceClass;
+    }
+
+    /**
      * @return planet's market place
      */
     public Marketplace getMarketplace() {
         return marketplace;
     }
 
+
+    ///////////////////////////// PLANET UTILITY /////////////////////////////
     /**
      * Returns the "distance" in terms of orbit radius to another planet.
      *
@@ -101,9 +125,29 @@ public class Planet {
      * @return the difference in orbit radius
      */
     public int getDist(Planet other) {
-        return Math.abs(this.orbitRadius - other.orbitRadius);
+        // Use cosine rule (c^2 = a^2 + b^2 - 2ab*cos(c))
+        int angleRaw = Math.abs(this.orbitAngle - other.orbitAngle);
+        int angle = (angleRaw <= 180 ? angleRaw : 360 - angleRaw);
+
+        int a = this.orbitRadius;
+        int b = other.orbitRadius;
+
+        int c = (int) Math.sqrt((a*a)+(b*b)-(2*a*b*Math.cos(angle)));
+        return c;
     }
 
+    /**
+     * Returns the distance between two given planets.
+     *
+     * @param p1 the first planet
+     * @param p2 the second planet
+     * @return the distance between the two planets
+     */
+    public static int distBetween(Planet p1, Planet p2) {
+        return p1.getDist(p2);
+    }
+
+    ///////////////////////////// OVERRIDE FUNCTION /////////////////////////////
     @Override
     public String toString() {
         LogCustom.largeLog("Market", marketplace.toString());
@@ -118,36 +162,17 @@ public class Planet {
                 + ".";
     }
 
-    /**
-     * Returns the distance between two given planets.
-     *
-     * @param p1 the first planet
-     * @param p2 the second planet
-     * @return the distance between the two planets
-     */
-    public static int distBetween(Planet p1, Planet p2) {
-        return Math.abs(p1.getOrbitRadius() - p2.getOrbitRadius());
-    }
-
-    /**
-     * Returns an array of random planets given a size.
-     *
-     * @param size the number of planets to generate
-     * @return the array of planets
-     */
-    public static Planet[] generatePlanets(int size) {
-
-        Planet[] planets = new Planet[size];
-        Random rand = new Random();
-        String[] nameList = PlanetNames.generateName(planets.length);
-
-        int orbitRadius = 0;
-
-        for (int i = 0; i < nameList.length; i++) {
-            orbitRadius += rand.nextInt(2) + 1;
-            planets[i] = new PlanetBuilder(nameList[i], orbitRadius).build();
+    @Override
+    public boolean equals(Object that) {
+        if (that == this) {
+            return true;
         }
-        return planets;
+        if (!(that instanceof Coordinate)) {
+            return false;
+        }
+        Planet p = (Planet) that;
+        return this.name == p.name
+                && this.radius == p.radius;
     }
 
     /**
@@ -159,8 +184,11 @@ public class Planet {
         private static final int MAX_RADIUS = 5;
 
         private final String name;
+
         private int radius;
         private final int orbitRadius;
+        private final int orbitAngle;
+
         private TechLevel techLevel;
         private Habitats habitats;
         private Species species;
@@ -175,9 +203,10 @@ public class Planet {
          * @param name the name of the planet
          * @param orbitRadius the orbit radius of the planet
          */
-        public PlanetBuilder(String name, int orbitRadius) {
+        public PlanetBuilder(String name, int orbitRadius, int orbitAngle) {
             this.name = name;
             this.orbitRadius = orbitRadius;
+            this.orbitAngle = orbitAngle;
         }
 
         /**
@@ -241,18 +270,25 @@ public class Planet {
          * @return planet
          */
         public Planet build() {
+            // If the builder does not get explicit value, it will randomly assign them.
+            if (this.radius == 0) {
+                this.radius = getRandomRadius();
+            }
             if (this.habitats == null) {
                 this.habitats = Habitats.getRandomHabitat();
                 this.resourceClass = ResourceClassification.
                         getRandomResourceClass(this.habitats);
                 this.species = Species.getRandomHabitableSpecies(this.habitats);
             }
+
             if (this.techLevel == null) {
                 this.techLevel = TechLevel.getRandomTechLevel();
             }
+
             if (this.event == null) {
                 this.event = Events.getRandomEvent();
             }
+
             if (this.marketplace == null) {
                 this.marketplace = new Marketplace(
                         this.name,
@@ -263,8 +299,6 @@ public class Planet {
             }
             return new Planet(this);
         }
-
-        private static Random rand = new Random();
 
         /**
          * Generates a random radius given the bounds.

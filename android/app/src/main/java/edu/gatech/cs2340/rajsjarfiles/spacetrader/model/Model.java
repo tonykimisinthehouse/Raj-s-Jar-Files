@@ -13,7 +13,6 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
  */
 public class Model {
     private static Model current;
-
     private Player player;
     private Game game;
 
@@ -22,26 +21,16 @@ public class Model {
      *
      * @param name The player name the user has chosen.
      * @param points The allocation of skill points the user has chosen
-     * @param credits The amount of credit the user has.
-     * @param ship The ship the user has chosen
      * @param difficulty The Game Difficulty the user has chosen
      */
-    public Model(
-            String name,
-            int[] points,
-            int credits,
-            Ship ship,
-            GameDifficulty difficulty) {
+    public Model(String name, int[] points, GameDifficulty difficulty) {
 
         // Set singleton reference
         Model.setCurrent(this);
 
         game = new Game(difficulty);
-
         player = new Player.PlayerBuilder(name)
                 .points(points)
-                .credits(credits)
-                .ship(ship)
                 .build();
 
         Log.i("Model", player.toString());

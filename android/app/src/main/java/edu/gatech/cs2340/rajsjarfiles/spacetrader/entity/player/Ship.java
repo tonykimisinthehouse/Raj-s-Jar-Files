@@ -12,10 +12,13 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
  */
 public class Ship {
     private ShipType shipType;
-    private HashMap<Good, Item> cargo;
 
+    private HashMap<Good, Item> cargo;
     private int totalCap;
     private int usedCap;
+    private int fuel;
+
+    ///////////////////////////// CONSTRUCTOR /////////////////////////////
 
     /**
      * Default constructor that sets ShipType to GNAT.
@@ -44,8 +47,23 @@ public class Ship {
         this.shipType = shipType;
         totalCap =  cargoSize;
         usedCap = 0;
+        fuel = 999999; //TODO STUB FUEL AMOUNT
     }
 
+
+    ///////////////////////////// FUEL OPERATION /////////////////////////////
+    public boolean hasFuels(int requiredFuel) {
+        return fuel >= requiredFuel;
+    }
+
+    public void subFuel(int fuelUsed) {
+        if (hasFuels(fuelUsed)) {
+            fuel -= fuelUsed;
+        }
+    }
+
+
+    ///////////////////////////// CARGO OPERATION /////////////////////////////
     /**
      * Get total cargo capacity of the ship.
      *
@@ -62,6 +80,22 @@ public class Ship {
      */
     public int getAvailableCargoCapacity() {
         return totalCap - usedCap;
+    }
+
+    /**
+     * Determines if the ship has a certain number of a good
+     *
+     * @param good the good
+     * @param quantity the number of goods
+     * @return whether or not the ship has that many goods
+     */
+    public boolean hasGoods(Good good, int quantity) {
+        if (cargo.containsKey(good)) {
+            if (cargo.get(good).getQuantity() >= quantity) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -101,21 +135,22 @@ public class Ship {
     }
 
     /**
-     * Determines if the ship has a certain number of a good
-     *
-     * @param good the good
-     * @param quantity the number of goods
-     * @return whether or not the ship has that many goods
+     * @return a collection of the ship's cargo items
      */
-    public boolean hasGoods(Good good, int quantity) {
-        if (cargo.containsKey(good)) {
-            if (cargo.get(good).getQuantity() >= quantity) {
-                return true;
-            }
+    public Collection<Item> getCargoGoods() {
+        Collection<Item> items = new ArrayList<>();
+        for (Good good : this.cargo.keySet()) {
+            // Build a new item based on this good
+            Item item = new Item.ItemBuilder(good)
+                    .quantity(this.cargo.get(good).getQuantity())
+                    .price(this.cargo.get(good).getPrice())
+                    .build();
+            items.add(item);
         }
-        return false;
+        return items;
     }
 
+    ///////////////////////////// SHIP ATTRIBUTES  /////////////////////////////
     /**
      * @return the ship type
      */
@@ -144,22 +179,6 @@ public class Ship {
         Ship s = (Ship) that;
 
         return this.shipType == s.shipType;
-    }
-
-    /**
-     * @return a collection of the ship's cargo items
-     */
-    public Collection<Item> getCargoGoods() {
-        Collection<Item> items = new ArrayList<>();
-        for (Good good : this.cargo.keySet()) {
-            // Build a new item based on this good
-            Item item = new Item.ItemBuilder(good)
-                    .quantity(this.cargo.get(good).getQuantity())
-                    .price(this.cargo.get(good).getPrice())
-                    .build();
-            items.add(item);
-        }
-        return items;
     }
 
     @Override
