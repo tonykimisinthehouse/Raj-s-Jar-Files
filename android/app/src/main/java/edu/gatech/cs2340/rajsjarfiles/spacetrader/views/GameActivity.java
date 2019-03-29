@@ -22,31 +22,48 @@ public class GameActivity extends BaseActivity {
      */
     private GameViewModel viewModel;
 
+    private TextView planetNameIndicator;
+    private TextView orbitRadiusIndicator;
+    private TextView techLevelIndicator;
+    private TextView resourceIndicator;
+    private TextView eventIndicator;
+    private TextView speciesIndicator;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
         viewModel = ViewModelProviders.of(this).get(GameViewModel.class);
-
-        // Indicators
-        TextView planetNameIndicator = findViewById(R.id.indicator_planet_name);
-        TextView orbitRadiusIndicator = findViewById(R.id.indicator_orbit_radius);
-        TextView techLevelIndicator = findViewById(R.id.indicator_tech_level);
-        TextView resourceIndicator = findViewById(R.id.indicator_resources);
-        TextView eventIndicator = findViewById(R.id.indicator_event);
-        TextView speciesIndicator = findViewById(R.id.indicator_species);
-
-        planetNameIndicator.setText(viewModel.getPlanetName());
-        orbitRadiusIndicator.setText("Orbit Radius: " + String.valueOf(viewModel.getPlanetOrbitRadius()));
-        techLevelIndicator.setText("Tech Level: " + viewModel.getPlanetTechLevel());
-        resourceIndicator.setText("Resources: " + viewModel.getPlanetResources());
-        speciesIndicator.setText("Species: " + viewModel.getPlanetSpecies());
-        eventIndicator.setText("Event: " + viewModel.getPlanetEvent());
+        this.assignViews();
 
         // Set filter on planet Image
         ImageView imageView = findViewById(R.id.imageView);
         imageView.setColorFilter(Color.parseColor(viewModel.getPlanetColorHex()), PorterDuff.Mode.MULTIPLY); //Desert
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateData();
+    }
+
+    private void assignViews() {
+        this.planetNameIndicator = findViewById(R.id.indicator_planet_name);
+        this.orbitRadiusIndicator = findViewById(R.id.indicator_orbit_radius);
+        this.techLevelIndicator = findViewById(R.id.indicator_tech_level);
+        this.resourceIndicator = findViewById(R.id.indicator_resources);
+        this.eventIndicator = findViewById(R.id.indicator_event);
+        this.speciesIndicator = findViewById(R.id.indicator_species);
+    }
+
+    private void updateData() {
+        this.planetNameIndicator.setText(viewModel.getPlanetName());
+        this.orbitRadiusIndicator.setText("Orbit Radius: " + String.valueOf(viewModel.getPlanetOrbitRadius()));
+        this.techLevelIndicator.setText("Tech Level: " + viewModel.getPlanetTechLevel());
+        this.resourceIndicator.setText("Resources: " + viewModel.getPlanetResources());
+        this.speciesIndicator.setText("Species: " + viewModel.getPlanetSpecies());
+        this.eventIndicator.setText("Event: " + viewModel.getPlanetEvent());
     }
 
 

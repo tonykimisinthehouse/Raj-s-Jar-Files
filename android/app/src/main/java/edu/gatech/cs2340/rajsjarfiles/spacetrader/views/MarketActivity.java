@@ -48,8 +48,13 @@ public class MarketActivity extends BaseActivity {
         this.viewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
 
         this.assignViews();
-        this.updateGoods();
         this.alertDialog();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        this.updateGoods();
     }
 
     /**
