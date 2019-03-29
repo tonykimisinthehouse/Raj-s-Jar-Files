@@ -20,7 +20,8 @@ public class ListViewItemCheckboxBaseAdapter extends BaseAdapter {
 
     private Context ctx = null;
 
-    public ListViewItemCheckboxBaseAdapter(Context ctx, List<ListViewItemDTO> listViewItemDtoList) {
+    public ListViewItemCheckboxBaseAdapter(
+            Context ctx, List<ListViewItemDTO> listViewItemDtoList) {
         this.ctx = ctx;
         this.listViewItemDtoList = listViewItemDtoList;
     }
@@ -28,8 +29,7 @@ public class ListViewItemCheckboxBaseAdapter extends BaseAdapter {
     @Override
     public int getCount() {
         int ret = 0;
-        if(listViewItemDtoList!=null)
-        {
+        if (listViewItemDtoList != null) {
             ret = listViewItemDtoList.size();
         }
         return ret;
@@ -38,7 +38,7 @@ public class ListViewItemCheckboxBaseAdapter extends BaseAdapter {
     @Override
     public Object getItem(int itemIndex) {
         Object ret = null;
-        if(listViewItemDtoList!=null) {
+        if (listViewItemDtoList != null) {
             ret = listViewItemDtoList.get(itemIndex);
         }
         return ret;
@@ -54,16 +54,21 @@ public class ListViewItemCheckboxBaseAdapter extends BaseAdapter {
 
         ListViewItemViewHolder viewHolder = null;
 
-        if(convertView!=null)
-        {
+        if (convertView != null) {
             viewHolder = (ListViewItemViewHolder) convertView.getTag();
-        }else
-        {
-            convertView = View.inflate(ctx, R.layout.activity_list_view_with_checkbox_item, null);
+        } else {
+            convertView = View.inflate(
+                    ctx,
+                    R.layout.activity_list_view_with_checkbox_item,
+                    null);
 
-            CheckBox listItemCheckbox = (CheckBox) convertView.findViewById(R.id.list_view_item_checkbox);
+            CheckBox listItemCheckbox =
+                    (CheckBox) convertView.findViewById(
+                            R.id.list_view_item_checkbox);
 
-            TextView listItemText = (TextView) convertView.findViewById(R.id.list_view_item_text);
+            TextView listItemText =
+                    (TextView) convertView.findViewById(
+                            R.id.list_view_item_text);
 
             viewHolder = new ListViewItemViewHolder(convertView);
 

@@ -17,8 +17,6 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
  */
 public class StartViewModel extends AndroidViewModel {
     public Model model;
-    // TODO testing credit
-    int defaultCredit = 999999;
     private static final int MAX_CREDIT = 16;
     private int[] points = new int[4];
 
@@ -55,17 +53,23 @@ public class StartViewModel extends AndroidViewModel {
 
         // Validate Name
         String playerName = editPlayerName.getText().toString();
-        if (playerName == null) {return false;}
-        if (playerName.length() <= 0) {return false;}
+        if (playerName == null) {
+            return false;
+        }
+        if (playerName.length() <= 0) {
+            return false;
+        }
         // Regular expression for accepting alphabets, white spaces only
         String regexForName = "^[a-zA-Z\\s]*$";
-        if (!Pattern.matches(regexForName,playerName)) {return false;}
+        if (!Pattern.matches(regexForName, playerName)) {
+            return false;
+        }
 
         // Validate Points
-        if (editPilotPoints.getText().length() == 0 ||
-        editFighterPoints.getText().length() == 0 ||
-        editTraderPoints.getText().length() == 0 ||
-        editEngineerPoints.getText().length() == 0) {
+        if (editPilotPoints.getText().length() == 0
+                || editFighterPoints.getText().length() == 0
+                || editTraderPoints.getText().length() == 0
+                || editEngineerPoints.getText().length() == 0) {
             return false;
         }
 
@@ -96,7 +100,7 @@ public class StartViewModel extends AndroidViewModel {
     public void createNewModel(EditText editTextName, Spinner difficultySpinner) {
         String playerName = editTextName.getText().toString();
         GameDifficulty difficulty = (GameDifficulty) difficultySpinner.getSelectedItem();
-        model = new Model(playerName, points, defaultCredit, new Ship(), difficulty);
+        model = new Model(playerName, points, new Ship(), difficulty);
     }
 
     /**
@@ -130,7 +134,7 @@ public class StartViewModel extends AndroidViewModel {
         points[index] = somePoints;
         int totalItem = getTotalPoints();
         if (totalItem <= MAX_CREDIT) {
-            Log.d("REMAINING_POINTS",String.valueOf(MAX_CREDIT - totalItem));
+            Log.d("REMAINING_POINTS", String.valueOf(MAX_CREDIT - totalItem));
             return MAX_CREDIT - totalItem;
         } else {
             return -1;

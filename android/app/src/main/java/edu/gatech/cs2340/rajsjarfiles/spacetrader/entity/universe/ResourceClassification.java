@@ -59,16 +59,18 @@ public enum ResourceClassification {
      * @param habitats habitat of a planet where the resource is allocated
      * @return single random resource classification
      */
-    public static ResourceClassification getRandomResourceClass(Habitats habitats) {
+    public static ResourceClassification getRandomResourceClass(
+            Habitats habitats) {
         Random rand = new Random();
 
         // List that store possible resource classification
         List<ResourceClassification> pr = new ArrayList<>();
 
         // Filter out resources that are possible to exists in this habitat
-        for (ResourceClassification resource : ResourceClassification.values()) {
-            if (resource != null &&
-                    !habitats.impossibleResources.contains(resource)) {
+        for (ResourceClassification resource
+                : ResourceClassification.values()) {
+            if (resource != null
+                    && !habitats.getImpossibleResources().contains(resource)) {
                 pr.add(resource);
             }
         }

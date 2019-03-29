@@ -26,26 +26,19 @@ public class ShipViewModel extends AndroidViewModel {
         super(application);
     }
 
-    public int getPlayerLocation() {
-        return Model.current.getPlayer().getPlanet().getOrbitRadius();
+    public String getPlayerLocation() {
+        return Model.getCurrent().getPlayer().getLocation().getPlanet().getName();
     }
 
     public int getFuelRemaining() {
-        return Model.current.getPlayer().getShip().getFuelRemaining();
+        return Model.getCurrent().getPlayer().getShip().getFuel();
     }
 
     public String getCargoHoldUsage() {
-        Ship ship = Model.current.getPlayer().getShip();
+        Ship ship = Model.getCurrent().getPlayer().getShip();
         int total = ship.getCargoCapacity();
         int used = total - ship.getAvailableCargoCapacity();
         return used + "/" + total;
-    }
-
-    /**
-     * Create new model
-     */
-    public void createNewModel() {
-        model = new Model(null, null, 0, new Ship(), null);
     }
 
 }

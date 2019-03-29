@@ -6,6 +6,7 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.Tran
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionResult;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionType;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Planet;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.SolarSystem;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 
 /**
@@ -24,10 +25,12 @@ public class Player {
      * 3 is fight
      */
     private int[] points;
-    private int credits;
-    private Ship ship;
-    private Planet planet; // Planet that the player is currently on.
 
+    private Ship ship;
+    private Wallet wallet;
+    private Location location;
+
+    ///////////////////////////// CONSTRUCTORS /////////////////////////////
     /**
      * Player constructor with all arguments.
      *
@@ -36,116 +39,12 @@ public class Player {
     public Player(PlayerBuilder builder) {
         setName(builder.name);
         setPoints(builder.points);
-        setCredits(builder.credits);
+        setWallet(builder.wallet);
         setShip(builder.ship);
-        setPlanet(builder.planet);
+        setLocation(builder.location);
     }
 
-    /**
-     * Setter for planet which the player is on.
-     *
-     * @param planet that the player is on.
-     */
-    public void setPlanet(Planet planet) {
-        this.planet = planet;
-        // tmp
-        //this.planet = new Planet.PlanetBuilder("Raj", 3).build();
-    }
-
-    /**
-     * Method that allows player to buy certain good.
-     *
-     * @param good good to buy
-     * @param quantity quantity of good to buy
-     * @return true if the transaction was successful.
-     */
-    public boolean makePurchase(Good good, int quantity) {
-        // Create new Transaction Order
-        TransactionOrder newTransactionOrder = new TransactionOrder(
-                good,
-                quantity,
-                this,
-                TransactionType.BUY);
-
-        // Get Transaction order
-        TransactionResult newTransactionResult = planet.getMarketplace()
-                .validateTransaction(newTransactionOrder);
-
-        // Use credit, Get Good to cargo based on the transaction result (success, fail)
-        if (newTransactionResult.getisTransactionSuccess()) {
-            Item item = newTransactionResult.getItem();
-            // Add good to the cargo
-            ship.addGood(item);
-            // Use credits
-            useCredits(item.getPrice() * item.getQuantity());
-        }
-
-        // Return if the transaction is success or not.
-        return newTransactionResult.getisTransactionSuccess();
-    }
-
-    /**
-     *  Method that allows player to sell certain good.
-     *
-     * @param good good to sell
-     * @param quantity quantity of good to sell
-     * @return true if the transaction was successful
-     */
-    public boolean makeSales(Good good, int quantity) {
-        // Create new transaction.
-        TransactionOrder newTransactionOrder = new TransactionOrder(
-                good,
-                quantity,
-                this,
-                TransactionType.SELL);
-
-        // Get transaction result.
-        TransactionResult newTransactionResult = planet.getMarketplace()
-                .validateTransaction(newTransactionOrder);
-
-        // Remove cargo, and earn credit based on the transaction result
-        if (newTransactionResult.getisTransactionSuccess()) {
-            Item item = newTransactionResult.getItem();
-            // Sell goods from cargo.
-            ship.sellGood(item);
-            // Earn credits.
-            earnCredits(item.getPrice() * item.getQuantity());
-        }
-        return newTransactionResult.getisTransactionSuccess();
-    }
-
-    /**
-     * Earn credit
-     *
-     * @param amount of credit earned.
-     */
-    private void earnCredits(int amount) {
-        credits += amount;
-    }
-
-    /**
-     * Use credit
-     *
-     * @param amount of credit earned.
-     */
-    private void useCredits(int amount) {
-        credits -= amount;
-    }
-
-    /**
-     * Makes sure that the user cannot buy more goods than you have money
-     *
-     * @param marketPrice the price the market is selling at
-     * @return boolean of whether the user has enough credit
-     */
-    public Boolean checkCreditEnough(int marketPrice) {
-        if (marketPrice > credits ) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
+    ///////////////////////////// SHIP OPERATION /////////////////////////////
     /**
      * Makes sure the user cannot buy more goods than the cargo capacity
      *
@@ -160,6 +59,87 @@ public class Player {
         }
     }
 
+    /**
+     * @return the player's ship
+     */
+    public Ship getShip() {
+        return ship;
+    }
+
+    /**
+     * Sets the player's ship to a new ship.
+     *
+     * @param ship the new ship
+     * @throws java.lang.IllegalArgumentException when ship is null
+     */
+    public void setShip(Ship ship) {
+        if (ship == null) {
+            throw new IllegalArgumentException(
+                    "Cannot set ship to null with this method. Use setNoShip()."
+            );
+        }
+        this.ship = ship;
+    }
+
+    /**
+     * Sets ship to null if a player has no ship.
+     */
+    public void setNoShip() {
+        this.ship = null;
+    }
+
+    ///////////////////////////// WALLET OPERATION /////////////////////////////
+    public Wallet getWallet() {
+        return this.wallet;
+    }
+
+    public void setWallet(Wallet wallet) {
+        this.wallet = wallet;
+        this.wallet.setOwner(this);
+    }
+
+    ///////////////////////////// LOCATION OPERATION /////////////////////////////
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public Location getLocation() {
+        return this.location;
+    }
+
+    public boolean travel(SolarSystem destinationSS, Planet destinationP) {
+
+       final int statusCODE = this.location.checkIfTravelPossible(destinationSS, destinationP);
+
+       // Travel not possible since the player is not in the warp zone planet.
+       if (statusCODE == -1) {
+           return false;
+       }
+
+       // Inter solar system travel. (travel between solar system)
+       if (statusCODE == 1) {
+           final int TRAVELFAIR = 1000;
+           if (this.wallet.checkCreditEnough(TRAVELFAIR)){
+               //TODO STUB PRICE FOR INTER SOLAR TRAVEL
+               this.wallet.useCredits(TRAVELFAIR);
+               this.location = new Location(destinationSS, destinationSS.getPlanetWithWarp());
+               return true;
+           }
+       }
+
+       // Travel inside the solar system
+       if (statusCODE == 0) {
+           int fuelRequired = this.location.calculateFuelRq(destinationP);
+           if (this.ship.hasFuels(fuelRequired)) {
+               this.ship.subFuel(fuelRequired);
+               this.location = new Location(destinationSS, destinationP);
+               return true;
+           }
+       }
+       return false;
+    }
+
+    ///////////////////////////// PLAYER ATTRIBUTES /////////////////////////////
     /**
      * @return the player's name
      */
@@ -233,63 +213,6 @@ public class Player {
         this.points = points;
     }
 
-    /**
-     * @return the player's credits
-     */
-    public int getCredits() {
-        return credits;
-    }
-
-    /**
-     * Sets the player's credits.
-     *
-     * @param credits the new credits
-     * @throws java.lang.IllegalArgumentException if credits are negative
-     */
-    public void setCredits(int credits) {
-        if (credits < 0) {
-            throw new IllegalArgumentException(
-                    "Cannot set credits to a negative number.");
-        }
-        this.credits = credits;
-    }
-
-    /**
-     * @return the player's ship
-     */
-    public Ship getShip() {
-        return ship;
-    }
-
-    /**
-     * Sets the player's ship to a new ship.
-     *
-     * @param ship the new ship
-     * @throws java.lang.IllegalArgumentException when ship is null
-     */
-    public void setShip(Ship ship) {
-        if (ship == null) {
-            throw new IllegalArgumentException(
-                    "Cannot set ship to null with this method. Use setNoShip()."
-            );
-        }
-        this.ship = ship;
-    }
-
-    /**
-     * Sets ship to null if a player has no ship.
-     */
-    public void setNoShip() {
-        this.ship = null;
-    }
-
-    /**
-     * @return The planet this player is currently on
-     */
-    public Planet getPlanet() {
-        return this.planet;
-    }
-
     @Override
     public String toString() {
         return "The player's name is " + getName() + " with stats:\n"
@@ -297,7 +220,7 @@ public class Player {
                 + " - Engineer: " + getEngineer() + "\n"
                 + " - Trade: " + getTrade() + "\n"
                 + " - Fight: " + getFight() + "\n"
-                + "They also have " + getCredits() + " credits and they fly a "
+                + "They also have " + wallet.getCredits() + " credits and they fly a "
                 + getShip().toString();
     }
 
@@ -308,9 +231,9 @@ public class Player {
 
         private final String name;
         private int[] points;
-        private int credits;
         private Ship ship;
-        private Planet planet;
+        private Wallet wallet;
+        private Location location;
 
         /**
          * One arg constructor for the Player Builder pattern.
@@ -319,11 +242,12 @@ public class Player {
          * @param name the player's name
          */
         public PlayerBuilder(String name) {
+            // Default Values
             this.name = name;
-            this.points = new int[] {4,4,4,4};
-            this.credits = 1000;
+            this.points = new int[] {4, 4, 4, 4};
+            this.wallet = new Wallet(9999); //TODO STUB CREDIT AMOUNT
             this.ship = new Ship(ShipType.GNAT);
-            this.planet = null;
+            this.location = new Location();
         }
 
         /**
@@ -344,7 +268,7 @@ public class Player {
          * @return the builder object
          */
         public PlayerBuilder credits(int credits) {
-            this.credits = credits;
+            this.wallet.setCredits(credits);
             return this;
         }
 
@@ -359,24 +283,11 @@ public class Player {
         }
 
         /**
-         * Sets the builder's planet.
-         * @param planet planet
-         * @return the builder object
-         */
-        public PlayerBuilder planet(Planet planet) {
-            this.planet = planet;
-            return this;
-        }
-
-        /**
          * Builds the Player object.
          *
          * @return the new Player object
          */
         public Player build() {
-            if (this.planet == null) {
-                this.planet = Model.current.getGame().getUniverse().getRandomSolarSystem().getRandomPlanet();
-            }
             return new Player(this);
         }
     }

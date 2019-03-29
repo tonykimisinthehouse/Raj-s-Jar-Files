@@ -12,17 +12,19 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
  */
 public class Ship {
     private ShipType shipType;
-    private HashMap<Good,Item> cargo;
 
+    private HashMap<Good, Item> cargo;
     private int totalCap;
     private int usedCap;
-    private int fuelRemaining;
+    private int fuel;
+
+    ///////////////////////////// CONSTRUCTOR /////////////////////////////
 
     /**
      * Default constructor that sets ShipType to GNAT.
      */
     public Ship() {
-        this(10,ShipType.GNAT);
+        this(10, ShipType.GNAT);
     }
 
     /**
@@ -31,7 +33,7 @@ public class Ship {
      * @param shipType the ship type
      */
     public Ship(ShipType shipType) {
-        this(10,shipType);
+        this(10, shipType);
     }
 
     /**
@@ -45,9 +47,26 @@ public class Ship {
         this.shipType = shipType;
         totalCap =  cargoSize;
         usedCap = 0;
-        fuelRemaining = 0;
+        fuel = 999999; //TODO STUB FUEL AMOUNT
     }
 
+
+    ///////////////////////////// FUEL OPERATION /////////////////////////////
+    public boolean hasFuels(int requiredFuel) {
+        return fuel >= requiredFuel;
+    }
+
+    public void subFuel(int fuelUsed) {
+        if (hasFuels(fuelUsed)) {
+            fuel -= fuelUsed;
+        }
+    }
+
+    public int getFuel() {
+        return this.fuel;
+    }
+
+    ///////////////////////////// CARGO OPERATION /////////////////////////////
     /**
      * Get total cargo capacity of the ship.
      *
@@ -67,6 +86,22 @@ public class Ship {
     }
 
     /**
+     * Determines if the ship has a certain number of a good
+     *
+     * @param good the good
+     * @param quantity the number of goods
+     * @return whether or not the ship has that many goods
+     */
+    public boolean hasGoods(Good good, int quantity) {
+        if (cargo.containsKey(good)) {
+            if (cargo.get(good).getQuantity() >= quantity) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Add quantity of goods to the cargo.
      *
      * @param item to add in the cargo
@@ -82,7 +117,8 @@ public class Ship {
         if (cargo.containsKey(good)) {
             cargo.get(good).addQuantity(quantity);
         } else {
-            cargo.put(good, new Item.ItemBuilder(good).price(price).quantity(quantity).build());
+            cargo.put(good, new Item.ItemBuilder(good).price(price).
+                    quantity(quantity).build());
         }
         usedCap += quantity;
     }
@@ -101,15 +137,23 @@ public class Ship {
         }
     }
 
-    public boolean hasGoods(Good good, int quantity) {
-        if (cargo.containsKey(good)) {
-            if (cargo.get(good).getQuantity() >= quantity) {
-                return true;
-            }
+    /**
+     * @return a collection of the ship's cargo items
+     */
+    public Collection<Item> getCargoGoods() {
+        Collection<Item> items = new ArrayList<>();
+        for (Good good : this.cargo.keySet()) {
+            // Build a new item based on this good
+            Item item = new Item.ItemBuilder(good)
+                    .quantity(this.cargo.get(good).getQuantity())
+                    .price(this.cargo.get(good).getPrice())
+                    .build();
+            items.add(item);
         }
-        return false;
+        return items;
     }
 
+    ///////////////////////////// SHIP ATTRIBUTES  /////////////////////////////
     /**
      * @return the ship type
      */
@@ -138,23 +182,6 @@ public class Ship {
         Ship s = (Ship) that;
 
         return this.shipType == s.shipType;
-    }
-
-    public Collection<Item> getCargoGoods() {
-        Collection<Item> items = new ArrayList<>();
-        for (Good good : this.cargo.keySet()) {
-            // Build a new item based on this good
-            Item item = new Item.ItemBuilder(good)
-                    .quantity(this.cargo.get(good).getQuantity())
-                    .price(this.cargo.get(good).getPrice())
-                    .build();
-            items.add(item);
-        }
-        return items;
-    }
-
-    public int getFuelRemaining() {
-        return this.fuelRemaining;
     }
 
     @Override
