@@ -23,12 +23,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20sp"
-        android:text="TextView"
+        android:text="Welcome to your Ship!"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="24sp"
-        android:textStyle="bold"
-        tools:text="Welcome to your Ship!" />
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/button_fly"
