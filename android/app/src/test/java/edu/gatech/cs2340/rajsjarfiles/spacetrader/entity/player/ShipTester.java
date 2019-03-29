@@ -51,4 +51,33 @@ public class ShipTester {
         Exception e = new Exception();
         assertNotEquals(ship, e);
     }
+
+    /**
+     * Test adding weapons to a ship that has weapon slots.
+     */
+    @Test(timeout = TIMEOUT)
+    public void testAddWeapons() {
+        Ship ship = new Ship();
+        assertEquals(ShipType.GNAT, ship.getShipType());
+
+        assertEquals(0, ship.getWeapons().size());
+
+        ship.addWeapon(Weapon.BEAM_LASER);
+        assertEquals(1, ship.getWeapons().size());
+
+        ship.addWeapon(Weapon.MILITARY_LASER);
+        assertEquals(1, ship.getWeapons().size());
+
+        Ship ship1 = new Ship(ShipType.WASP);
+        assertEquals(ShipType.WASP, ship1.getShipType());
+
+        ship1.addWeapon(Weapon.PULSE_LASER);
+        assertEquals(1, ship1.getWeapons().size());
+        ship1.addWeapon(Weapon.BEAM_LASER);
+        assertEquals(2, ship1.getWeapons().size());
+        ship1.addWeapon(Weapon.MILITARY_LASER);
+        assertEquals(3, ship1.getWeapons().size());
+        ship1.addWeapon(Weapon.PULSE_LASER);
+        assertEquals(3, ship1.getWeapons().size());
+    }
 }

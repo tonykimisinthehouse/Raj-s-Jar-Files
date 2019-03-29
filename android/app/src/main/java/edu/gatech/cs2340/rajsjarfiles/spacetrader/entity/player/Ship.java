@@ -3,6 +3,8 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Good;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
@@ -12,16 +14,20 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
  */
 public class Ship {
     private ShipType shipType;
-    private HashMap<Good,Item> cargo;
 
+    private HashMap<Good, Item> cargo;
     private int totalCap;
     private int usedCap;
+
+    private int health;
+
+    private List<Weapon> weapons;
 
     /**
      * Default constructor that sets ShipType to GNAT.
      */
     public Ship() {
-        this(10,ShipType.GNAT);
+        this(10, ShipType.GNAT);
     }
 
     /**
@@ -30,7 +36,7 @@ public class Ship {
      * @param shipType the ship type
      */
     public Ship(ShipType shipType) {
-        this(10,shipType);
+        this(10, shipType);
     }
 
     /**
@@ -44,6 +50,10 @@ public class Ship {
         this.shipType = shipType;
         totalCap =  cargoSize;
         usedCap = 0;
+
+        health = shipType.getMaxHealth();
+
+        weapons = new ArrayList<>(shipType.getMaxWeaponSlots());
     }
 
     /**
@@ -151,8 +161,68 @@ public class Ship {
         return items;
     }
 
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    /**
+     * Does damage to the ship. Returns true if dead, false if still alive.
+     *
+     * @param damage the amount of damage
+     * @return whether or not the ship is destroyed
+     */
+    public boolean takeDamage(int damage) {
+        health -= damage;
+        if (health <= 0) {
+            health = 0;
+        }
+        return health <= 0;
+    }
+
+    public void addWeapon(Weapon w) {
+        if (weapons.size() < shipType.getMaxWeaponSlots()) {
+            weapons.add(w);
+        }
+    }
+
+    public List<Weapon> getWeapons() {
+        return weapons;
+    }
+
     @Override
     public String toString() {
         return shipType.toString();
+    }
+
+    private static Random rand = new Random();
+
+    /**
+     * @return a random instance of a ship with no cargo
+     */
+    public static Ship getRandomShip() {
+        ShipType st = ShipType.values()[rand.nextInt(ShipType.values().length)];
+        Ship ship = new Ship(0, st);
+        return ship;
+    }
+
+    /**
+     * @return a random instance of a ship that has weapons
+     */
+    public static Ship getRandomShipWithWeapons() {
+        ShipType st = ShipType.getShipsWithWeapons().
+                get(rand.nextInt(ShipType.getShipsWithWeapons().size()));
+
+        Ship ship = new Ship(0, st);
+
+        //add weapons to the ship
+        int numWeaponsToAdd = rand.nextInt(st.getMaxWeaponSlots());
+        for (int i = 0; i < numWeaponsToAdd; i++) {
+            ship.addWeapon(Weapon.getRandomWeapon());
+        }
+        return ship;
     }
 }

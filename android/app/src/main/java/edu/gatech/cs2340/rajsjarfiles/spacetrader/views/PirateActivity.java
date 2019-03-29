@@ -7,7 +7,7 @@ import android.view.View;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
 
-public class PirateActivity extends AppCompatActivity {
+public class PirateActivity extends EncounterActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,35 +15,35 @@ public class PirateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pirate);
     }
 
-    /**
-     * This method runs when the run button is clicked in the pirate activity.
-     */
-    public void runPirateButton(View view) {
-        //update code below
-        /*Intent intent = new Intent(view.getContext(), RandomEventActivity
-                .class);
-        startActivity(intent);*/
-    }
-
-    /**
-     * This method runs when the attack button is clicked in the pirate
-     * activity.
-     */
-    public void attackPirateButton(View view) {
-        //update code below
-        /*Intent intent = new Intent(view.getContext(), RandomEventActivity
-                .class);
-        startActivity(intent);*/
-    }
-
-    /**
-     * This method runs when the surrender button is clicked in the pirate
-     * activity.
-     */
-    public void surrenderPirateButton(View view) {
-        //update code below
-        /*Intent intent = new Intent(view.getContext(), RandomEventActivity
-                .class);
-        startActivity(intent);*/
-    }
+//    /**
+//     * This method runs when the run button is clicked in the pirate activity.
+//     */
+//    public void runPirateButton(View view) {
+//        //update code below
+//        /*Intent intent = new Intent(view.getContext(), RandomEventActivity
+//                .class);
+//        startActivity(intent);*/
+//    }
+//
+//    /**
+//     * This method runs when the attack button is clicked in the pirate
+//     * activity.
+//     */
+//    public void attackPirateButton(View view) {
+//        //update code below
+//        /*Intent intent = new Intent(view.getContext(), RandomEventActivity
+//                .class);
+//        startActivity(intent);*/
+//    }
+//
+//    /**
+//     * This method runs when the surrender button is clicked in the pirate
+//     * activity.
+//     */
+//    public void surrenderPirateButton(View view) {
+//        //update code below
+//        /*Intent intent = new Intent(view.getContext(), RandomEventActivity
+//                .class);
+//        startActivity(intent);*/
+//    }
 }
