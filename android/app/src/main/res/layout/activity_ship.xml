@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_width="match_parent"
@@ -9,6 +10,36 @@
     android:orientation="vertical"
     android:padding="20dp"
     tools:context="edu.gatech.cs2340.rajsjarfiles.spacetrader.views.ShipActivity">
+
+    <ImageView
+        android:id="@+id/shipImage"
+        android:layout_width="match_parent"
+        android:layout_height="150sp"
+        android:layout_marginBottom="10sp"
+        app:srcCompat="@drawable/rocket" />
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20sp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:text="Welcome to your Ship!" />
+
+    <Button
+        android:id="@+id/button_fly"
+        android:layout_width="wrap_content"
+        android:layout_height="75sp"
+        android:layout_marginBottom="10sp"
+        android:background="@android:drawable/ic_menu_send"
+        android:contentDescription="Fly"
+        android:onClick="chooseDestination"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/indicator_location"

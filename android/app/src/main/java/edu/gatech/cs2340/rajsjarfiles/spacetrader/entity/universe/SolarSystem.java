@@ -1,5 +1,10 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
+import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.HashMap;
 import java.util.Random;
 
 /**
@@ -13,6 +18,7 @@ public class SolarSystem {
 
     //using an array because the size won't change
     private Planet[] planets;
+    private HashMap<String, Planet> planetMap;
     private String name;
     private Coordinate coordinate;
 
@@ -25,8 +31,10 @@ public class SolarSystem {
     public SolarSystem(String name, Coordinate coordinate) {
         this.name = name;
         this.coordinate = coordinate;
-        planets = generatePlanets(rand.nextInt(
+        this.planets = generatePlanets(rand.nextInt(
                 MAX_PLANETS - MIN_PLANETS + 1) + MIN_PLANETS);
+        this.planetMap = new HashMap<>();
+        this.computePlanetMap();
         assignWarpZone();
     }
 
@@ -60,6 +68,35 @@ public class SolarSystem {
             planets[i] = new Planet.PlanetBuilder(nameList[i], orbitRadius, orbitAngle).build();
         }
         return planets;
+    }
+
+    /**
+     * Adds each Planet to the "planetsMap" hash map
+     * with key/value pair: String (name), Planet
+     */
+    private void computePlanetMap() {
+        for (Planet planet : this.planets) {
+            Log.d("Raj", "Adding " + planet.getName());
+            this.planetMap.put(planet.getName(), planet);
+        }
+    }
+
+    /**
+     * Returns the planet with the specified name
+     * in this Solar System.
+     * @param name the name of the planet to fetch
+     * @return the planet
+     */
+    public Planet getPlanetByName(String name) {
+        return this.planetMap.get(name);
+    }
+
+    /**
+     * Returns an array of all planets in this Solar System.
+     * @return the array of planets
+     */
+    public Planet[] getPlanets() {
+        return this.planets;
     }
 
     /**
