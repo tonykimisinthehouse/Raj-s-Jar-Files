@@ -25,12 +25,12 @@
             android:onClick="openMap" />
 
         <Button
-            android:id="@+id/button_fly"
+            android:id="@+id/button_ship"
             android:layout_width="wrap_content"
             android:layout_height="75sp"
-            android:layout_toRightOf="@id/button_map"
             android:layout_toLeftOf="@id/button_trade"
-            android:background="@android:drawable/ic_menu_send"
+            android:layout_toRightOf="@id/button_map"
+            android:background="@drawable/rocket"
             android:onClick="openShip" />
 
         <Button
