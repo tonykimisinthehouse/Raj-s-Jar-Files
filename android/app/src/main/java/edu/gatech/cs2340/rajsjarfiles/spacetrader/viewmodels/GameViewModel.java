@@ -4,19 +4,12 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 
 /**
  * Represents the view model for Main Activity.
  */
 public class GameViewModel extends AndroidViewModel {
-
-    /**
-     * Backing model
-     */
-    public Model model;
-
     /**
      * StartViewModel constructor with all arguments.
      *
@@ -26,40 +19,57 @@ public class GameViewModel extends AndroidViewModel {
         super(application);
     }
 
-
+    /**
+     * @return the name of the planet the player is currently on
+     */
     public String getPlanetName() {
-        return Model.getModel().getPlayer().getPlanet().getName();
-    }
-
-    public int getPlanetOrbitRadius() {
-        return Model.getModel().getPlayer().getPlanet().getOrbitRadius();
-    }
-
-    public String getPlanetResources() {
-        return Model.getModel().getPlayer().getPlanet().getResourceClass().toString();
-    }
-
-    public String getPlanetTechLevel() {
-        return Model.getModel().getPlayer().getPlanet().getTechLevel().toString();
-    }
-
-    public String getPlanetEvent() {
-        return Model.getModel().getPlayer().getPlanet().getMarketplace().getEvent().toString();
-    }
-
-    public String getPlanetSpecies() {
-        return Model.getModel().getPlayer().getPlanet().getSpecies().toString();
-    }
-
-    public String getPlanetColorHex() {
-        return Model.getModel().getPlayer().getPlanet().getHabitat().getColorHex();
+        return Model.getModel().getPlayer().getLocation().getPlanet().getName();
     }
 
     /**
-     * Create new model
+     * @return the orbit radius of the planet the player is currently on
      */
-    public void createNewModel() {
-        model = new Model(null, null, 0, new Ship(), null);
+    public int getPlanetOrbitRadius() {
+        return Model.getModel().getPlayer().getLocation().getPlanet().getOrbitRadius();
     }
 
+    /**
+     * @return the resources of the planet the player is currently on
+     */
+    public String getPlanetResources() {
+        return Model.getModel().getPlayer()
+                .getLocation().getPlanet().getResourceClass().toString();
+    }
+
+    /**
+     * @return the tech level of the planet the player is currently on
+     */
+    public String getPlanetTechLevel() {
+        return Model.getModel().getPlayer()
+                .getLocation().getPlanet().getTechLevel().toString();
+    }
+
+    /**
+     * @return the planet event of the planet the player is currently on
+     */
+    public String getPlanetEvent() {
+        return Model.getModel().getPlayer()
+                .getLocation().getPlanet().getMarketplace().getEvent().toString();
+    }
+
+    /**
+     * @return the species on the planet the player is currently on
+     */
+    public String getPlanetSpecies() {
+        return Model.getModel().getPlayer()
+                .getLocation().getPlanet().getSpecies().toString();
+    }
+
+    /**
+     * @return the color of the planet the player is currently on
+     */
+    public String getPlanetColorHex() {
+        return Model.getModel().getPlayer()
+                .getLocation().getPlanet().getHabitats().getColorHex();
+    }
 }

@@ -18,6 +18,9 @@ public class Ship {
     private HashMap<Good, Item> cargo;
     private int totalCap;
     private int usedCap;
+    private int fuel;
+
+    ///////////////////////////// CONSTRUCTOR /////////////////////////////
 
     private int health;
 
@@ -54,8 +57,42 @@ public class Ship {
         health = shipType.getMaxHealth();
 
         weapons = new ArrayList<>(shipType.getMaxWeaponSlots());
+
+        fuel = 999999; //TODO STUB FUEL AMOUNT
     }
 
+    ///////////////////////////// FUEL OPERATION /////////////////////////////
+
+    /**
+     * Returns whether or not the ship has the necesary
+     * fuel.
+     *
+     * @param requiredFuel the required amount of fuel
+     * @return whether or not the ship has the fuel
+     */
+    public boolean hasFuels(int requiredFuel) {
+        return fuel >= requiredFuel;
+    }
+
+    /**
+     * Removes fuel from the ship.
+     *
+     * @param fuelUsed the amount of fuel to remove
+     */
+    public void subFuel(int fuelUsed) {
+        if (hasFuels(fuelUsed)) {
+            fuel -= fuelUsed;
+        }
+    }
+
+    /**
+     * @return how much fuel the ship has
+     */
+    public int getFuel() {
+        return this.fuel;
+    }
+
+    ///////////////////////////// CARGO OPERATION /////////////////////////////
     /**
      * Get total cargo capacity of the ship.
      *
@@ -75,6 +112,22 @@ public class Ship {
     }
 
     /**
+     * Determines if the ship has a certain number of a good
+     *
+     * @param good the good
+     * @param quantity the number of goods
+     * @return whether or not the ship has that many goods
+     */
+    public boolean hasGoods(Good good, int quantity) {
+        if (cargo.containsKey(good)) {
+            if (cargo.get(good).getQuantity() >= quantity) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Add quantity of goods to the cargo.
      *
      * @param item to add in the cargo
@@ -90,7 +143,8 @@ public class Ship {
         if (cargo.containsKey(good)) {
             cargo.get(good).addQuantity(quantity);
         } else {
-            cargo.put(good, new Item.ItemBuilder(good).price(price).quantity(quantity).build());
+            cargo.put(good, new Item.ItemBuilder(good).price(price).
+                    quantity(quantity).build());
         }
         usedCap += quantity;
     }
@@ -109,15 +163,7 @@ public class Ship {
         }
     }
 
-    public boolean hasGoods(Good good, int quantity) {
-        if (cargo.containsKey(good)) {
-            if (cargo.get(good).getQuantity() >= quantity) {
-                return true;
-            }
-        }
-        return false;
-    }
-
+    ///////////////////////////// SHIP ATTRIBUTES  /////////////////////////////
     /**
      * @return the ship type
      */
@@ -148,6 +194,9 @@ public class Ship {
         return this.shipType == s.shipType;
     }
 
+    /**
+     * @return all the items in the ship's cargo
+     */
     public Collection<Item> getCargoGoods() {
         Collection<Item> items = new ArrayList<>();
         for (Good good : this.cargo.keySet()) {
@@ -262,6 +311,9 @@ public class Ship {
         }
     }
 
+    /**
+     * @return the ship's weapons
+     */
     public List<Weapon> getWeapons() {
         return weapons;
     }

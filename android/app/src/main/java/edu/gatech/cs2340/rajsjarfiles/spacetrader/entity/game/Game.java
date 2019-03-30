@@ -34,7 +34,6 @@ public class Game {
         return universe;
     }
 
-
     @Override
     public String toString() {
         return "The game difficulty is set to " + getGameDiff().toString()
