@@ -23,53 +23,53 @@ public class GameViewModel extends AndroidViewModel {
      * @return the name of the planet the player is currently on
      */
     public String getPlanetName() {
-        return Model.getCurrent().getPlayer().getPlanet().getName();
+        return Model.getCurrent().getPlayer().getLocation().getPlanet().getName();
     }
 
     /**
      * @return the orbit radius of the planet the player is currently on
      */
     public int getPlanetOrbitRadius() {
-        return Model.getCurrent().getPlayer().getPlanet().getOrbitRadius();
+        return Model.getCurrent().getPlayer().getLocation().getPlanet().getOrbitRadius();
     }
 
     /**
      * @return the resources of the planet the player is currently on
      */
     public String getPlanetResources() {
-        return Model.getCurrent().getPlayer().
-                getPlanet().getResourceClass().toString();
+        return Model.getCurrent().getPlayer()
+                .getLocation().getPlanet().getResourceClass().toString();
     }
 
     /**
      * @return the tech level of the planet the player is currently on
      */
     public String getPlanetTechLevel() {
-        return Model.getCurrent().getPlayer().
-                getPlanet().getTechLevel().toString();
+        return Model.getCurrent().getPlayer()
+                .getLocation().getPlanet().getTechLevel().toString();
     }
 
     /**
      * @return the planet event of the planet the player is currently on
      */
     public String getPlanetEvent() {
-        return Model.getCurrent().getPlayer().
-                getPlanet().getMarketplace().getEvent().toString();
+        return Model.getCurrent().getPlayer()
+                .getLocation().getPlanet().getMarketplace().getEvent().toString();
     }
 
     /**
      * @return the species on the planet the player is currently on
      */
     public String getPlanetSpecies() {
-        return Model.getCurrent().getPlayer().
-                getPlanet().getSpecies().toString();
+        return Model.getCurrent().getPlayer()
+                .getLocation().getPlanet().getSpecies().toString();
     }
 
     /**
      * @return the color of the planet the player is currently on
      */
     public String getPlanetColorHex() {
-        return Model.getCurrent().getPlayer().
-                getPlanet().getHabitat().getColorHex();
+        return Model.getCurrent().getPlayer()
+                .getLocation().getPlanet().getHabitats().getColorHex();
     }
 }

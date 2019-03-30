@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_width="match_parent"
@@ -10,6 +11,60 @@
     android:padding="20dp"
     tools:context="edu.gatech.cs2340.rajsjarfiles.spacetrader.views.ShipActivity">
 
-    <!-- TODO add UI elements here -->
+    <ImageView
+        android:id="@+id/shipImage"
+        android:layout_width="match_parent"
+        android:layout_height="150sp"
+        android:layout_marginBottom="10sp"
+        app:srcCompat="@drawable/rocket" />
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20sp"
+        android:text="Welcome to your Ship!"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button_fly"
+        android:layout_width="wrap_content"
+        android:layout_height="75sp"
+        android:layout_marginBottom="10sp"
+        android:background="@android:drawable/ic_menu_send"
+        android:contentDescription="Fly"
+        android:onClick="chooseDestination"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/indicator_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Location: /dev/null"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/indicator_fuel_remaining"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Fuel Remaining: 1000 Wh"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/indicator_cargo_hold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Cargo Hold Usage: 1/10"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
 
 </LinearLayout>

@@ -11,11 +11,38 @@
     android:padding="20dp"
     tools:context="edu.gatech.cs2340.rajsjarfiles.spacetrader.views.GameActivity">
 
-    <Button
-        android:id="@+id/button_fly"
-        android:layout_width="50sp"
-        android:layout_height="50sp"
-        android:background="@android:drawable/ic_menu_send" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="30sp">
+
+        <Button
+            android:id="@+id/button_map"
+            android:layout_width="wrap_content"
+            android:layout_height="75sp"
+            android:background="@android:drawable/ic_dialog_map"
+            android:onClick="openMap" />
+
+        <Button
+            android:id="@+id/button_ship"
+            android:layout_width="wrap_content"
+            android:layout_height="75sp"
+            android:layout_toLeftOf="@id/button_trade"
+            android:layout_toRightOf="@id/button_map"
+            android:background="@drawable/rocket"
+            android:onClick="openShip" />
+
+        <Button
+            android:id="@+id/button_trade"
+            android:layout_width="wrap_content"
+            android:layout_height="75sp"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="0dp"
+            android:background="@android:drawable/stat_notify_sync"
+            android:onClick="openMarket" />
+
+    </RelativeLayout>
 
     <ImageView
         android:id="@+id/imageView"

@@ -48,8 +48,13 @@ public class MarketActivity extends BaseActivity {
         this.viewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
 
         this.assignViews();
-        this.updateGoods();
         this.alertDialog();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        this.updateGoods();
     }
 
     /**
@@ -104,10 +109,10 @@ public class MarketActivity extends BaseActivity {
 
                     // Buy
                     if (buyNotSell) {
-                        boolean result = Model.getCurrent().getPlayer().
+                        boolean result = Model.getCurrent().getPlayer().getWallet().
                                 makePurchase(item.getGood().getGood(), 1);
                     } else {
-                        boolean result = Model.getCurrent().getPlayer().
+                        boolean result = Model.getCurrent().getPlayer().getWallet().
                                 makeSales(item.getGood().getGood(), 1);
                     }
 
@@ -122,12 +127,12 @@ public class MarketActivity extends BaseActivity {
         // Get latest string representations of goods
         try {
             Player player = Model.getCurrent().getPlayer();
-            int credits = player.getCredits();
+            int credits = player.getWallet().getCredits();
             int totalCargoCapacity = player.getShip().getCargoCapacity();
             int availableCargoCapacity =
                     player.getShip().getAvailableCargoCapacity();
             Collection<Item> goodsForSale =
-                    player.getPlanet().getMarketplace().getItems();
+                    player.getLocation().getPlanet().getMarketplace().getItems();
             Collection<Item> goodsOnShip = player.getShip().getCargoGoods();
 
             // Split by newlines to get arrays
@@ -168,7 +173,7 @@ public class MarketActivity extends BaseActivity {
                     + (totalCargoCapacity - availableCargoCapacity)
                     + "/" + totalCargoCapacity);
             this.viewPlanetName.setText(Model.getCurrent().getPlayer().
-                    getPlanet().getName() + " Marketplace");
+                    getLocation().getPlanet().getName() + " Marketplace");
         } catch (NullPointerException e) {
             Log.e("RAJ", e.getMessage());
         }
@@ -193,10 +198,10 @@ public class MarketActivity extends BaseActivity {
 
         Player player = Model.getCurrent().getPlayer();
         Collection<Item> goodsForSale =
-                player.getPlanet().getMarketplace().getItems();
+                player.getLocation().getPlanet().getMarketplace().getItems();
         for (Item item : goodsForSale) {
             if (item.getGood().getIE()
-                    == player.getPlanet().getMarketplace().getEvent()) {
+                    == player.getLocation().getPlanet().getMarketplace().getEvent()) {
                 int percentageIncrease =
                         (item.getPrice() - item.getGood().getBasePrice())
                                 / item.getGood().getBasePrice() * 100;
@@ -211,7 +216,7 @@ public class MarketActivity extends BaseActivity {
         if (stringBuilder.length() != 0) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("DUE TO "
-                    + player.getPlanet().getMarketplace().getEvent().toString()
+                    + player.getLocation().getPlanet().getMarketplace().getEvent().toString()
                     + ", FOLLOWING ITEMS ARE UNDER PRICE SURGE!");
             builder.setMessage(stringBuilder.toString());
             builder.setCancelable(true);

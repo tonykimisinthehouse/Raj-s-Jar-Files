@@ -17,7 +17,7 @@ public class PlanetTester {
      */
     @Test (timeout = TIMEOUT)
     public void testConstructor() {
-        Planet planet = new Planet.PlanetBuilder("Raj", 3).build();
+        Planet planet = new Planet.PlanetBuilder("Raj", 3, 40).build();
         assertEquals("Raj", planet.getName());
         assertTrue(planet.getRadius() > 0);
         assertEquals(3, planet.getOrbitRadius());
@@ -30,7 +30,7 @@ public class PlanetTester {
      */
     @Test (timeout = TIMEOUT)
     public void testPlanetCreation() {
-        Planet planet = new Planet.PlanetBuilder("Thomas-Centauri", 13).build();
+        Planet planet = new Planet.PlanetBuilder("Thomas-Centauri", 13, 40).build();
         assertEquals("Thomas-Centauri", planet.getName());
         assertEquals(13, planet.getOrbitRadius());
     }
@@ -41,8 +41,8 @@ public class PlanetTester {
      */
     @Test (timeout = TIMEOUT)
     public void testDist() {
-        Planet p1 = new Planet.PlanetBuilder("Justin", 7).build();
-        Planet p2 = new Planet.PlanetBuilder("Raj", 2).build();
+        Planet p1 = new Planet.PlanetBuilder("Justin", 7, 40).build();
+        Planet p2 = new Planet.PlanetBuilder("Raj", 2, 40).build();
 
         assertEquals(5, p1.getDist(p2));
 
