@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_header_selector"
+    android:gravity="top"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context="edu.gatech.cs2340.rajsjarfiles.spacetrader.views.PirateActivity">
+
+    <!-- TODO add UI elements here -->
+    <TextView
+        android:id="@+id/pirate_event_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Beware! Pirate Encounter!"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="31sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/pirate_event_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:text="Pirates have found your ship and will be boarding soon! You can choose to either run, attack, or surrender to make it out alive."
+        android:textColor="@android:color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:gravity="center|bottom"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/pirate_run_button"
+            android:layout_width="150sp"
+            android:layout_marginTop="20sp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"
+            android:background="#17EAD9"
+
+            android:onClick="runPirateButton"
+            android:radius="5dp"
+            android:text="Run"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/pirate_attack_button"
+            android:layout_width="150sp"
+            android:layout_marginTop="10sp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20sp"
+            android:background="#17EAD9"
+
+            android:onClick="attackPirateButton"
+            android:radius="5dp"
+            android:text="Attack"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/pirate_surrender_button"
+            android:layout_width="150sp"
+            android:layout_marginTop="10sp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"
+            android:background="#17EAD9"
+
+            android:onClick="surrenderPirateButton"
+            android:radius="5dp"
+            android:text="Surrender"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

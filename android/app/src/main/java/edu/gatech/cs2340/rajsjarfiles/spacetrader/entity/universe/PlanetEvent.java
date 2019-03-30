@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Represents an event that can occur on a planet.
  */
-public enum Events {
+public enum M8Events {
     DROUGHT,
     COLD,
     CROP_FAIL,

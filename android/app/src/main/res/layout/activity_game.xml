@@ -92,6 +92,7 @@
             android:id="@+id/button_map"
             android:layout_width="wrap_content"
             android:layout_height="75sp"
+            android:onClick="tempTravel"
             android:background="@android:drawable/ic_dialog_map" />
 
         <Button
