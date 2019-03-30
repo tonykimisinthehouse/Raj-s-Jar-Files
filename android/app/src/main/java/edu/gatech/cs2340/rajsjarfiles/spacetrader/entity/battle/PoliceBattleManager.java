@@ -12,7 +12,9 @@ public class PoliceBattleManager extends BattleManager {
 
     @Override
     public String startBattle() {
-        return "The police stop you. What will you do?";
+        return "The police have found your ship and will be boarding soon! "
+                + "You can choose to either attack, run, surrender, "
+                + "or bribe the police to make it out alive.";
     }
 
     public String executeTurn(PlayerEncounterAction pea, EncounterState es) {

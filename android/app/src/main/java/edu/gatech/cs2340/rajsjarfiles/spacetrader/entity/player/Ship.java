@@ -251,6 +251,11 @@ public class Ship {
         return false;
     }
 
+    /**
+     * Adds a weapon to the weapon slots if there's room.
+     *
+     * @param w the new weapon
+     */
     public void addWeapon(Weapon w) {
         if (weapons.size() < shipType.getMaxWeaponSlots()) {
             weapons.add(w);

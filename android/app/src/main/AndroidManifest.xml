@@ -10,7 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".views.PirateActivity"></activity>
-        <activity android:name=".views.PoliceActivity" />
+        <activity android:name=".views.PoliceActivity"
+            android:label="PoliceActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".views.RandomEventActivity" />
         <activity
             android:name=".views.ShipActivity"

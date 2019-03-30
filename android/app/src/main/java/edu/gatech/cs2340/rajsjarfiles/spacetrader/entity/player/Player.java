@@ -375,7 +375,7 @@ public class Player {
          */
         public Player build() {
             if (this.planet == null) {
-                this.planet = Model.current.getGame().getUniverse().getRandomSolarSystem().getRandomPlanet();
+                this.planet = Model.getModel().getGame().getUniverse().getRandomSolarSystem().getRandomPlanet();
             }
             return new Player(this);
         }

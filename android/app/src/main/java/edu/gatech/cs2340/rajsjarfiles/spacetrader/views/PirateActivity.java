@@ -10,9 +10,14 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
 public class PirateActivity extends EncounterActivity {
 
     @Override
+    protected int getLayoutId() {
+        return R.layout.activity_pirate;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pirate);
+//        setContentView(R.layout.activity_pirate);
     }
 
 //    /**

@@ -69,7 +69,5 @@ public class BattleTest {
                 break;
             }
         }
-
-        System.out.println("\nThe simulation is now over.");
     }
 }

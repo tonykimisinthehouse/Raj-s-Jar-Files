@@ -37,6 +37,18 @@
         android:orientation="vertical">
 
         <Button
+            android:id="@+id/police_attack_button"
+            android:layout_width="150sp"
+            android:layout_marginTop="20sp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"
+            android:background="#17EAD9"
+
+            android:onClick="attackPoliceButton"
+            android:radius="5dp"
+            android:text="Attack"
+            android:textColor="@android:color/white" />
+        <Button
             android:id="@+id/police_run_button"
             android:layout_width="150sp"
             android:layout_marginTop="20sp"
@@ -48,7 +60,6 @@
             android:radius="5dp"
             android:text="Run"
             android:textColor="@android:color/white" />
-
         <Button
             android:id="@+id/police_surrender_button"
             android:layout_width="150sp"
@@ -57,7 +68,7 @@
             android:layout_marginBottom="10sp"
             android:background="#17EAD9"
 
-            android:onClick="surrenderPoliceButton"
+            android:onClick="submitPoliceButton"
             android:radius="5dp"
             android:text="Surrender"
             android:textColor="@android:color/white" />

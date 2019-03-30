@@ -28,31 +28,31 @@ public class GameViewModel extends AndroidViewModel {
 
 
     public String getPlanetName() {
-        return Model.current.getPlayer().getPlanet().getName();
+        return Model.getModel().getPlayer().getPlanet().getName();
     }
 
     public int getPlanetOrbitRadius() {
-        return Model.current.getPlayer().getPlanet().getOrbitRadius();
+        return Model.getModel().getPlayer().getPlanet().getOrbitRadius();
     }
 
     public String getPlanetResources() {
-        return Model.current.getPlayer().getPlanet().getResourceClass().toString();
+        return Model.getModel().getPlayer().getPlanet().getResourceClass().toString();
     }
 
     public String getPlanetTechLevel() {
-        return Model.current.getPlayer().getPlanet().getTechLevel().toString();
+        return Model.getModel().getPlayer().getPlanet().getTechLevel().toString();
     }
 
     public String getPlanetEvent() {
-        return Model.current.getPlayer().getPlanet().getMarketplace().getEvent().toString();
+        return Model.getModel().getPlayer().getPlanet().getMarketplace().getEvent().toString();
     }
 
     public String getPlanetSpecies() {
-        return Model.current.getPlayer().getPlanet().getSpecies().toString();
+        return Model.getModel().getPlayer().getPlanet().getSpecies().toString();
     }
 
     public String getPlanetColorHex() {
-        return Model.current.getPlayer().getPlanet().getHabitat().getColorHex();
+        return Model.getModel().getPlayer().getPlanet().getHabitat().getColorHex();
     }
 
     /**

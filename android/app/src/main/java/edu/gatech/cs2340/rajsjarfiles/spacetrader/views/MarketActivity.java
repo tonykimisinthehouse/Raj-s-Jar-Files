@@ -96,12 +96,12 @@ public class MarketActivity extends AppCompatActivity {
 
                     // Buy
                     if (buyNotSell) {
-                        boolean result = Model.current.getPlayer().makePurchase(item.getGood().getGood(), 1);
+                        boolean result = Model.getModel().getPlayer().makePurchase(item.getGood().getGood(), 1);
                     }
 
                     // Sell
                     else {
-                        boolean result = Model.current.getPlayer().makeSales(item.getGood().getGood(), 1);
+                        boolean result = Model.getModel().getPlayer().makeSales(item.getGood().getGood(), 1);
                     }
 
                     // Reload goods
@@ -114,7 +114,7 @@ public class MarketActivity extends AppCompatActivity {
     private void updateGoods() {
         // Get latest string representations of goods
         try {
-            Player player = Model.current.getPlayer();
+            Player player = Model.getModel().getPlayer();
             int credits = player.getCredits();
             int totalCargoCapacity = player.getShip().getCargoCapacity();
             int availableCargoCapacity = player.getShip().getAvailableCargoCapacity();
@@ -156,7 +156,7 @@ public class MarketActivity extends AppCompatActivity {
             this.viewGoodsOnShip.setAdapter(adapterGoodsOnShip);
 
             this.viewCargoCapacity.setText("Capacity: " + (totalCargoCapacity - availableCargoCapacity) + "/" + totalCargoCapacity);
-            this.viewPlanetName.setText(Model.current.getPlayer().getPlanet().getName() + " Marketplace");
+            this.viewPlanetName.setText(Model.getModel().getPlayer().getPlanet().getName() + " Marketplace");
         }
         catch (NullPointerException e) {
             Log.e("RAJ", e.getMessage());
@@ -177,7 +177,7 @@ public class MarketActivity extends AppCompatActivity {
         // Show dialog alerting price increase
         StringBuilder stringBuilder = new StringBuilder();
 
-        Player player = Model.current.getPlayer();
+        Player player = Model.getModel().getPlayer();
         Collection<Item> goodsForSale = player.getPlanet().getMarketplace().getItems();
         for (Item item : goodsForSale) {
             if (item.getGood().getIE() == player.getPlanet().getMarketplace().getEvent()) {
