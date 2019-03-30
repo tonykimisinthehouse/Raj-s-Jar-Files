@@ -3,7 +3,6 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 import java.util.Random;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Marketplace;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.utility.LogCustom;
 
 

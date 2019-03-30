@@ -4,13 +4,12 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.View;
 
+import java.util.Random;
 
-import java.util.HashMap;
-
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Planet;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 
@@ -20,17 +19,41 @@ class MapView extends View {
     private static final int ORBIT_RATIO = 75;
     private static final int RATIO = 7;
 
+    private static float dAngle = 0;
+
+    private static Random rand = new Random();
+
+    android.os.Handler rotationHandler = new android.os.Handler(Looper.myLooper());
+
     public MapView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        updateTimerThread.run();
+
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-
         super.onDraw(canvas);
         fillInBackground(canvas);
         fillInOrbit(canvas);
         fillInPlanet(canvas);
+    }
+
+    private Runnable updateTimerThread = new Runnable()
+    {
+        public void run()
+        {
+            incrementdAngle();
+            invalidate();
+            rotationHandler.postDelayed(this, 10);
+        }
+    };
+
+    private void incrementdAngle() {
+        dAngle += 0.001;
+        if (dAngle >= 360) {
+            dAngle = 0;
+        }
     }
 
     private void fillInBackground(Canvas c) {
@@ -84,35 +107,37 @@ class MapView extends View {
                 paint.setColor(Color.WHITE);
                 distanceLabel = currentPlanet.getDist(planet) + "LY";
             }
+
             float[] coord = getXAndY(planet, c);
             paint.setTextSize(27);
+
             c.drawText(planet.getName() + " " + distanceLabel,  coord[0] + planet.getRadius() * RATIO , coord[1] - planet.getRadius() * RATIO, paint);
         }
     }
 
     private float[] getXAndY(Planet planet, Canvas c) {
 
-        int x = c.getWidth()/2, y = c.getHeight()/2;
-        int a = planet.getOrbitAngle();
-        int h = SUN_RADIUS * 2 + planet.getOrbitRadius() * ORBIT_RATIO;
+        float x = c.getWidth()/2, y = c.getHeight()/2;
+        float a = planet.getOrbitAngle() + dAngle;
+        float h = SUN_RADIUS * 2 + planet.getOrbitRadius() * ORBIT_RATIO;
 
-        int dx = 0, dy = 0;
+        float dx = 0, dy = 0;
 
         if (a >= 0 && a < 90) {
-            dx = (int) (Math.sin(a) * h);
-            dy = (int) (Math.cos(a) * h * -1);
+            dx = (float) (Math.sin(a) * h);
+            dy = (float) (Math.cos(a) * h * -1);
         } else if (a >= 90 && a < 180) {
             a -= 90;
-            dx = (int) (Math.cos(a) * h);
-            dy = (int) (Math.sin(a) * h);
+            dx = (float) (Math.cos(a) * h);
+            dy = (float) (Math.sin(a) * h);
         } else if (a >= 180 && a < 270) {
             a -= 180;
-            dx = (int) (Math.sin(a) * h * -1);
-            dy = (int) (Math.cos(a) * h);
+            dx = (float) (Math.sin(a) * h * -1);
+            dy = (float) (Math.cos(a) * h);
         } else {
             a -= 270;
-            dx = (int) (Math.cos(a) * h * -1);
-            dy = (int) (Math.sin(a) * h * -1);
+            dx = (float) (Math.cos(a) * h * -1);
+            dy = (float) (Math.sin(a) * h * -1);
         }
 
         x += dx;

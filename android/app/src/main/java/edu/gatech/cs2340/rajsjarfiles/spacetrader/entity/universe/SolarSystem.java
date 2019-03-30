@@ -2,8 +2,6 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
 import android.util.Log;
 
-import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Random;
 
