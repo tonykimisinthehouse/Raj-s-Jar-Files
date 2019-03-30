@@ -12,7 +12,7 @@ public interface PlayerEncounterAction {
      * @param player the player
      * @param otherShip the other ship
      * @param es the state of the encounter (over or not over)
-     * @return
+     * @return a string detailing what is happening
      */
     public String doAction(Player player, Ship otherShip, EncounterState es);
 }

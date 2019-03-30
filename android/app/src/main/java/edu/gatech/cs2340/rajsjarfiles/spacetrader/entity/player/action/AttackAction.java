@@ -1,10 +1,7 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action;
 
-import java.util.Random;
-
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Weapon;
 
 public class AttackAction implements PlayerEncounterAction {
 

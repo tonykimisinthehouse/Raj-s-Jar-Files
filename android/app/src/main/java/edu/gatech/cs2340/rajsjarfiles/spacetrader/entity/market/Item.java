@@ -86,7 +86,8 @@ public class Item {
 
     @Override
     public String toString() {
-        return quantity + " " + good.getName() + " at " + price + " units each.";
+        return quantity + " " + good.getName()
+                + " at " + price + " units each.";
     }
 
     /**

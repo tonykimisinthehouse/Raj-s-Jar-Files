@@ -5,12 +5,20 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.Encounter
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.PlayerEncounterAction;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
 
+/**
+ * Handles an encounter between the player and another ship.
+ */
 public abstract class BattleManager {
     protected Player player;
     protected Ship playerShip;
 
     protected Ship otherShip;
 
+    /**
+     * Creates an encounter between the ship and another ship.
+     *
+     * @param player the player
+     */
     public BattleManager(Player player) {
         this.player = player;
         this.playerShip = player.getShip();
@@ -25,8 +33,19 @@ public abstract class BattleManager {
      */
     public abstract String startBattle();
 
-    public abstract String executeTurn(PlayerEncounterAction pea, EncounterState es);
+    /**
+     * Executes one turn for a given player action.
+     *
+     * @param pea the player's action
+     * @param es whether the encounter is over or not
+     * @return a string detailing what is happening in the game
+     */
+    public abstract String executeTurn(
+            PlayerEncounterAction pea, EncounterState es);
 
+    /**
+     * @return the other ship in the encounter
+     */
     public Ship getOtherShip() {
         return otherShip;
     }

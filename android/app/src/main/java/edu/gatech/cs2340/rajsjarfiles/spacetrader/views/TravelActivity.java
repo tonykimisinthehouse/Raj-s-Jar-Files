@@ -39,11 +39,14 @@ public class TravelActivity extends BaseActivity {
 
         GridView destinationGrid = findViewById(R.id.destinationGrid);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, getDestinations());;
+                android.R.layout.simple_list_item_1, getDestinations());
         destinationGrid.setAdapter(adapter);
         destinationGrid.setOnItemClickListener(clickListener);
     }
 
+    /**
+     * @return list of possible destinations
+     */
     private ArrayList<String> getDestinations() {
         // Get object references
         Model model = Model.getModel();
@@ -58,8 +61,9 @@ public class TravelActivity extends BaseActivity {
         this.destinations = new ArrayList<>();
         for (Planet planet : planets) {
             // If there is enough fuel to reach: current planet --> new planet
-            if (location.checkIfTravelPossible(location.getSolarSystem(), planet) != -1) {
-            //if (planet.getDist(currentPlanet) <= ship.getFuel()) {
+            if (location.checkIfTravelPossible(
+                    location.getSolarSystem(), planet) != -1) {
+                //if (planet.getDist(currentPlanet) <= ship.getFuel()) {
                 if (!planet.equals(currentPlanet)) {
                     this.destinations.add(planet.getName());
                 }
@@ -68,21 +72,25 @@ public class TravelActivity extends BaseActivity {
         return this.destinations;
     }
 
-    private AdapterView.OnItemClickListener clickListener = new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            // Travel to that destination
-            String planetName = TravelActivity.this.destinations.get(i);
-            Player player = Model.getModel().getPlayer();
-            SolarSystem system = player.getLocation().getSolarSystem();
-            Log.d("Sonny", system.getPlanetByName(planetName).toString());
-            player.travel(system, system.getPlanetByName(planetName));
+    private AdapterView.OnItemClickListener clickListener
+            = new AdapterView.OnItemClickListener() {
+                @Override
+            public void onItemClick(
+                    AdapterView<?> adapterView, View view, int i, long l) {
+                    // Travel to that destination
+                    String planetName = TravelActivity.this.destinations.get(i);
+                    Player player = Model.getModel().getPlayer();
+                    SolarSystem system = player.getLocation().getSolarSystem();
+                    Log.d("Sonny",
+                            system.getPlanetByName(planetName).toString());
+                    player.travel(system, system.getPlanetByName(planetName));
 
-            // Close this activity
-            Intent intent = new Intent(getApplicationContext(), RandomEventActivity.class);
-            TravelActivity.this.finish();
-            startActivity(intent);
-        }
-    };
+                    // Close this activity
+                    Intent intent = new Intent(
+                            getApplicationContext(), RandomEventActivity.class);
+                    TravelActivity.this.finish();
+                    startActivity(intent);
+                }
+            };
 }
 
