@@ -6,6 +6,11 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.PlayerEnc
 
 public class PoliceBattleManager extends BattleManager {
 
+    /**
+     * Creates a new police encounter with a given player.
+     *
+     * @param player the player
+     */
     public PoliceBattleManager(Player player) {
         super(player);
     }
@@ -17,6 +22,7 @@ public class PoliceBattleManager extends BattleManager {
                 + "or bribe the police to make it out alive.";
     }
 
+    @Override
     public String executeTurn(PlayerEncounterAction pea, EncounterState es) {
         EncounterState newES = new EncounterState();
         String ret = pea.doAction(player, otherShip, newES);

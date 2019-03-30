@@ -74,7 +74,7 @@ public class SolarSystem {
      */
     private void computePlanetMap() {
         for (Planet planet : this.planets) {
-            Log.d("Raj", "Adding " + planet.getName());
+            //Log.d("Raj", "Adding " + planet.getName());
             this.planetMap.put(planet.getName(), planet);
         }
     }

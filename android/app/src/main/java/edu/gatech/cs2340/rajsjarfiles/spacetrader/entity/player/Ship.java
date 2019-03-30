@@ -254,20 +254,6 @@ public class Ship {
     }
 
     /**
-     * Does damage to the ship. Returns true if dead, false if still alive.
-     *
-     * @param damage the amount of damage
-     * @return whether or not the ship is destroyed
-     */
-    public boolean takeDamage(int damage) {
-        health -= damage;
-        if (health <= 0) {
-            health = 0;
-        }
-        return health <= 0;
-    }
-
-    /**
      * Takes damage from a specific weapon.
      *
      * @param w the weapon
@@ -330,15 +316,6 @@ public class Ship {
     }
 
     private static Random rand = new Random();
-
-    /**
-     * @return a random instance of a ship with no cargo
-     */
-    public static Ship getRandomShip() {
-        ShipType st = ShipType.values()[rand.nextInt(ShipType.values().length)];
-        Ship ship = new Ship(0, st);
-        return ship;
-    }
 
     /**
      * @return a random instance of a ship that has weapons and is slightly
