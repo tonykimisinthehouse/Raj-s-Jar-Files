@@ -45,7 +45,7 @@ public class MarketTransactionValidator implements TransactionValidator {
             int marketPrice = marketplace.getMarketPrice(goodInOrder);
 
             // Check if the initiator has enough credits
-            if (!playerInOrder.checkCreditEnough(
+            if (!playerInOrder.getWallet().checkCreditEnough(
                     marketPrice * quantityInOrder)) {
                 return false;
             }

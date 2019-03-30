@@ -32,7 +32,7 @@ public enum Habitats {
             Arrays.asList(
                     ResourceClassification.RICH_SOIL,
                     ResourceClassification.LOTS_OF_HERBS),
-            "#ffffff"),
+            "#B7B7B7"),
     TOMB(Arrays.asList(Species.MACHINE),
             Arrays.asList(
                     ResourceClassification.LOTS_OF_HERBS,
