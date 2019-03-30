@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.views;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -78,7 +79,9 @@ public class TravelActivity extends BaseActivity {
             player.travel(system, system.getPlanetByName(planetName));
 
             // Close this activity
+            Intent intent = new Intent(getApplicationContext(), RandomEventActivity.class);
             TravelActivity.this.finish();
+            startActivity(intent);
         }
     };
 }
