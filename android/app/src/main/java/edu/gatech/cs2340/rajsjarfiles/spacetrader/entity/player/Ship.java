@@ -333,4 +333,17 @@ public class Ship {
                 + st.getMaxHealth() / 2);
         return ship;
     }
+
+    /**
+     * Removes all illegal goods from the ship's cargo.
+     */
+    public void removeIllegalGoods() {
+        for (Good good : Good.ILLEGAL_GOODS) {
+            if (cargo.containsKey(good)) {
+                if (cargo.get(good).getQuantity() > 0) {
+                    cargo.get(good).setQuantity(0);
+                }
+            }
+        }
+    }
 }

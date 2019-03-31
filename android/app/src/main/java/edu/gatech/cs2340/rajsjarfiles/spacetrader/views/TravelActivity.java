@@ -43,6 +43,13 @@ public class TravelActivity extends BaseActivity {
         destinationGrid.setOnItemClickListener(clickListener);
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        MapView mapView = findViewById(R.id.solarSystemMapView);
+        mapView.turnOffView();
+    }
+
     private ArrayList<String> getDestinations() {
         // Get object references
         Model model = Model.getCurrent();
@@ -79,7 +86,11 @@ public class TravelActivity extends BaseActivity {
 
             // Close this activity
             TravelActivity.this.finish();
+            MapView mapView = findViewById(R.id.solarSystemMapView);
+            mapView.turnOffView();
         }
     };
+
+
 }
 

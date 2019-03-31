@@ -193,7 +193,7 @@ public class Planet {
         private Species species;
         private ResourceClassification resourceClass;
         private Marketplace marketplace;
-        private Events event;
+        private PlanetEvents event;
 
         /**
          * Creates a planet with a given name, radius, and orbit radius (how far
@@ -285,7 +285,7 @@ public class Planet {
             }
 
             if (this.event == null) {
-                this.event = Events.getRandomEvent();
+                this.event = PlanetEvents.getRandomEvent();
             }
 
             if (this.marketplace == null) {

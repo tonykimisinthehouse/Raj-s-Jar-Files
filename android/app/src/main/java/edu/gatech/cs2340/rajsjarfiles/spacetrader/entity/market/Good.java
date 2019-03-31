@@ -1,6 +1,6 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market;
 
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Events;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.PlanetEvents;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.ResourceClassification;
 
 import static edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.TradeGoods.FIREARMS;
@@ -48,7 +48,7 @@ public interface Good {
     /**
      * @return radical price increase event
      */
-    Events getIE();
+    PlanetEvents getIE();
 
     ResourceClassification getCR();
     ResourceClassification getER();

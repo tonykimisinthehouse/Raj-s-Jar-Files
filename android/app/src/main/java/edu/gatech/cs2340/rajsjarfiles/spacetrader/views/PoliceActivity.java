@@ -37,7 +37,7 @@ public class PoliceActivity extends EncounterActivity {
 
         eventDescriptionText = findViewById(R.id.police_event_description);
 
-        model = Model.getModel();
+        model = Model.getCurrent();
         player = model.getPlayer();
         bm = new PoliceBattleManager(player);
 

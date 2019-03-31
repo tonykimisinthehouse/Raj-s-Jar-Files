@@ -11,6 +11,24 @@
     android:padding="20dp"
     tools:context="edu.gatech.cs2340.rajsjarfiles.spacetrader.views.GameActivity">
 
+    <TextView
+        android:id="@+id/indicator_planet_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:gravity="center"
+        android:text="AXR - CENTAURI"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@android:color/white"
+        android:textFontWeight="800"
+        android:textSize="36sp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="150sp"
+        app:srcCompat="@drawable/planet" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,24 +61,6 @@
             android:onClick="openMarket" />
 
     </RelativeLayout>
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="150sp"
-        app:srcCompat="@drawable/planet" />
-
-    <TextView
-        android:id="@+id/indicator_planet_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:gravity="center"
-        android:text="AXR - CENTAURI"
-        android:textAppearance="@style/TextAppearance.AppCompat"
-        android:textColor="@android:color/white"
-        android:textFontWeight="800"
-        android:textSize="36sp" />
 
     <TextView
         android:id="@+id/indicator_orbit_radius"
@@ -107,30 +107,5 @@
         android:textColor="@android:color/white"
         android:textSize="18sp" />
 
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="30sp"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/button_map"
-            android:layout_width="wrap_content"
-            android:layout_height="75sp"
-            android:onClick="tempTravel"
-            android:background="@android:drawable/ic_dialog_map" />
-
-        <Button
-            android:id="@+id/button_trade"
-            android:layout_width="wrap_content"
-            android:layout_height="75sp"
-            android:layout_alignParentRight="true"
-            android:layout_marginEnd="0dp"
-            android:onClick="openMarket"
-            android:background="@android:drawable/stat_notify_sync" />
-
-    </RelativeLayout>
 
 </LinearLayout>

@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Looper;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import java.util.Random;
@@ -21,9 +22,9 @@ class MapView extends View {
 
     private static float dAngle = 0;
 
-    private static Random rand = new Random();
-
     android.os.Handler rotationHandler = new android.os.Handler(Looper.myLooper());
+
+    private boolean isDrawing;
 
     public MapView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -33,10 +34,12 @@ class MapView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        isDrawing = true;
         super.onDraw(canvas);
         fillInBackground(canvas);
         fillInOrbit(canvas);
         fillInPlanet(canvas);
+
     }
 
     private Runnable updateTimerThread = new Runnable()
@@ -50,6 +53,7 @@ class MapView extends View {
     };
 
     private void incrementdAngle() {
+        Log.d("animation", String.valueOf(dAngle));
         dAngle += 0.001;
         if (dAngle >= 360) {
             dAngle = 0;
@@ -119,6 +123,7 @@ class MapView extends View {
 
         float x = c.getWidth()/2, y = c.getHeight()/2;
         float a = planet.getOrbitAngle() + dAngle;
+        if (a >= 360) a -= 360;
         float h = SUN_RADIUS * 2 + planet.getOrbitRadius() * ORBIT_RATIO;
 
         float dx = 0, dy = 0;
@@ -148,5 +153,9 @@ class MapView extends View {
         array[1] = y;
 
         return array;
+    }
+
+    protected void turnOffView() {
+        rotationHandler.removeCallbacks(updateTimerThread);
     }
 }
