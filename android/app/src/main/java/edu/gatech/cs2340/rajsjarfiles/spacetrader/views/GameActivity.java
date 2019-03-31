@@ -58,6 +58,10 @@ public class GameActivity extends BaseActivity {
     }
 
     private void updateData() {
+
+        ImageView imageView = findViewById(R.id.imageView);
+        imageView.setColorFilter(Color.parseColor(viewModel.getPlanetColorHex()), PorterDuff.Mode.MULTIPLY); //Desert
+
         this.planetNameIndicator.setText(viewModel.getPlanetName());
         this.orbitRadiusIndicator.setText("Orbit Radius: " + String.valueOf(viewModel.getPlanetOrbitRadius()));
         this.techLevelIndicator.setText("Tech Level: " + viewModel.getPlanetTechLevel());

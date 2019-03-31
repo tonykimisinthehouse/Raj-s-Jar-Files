@@ -29,7 +29,6 @@ class MapView extends View {
     public MapView(Context context, AttributeSet attrs) {
         super(context, attrs);
         updateTimerThread.run();
-
     }
 
     @Override
@@ -39,7 +38,6 @@ class MapView extends View {
         fillInBackground(canvas);
         fillInOrbit(canvas);
         fillInPlanet(canvas);
-
     }
 
     private Runnable updateTimerThread = new Runnable()
@@ -53,8 +51,7 @@ class MapView extends View {
     };
 
     private void incrementdAngle() {
-        Log.d("animation", String.valueOf(dAngle));
-        dAngle += 0.001;
+        dAngle += 0.1;
         if (dAngle >= 360) {
             dAngle = 0;
         }
@@ -122,8 +119,11 @@ class MapView extends View {
     private float[] getXAndY(Planet planet, Canvas c) {
 
         float x = c.getWidth()/2, y = c.getHeight()/2;
-        float a = planet.getOrbitAngle() + dAngle;
+        double a = planet.getOrbitAngle() + dAngle;
+
         if (a >= 360) a -= 360;
+        a = Math.toRadians(a);
+
         float h = SUN_RADIUS * 2 + planet.getOrbitRadius() * ORBIT_RATIO;
 
         float dx = 0, dy = 0;
