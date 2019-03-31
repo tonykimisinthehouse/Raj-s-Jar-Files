@@ -83,7 +83,7 @@ public class SolarSystem {
                 for (int usedAngle : arrayList) {
                     int dAngle = Math.abs(usedAngle - orbitAngle);
                     dAngle = (dAngle <= 180 ? dAngle : 360 - dAngle);
-                    if (dAngle <= 5) {
+                    if (dAngle <= 20) {
                         isAllAnglePassed = false;
                     }
                 }
