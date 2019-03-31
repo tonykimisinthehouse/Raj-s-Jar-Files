@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "239048826728",
+    "firebase_url": "https://raj-s-jar-files-space-trader.firebaseio.com",
+    "project_id": "raj-s-jar-files-space-trader",
+    "storage_bucket": "raj-s-jar-files-space-trader.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239048826728:android:8e4c41eeb40fad9d",
+        "android_client_info": {
+          "package_name": "edu.gatech.cs2340.rajsjarfiles.spacetrader"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "239048826728-8h674uuh6q8t86fh1aakm7b9hopjl0he.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtdZIymhdpLVCUmObd3bu63-BhtMxw6L0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
