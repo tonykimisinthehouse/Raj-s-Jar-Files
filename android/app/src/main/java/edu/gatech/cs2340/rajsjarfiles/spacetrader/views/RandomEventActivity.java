@@ -31,7 +31,13 @@ public class RandomEventActivity extends AppCompatActivity {
         } else {
             intent = new Intent(getBaseContext(), GameActivity.class);
         }
+        RandomEventActivity.this.finish();
         startActivity(intent);
         this.overridePendingTransition(0, 0);
+    }
+
+    @Override
+    public void onBackPressed() {
+        //left blank so the player can't return
     }
 }

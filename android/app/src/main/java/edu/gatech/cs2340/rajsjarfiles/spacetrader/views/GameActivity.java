@@ -99,4 +99,8 @@ public class GameActivity extends BaseActivity {
         startActivity(intent);
     }
 
+    @Override
+    public void onBackPressed() {
+        //left blank so the player can't return
+    }
 }

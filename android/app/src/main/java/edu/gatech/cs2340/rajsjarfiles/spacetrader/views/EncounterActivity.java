@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.battle.BattleManager;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.EncounterState;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 
 /**
@@ -52,10 +53,16 @@ public abstract class EncounterActivity extends AppCompatActivity {
                 .setCancelable(false)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                        EncounterActivity.this.finish();
                         startActivity(intent);
                     }
                 });
         AlertDialog alert = builder.create();
         alert.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        //left blank so the player can't return
     }
 }
