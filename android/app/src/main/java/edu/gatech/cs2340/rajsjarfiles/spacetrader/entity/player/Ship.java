@@ -128,6 +128,13 @@ public class Ship {
     }
 
     /**
+     * @return whether the ship has cargo
+     */
+    public boolean hasGoods() {
+        return usedCap > 0;
+    }
+
+    /**
      * Add quantity of goods to the cargo.
      *
      * @param item to add in the cargo
@@ -160,6 +167,16 @@ public class Ship {
         if (hasGoods(good, quantity)) {
             cargo.get(good).subQuantity(quantity);
             usedCap -= quantity;
+        }
+    }
+
+    /**
+     * Empties the ship's cargo.
+     */
+    public void emptyCargo() {
+        if (usedCap > 0) {
+            cargo = new HashMap<Good, Item>(totalCap);
+            usedCap = 0;
         }
     }
 
