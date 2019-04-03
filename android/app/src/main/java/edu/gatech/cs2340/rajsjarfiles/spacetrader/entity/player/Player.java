@@ -185,9 +185,14 @@ public class Player {
      * Sets the player's points to a new set of points.
      *
      * @param points the new points
-     * @throws java.lang.IllegalArgumentException if points are invalid
+     * @throws java.lang.IllegalArgumentException if points is null
+     * or entries are invalid
      */
     public void setPoints(int[] points) {
+        if (points.length != 4) {
+            throw new IllegalArgumentException("Points must be length 4.");
+        }
+
         //check if sum is 16 or in the future, less than 16
         int sum = 0;
         for (int i = 0; i < points.length; i++) {

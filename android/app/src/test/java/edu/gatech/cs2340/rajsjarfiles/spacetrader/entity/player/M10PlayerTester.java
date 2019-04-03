@@ -44,4 +44,13 @@ public class M10PlayerTester {
         Player player = new Player.PlayerBuilder("Thomas")
                 .points(new int[] {2, -2, 7, 1}).build();
     }
+
+    /**
+     * Ensures exception is thrown when length of points is not 4.
+     */
+    @Test(timeout = TIMEOUT, expected = java.lang.IllegalArgumentException.class)
+    public void playerBuilderIllegalPointsNotLength4() {
+        Player player = new Player.PlayerBuilder("Thomas")
+                .points(new int[] {2, 2}).build();
+    }
 }
