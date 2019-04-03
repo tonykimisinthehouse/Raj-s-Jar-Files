@@ -22,6 +22,8 @@ public class PoliceBattleManager extends BattleManager {
                 + "or bribe the police to make it out alive.";
     }
 
+    //this override is the same as pirate for now, but I'm keeping it in case
+    //I add police/pirate specific descriptions.
     @Override
     public String executeTurn(PlayerEncounterAction pea, EncounterState es) {
         EncounterState newES = new EncounterState();

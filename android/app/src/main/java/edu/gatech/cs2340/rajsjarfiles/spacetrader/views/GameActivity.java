@@ -103,13 +103,8 @@ public class GameActivity extends BaseActivity {
         startActivity(intent);
     }
 
-    /**
-     * This method is being used to test the random events. Delete later.
-     */
-    public void tempTravel(View view) {
-        Intent intent = new Intent(view.getContext(), RandomEventActivity
-                .class);
-        startActivity(intent);
+    @Override
+    public void onBackPressed() {
+        //left blank so the player can't return
     }
-
 }

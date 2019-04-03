@@ -25,11 +25,11 @@ public class PoliceActivity extends EncounterActivity {
         return R.layout.activity_police;
     }
 
-    private TextView eventDescriptionText;
-
-    private Model model;
-    private Player player;
-    private BattleManager bm;
+//    private TextView eventDescriptionText;
+//
+//    private Model model;
+//    private Player player;
+//    private BattleManager bm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,32 +43,6 @@ public class PoliceActivity extends EncounterActivity {
 
         String startText = bm.startBattle();
         eventDescriptionText.setText(startText);
-    }
-
-    /**
-     * Opens a dialog describing what happened at the end of the encounter
-     * and opens the game actvitiy.
-     */
-    public void transitionToNextActivity() {
-        String text;
-        final Intent intent;
-        if (player.getShip().getHealth() == 0) {
-            text = "You died! Better luck next time :)";
-            intent = new Intent(getApplicationContext(), StartActivity.class);
-        } else {
-            text = "You arrived relatively safely at your destination.";
-            intent = new Intent(getApplicationContext(), GameActivity.class);
-        }
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(text)
-                .setCancelable(false)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        startActivity(intent);
-                    }
-                });
-        AlertDialog alert = builder.create();
-        alert.show();
     }
 
     /**

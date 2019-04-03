@@ -23,8 +23,7 @@ public class SubmitAction implements PlayerEncounterAction {
                     + "and confiscate all your goods.\n"; //all or just illegal?
             retString += "You pay a fine.\n";
 
-            player.getWallet().setCredits(
-                    (int) (player.getWallet().getCredits() * 0.2));
+            player.getWallet().setCredits(0.8f);
 
             retString += "Your ship was: \n";
             retString += playerShip.toString() + "\n\n";

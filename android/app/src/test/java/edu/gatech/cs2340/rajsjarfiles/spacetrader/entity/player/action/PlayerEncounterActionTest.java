@@ -175,4 +175,62 @@ public class PlayerEncounterActionTest {
         assertTrue(player.getWallet().getCredits() == 0
                 || origMoney > player.getWallet().getCredits());
     }
+
+    /**
+     * Test the bribe action.
+     */
+    @Test
+    public void testSurrenderAction() {
+        Player player = new Player(new Player.PlayerBuilder("Justin"));
+        player.getShip().addWeapon(Weapon.BEAM_LASER);
+        player.getShip().addGood(
+                new Item.ItemBuilder(TradeGoods.NARCOTICS).price(2).quantity(3).build());
+
+        PlayerEncounterAction pea = new SurrenderAction();
+        EncounterState es = new EncounterState();
+
+        Ship other = Ship.getRandomShipWithWeapons();
+
+        assertTrue(player.getShip().hasGoods());
+
+        while(!es.isOver()) {
+            String ret = pea.doAction(player, other, es);
+            assertNotNull(ret);
+            assertNotEquals("", ret);
+        }
+        assertTrue(es.isOver());
+
+        assertTrue(!player.getShip().hasGoods());
+    }
+
+    /**
+     * Test the bribe action.
+     */
+    @Test
+    public void testSurrenderActionNoGoods() {
+        Player player = new Player(new Player.PlayerBuilder("Justin"));
+        player.getShip().addWeapon(Weapon.BEAM_LASER);
+
+        int origMoney = player.getWallet().getCredits();
+
+        PlayerEncounterAction pea = new SurrenderAction();
+        EncounterState es = new EncounterState();
+
+        Ship other = Ship.getRandomShipWithWeapons();
+
+        assertTrue(!player.getShip().hasGoods());
+
+        while(!es.isOver()) {
+            String ret = pea.doAction(player, other, es);
+            assertNotNull(ret);
+            assertNotEquals("", ret);
+        }
+        assertTrue(es.isOver());
+
+        assertTrue(!player.getShip().hasGoods());
+
+        //make sure goods are gone and money is halved
+        assertTrue(player.getWallet().getCredits() == 0
+                || origMoney > player.getWallet().getCredits());
+    }
 }

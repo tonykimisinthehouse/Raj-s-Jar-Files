@@ -24,14 +24,20 @@ public class RandomEventActivity extends AppCompatActivity {
         Random rand = new Random();
         int chance = rand.nextInt(100);
         Intent intent;
-        if (chance >= 0 && chance <= 99) {
+        if (chance >= 0 && chance <= 50) {
             intent = new Intent(getBaseContext(), PoliceActivity.class);
-        } else if (chance > 4 && chance <= 9) {
+        } else if (chance > 50 && chance <= 99) {
             intent = new Intent(getBaseContext(), PirateActivity.class);
         } else {
             intent = new Intent(getBaseContext(), GameActivity.class);
         }
+        RandomEventActivity.this.finish();
         startActivity(intent);
         this.overridePendingTransition(0, 0);
+    }
+
+    @Override
+    public void onBackPressed() {
+        //left blank so the player can't return
     }
 }

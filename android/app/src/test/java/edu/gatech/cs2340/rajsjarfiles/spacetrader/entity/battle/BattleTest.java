@@ -17,6 +17,7 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.Encounter
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.PlayerEncounterAction;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.RunAction;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.SubmitAction;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.SurrenderAction;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.views.EncounterActivity;
 
 import static junit.framework.TestCase.assertTrue;
@@ -110,7 +111,7 @@ public class BattleTest {
 //    }
 
     //public static void main(String[] args) {
-    public void testGame() {
+    public void testPoliceEncounter() {
         Scanner scan = new Scanner(System.in);
 
         Player.PlayerBuilder playerBuilder = new Player.PlayerBuilder("Justin");
@@ -154,6 +155,59 @@ public class BattleTest {
                 ret = bm.executeTurn(new SubmitAction(), es);
             } else if (option.equals("4")) {
                 ret = bm.executeTurn(new BribeAction(), es);
+            }
+            System.out.println(ret);
+            if (es.isOver()) {
+                System.out.println("The encounter is over.");
+                break;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+//    public void testPirateEncounter() {
+        Scanner scan = new Scanner(System.in);
+
+        Player.PlayerBuilder playerBuilder = new Player.PlayerBuilder("Justin");
+        Player player = new Player(playerBuilder);
+        player.getShip().addWeapon(Weapon.PULSE_LASER);
+        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.NARCOTICS).quantity(1).price(2).build());
+        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.FIREARMS).quantity(4).price(4).build());
+        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.ORE).quantity(2).price(18).build());
+
+        player.getShip().emptyCargo();
+
+        BattleManager bm = new PirateBattleManager(player);
+        System.out.println(bm.startBattle());
+        System.out.println("The test is beginning :O");
+
+        String option = "";
+        while (!option.equals("q") && !option.equals("Q")) {
+
+            System.out.println("---------------------------------------");
+            System.out.println(player.getName()
+                    + " has a " + player.getShip().toString()
+                    + " with " + player.getShip().getHealth() + " health.");
+            System.out.println("The (maybe) enemy has a " + bm.getOtherShip().getShipType()
+                    + " with " + bm.getOtherShip().getHealth() + " health.");
+            System.out.println("---------------------------------------\n");
+
+            System.out.println("What will you do? (Type in a number)");
+            System.out.println("1. Attack");
+            System.out.println("2. Run");
+            System.out.println("3. Surrender");
+            System.out.println("Q. Quit\n\n");
+
+            option = scan.nextLine();
+
+            EncounterState es = new EncounterState();
+            String ret = "";
+            if (option.equals("1")) {
+                ret = bm.executeTurn(new AttackAction(), es);
+            } else if (option.equals("2")) {
+                ret = bm.executeTurn(new RunAction(), es);
+            } else if (option.equals("3")) {
+                ret = bm.executeTurn(new SurrenderAction(), es);
             }
             System.out.println(ret);
             if (es.isOver()) {

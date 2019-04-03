@@ -18,6 +18,21 @@ public class SurrenderAction implements PlayerEncounterAction {
 
         //You lose cargo, and if you don't have cargo, you lose 80% of your cash
 
-        return "";
+        Ship playerShip = player.getShip();
+        if (playerShip.hasGoods()) {
+            retString += "The pirate crew plunders all of your cargo.\n";
+            playerShip.emptyCargo();
+        } else {
+            retString += "The pirate crew is angry at your lack of goods and"
+                    + " takes your credits instead.\n";
+            retString += "You had "
+                    + player.getWallet().getCredits() + " credits.\n";
+            player.getWallet().setCredits(0.8f);
+            retString += "You now have "
+                    + player.getWallet().getCredits() + " credits.\n";
+        }
+        es.conclude();
+
+        return retString;
     }
 }
