@@ -131,6 +131,10 @@ public class Marketplace {
         return techLevel;
     }
 
+    /**
+     * Get planet event
+     * @return event on the planet
+     */
     public PlanetEvents getEvent() {
         return event;
     }

@@ -67,10 +67,18 @@ public class Planet {
         return orbitRadius;
     }
 
+    /**
+     * Get orbital angle of a planet (0 - 360)
+     * @return orbital angle of a planet
+     */
     public int getOrbitAngle() {
         return orbitAngle;
     }
 
+    /**
+     * Set waprp zone to the planet
+     * @param bool
+     */
     public void setIsWarpZone(Boolean bool) {
         this.isWarpZone = bool;
     }

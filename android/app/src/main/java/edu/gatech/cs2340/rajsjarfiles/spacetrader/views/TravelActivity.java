@@ -50,6 +50,10 @@ public class TravelActivity extends BaseActivity {
         mapView.turnOffView();
     }
 
+    /**
+     * Return possible destinations within in the solar system
+     * @return arraylist of the names of destination planets
+     */
     private ArrayList<String> getDestinations() {
         // Get object references
         Model model = Model.getCurrent();

@@ -46,7 +46,7 @@ class MapView extends View {
         public void run()
         {
             incrementdAngle();
-            invalidate();g
+            invalidate();
             rotationHandler.postDelayed(this, 10);
         }
     };
