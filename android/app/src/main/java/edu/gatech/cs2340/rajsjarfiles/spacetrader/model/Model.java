@@ -37,8 +37,8 @@ public class Model {
         //give player default weapon
         player.getShip().addWeapon(Weapon.PULSE_LASER);
 
-        Log.i("Model", player.toString());
-        LogCustom.largeLog("Model", game.toString());
+//        Log.i("Model", player.toString());
+//        LogCustom.largeLog("Model", game.toString());
     }
 
     /**

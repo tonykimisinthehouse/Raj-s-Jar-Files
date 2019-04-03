@@ -1,9 +1,12 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 
+import org.junit.Before;
 import org.junit.Test;
 
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.GameDifficulty;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Planet;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.TechLevel;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 
 import static org.junit.Assert.*;
 
@@ -13,6 +16,11 @@ public class PlayerTester {
     Planet planet = new Planet.PlanetBuilder("Bob planet",1, 40)
             .techLevel(TechLevel.AGRICULTURE)
             .build();
+
+    @Before
+    public void setUp() {
+        Model model = new Model("Justin", new int[] {4, 4, 4, 4}, GameDifficulty.BEGINNER);
+    }
 
     /**
      * Creates a valid player with all parameters.
