@@ -58,21 +58,35 @@ public class Ship {
     }
 
     ///////////////////////////// FUEL OPERATION /////////////////////////////
+
+    /**
+     * Returns whether or not the ship has the necesary
+     * fuel.
+     *
+     * @param requiredFuel the required amount of fuel
+     * @return whether or not the ship has the fuel
+     */
     public boolean hasFuels(int requiredFuel) {
         return fuel >= requiredFuel;
     }
 
 
-
-
+    /**
+     * Removes fuel from the ship.
+     *
+     * @param fuelUsed the amount of fuel to remove
+     */
     public void subFuel(int fuelUsed) {
         if (hasFuels(fuelUsed)) {
             fuel -= fuelUsed;
         }
     }
 
+    /**
+     * @return how much fuel the ship has
+     */
     public int getFuel() {
-       return this.fuel;
+        return this.fuel;
     }
 
     ///////////////////////////// CARGO OPERATION /////////////////////////////
@@ -180,6 +194,9 @@ public class Ship {
     /**
      * @return a collection of the ship's cargo items
      */
+    /**
+     * @return all the items in the ship's cargo
+     */
     public Collection<Item> getCargoGoods() {
         Collection<Item> items = new ArrayList<>();
         for (Good good : this.cargo.keySet()) {
@@ -221,20 +238,6 @@ public class Ship {
      */
     public void setHealth(int health) {
         this.health = health;
-    }
-
-    /**
-     * Does damage to the ship. Returns true if dead, false if still alive.
-     *
-     * @param damage the amount of damage
-     * @return whether or not the ship is destroyed
-     */
-    public boolean takeDamage(int damage) {
-        health -= damage;
-        if (health <= 0) {
-            health = 0;
-        }
-        return health <= 0;
     }
 
     /**
@@ -281,6 +284,9 @@ public class Ship {
         }
     }
 
+    /**
+     * @return the ship's weapons
+     */
     public List<Weapon> getWeapons() {
         return weapons;
     }
@@ -297,15 +303,6 @@ public class Ship {
     }
 
     private static Random rand = new Random();
-
-    /**
-     * @return a random instance of a ship with no cargo
-     */
-    public static Ship getRandomShip() {
-        ShipType st = ShipType.values()[rand.nextInt(ShipType.values().length)];
-        Ship ship = new Ship(0, st);
-        return ship;
-    }
 
     /**
      * @return a random instance of a ship that has weapons and is slightly

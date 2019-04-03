@@ -17,9 +17,11 @@ public class BribeAction implements PlayerEncounterAction {
         String retString = "";
 
         retString += "You bribe the police with 50% of your money.\n";
-        retString += "You had " + player.getWallet().getCredits() + " credits.\n";
+        retString += "You had "
+                + player.getWallet().getCredits() + " credits.\n";
         player.getWallet().setCredits(player.getWallet().getCredits() / 2);
-        retString += "You now have " + player.getWallet().getCredits() + " credits.\n";
+        retString += "You now have "
+                + player.getWallet().getCredits() + " credits.\n";
 
         es.conclude();
 

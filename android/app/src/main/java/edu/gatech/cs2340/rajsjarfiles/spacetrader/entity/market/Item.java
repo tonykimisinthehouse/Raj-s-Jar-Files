@@ -84,6 +84,12 @@ public class Item {
         this.quantity -= quantity;
     }
 
+    @Override
+    public String toString() {
+        return quantity + " " + good.getName()
+                + " at " + price + " units each.";
+    }
+
     /**
      * Class for creating an Item using the builder pattern.
      */

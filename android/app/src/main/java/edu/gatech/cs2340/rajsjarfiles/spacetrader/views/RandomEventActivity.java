@@ -17,6 +17,9 @@ public class RandomEventActivity extends AppCompatActivity {
         eventOccurrence();
     }
 
+    /**
+     * Determines which random event will occur, if any.
+     */
     private void eventOccurrence() {
         Random rand = new Random();
         int chance = rand.nextInt(100);
@@ -29,6 +32,6 @@ public class RandomEventActivity extends AppCompatActivity {
             intent = new Intent(getBaseContext(), GameActivity.class);
         }
         startActivity(intent);
-        this.overridePendingTransition(0,0);
+        this.overridePendingTransition(0, 0);
     }
 }

@@ -8,10 +8,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.GameDifficulty;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
 import java.util.regex.Pattern;
 
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Weapon;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 
 /**

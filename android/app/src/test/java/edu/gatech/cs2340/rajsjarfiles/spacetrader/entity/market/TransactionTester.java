@@ -7,7 +7,9 @@ import static org.junit.Assert.*;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.ShipType;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Coordinate;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Planet;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.SolarSystem;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.TechLevel;
 
 //TODO NEED UPDATE
@@ -29,6 +31,7 @@ public class TransactionTester {
         Player player = new Player.PlayerBuilder("Bob")
                 .credits(0)
                 .ship(new Ship(ShipType.BEETLE))
+                .location(new SolarSystem("Raj", new Coordinate()))
                 .build();
 
         assertEquals(planet.getMarketplace().getTechLevel(), tl);
@@ -50,7 +53,7 @@ public class TransactionTester {
         Player player = new Player.PlayerBuilder("Bob")
                 .credits(1000)
                 .ship(new Ship(ShipType.BEETLE))
-                .planet(planet)
+                .location(new SolarSystem("Raj", new Coordinate()))
                 .build();
 
         assertEquals(planet.getMarketplace().getTechLevel(), tl);
@@ -73,7 +76,7 @@ public class TransactionTester {
         Player player = new Player.PlayerBuilder("Bob")
                 .credits(1000)
                 .ship(new Ship(ShipType.BEETLE))
-                .planet(planet)
+                .location(new SolarSystem("Raj", new Coordinate()))
                 .build();
 
         assertEquals(planet.getMarketplace().getTechLevel(), tl);
@@ -97,7 +100,7 @@ public class TransactionTester {
         Player player = new Player.PlayerBuilder("Bob")
                 .credits(1000)
                 .ship(new Ship(ShipType.BEETLE))
-                .planet(planet)
+                .location(new SolarSystem("Raj", new Coordinate()))
                 .build();
 
         // False since the market does not have the items (minimum tech level)
@@ -117,7 +120,7 @@ public class TransactionTester {
         Player player = new Player.PlayerBuilder("Bob")
                 .credits(1000)
                 .ship(new Ship(ShipType.BEETLE))
-                .planet(planet)
+                .location(new SolarSystem("Raj", new Coordinate()))
                 .build();
 
         player.getShip().addGood(new Item.ItemBuilder(TradeGoods.ROBOTS).quantity(10).build());
@@ -140,7 +143,7 @@ public class TransactionTester {
         Player player = new Player.PlayerBuilder("Bob")
                 .credits(1000)
                 .ship(new Ship(ShipType.BEETLE))
-                .planet(planet)
+                .location(new SolarSystem("Raj", new Coordinate()))
                 .build();
 
         player.getShip().addGood(new Item.ItemBuilder(TradeGoods.ROBOTS).quantity(10).build());
@@ -163,7 +166,7 @@ public class TransactionTester {
         Player player = new Player.PlayerBuilder("Bob")
                 .credits(1000)
                 .ship(new Ship(ShipType.BEETLE))
-                .planet(planet)
+                .location(new SolarSystem("Raj", new Coordinate()))
                 .build();
 
         player.getShip().addGood(new Item.ItemBuilder(TradeGoods.ROBOTS).quantity(10).build());
@@ -187,7 +190,7 @@ public class TransactionTester {
         Player player = new Player.PlayerBuilder("Bob")
                 .credits(1000)
                 .ship(new Ship(ShipType.BEETLE))
-                .planet(planet)
+                .location(new SolarSystem("Raj", new Coordinate()))
                 .build();
 
         assertFalse(player.getShip().hasGoods(TradeGoods.ROBOTS,10));

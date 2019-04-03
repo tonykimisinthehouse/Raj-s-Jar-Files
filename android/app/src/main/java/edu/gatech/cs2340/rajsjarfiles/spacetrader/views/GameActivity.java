@@ -39,7 +39,10 @@ public class GameActivity extends BaseActivity {
 
         // Set filter on planet Image
         ImageView imageView = findViewById(R.id.imageView);
-        imageView.setColorFilter(Color.parseColor(viewModel.getPlanetColorHex()), PorterDuff.Mode.MULTIPLY); //Desert
+        imageView.setColorFilter(
+                Color.parseColor(
+                        viewModel.getPlanetColorHex()),
+                        PorterDuff.Mode.MULTIPLY); //Desert
     }
 
     @Override

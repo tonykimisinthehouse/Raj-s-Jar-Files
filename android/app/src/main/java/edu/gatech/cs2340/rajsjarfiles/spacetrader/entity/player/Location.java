@@ -9,7 +9,7 @@ public class Location {
     private Planet planet; // Planet that the player is currently on.
     private SolarSystem solarSystem;
 
-    Location (){
+    Location() {
         this(Model.getCurrent().getGame().getUniverse().getRandomSolarSystem());
     }
 
@@ -30,7 +30,7 @@ public class Location {
         return this.solarSystem;
     }
 
-    public int checkIfTravelPossible (SolarSystem destinationSS, Planet destinationP) {
+    public int checkIfTravelPossible(SolarSystem destinationSS, Planet destinationP) {
         // Yes possible (between planet)
         if (checkIfTravelInSS(destinationSS)) {
             return 0;
@@ -43,11 +43,11 @@ public class Location {
         return -1;
     }
 
-    private boolean checkIfTravelInSS (SolarSystem destinationSS) {
+    private boolean checkIfTravelInSS(SolarSystem destinationSS) {
         return solarSystem.equals(destinationSS);
     }
 
-    public int calculateFuelRq (Planet destinationP) {
+    public int calculateFuelRq(Planet destinationP) {
         int distance = this.planet.getDist(destinationP);
         return distance * 5;
     }

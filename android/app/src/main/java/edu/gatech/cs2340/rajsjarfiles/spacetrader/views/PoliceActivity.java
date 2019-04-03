@@ -45,6 +45,10 @@ public class PoliceActivity extends EncounterActivity {
         eventDescriptionText.setText(startText);
     }
 
+    /**
+     * Opens a dialog describing what happened at the end of the encounter
+     * and opens the game actvitiy.
+     */
     public void transitionToNextActivity() {
         String text;
         final Intent intent;
@@ -67,9 +71,16 @@ public class PoliceActivity extends EncounterActivity {
         alert.show();
     }
 
+    /**
+     * Updates the description TextView with an extra string.
+     *
+     * @param extra the new description
+     */
     public void updateDescription(String extra) {
-        String text = "Your ship health: " + player.getShip().getHealth() + "\n";
-        text += "The police " + bm.getOtherShip().getShipType().toString() + ": "
+        String text = "Your ship health: "
+                + player.getShip().getHealth() + "\n";
+        text += "The police "
+                + bm.getOtherShip().getShipType().toString() + ": "
                 + bm.getOtherShip().getHealth() + "\n"
                 + "----------------------\n" + "\n\n";
         text += extra;
@@ -79,7 +90,7 @@ public class PoliceActivity extends EncounterActivity {
     /**
      * This method runs when the attack button is clicked in
      * the police activity.
-     * @param view
+     * @param view the context
      */
     public void attackPoliceButton(View view) {
         EncounterState es = new EncounterState();
@@ -92,6 +103,8 @@ public class PoliceActivity extends EncounterActivity {
 
     /**
      * This method runs when the run button is clicked in the police activity.
+     *
+     * @param view the context
      */
     public void runPoliceButton(View view) {
         EncounterState es = new EncounterState();
@@ -105,6 +118,8 @@ public class PoliceActivity extends EncounterActivity {
     /**
      * This method runs when the surrender button is clicked in the police
      * activity.
+     *
+     * @param view the context
      */
     public void submitPoliceButton(View view) {
         EncounterState es = new EncounterState();
@@ -117,6 +132,8 @@ public class PoliceActivity extends EncounterActivity {
 
     /**
      * This method runs when the bribe button is clicked in the police activity.
+     *
+     * @param view the context
      */
     public void bribePoliceButton(View view) {
         EncounterState es = new EncounterState();
