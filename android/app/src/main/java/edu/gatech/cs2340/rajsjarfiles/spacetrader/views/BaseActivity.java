@@ -9,4 +9,5 @@ public class BaseActivity extends AppCompatActivity {
         super.onPause();
         Log.d("BaseActivity", "in on pause");
     }
+
 }

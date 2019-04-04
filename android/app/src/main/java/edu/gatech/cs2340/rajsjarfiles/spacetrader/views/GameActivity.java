@@ -11,7 +11,9 @@ import android.widget.TextView;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels.GameViewModel;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
-
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.firebase.SaveAndLoad;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.ModelSaver;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 /**
  * Main activity while playing the game
  */
@@ -32,6 +34,11 @@ public class GameActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//      ModelSaver.saveBinaryModel();
+        Model model = Model.getCurrent();
+        model.getSaveAndLoad().updateUserCredit();
+//        saveAndLoad.updateUserCredit();
+
         setContentView(R.layout.activity_game);
 
         viewModel = ViewModelProviders.of(this).get(GameViewModel.class);

@@ -18,6 +18,8 @@ import java.util.Arrays;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.GameDifficulty;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.firebase.SaveAndLoad;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels.StartViewModel;
 
 /**
@@ -141,6 +143,8 @@ public class StartActivity extends BaseActivity {
             Toast.makeText(getApplicationContext(),
                     "Your inputs are valid.",
                     Toast.LENGTH_SHORT).show();
+            Model model = Model.getCurrent();
+            model.getSaveAndLoad().createUserCredit();
 
             Intent intent = new Intent(view.getContext(), GameActivity.class);
             startActivity(intent);

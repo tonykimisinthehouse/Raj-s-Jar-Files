@@ -3,6 +3,7 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.model;
 import android.util.Log;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Weapon;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.firebase.SaveAndLoad;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.utility.LogCustom;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.Game;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.GameDifficulty;
@@ -15,6 +16,7 @@ public class Model {
     private static Model current;
     private Player player;
     private Game game;
+    private SaveAndLoad saveAndLoad;
 
     /**
      * Constructor for creating a player and model with the valid inputs.
@@ -35,6 +37,9 @@ public class Model {
 
         //give player default weapon
         player.getShip().addWeapon(Weapon.PULSE_LASER);
+
+
+        saveAndLoad = new SaveAndLoad();
 
         Log.i("Model", player.toString());
         LogCustom.largeLog("Model", game.toString());
@@ -71,5 +76,8 @@ public class Model {
     public Game getGame() {
         return this.game;
     }
+
+    public SaveAndLoad getSaveAndLoad() {return this.saveAndLoad; }
+
 
 }

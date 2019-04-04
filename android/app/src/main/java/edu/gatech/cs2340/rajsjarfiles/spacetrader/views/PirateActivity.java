@@ -31,7 +31,7 @@ public class PirateActivity extends EncounterActivity {
 
         eventDescriptionText = findViewById(R.id.pirate_event_description);
 
-        model = Model.getModel();
+        model = Model.getCurrent();
         player = model.getPlayer();
         bm = new PirateBattleManager(player);
 
