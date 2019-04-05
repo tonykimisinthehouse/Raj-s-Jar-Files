@@ -1,12 +1,14 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 
+import java.io.Serializable;
+
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Good;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionOrder;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionResult;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionType;
 
-public class Wallet {
+public class Wallet implements Serializable {
 
     private int credits;
     private Player owner;

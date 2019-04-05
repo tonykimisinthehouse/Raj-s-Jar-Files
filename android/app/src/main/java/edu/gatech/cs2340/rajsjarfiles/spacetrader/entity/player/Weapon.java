@@ -1,8 +1,9 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public enum Weapon {
+public enum Weapon implements Serializable {
     //these are fairly arbitrary
     //so we'll have to balance them later
     PULSE_LASER(10),

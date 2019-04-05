@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,6 +19,8 @@ import java.util.Arrays;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.GameDifficulty;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.ModelSaver;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels.StartViewModel;
 
 /**
@@ -86,6 +89,16 @@ public class StartActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+
+        //load model initially
+        Model model = ModelSaver.loadBinaryModel(this.getFilesDir().toString());
+        if (model != null && model.getPlayer().getShip().getHealth() != 0) {
+            Model.setModel(model);
+            Log.d("StartActivity-Load", Model.getModel().getGame().toString());
+            Log.d("StartActivity-Load", Model.getModel().getPlayer().toString());
+            Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+            startActivity(intent);
+        }
 
         viewModel = ViewModelProviders.of(this).get(StartViewModel.class);
         /*

@@ -1,10 +1,12 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 
+import java.io.Serializable;
+
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Planet;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.SolarSystem;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 
-public class Location {
+public class Location implements Serializable {
 
     private Planet planet; // Planet that the player is currently on.
     private SolarSystem solarSystem;

@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.EnumMap;
 import java.util.Random;
@@ -16,7 +17,7 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.TechLevel;
  *  Representation of a Planet's Marketplace based on the planet's
  *  tech level and trade good's attributes
  */
-public class Marketplace {
+public class Marketplace implements Serializable {
 
     private static Random rand = new Random();
 

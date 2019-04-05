@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 
+import java.io.Serializable;
+
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Planet;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.SolarSystem;
 
@@ -8,7 +10,7 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.SolarSystem;
  *
  * Uses the builder pattern.
  */
-public class Player {
+public class Player implements Serializable {
     private static final int MAX_POINTS = 16;
     private String name;
 

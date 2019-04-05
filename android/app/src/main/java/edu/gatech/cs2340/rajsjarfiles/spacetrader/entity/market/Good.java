@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market;
 
+import java.io.Serializable;
+
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Events;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.ResourceClassification;
 
@@ -9,7 +11,7 @@ import static edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.TradeGood
 /**
  * Interface for good (tradeGoods, other goods, ship etc)
  */
-public interface Good {
+public interface Good extends Serializable {
     /**
      * @return returns the good's name
      */

@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Random;
 

@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.Random;
 /**
  * Represents habitat of a planet
  */
-public enum Habitats {
+public enum Habitats implements Serializable {
 
     DESERT(Arrays.asList(Species.MACHINE, Species.REPTILIAN),
             Arrays.asList(

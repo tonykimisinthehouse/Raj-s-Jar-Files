@@ -1,12 +1,13 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Represents a ship type.
  */
-public enum ShipType {
+public enum ShipType implements Serializable {
     FLEA(25, 0),
     GNAT(100, 1),
     FIREFLY(100, 1),

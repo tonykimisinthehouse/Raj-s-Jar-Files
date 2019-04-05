@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
+import java.io.Serializable;
 import java.util.Random;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Marketplace;
@@ -9,7 +10,7 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.utility.LogCustom;
 /**
  * Represents a planet within a solar system.
  */
-public class Planet {
+public class Planet implements Serializable {
     private String name;
 
     private int radius;         //radius of planet itself
