@@ -38,7 +38,7 @@ public class Wallet {
 
         // Use credit, Get Good to cargo based on the transaction
         // result (success, fail)
-        if (newTransactionResult.getisTransactionSuccess()) {
+        if (newTransactionResult.getIsTransactionSuccess()) {
             Item item = newTransactionResult.getItem();
             // Add good to the cargo
             owner.getShip().addGood(item);
@@ -47,7 +47,7 @@ public class Wallet {
         }
 
         // Return if the transaction is success or not.
-        return newTransactionResult.getisTransactionSuccess();
+        return newTransactionResult.getIsTransactionSuccess();
     }
 
     /**
@@ -70,14 +70,14 @@ public class Wallet {
                 .validateTransaction(newTransactionOrder);
 
         // Remove cargo, and earn credit based on the transaction result
-        if (newTransactionResult.getisTransactionSuccess()) {
+        if (newTransactionResult.getIsTransactionSuccess()) {
             Item item = newTransactionResult.getItem();
             // Sell goods from cargo.
             owner.getShip().sellGood(item);
             // Earn credits.
             earnCredits(item.getPrice() * item.getQuantity());
         }
-        return newTransactionResult.getisTransactionSuccess();
+        return newTransactionResult.getIsTransactionSuccess();
     }
 
     ///////////////////////////// OWNER OPERATION /////////////////////////////

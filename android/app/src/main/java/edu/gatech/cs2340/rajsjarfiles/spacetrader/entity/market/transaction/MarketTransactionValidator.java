@@ -58,7 +58,7 @@ public class MarketTransactionValidator implements TransactionValidator {
             // Set a market price to the good that the player is trying to buy
             order.getItem().setPrice(marketPrice);
 
-            // Subract amount of quantity of good from the market
+            // Subtract amount of quantity of good from the market
             marketplace.getItem(goodInOrder).subQuantity(quantityInOrder);
 
             return true;

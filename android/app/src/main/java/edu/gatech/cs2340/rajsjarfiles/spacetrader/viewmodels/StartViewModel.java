@@ -43,7 +43,7 @@ public class StartViewModel extends AndroidViewModel {
      *                         in activity_start.xml
      * @param editEngineerPoints represents the value from the EditText for engineerPoints
      *                           in activity_start.xml
-     * @return Returns boolean of whether the valids were valid or not.
+     * @return Returns boolean of whether the points were valid or not.
      */
     public Boolean isValid(EditText editPlayerName,
                            EditText editPilotPoints,

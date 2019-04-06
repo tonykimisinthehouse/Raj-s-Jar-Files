@@ -26,7 +26,7 @@ public class TransactionResult {
      *
      * @return true if the transaction was successful.
      */
-    public boolean getisTransactionSuccess() {
+    public boolean getIsTransactionSuccess() {
         return this.isTransactionSuccess;
     }
 

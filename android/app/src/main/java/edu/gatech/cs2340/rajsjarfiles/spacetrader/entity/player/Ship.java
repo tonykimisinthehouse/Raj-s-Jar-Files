@@ -64,7 +64,7 @@ public class Ship {
     ///////////////////////////// FUEL OPERATION /////////////////////////////
 
     /**
-     * Returns whether or not the ship has the necesary
+     * Returns whether or not the ship has the necessary
      * fuel.
      *
      * @param requiredFuel the required amount of fuel

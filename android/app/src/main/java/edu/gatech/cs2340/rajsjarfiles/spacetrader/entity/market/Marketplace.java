@@ -60,7 +60,7 @@ public class Marketplace {
     }
 
     /**
-     * Calcuate the price of a good based on all the factors.
+     * Calculate the price of a good based on all the factors.
      *
      * @param good the good
      * @return the price of the good
@@ -125,7 +125,7 @@ public class Marketplace {
      * Getter for getting tech level of the planet which the
      * marketplace is located.
      *
-     * @return techlevel of the planet which the marketplace is located
+     * @return techLevel of the planet which the marketplace is located
      */
     public TechLevel getTechLevel() {
         return techLevel;

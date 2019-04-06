@@ -40,7 +40,7 @@ public class StartActivity extends BaseActivity {
     private StartViewModel viewModel;
 
     /**
-     * Method that return new Textwatcher to set.
+     * Method that return new TextWatcher to set.
      *
      * @param editText represents the EditText in activity_start.xml
      * @param index indicates the type of skill points
@@ -121,7 +121,7 @@ public class StartActivity extends BaseActivity {
     }
 
     /**
-     * Method for hooking up the view with viewmodel that does the logic.
+     * Method for hooking up the view with ViewModel that does the logic.
      *
      * @param view the current view
      */

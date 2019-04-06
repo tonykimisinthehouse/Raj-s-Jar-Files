@@ -39,7 +39,7 @@ public abstract class EncounterActivity extends AppCompatActivity {
 
     /**
      * Opens a dialog describing what happened at the end of the encounter
-     * and opens the game actvitiy.
+     * and opens the game activity.
      */
     public void transitionToNextActivity() {
         String text = "";
