@@ -79,6 +79,22 @@ public class Player {
     }
 
     ///////////////////////////// WALLET OPERATION /////////////////////////////
+    public int getCredits() {
+        return wallet.getCredits();
+    }
+
+    public void setCredits(int credits) {
+        try {
+            wallet.setCredits(credits);
+        } catch (IllegalArgumentException e) {
+            wallet.setCredits(0);
+        }
+    }
+
+    public int setCredits(float takenRatio) {
+        return wallet.setCredits(takenRatio);
+    }
+
     public Wallet getWallet() {
         return this.wallet;
     }

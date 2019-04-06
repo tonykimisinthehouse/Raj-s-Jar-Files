@@ -42,9 +42,9 @@ public enum Habitats {
             "#cc3300");
 
     // Store list of habitable species
-    private ArrayList<Species> habitableSpecies = new ArrayList<>();
+    private List<Species> habitableSpecies = new ArrayList<>();
     // Store list of impossible resources
-    private ArrayList<ResourceClassification> impossibleResources =
+    private List<ResourceClassification> impossibleResources =
             new ArrayList<>();
     // Color of the habitat in hex
     private String colorHex;

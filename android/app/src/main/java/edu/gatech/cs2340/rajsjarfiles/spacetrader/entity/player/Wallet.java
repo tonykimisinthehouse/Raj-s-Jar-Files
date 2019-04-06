@@ -116,12 +116,13 @@ public class Wallet {
      *
      * @param takenRatio the ratio to remove (0 to 1)
      */
-    public void setCredits(float takenRatio) {
+    public int setCredits(float takenRatio) {
         if (takenRatio > 1) {
             throw new IllegalArgumentException("Ratio cannot be larger than one.");
         }
 
         credits -= (int) (credits * takenRatio);
+        return credits;
     }
 
     /**

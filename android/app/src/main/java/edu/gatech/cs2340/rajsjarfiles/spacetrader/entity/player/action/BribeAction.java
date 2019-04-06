@@ -2,6 +2,7 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Wallet;
 
 public class BribeAction implements PlayerEncounterAction {
 
@@ -18,10 +19,10 @@ public class BribeAction implements PlayerEncounterAction {
 
         retString += "You bribe the police with 50% of your money.\n";
         retString += "You had "
-                + player.getWallet().getCredits() + " credits.\n";
-        player.getWallet().setCredits(0.5f);
+                + player.getCredits() + " credits.\n";
+        int newCredits = player.setCredits(0.5f);
         retString += "You now have "
-                + player.getWallet().getCredits() + " credits.\n";
+                + newCredits + " credits.\n";
 
         es.conclude();
 

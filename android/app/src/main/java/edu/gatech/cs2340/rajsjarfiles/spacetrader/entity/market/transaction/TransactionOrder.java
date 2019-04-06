@@ -22,7 +22,8 @@ public class TransactionOrder {
      * @param initiator initiator of this transaction
      * @param transactionType the type of this transaction
      */
-    public TransactionOrder(Good good, int quantity, Player initiator, TransactionType transactionType) {
+    public TransactionOrder(
+            Good good, int quantity, Player initiator, TransactionType transactionType) {
 
         // Combine good and its quantity
         this.item = new Item.ItemBuilder(good)

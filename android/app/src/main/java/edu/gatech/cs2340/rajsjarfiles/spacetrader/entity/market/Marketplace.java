@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market;
 
+import java.util.AbstractMap;
 import java.util.Collection;
 import java.util.EnumMap;
 import java.util.Random;
@@ -140,7 +141,7 @@ public class Marketplace {
      *
      * @return enumMap containing index of goods that this marketplace has.
      */
-    public EnumMap<TradeGoods, Item> getTradeGoodsInMarket() {
+    public AbstractMap<TradeGoods, Item> getTradeGoodsInMarket() {
         return tradeGoodsInMarketMap;
     }
 

@@ -2,6 +2,7 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
 import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 /**
  * All of the possible names for the planets and solar system.
@@ -176,7 +177,7 @@ public class PlanetNames {
      */
     public static String[] generateName(int numOfNames) {
         String[] nameList = new String[numOfNames];
-        HashSet<String> nameSet = new HashSet<>();
+        Set<String> nameSet = new HashSet<>();
         String name = PlanetNames.generateName();
         for (int i = 0; i < numOfNames; i++) {
             while (!nameSet.add(name)) {

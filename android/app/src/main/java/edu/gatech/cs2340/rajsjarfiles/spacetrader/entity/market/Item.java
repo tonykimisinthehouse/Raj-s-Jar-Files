@@ -90,6 +90,11 @@ public class Item {
                 + " at " + price + " units each.";
     }
 
+    public String toText() {
+        return getGoodName() + " x"
+                + getQuantity() + " - $" + getPrice();
+    }
+
     /**
      * Class for creating an Item using the builder pattern.
      */

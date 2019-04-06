@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Good;
@@ -15,7 +16,7 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
 public class Ship {
     private ShipType shipType;
 
-    private HashMap<Good, Item> cargo;
+    private Map<Good, Item> cargo;
     private int totalCap;
     private int usedCap;
     private int fuel;

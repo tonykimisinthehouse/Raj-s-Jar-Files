@@ -111,7 +111,9 @@ class MapView extends View {
             float[] coord = getXAndY(planet, c);
             paint.setTextSize(27);
 
-            c.drawText(planet.getName() + " " + distanceLabel,  coord[0] + planet.getRadius() * RATIO , coord[1] - planet.getRadius() * RATIO, paint);
+            c.drawText(planet.getName() + " "
+                    + distanceLabel,  coord[0] + planet.getRadius() * RATIO ,
+                    coord[1] - planet.getRadius() * RATIO, paint);
         }
     }
 

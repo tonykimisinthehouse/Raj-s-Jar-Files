@@ -62,7 +62,8 @@ public class GameActivity extends BaseActivity {
 
     private void updateData() {
         this.planetNameIndicator.setText(viewModel.getPlanetName());
-        this.orbitRadiusIndicator.setText("Orbit Radius: " + String.valueOf(viewModel.getPlanetOrbitRadius()));
+        this.orbitRadiusIndicator.setText("Orbit Radius: "
+                + String.valueOf(viewModel.getPlanetOrbitRadius()));
         this.techLevelIndicator.setText("Tech Level: " + viewModel.getPlanetTechLevel());
         this.resourceIndicator.setText("Resources: " + viewModel.getPlanetResources());
         this.speciesIndicator.setText("Species: " + viewModel.getPlanetSpecies());
