@@ -1,9 +1,12 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
 
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.TradeGoods;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.ShipType;
 
@@ -36,8 +39,28 @@ public class ShipTester {
         assertEquals(ShipType.FLEA, ship.getShipType());
     }
 
+    @Test(timeout = TIMEOUT)
+    public void goodsTester() {
+        Ship ship = new Ship();
+        Item item = new Item.ItemBuilder(TradeGoods.FIREARMS).price(2).quantity(2).build();
+        ship.addGood(item);
+        assertEquals(8, ship.getAvailableCargoCapacity());
+
+        Item item2 = new Item.ItemBuilder(TradeGoods.FIREARMS).price(2).quantity(2).build();
+        ship.addGood(item2);
+        assertEquals(6, ship.getAvailableCargoCapacity());
+
+        Item item3 = new Item.ItemBuilder(TradeGoods.FIREARMS).price(2).quantity(8).build();
+        try {
+            ship.addGood(item3);
+            Assert.fail("Adding did not throw an exception when cargo was full.");
+        } catch (IllegalArgumentException e) {
+            Assert.assertTrue(true);
+        }
+    }
+
     /**
-     * Tests ship's overriden equals method.
+     * Tests ship's overridden equals method.
      */
     @Test(timeout = TIMEOUT)
     public void shipEquals() {
