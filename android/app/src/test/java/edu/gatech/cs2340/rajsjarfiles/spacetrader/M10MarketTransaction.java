@@ -23,6 +23,8 @@ public class M10MarketTransaction {
     Player player = model.getPlayer();
     Marketplace market = player.getLocation().getPlanet().getMarketplace();
 
+    int quantityToBuy = 1;
+
     @Test(timeout = TIMEOUT)
     public void playerEnoughCredits() {
 
@@ -32,13 +34,19 @@ public class M10MarketTransaction {
 
         player.getWallet().setCredits(credit);
         assertTrue(player.getWallet().getCredits() == credit);
-        assertTrue(player.getShip().getAvailableCargoCapacity() >= 5);
+        assertTrue(player.getShip().getAvailableCargoCapacity() >= quantityToBuy);
         assertTrue(market.getMarketQuantity(TradeGoods.WATER)
-        >= 5);
-        assertTrue(player.getWallet().makePurchase(TradeGoods.WATER, 5));
-        assertTrue(player.getWallet().getCredits() == credit - market.getMarketPrice(TradeGoods.WATER) * 5);
-        assertTrue(player.getShip().getAvailableCargoCapacity() == cargosize - 5);
-        assertTrue(market.getMarketQuantity(TradeGoods.WATER) == marketnum - 5);
+        >= quantityToBuy);
+        assertTrue(player.getWallet().makePurchase(TradeGoods.WATER, quantityToBuy));
+        assertTrue(player.getWallet().getCredits() == credit - market.getMarketPrice(TradeGoods.WATER) * quantityToBuy);
+        assertTrue(player.getShip().getAvailableCargoCapacity() == cargosize - quantityToBuy);
+        assertTrue(market.getMarketQuantity(TradeGoods.WATER) == marketnum - quantityToBuy);
+
+
+        // Invariant
+        assertTrue(player.getWallet().getCredits() >= 0);
+        assertTrue(market.getMarketQuantity(TradeGoods.WATER) >= 0);
+        assertTrue(player.getShip().getAvailableCargoCapacity() >= 0);
     }
 
     @Test(timeout = TIMEOUT)
@@ -47,10 +55,10 @@ public class M10MarketTransaction {
         player.getWallet().setCredits(0);
 
         assertTrue(player.getWallet().getCredits() == 0);
-        assertTrue(player.getShip().getAvailableCargoCapacity() >= 5);
+        assertTrue(player.getShip().getAvailableCargoCapacity() >= quantityToBuy);
         assertTrue(market.getMarketQuantity(TradeGoods.WATER)
-                >= 5);
-        assertFalse(player.getWallet().makePurchase(TradeGoods.WATER, 5));
+                >= quantityToBuy);
+        assertFalse(player.getWallet().makePurchase(TradeGoods.WATER, quantityToBuy));
     }
 
     @Test(timeout = TIMEOUT)
@@ -62,8 +70,8 @@ public class M10MarketTransaction {
         assertTrue(player.getWallet().getCredits() == 100000000);
         assertTrue(player.getShip().getAvailableCargoCapacity() == 0);
         assertTrue(market.getMarketQuantity(TradeGoods.WATER)
-                >= 5);
-        assertFalse(player.getWallet().makePurchase(TradeGoods.WATER, 5));
+                >= quantityToBuy);
+        assertFalse(player.getWallet().makePurchase(TradeGoods.WATER, quantityToBuy));
     }
 
     @Test(timeout = TIMEOUT)
@@ -72,9 +80,9 @@ public class M10MarketTransaction {
         player.getWallet().setCredits(100000000);
 
         assertTrue(player.getWallet().getCredits() == 100000000);
-        assertTrue(player.getShip().getAvailableCargoCapacity() >= 5);
+        assertTrue(player.getShip().getAvailableCargoCapacity() >= quantityToBuy);
         assertTrue(market.getMarketQuantity(TradeGoods.WATER)
-                <= 999999);
+                < 999999);
         assertFalse(player.getWallet().makePurchase(TradeGoods.WATER, 999999));
     }
 }
