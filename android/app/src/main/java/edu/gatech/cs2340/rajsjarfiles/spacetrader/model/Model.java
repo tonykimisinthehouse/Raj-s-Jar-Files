@@ -33,8 +33,8 @@ public class Model {
                 .points(points)
                 .build();
 
-        Log.i("Model", player.toString());
-        LogCustom.largeLog("Model", game.toString());
+        //Log.i("Model", player.toString());
+        //LogCustom.largeLog("Model", game.toString());
     }
 
     /**
