@@ -6,6 +6,9 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.Tran
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionResult;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionType;
 
+/**
+ * Represents a player's wallet.
+ */
 public class Wallet {
 
     private int credits;
@@ -81,10 +84,19 @@ public class Wallet {
     }
 
     ///////////////////////////// OWNER OPERATION /////////////////////////////
+
+    /**
+     * Sets the wallet's owner to the respective player.
+     *
+     * @param owner the player
+     */
     public void setOwner(Player owner) {
         this.owner = owner;
     }
 
+    /**
+     * @return the wallet's owner
+     */
     public Player getOwner() {
         return owner;
     }
@@ -115,6 +127,7 @@ public class Wallet {
      * Subtracts a certain ratio from the player's credits.
      *
      * @param takenRatio the ratio to remove (0 to 1)
+     * @return the player's remaining credits
      */
     public int setCredits(float takenRatio) {
         if (takenRatio > 1) {

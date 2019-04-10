@@ -4,6 +4,9 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Planet;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.SolarSystem;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 
+/**
+ * Represents a location in the Universe.
+ */
 public class Location {
 
     private Planet planet; // Planet that the player is currently on.
@@ -22,10 +25,18 @@ public class Location {
         setPlanet(planet);
     }
 
+    /**
+     * Sets solar system to a new solar system.
+     *
+     * @param solarSystem the new solar system.
+     */
     public void setSolarSystem(SolarSystem solarSystem) {
         this.solarSystem = solarSystem;
     }
 
+    /**
+     * @return the solar system
+     */
     public SolarSystem getSolarSystem() {
         return this.solarSystem;
     }
@@ -47,6 +58,12 @@ public class Location {
         return solarSystem.equals(destinationSS);
     }
 
+    /**
+     * Determine how much fuel is required to travel to this planet.
+     *
+     * @param destinationP the new planet
+     * @return the amount of fuel needed
+     */
     public int calculateFuelRq(Planet destinationP) {
         int distance = this.planet.getDist(destinationP);
         return distance * 5;

@@ -41,6 +41,9 @@ public class Universe {
         }
     }
 
+    /**
+     * @return a random solar system in the universe
+     */
     public SolarSystem getRandomSolarSystem() {
         Random rand = new Random();
         return solarSystem[rand.nextInt(solarSystem.length)];

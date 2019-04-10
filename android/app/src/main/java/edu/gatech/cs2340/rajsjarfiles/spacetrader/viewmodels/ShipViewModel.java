@@ -26,14 +26,23 @@ public class ShipViewModel extends AndroidViewModel {
         super(application);
     }
 
+    /**
+     * @return the player's location
+     */
     public String getPlayerLocation() {
         return Model.getModel().getPlayer().getLocation().getPlanet().getName();
     }
 
+    /**
+     * @return the fuel remaining in the player's ship
+     */
     public int getFuelRemaining() {
         return Model.getModel().getPlayer().getShip().getFuel();
     }
 
+    /**
+     * @return a string showing how much cargo space is used
+     */
     public String getCargoHoldUsage() {
         Ship ship = Model.getModel().getPlayer().getShip();
         int total = ship.getCargoCapacity();

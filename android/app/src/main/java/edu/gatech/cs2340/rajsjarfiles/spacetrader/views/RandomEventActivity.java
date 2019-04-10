@@ -8,6 +8,9 @@ import java.util.Random;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
 
+/**
+ * Activity for a random event that can occur while traveling.
+ */
 public class RandomEventActivity extends AppCompatActivity {
 
     @Override

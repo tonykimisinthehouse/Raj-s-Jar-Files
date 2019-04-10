@@ -11,6 +11,9 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.RunAction
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.SurrenderAction;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 
+/**
+ * Represents an encounter with a pirate.
+ */
 public class PirateActivity extends EncounterActivity {
 
     @Override

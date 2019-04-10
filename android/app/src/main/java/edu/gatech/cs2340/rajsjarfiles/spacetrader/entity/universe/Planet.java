@@ -67,14 +67,25 @@ public class Planet {
         return orbitRadius;
     }
 
+    /**
+     * @return the planet's orbit angle
+     */
     public int getOrbitAngle() {
         return orbitAngle;
     }
 
+    /**
+     * Set this planet as a warp zone.
+     *
+     * @param bool if it is a warp zone or not
+     */
     public void setIsWarpZone(Boolean bool) {
         this.isWarpZone = bool;
     }
 
+    /**
+     * @return if this planet is a warp zone
+     */
     public boolean getIsWarpZone() {
         return isWarpZone;
     }
@@ -201,6 +212,7 @@ public class Planet {
          *
          * @param name the name of the planet
          * @param orbitRadius the orbit radius of the planet
+         * @param orbitAngle the orbit angle of the planet
          */
         public PlanetBuilder(String name, int orbitRadius, int orbitAngle) {
             this.name = name;

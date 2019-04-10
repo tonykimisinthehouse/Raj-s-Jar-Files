@@ -9,6 +9,9 @@ import android.widget.TextView;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels.ShipViewModel;
 
+/**
+ * Activity for viewing the player's ship.
+ */
 public class ShipActivity extends BaseActivity {
 
     /**
@@ -42,6 +45,11 @@ public class ShipActivity extends BaseActivity {
         this.cargoHoldIndicator.setText("Cargo Hold Usage: " + viewModel.getCargoHoldUsage());
     }
 
+    /**
+     * Changes the activity when a destination is chosen.
+     *
+     * @param view
+     */
     public void chooseDestination(View view) {
         Intent intent = new Intent(this, TravelActivity.class);
         startActivity(intent);
