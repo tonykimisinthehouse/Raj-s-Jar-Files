@@ -5,14 +5,7 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
 
 public class AttackAction implements PlayerEncounterAction {
 
-    /**
-     * Player attacks another ship
-     *
-     * @param player the player
-     * @param otherShip the other ship
-     * @param es the state of the encounter (over or not over)
-     * @return a description of what's happening
-     */
+    @Override
     public String doAction(Player player, Ship otherShip, EncounterState es) {
         String retString = "";
 

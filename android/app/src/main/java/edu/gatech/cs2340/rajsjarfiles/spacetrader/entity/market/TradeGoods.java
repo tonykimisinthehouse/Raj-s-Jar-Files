@@ -131,50 +131,62 @@ public enum TradeGoods implements Good {
     }
 
     /////// GETTER ////////
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public int getMTLP() {
         return MTLP;
     }
 
+    @Override
     public int getMTLU() {
         return MTLU;
     }
 
+    @Override
     public int getTTP() {
         return TTP;
     }
 
+    @Override
     public int getBasePrice() {
         return BasePrice;
     }
 
+    @Override
     public int getIPL() {
         return IPL;
     }
 
+    @Override
     public int getVar() {
         return Var;
     }
 
+    @Override
     public Events getIE() {
         return IE;
     }
 
+    @Override
     public ResourceClassification getCR() {
         return CR;
     }
 
+    @Override
     public ResourceClassification getER() {
         return ER;
     }
 
+    @Override
     public int getMTL() {
         return MTL;
     }
 
+    @Override
     public int getMTH() {
         return MTH;
     }
@@ -182,6 +194,7 @@ public enum TradeGoods implements Good {
     /**
      * @return whether this good is illegal or not
      */
+    @Override
     public boolean isIllegal() {
         for (Good g : Good.ILLEGAL_GOODS) {
             if (this.name == g.getName()) {

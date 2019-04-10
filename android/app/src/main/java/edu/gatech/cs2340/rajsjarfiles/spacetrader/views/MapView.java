@@ -39,10 +39,9 @@ class MapView extends View {
         fillInPlanet(canvas);
     }
 
-    private Runnable updateTimerThread = new Runnable()
-    {
-        public void run()
-        {
+    private Runnable updateTimerThread = new Runnable() {
+        @Override
+        public void run() {
             incrementdAngle();
             invalidate();
             rotationHandler.postDelayed(this, 10);

@@ -21,12 +21,7 @@ public class MarketTransactionValidator implements TransactionValidator {
         this.marketplace = mp;
     }
 
-    /**
-     * Validate the transaction order
-     *
-     * @param order transaction order from player
-     * @return true if the transaction can be initiated.
-     */
+    @Override
     public boolean validate(TransactionOrder order) {
 
         Good goodInOrder = order.getItem().getGood();

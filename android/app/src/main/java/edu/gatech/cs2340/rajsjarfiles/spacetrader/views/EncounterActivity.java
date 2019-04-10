@@ -54,6 +54,7 @@ public abstract class EncounterActivity extends AppCompatActivity {
         builder.setMessage(text)
                 .setCancelable(false)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
                     public void onClick(DialogInterface dialog, int id) {
                         EncounterActivity.this.finish();
                         startActivity(intent);
