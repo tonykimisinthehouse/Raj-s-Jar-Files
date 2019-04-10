@@ -151,4 +151,8 @@ public class StartActivity extends BaseActivity {
         this.finish();
     }
 
+    @Override
+    public void onBackPressed() {
+        //left blank so the player can't return
+    }
 }

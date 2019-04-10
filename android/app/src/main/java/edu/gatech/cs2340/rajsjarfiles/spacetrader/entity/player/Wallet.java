@@ -112,6 +112,19 @@ public class Wallet {
     }
 
     /**
+     * Subtracts a certain ratio from the player's credits.
+     *
+     * @param takenRatio the ratio to remove (0 to 1)
+     */
+    public void setCredits(float takenRatio) {
+        if (takenRatio > 1) {
+            throw new IllegalArgumentException("Ratio cannot be larger than one.");
+        }
+
+        credits -= (int) (credits * takenRatio);
+    }
+
+    /**
      * Earn credit
      *
      * @param amount of credit earned.

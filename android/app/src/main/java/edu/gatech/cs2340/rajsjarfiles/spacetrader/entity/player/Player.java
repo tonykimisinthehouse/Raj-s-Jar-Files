@@ -88,7 +88,7 @@ public class Player {
         this.wallet.setOwner(this);
     }
 
-    ///////////////////////////// LOCATION OPERATION /////////////////////////////
+    ///////////////////////////// LOCATION OPERATION ///////////////////////////
     public void setLocation(Location location) {
         this.location = location;
     }
@@ -99,37 +99,39 @@ public class Player {
 
     public boolean travel(SolarSystem destinationSS, Planet destinationP) {
 
-       final int statusCODE = this.location.checkIfTravelPossible(destinationSS, destinationP);
+        final int statusCODE = this.location.checkIfTravelPossible(
+               destinationSS, destinationP);
 
-       // Travel not possible since the player is not in the warp zone planet.
-       if (statusCODE == -1) {
-           return false;
-       }
+        // Travel not possible since the player is not in the warp zone planet.
+        if (statusCODE == -1) {
+            return false;
+        }
 
-       // Inter solar system travel. (travel between solar system)
-       if (statusCODE == 1) {
-           final int TRAVELFAIR = 1000;
-           if (this.wallet.checkCreditEnough(TRAVELFAIR)){
-               //TODO STUB PRICE FOR INTER SOLAR TRAVEL
-               this.wallet.useCredits(TRAVELFAIR);
-               this.location = new Location(destinationSS, destinationSS.getPlanetWithWarp());
-               return true;
-           }
-       }
+        // Inter solar system travel. (travel between solar system)
+        if (statusCODE == 1) {
+            final int travelFare = 1000;
+            if (this.wallet.checkCreditEnough(travelFare)) {
+                //TODO STUB PRICE FOR INTER SOLAR TRAVEL
+                this.wallet.useCredits(travelFare);
+                this.location = new Location(
+                        destinationSS, destinationSS.getPlanetWithWarp());
+                return true;
+            }
+        }
 
-       // Travel inside the solar system
-       if (statusCODE == 0) {
-           int fuelRequired = this.location.calculateFuelRq(destinationP);
-           if (this.ship.hasFuels(fuelRequired)) {
-               this.ship.subFuel(fuelRequired);
-               this.location = new Location(destinationSS, destinationP);
-               return true;
-           }
-       }
-       return false;
+        // Travel inside the solar system
+        if (statusCODE == 0) {
+            int fuelRequired = this.location.calculateFuelRq(destinationP);
+            if (this.ship.hasFuels(fuelRequired)) {
+                this.ship.subFuel(fuelRequired);
+                this.location = new Location(destinationSS, destinationP);
+                return true;
+            }
+        }
+        return false;
     }
 
-    ///////////////////////////// PLAYER ATTRIBUTES /////////////////////////////
+    ///////////////////////////// PLAYER ATTRIBUTES ///////////////////////////
     /**
      * @return the player's name
      */
@@ -210,7 +212,8 @@ public class Player {
                 + " - Engineer: " + getEngineer() + "\n"
                 + " - Trade: " + getTrade() + "\n"
                 + " - Fight: " + getFight() + "\n"
-                + "They also have " + wallet.getCredits() + " credits and they fly a "
+                + "They also have "
+                + wallet.getCredits() + " credits and they fly a "
                 + getShip().toString();
     }
 

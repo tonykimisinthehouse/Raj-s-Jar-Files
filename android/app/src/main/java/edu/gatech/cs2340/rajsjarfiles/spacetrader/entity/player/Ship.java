@@ -3,6 +3,8 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Good;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
@@ -12,13 +14,16 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
  */
 public class Ship {
     private ShipType shipType;
-
     private HashMap<Good, Item> cargo;
     private int totalCap;
     private int usedCap;
     private int fuel;
 
     ///////////////////////////// CONSTRUCTOR /////////////////////////////
+
+    private int health;
+
+    private List<Weapon> weapons;
 
     /**
      * Default constructor that sets ShipType to GNAT.
@@ -48,21 +53,40 @@ public class Ship {
         totalCap =  cargoSize;
         usedCap = 0;
         fuel = 999999; //TODO STUB FUEL AMOUNT
+        health = shipType.getMaxHealth();
+        weapons = new ArrayList<>(shipType.getMaxWeaponSlots());
     }
 
     ///////////////////////////// FUEL OPERATION /////////////////////////////
+
+    /**
+     * Returns whether or not the ship has the necesary
+     * fuel.
+     *
+     * @param requiredFuel the required amount of fuel
+     * @return whether or not the ship has the fuel
+     */
     public boolean hasFuels(int requiredFuel) {
         return fuel >= requiredFuel;
     }
 
+
+    /**
+     * Removes fuel from the ship.
+     *
+     * @param fuelUsed the amount of fuel to remove
+     */
     public void subFuel(int fuelUsed) {
         if (hasFuels(fuelUsed)) {
             fuel -= fuelUsed;
         }
     }
 
+    /**
+     * @return how much fuel the ship has
+     */
     public int getFuel() {
-       return this.fuel;
+        return this.fuel;
     }
 
     ///////////////////////////// CARGO OPERATION /////////////////////////////
@@ -98,6 +122,13 @@ public class Ship {
             }
         }
         return false;
+    }
+
+    /**
+     * @return whether the ship has cargo
+     */
+    public boolean hasGoods() {
+        return usedCap > 0;
     }
 
     /**
@@ -137,19 +168,13 @@ public class Ship {
     }
 
     /**
-     * @return a collection of the ship's cargo items
+     * Empties the ship's cargo.
      */
-    public Collection<Item> getCargoGoods() {
-        Collection<Item> items = new ArrayList<>();
-        for (Good good : this.cargo.keySet()) {
-            // Build a new item based on this good
-            Item item = new Item.ItemBuilder(good)
-                    .quantity(this.cargo.get(good).getQuantity())
-                    .price(this.cargo.get(good).getPrice())
-                    .build();
-            items.add(item);
+    public void emptyCargo() {
+        if (usedCap > 0) {
+            cargo = new HashMap<Good, Item>(totalCap);
+            usedCap = 0;
         }
-        return items;
     }
 
     ///////////////////////////// SHIP ATTRIBUTES  /////////////////////////////
@@ -183,8 +208,156 @@ public class Ship {
         return this.shipType == s.shipType;
     }
 
+    /**
+     * @return a collection of the ship's cargo items
+     */
+    /**
+     * @return all the items in the ship's cargo
+     */
+    public Collection<Item> getCargoGoods() {
+        Collection<Item> items = new ArrayList<>();
+        for (Good good : this.cargo.keySet()) {
+            // Build a new item based on this good
+            Item item = new Item.ItemBuilder(good)
+                    .quantity(this.cargo.get(good).getQuantity())
+                    .price(this.cargo.get(good).getPrice())
+                    .build();
+            items.add(item);
+        }
+        return items;
+    }
+
+    /**
+     * @return whether or not the ship's cargo has illegal goods
+     */
+    public boolean hasIllegalGoods() {
+        for (Good good : Good.ILLEGAL_GOODS) {
+            if (cargo.containsKey(good)) {
+                if (cargo.get(good).getQuantity() > 0) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * @return the health of the ship
+     */
+    public int getHealth() {
+        return health;
+    }
+
+    /**
+     * Sets the health of the ship to a specific amount.
+     *
+     * @param health the new health
+     */
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    /**
+     * Takes damage from a specific weapon.
+     *
+     * @param w the weapon
+     * @return whether or not the ship is destroyed
+     */
+    public boolean takeDamage(Weapon w) {
+        health -= w.getStrength();
+        if (health <= 0) {
+            health = 0;
+        }
+        return health <= 0;
+    }
+
+    /**
+     * Attacks another ship.
+     *
+     * @param other the other ship
+     * @return whether or not the other ship is destroyed
+     */
+    public boolean attackShip(Ship other) {
+        for (Weapon w : getWeapons()) {
+            int playerHit = rand.nextInt(10);
+            if (playerHit < 8) { // this will depend on the player points
+                boolean dead = other.takeDamage(w);
+                if (dead) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Adds a weapon to the weapon slots if there's room.
+     *
+     * @param w the new weapon
+     */
+    public void addWeapon(Weapon w) {
+        if (weapons.size() < shipType.getMaxWeaponSlots()) {
+            weapons.add(w);
+        }
+    }
+
+    /**
+     * @return the ship's weapons
+     */
+    public List<Weapon> getWeapons() {
+        return weapons;
+    }
+
     @Override
     public String toString() {
-        return shipType.toString();
+        String ret = "";
+        ret += "The ship is a " + shipType.toString() + "\n";
+        for (Item i : getCargoGoods()) {
+            ret += i.toString() + "\n";
+        }
+
+        return ret;
+    }
+
+    private static Random rand = new Random();
+
+    /**
+     * @return a random instance of a ship that has weapons and is slightly
+     * damaged (up to half its health can be gone)
+     */
+    public static Ship getRandomShipWithWeapons() {
+        ShipType st = ShipType.getShipsWithWeapons().
+                get(rand.nextInt(ShipType.getShipsWithWeapons().size()));
+
+        Ship ship = new Ship(0, st);
+
+        //add weapons to the ship
+        int numWeaponsToAdd;
+
+        if (st.getMaxWeaponSlots() == 1) {
+            numWeaponsToAdd = 1;
+        } else {
+            numWeaponsToAdd = rand.nextInt(st.getMaxWeaponSlots() - 1) + 1;
+        }
+        for (int i = 0; i < numWeaponsToAdd; i++) {
+            ship.addWeapon(Weapon.getRandomWeapon());
+        }
+
+        ship.setHealth(rand.nextInt(st.getMaxHealth() / 2)
+                + st.getMaxHealth() / 2);
+        return ship;
+    }
+
+    /**
+     * Removes all illegal goods from the ship's cargo.
+     */
+    public void removeIllegalGoods() {
+        for (Good good : Good.ILLEGAL_GOODS) {
+            if (cargo.containsKey(good)) {
+                if (cargo.get(good).getQuantity() > 0) {
+                    cargo.get(good).setQuantity(0);
+                }
+            }
+        }
     }
 }

@@ -7,7 +7,7 @@ import java.util.Random;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.MarketTransactionValidator;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionOrder;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionResult;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Events;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.PlanetEvents;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.ResourceClassification;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.TechLevel;
 
@@ -26,7 +26,7 @@ public class Marketplace {
     private String planetName;
     private TechLevel techLevel;
     private ResourceClassification resource;
-    private Events event;
+    private PlanetEvents event;
 
     /**
      * Constructor for marketplace
@@ -37,7 +37,7 @@ public class Marketplace {
      * @param resource resource class
      */
     public Marketplace(String pn, TechLevel techLevel,
-                       Events event, ResourceClassification resource) {
+                       PlanetEvents event, ResourceClassification resource) {
 
         this.planetName = pn;
         this.techLevel = techLevel;
@@ -131,7 +131,11 @@ public class Marketplace {
         return techLevel;
     }
 
-    public Events getEvent() {
+    /**
+     * Get planet event
+     * @return event on the planet
+     */
+    public PlanetEvents getEvent() {
         return event;
     }
 

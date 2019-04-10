@@ -39,7 +39,10 @@ public class GameActivity extends BaseActivity {
 
         // Set filter on planet Image
         ImageView imageView = findViewById(R.id.imageView);
-        imageView.setColorFilter(Color.parseColor(viewModel.getPlanetColorHex()), PorterDuff.Mode.MULTIPLY); //Desert
+        imageView.setColorFilter(
+                Color.parseColor(
+                        viewModel.getPlanetColorHex()),
+                        PorterDuff.Mode.MULTIPLY); //Desert
     }
 
     @Override
@@ -58,6 +61,10 @@ public class GameActivity extends BaseActivity {
     }
 
     private void updateData() {
+
+        ImageView imageView = findViewById(R.id.imageView);
+        imageView.setColorFilter(Color.parseColor(viewModel.getPlanetColorHex()), PorterDuff.Mode.MULTIPLY); //Desert
+
         this.planetNameIndicator.setText(viewModel.getPlanetName());
         this.orbitRadiusIndicator.setText("Orbit Radius: " + String.valueOf(viewModel.getPlanetOrbitRadius()));
         this.techLevelIndicator.setText("Tech Level: " + viewModel.getPlanetTechLevel());
@@ -96,4 +103,8 @@ public class GameActivity extends BaseActivity {
         startActivity(intent);
     }
 
+    @Override
+    public void onBackPressed() {
+        //left blank so the player can't return
+    }
 }

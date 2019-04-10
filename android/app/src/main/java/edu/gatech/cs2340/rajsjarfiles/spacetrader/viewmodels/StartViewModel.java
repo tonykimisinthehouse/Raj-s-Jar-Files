@@ -8,8 +8,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.GameDifficulty;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
 import java.util.regex.Pattern;
+
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 
 /**
@@ -101,6 +101,9 @@ public class StartViewModel extends AndroidViewModel {
         String playerName = editTextName.getText().toString();
         GameDifficulty difficulty = (GameDifficulty) difficultySpinner.getSelectedItem();
         model = new Model(playerName, points, difficulty);
+        //Ship playerShip = new Ship();
+        //playerShip.addWeapon(Weapon.PULSE_LASER);
+        //model = new Model(playerName, points, defaultCredit, playerShip, difficulty);
     }
 
     /**

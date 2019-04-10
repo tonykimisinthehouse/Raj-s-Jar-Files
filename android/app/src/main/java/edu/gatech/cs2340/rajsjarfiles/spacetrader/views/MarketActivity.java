@@ -199,6 +199,7 @@ public class MarketActivity extends BaseActivity {
         Player player = Model.getCurrent().getPlayer();
         Collection<Item> goodsForSale =
                 player.getLocation().getPlanet().getMarketplace().getItems();
+
         for (Item item : goodsForSale) {
             if (item.getGood().getIE()
                     == player.getLocation().getPlanet().getMarketplace().getEvent()) {

@@ -2,11 +2,11 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.model;
 
 import android.util.Log;
 
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Weapon;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.utility.LogCustom;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.Game;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.GameDifficulty;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
 
 /**
  * Creates a player and model with the valid inputs.
@@ -32,6 +32,9 @@ public class Model {
         player = new Player.PlayerBuilder(name)
                 .points(points)
                 .build();
+
+        //give player default weapon
+        player.getShip().addWeapon(Weapon.PULSE_LASER);
 
         Log.i("Model", player.toString());
         LogCustom.largeLog("Model", game.toString());

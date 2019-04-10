@@ -8,11 +8,12 @@ import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.View;
 
-import java.util.Random;
-
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Planet;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 
+/**
+ * Customized view for solar System Map
+ */
 class MapView extends View {
 
     private static final int SUN_RADIUS = 30;
@@ -21,16 +22,17 @@ class MapView extends View {
 
     private static float dAngle = 0;
 
-    private static Random rand = new Random();
-
     android.os.Handler rotationHandler = new android.os.Handler(Looper.myLooper());
 
     public MapView(Context context, AttributeSet attrs) {
         super(context, attrs);
         updateTimerThread.run();
-
     }
 
+    /**
+     * onDraw methods (starts when view is created and shown)
+     * @param canvas canvas to draw on
+     */
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -49,13 +51,20 @@ class MapView extends View {
         }
     };
 
+    /**
+     * Increment angle of every planet periodically for animation
+     */
     private void incrementdAngle() {
-        dAngle += 0.001;
+        dAngle += 0.1;
         if (dAngle >= 360) {
             dAngle = 0;
         }
     }
 
+    /**
+     * Fill in black background to the canvas
+     * @param c canvas to draw on
+     */
     private void fillInBackground(Canvas c) {
         Paint paint = new Paint();
         paint.setColor(Color.BLACK);
@@ -69,6 +78,10 @@ class MapView extends View {
         c.drawCircle(x, y, SUN_RADIUS * 2, paint);
     }
 
+    /**
+     * Fill in gray orbits to the canvas
+     * @param c canvas to draw on
+     */
     private void fillInOrbit(Canvas c) {
         Planet[] planets = Model.getCurrent().getPlayer().getLocation().getSolarSystem().getPlanets();
         Paint paint = new Paint();
@@ -85,6 +98,10 @@ class MapView extends View {
         }
     }
 
+    /**
+     * Fill in planets on to the canvas
+     * @param c canvas to draw on
+     */
     private void fillInPlanet(Canvas c){
 
         Planet[] planets = Model.getCurrent().getPlayer().getLocation().getSolarSystem().getPlanets();
@@ -108,17 +125,39 @@ class MapView extends View {
                 distanceLabel = currentPlanet.getDist(planet) + "LY";
             }
 
+
             float[] coord = getXAndY(planet, c);
             paint.setTextSize(27);
 
-            c.drawText(planet.getName() + " " + distanceLabel,  coord[0] + planet.getRadius() * RATIO , coord[1] - planet.getRadius() * RATIO, paint);
+            c.drawText(planet.getName() + " " + distanceLabel,
+                    coord[0] + planet.getRadius() * RATIO , coord[1] - planet.getRadius() * RATIO, paint);
+
+            // Draw Warp Zone Indicator
+            if (planet.getIsWarpZone()) {
+                paint.setColor(Color.parseColor("#01b9ff"));
+                paint.setStyle(Paint.Style.STROKE);
+                paint.setStrokeWidth(5);
+                c.drawCircle(coord[0], coord[1] - planet.getRadius() * RATIO - 20, RATIO,paint);
+                c.drawCircle(coord[0], coord[1] - planet.getRadius() * RATIO - 20, RATIO + 10,paint);
+            }
+            paint.reset();
         }
     }
 
+    /**
+     * Get X and Y coordinates on canvas of the planet
+     * @param planet planet to be drawn
+     * @param c canvas to be drawn on
+     * @return array [0] = x, [1] = y
+     */
     private float[] getXAndY(Planet planet, Canvas c) {
 
         float x = c.getWidth()/2, y = c.getHeight()/2;
-        float a = planet.getOrbitAngle() + dAngle;
+        double a = planet.getOrbitAngle() + dAngle;
+
+        if (a >= 360) a -= 360;
+        a = Math.toRadians(a);
+
         float h = SUN_RADIUS * 2 + planet.getOrbitRadius() * ORBIT_RATIO;
 
         float dx = 0, dy = 0;
@@ -148,5 +187,12 @@ class MapView extends View {
         array[1] = y;
 
         return array;
+    }
+
+    /**
+     * Turn off the animation when activity is in paused
+     */
+    protected void turnOffView() {
+        rotationHandler.removeCallbacks(updateTimerThread);
     }
 }

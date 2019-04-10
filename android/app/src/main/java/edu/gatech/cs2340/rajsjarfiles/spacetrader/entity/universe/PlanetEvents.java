@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Represents an event that can occur on a planet.
  */
-public enum Events {
+public enum PlanetEvents {
     DROUGHT,
     COLD,
     CROP_FAIL,
@@ -17,9 +17,9 @@ public enum Events {
     /**
      * @return a random event
      */
-    public static Events getRandomEvent() {
+    public static PlanetEvents getRandomEvent() {
         Random rand = new Random();
-        Events[] re = Events.values();
+        PlanetEvents[] re = PlanetEvents.values();
         return re[rand.nextInt(re.length)];
     }
 }
