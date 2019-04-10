@@ -5,6 +5,9 @@ import java.util.Random;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
 
+/**
+ * Represents a player's run action.
+ */
 public class RunAction implements PlayerEncounterAction {
 
     @Override

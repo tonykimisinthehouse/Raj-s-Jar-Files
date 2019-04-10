@@ -119,6 +119,9 @@ public class SolarSystem {
         return planets[rand.nextInt(planets.length)];
     }
 
+    /**
+     * @return the planet with a warp zone
+     */
     public Planet getPlanetWithWarp() {
         for (Planet planet : planets) {
             if (planet.getIsWarpZone()) {

@@ -79,10 +79,19 @@ public class Player {
     }
 
     ///////////////////////////// WALLET OPERATION /////////////////////////////
+
+    /**
+     * @return the player's credits
+     */
     public int getCredits() {
         return wallet.getCredits();
     }
 
+    /**
+     * Set the player's credits to a new value.
+     *
+     * @param credits the new credits
+     */
     public void setCredits(int credits) {
         try {
             wallet.setCredits(credits);
@@ -91,28 +100,60 @@ public class Player {
         }
     }
 
+    /**
+     * Set the player's credits to a new amount based on the
+     * ratio left.
+     *
+     * @param takenRatio the ratio of money to remove
+     * @return the new credits
+     */
     public int setCredits(float takenRatio) {
         return wallet.setCredits(takenRatio);
     }
 
+    /**
+     * @return the player's wallet
+     */
     public Wallet getWallet() {
         return this.wallet;
     }
 
+    /**
+     * Sets the player's wallet to a new wallet.
+     *
+     * @param wallet the new wallet
+     */
     public void setWallet(Wallet wallet) {
         this.wallet = wallet;
         this.wallet.setOwner(this);
     }
 
     ///////////////////////////// LOCATION OPERATION ///////////////////////////
+
+    /**
+     * Set the player's location to a new location.
+     *
+     * @param location the new location
+     */
     public void setLocation(Location location) {
         this.location = location;
     }
 
+    /**
+     * @return the player's current location
+     */
     public Location getLocation() {
         return this.location;
     }
 
+    /**
+     * Determines if the player can travel to a new destination and if so,
+     * moves the player to the new destination.
+     *
+     * @param destinationSS the destination solar system
+     * @param destinationP the destination planet
+     * @return if the travel was successful
+     */
     public boolean travel(SolarSystem destinationSS, Planet destinationP) {
 
         final int statusCODE = this.location.checkIfTravelPossible(
@@ -270,6 +311,12 @@ public class Player {
             return this;
         }
 
+        /**
+         * Sets the builder's location.
+         *
+         * @param ss the solar system
+         * @return the builder object
+         */
         public PlayerBuilder location(SolarSystem ss) {
             this.location = new Location(ss);
             return this;

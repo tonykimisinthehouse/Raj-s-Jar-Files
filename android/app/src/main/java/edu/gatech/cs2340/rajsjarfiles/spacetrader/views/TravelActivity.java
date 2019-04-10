@@ -19,6 +19,9 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.SolarSystem;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels.TravelViewModel;
 
+/**
+ * Activity for when the player travels.
+ */
 public class TravelActivity extends BaseActivity {
     /**
      * View model for Travel activity

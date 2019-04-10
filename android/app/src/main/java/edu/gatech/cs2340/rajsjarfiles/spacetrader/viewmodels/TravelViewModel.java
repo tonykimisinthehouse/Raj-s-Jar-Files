@@ -25,6 +25,9 @@ public class TravelViewModel extends AndroidViewModel {
         super(application);
     }
 
+    /**
+     * Verifies that the chosen destination is reachable by the ship.
+     */
     public void checkDestination() {
         // Verify the chosen destination is reachable by the ship
     }

@@ -12,6 +12,9 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.RunAction
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.SubmitAction;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 
+/**
+ * Activity for when the player encounters the police.
+ */
 public class PoliceActivity extends EncounterActivity {
 
     @Override

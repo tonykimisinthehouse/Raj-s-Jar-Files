@@ -2,6 +2,9 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 
 import java.util.Random;
 
+/**
+ * Represents a weapon that a ship can have.
+ */
 public enum Weapon {
     //these are fairly arbitrary
     //so we'll have to balance them later

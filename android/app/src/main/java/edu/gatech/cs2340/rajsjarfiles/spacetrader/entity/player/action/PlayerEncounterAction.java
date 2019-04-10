@@ -3,6 +3,9 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
 
+/**
+ * Represents an action the player can do during an encounter.
+ */
 public interface PlayerEncounterAction {
 
     /**

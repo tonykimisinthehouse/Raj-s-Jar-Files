@@ -4,6 +4,9 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.EncounterState;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.PlayerEncounterAction;
 
+/**
+ * Manages the pirate battle encounter.
+ */
 public class PirateBattleManager extends BattleManager {
 
     /**

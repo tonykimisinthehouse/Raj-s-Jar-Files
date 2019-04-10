@@ -27,6 +27,9 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels.MarketViewModel;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
 
+/**
+ * Activity for a planet's market.
+ */
 public class MarketActivity extends BaseActivity {
 
     /**
