@@ -37,7 +37,7 @@ public class ShipTester {
     }
 
     /**
-     * Tests ship's overriden equals method.
+     * Tests ship's overridden equals method.
      */
     @Test(timeout = TIMEOUT)
     public void shipEquals() {
