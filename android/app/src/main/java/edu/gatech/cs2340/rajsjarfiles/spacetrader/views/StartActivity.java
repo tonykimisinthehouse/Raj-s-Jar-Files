@@ -117,7 +117,7 @@ public class StartActivity extends BaseActivity {
                 android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(adapter);
 
-        Button submitButton = (Button) findViewById(R.id.submit_button);
+        Button submitButton = findViewById(R.id.submit_button);
     }
 
     /**

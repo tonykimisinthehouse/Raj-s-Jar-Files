@@ -159,7 +159,7 @@ public class Marketplace {
      * @return the item associated with the good
      */
     public Item getItem(Good good) {
-        return tradeGoodsInMarketMap.get((TradeGoods) good);
+        return tradeGoodsInMarketMap.get(good);
     }
 
     //getMarketPrice and getMarketQuantity could probably be static...
