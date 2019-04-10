@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.battle.BattleManager;
@@ -39,13 +42,13 @@ public abstract class EncounterActivity extends AppCompatActivity {
      * and opens the game actvitiy.
      */
     public void transitionToNextActivity() {
-        String text;
+        String text = "";
         final Intent intent;
         if (player.getShip().getHealth() == 0) {
-            text = "You died! Better luck next time :)";
+            text += "You died! Better luck next time :)";
             intent = new Intent(getApplicationContext(), StartActivity.class);
         } else {
-            text = "You arrived relatively safely at your destination.";
+            text += "You arrived relatively safely at your destination.";
             intent = new Intent(getApplicationContext(), GameActivity.class);
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -59,6 +62,13 @@ public abstract class EncounterActivity extends AppCompatActivity {
                 });
         AlertDialog alert = builder.create();
         alert.show();
+
+        Window window = alert.getWindow();
+        WindowManager.LayoutParams wlp = window.getAttributes();
+
+        wlp.gravity = Gravity.BOTTOM;
+//        wlp.flags &= ~WindowManager.LayoutParams.FLAG_DIM_BEHIND;
+        window.setAttributes(wlp);
     }
 
     @Override
