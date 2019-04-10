@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.battle.BattleManager;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.EncounterState;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 
 /**

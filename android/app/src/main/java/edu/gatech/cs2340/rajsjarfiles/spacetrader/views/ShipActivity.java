@@ -3,13 +3,10 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.views;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels.ShipViewModel;
 
 public class ShipActivity extends BaseActivity {
