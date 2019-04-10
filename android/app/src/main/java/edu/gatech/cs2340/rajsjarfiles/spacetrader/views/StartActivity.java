@@ -150,7 +150,7 @@ public class StartActivity extends BaseActivity {
     /**
      * Finish activity on exit.
      *
-     * @param view
+     * @param view the current view.
      */
     public void onExit(View view) {
         this.finish();
