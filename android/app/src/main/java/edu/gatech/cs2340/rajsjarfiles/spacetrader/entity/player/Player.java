@@ -58,6 +58,10 @@ public class Player {
         return ship;
     }
 
+    public int getHealth() {
+        return ship.getHealth();
+    }
+
     /**
      * Sets the player's ship to a new ship.
      *
@@ -139,6 +143,10 @@ public class Player {
      */
     public Location getLocation() {
         return this.location;
+    }
+
+    public Planet getPlanet() {
+        return location.getPlanet();
     }
 
     /**

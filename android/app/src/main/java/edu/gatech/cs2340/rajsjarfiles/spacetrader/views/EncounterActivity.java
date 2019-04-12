@@ -43,7 +43,7 @@ public abstract class EncounterActivity extends AppCompatActivity {
     public void transitionToNextActivity() {
         String text = "";
         final Intent intent;
-        if (player.getShip().getHealth() == 0) {
+        if (player.getHealth() == 0) {
             text += "You died! Better luck next time :)";
             intent = new Intent(getApplicationContext(), StartActivity.class);
         } else {

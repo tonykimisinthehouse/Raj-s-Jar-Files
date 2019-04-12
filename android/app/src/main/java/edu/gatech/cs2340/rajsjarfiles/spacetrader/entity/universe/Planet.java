@@ -99,10 +99,21 @@ public class Planet {
     }
 
     /**
+     * @return string representation of tech level
+     */
+    public String getTechLevelString() {
+        return techLevel.toString();
+    }
+
+    /**
      * @return the planet's habitat
      */
     public Habitats getHabitats() {
         return habitats;
+    }
+
+    public String getColorHex() {
+        return habitats.getColorHex();
     }
 
     /**
@@ -112,11 +123,19 @@ public class Planet {
         return species;
     }
 
+    public String getSpeciesString() {
+        return species.toString();
+    }
+
     /**
      * @return the planet's resource classification
      */
     public ResourceClassification getResourceClass() {
         return resourceClass;
+    }
+
+    public String getResourceClassString() {
+        return resourceClass.toString();
     }
 
     /**
@@ -126,6 +145,9 @@ public class Planet {
         return marketplace;
     }
 
+    public String getEventString() {
+        return marketplace.getEventString();
+    }
 
     ///////////////////////////// PLANET UTILITY /////////////////////////////
     /**

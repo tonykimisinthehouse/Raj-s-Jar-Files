@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game;
 
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Planet;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Universe;
 
 /**
@@ -36,7 +37,7 @@ public class Game {
 
     @Override
     public String toString() {
-        return "The game difficulty is set to " + getGameDiff().toString()
+        return "The game difficulty is set to " + gameDiff.toString()
                 + ".\n" + universe.toString();
     }
 

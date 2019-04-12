@@ -4,6 +4,7 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Planet;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 
 /**
@@ -23,53 +24,59 @@ public class GameViewModel extends AndroidViewModel {
      * @return the name of the planet the player is currently on
      */
     public String getPlanetName() {
-        return Model.getModel().getPlayer().getLocation().getPlanet().getName();
+        Planet p = getPlanet();
+        return p.getName();
     }
 
     /**
      * @return the orbit radius of the planet the player is currently on
      */
     public int getPlanetOrbitRadius() {
-        return Model.getModel().getPlayer().getLocation().getPlanet().getOrbitRadius();
+        Planet p = getPlanet();
+        return p.getOrbitRadius();
     }
 
     /**
      * @return the resources of the planet the player is currently on
      */
     public String getPlanetResources() {
-        return Model.getModel().getPlayer()
-                .getLocation().getPlanet().getResourceClass().toString();
+        Planet p = getPlanet();
+        return p.getResourceClassString();
     }
 
     /**
      * @return the tech level of the planet the player is currently on
      */
     public String getPlanetTechLevel() {
-        return Model.getModel().getPlayer()
-                .getLocation().getPlanet().getTechLevel().toString();
+        Planet p = getPlanet();
+        return p.getTechLevelString();
     }
 
     /**
      * @return the planet event of the planet the player is currently on
      */
     public String getPlanetEvent() {
-        return Model.getModel().getPlayer()
-                .getLocation().getPlanet().getMarketplace().getEvent().toString();
+        Planet p = getPlanet();
+        return p.getEventString();
     }
 
     /**
      * @return the species on the planet the player is currently on
      */
     public String getPlanetSpecies() {
-        return Model.getModel().getPlayer()
-                .getLocation().getPlanet().getSpecies().toString();
+        Planet p = getPlanet();
+        return p.getSpeciesString();
     }
 
     /**
      * @return the color of the planet the player is currently on
      */
     public String getPlanetColorHex() {
-        return Model.getModel().getPlayer()
-                .getLocation().getPlanet().getHabitats().getColorHex();
+        Planet p = getPlanet();
+        return p.getColorHex();
+    }
+
+    private Planet getPlanet() {
+        return Model.getPlanet();
     }
 }

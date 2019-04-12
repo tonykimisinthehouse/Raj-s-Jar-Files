@@ -141,6 +141,10 @@ public class Marketplace {
         return event;
     }
 
+    public String getEventString() {
+        return event.toString();
+    }
+
     /**
      * Getter for whole index of goods that this marketplace has.
      *
