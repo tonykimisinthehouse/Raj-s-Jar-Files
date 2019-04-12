@@ -4,8 +4,9 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Events;
 
 /**
  * Represents an item that can be sold on a planet.
+ * Can only be instantiated by ItemBuilder!!
  */
-public class Item {
+public final class Item {
 
     private final Good good; //Types of good
     private int quantity; //Quantity of good

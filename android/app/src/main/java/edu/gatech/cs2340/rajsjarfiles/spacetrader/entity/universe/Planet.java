@@ -10,8 +10,9 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.utility.LogCustom;
 
 /**
  * Represents a planet within a solar system.
+ * Can only be instantiated by PlanetBuilder!!
  */
-public class Planet {
+public final class Planet {
     private final String name;
 
     private final int radius;         //radius of planet itself

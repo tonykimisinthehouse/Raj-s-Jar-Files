@@ -35,11 +35,6 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
  */
 public class MarketActivity extends BaseActivity {
 
-    /**
-     * View model for ShipMarket activity
-     */
-    private MarketViewModel viewModel;
-
     private TextView viewCreditCount;
     private ListView viewGoodsForSale;
     private ListView viewGoodsOnShip;
@@ -51,7 +46,10 @@ public class MarketActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_market);
 
-        this.viewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
+        /**
+         * View model for ShipMarket activity
+         */
+        MarketViewModel viewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
 
         this.assignViews();
         this.alertDialog();

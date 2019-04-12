@@ -30,6 +30,14 @@ class MapView extends View {
 
     public MapView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        Runnable updateTimerThread = new Runnable() {
+            @Override
+            public void run() {
+                incrementdAngle();
+                invalidate();
+                rotationHandler.postDelayed(this, 10);
+            }
+        };
         updateTimerThread.run();
 
     }
@@ -42,16 +50,7 @@ class MapView extends View {
         fillInPlanet(canvas);
     }
 
-    private final Runnable updateTimerThread = new Runnable() {
-        @Override
-        public void run() {
-            incrementdAngle();
-            invalidate();
-            rotationHandler.postDelayed(this, 10);
-        }
-    };
-
-    private void incrementdAngle() {
+    private static void incrementdAngle() {
         dAngle += ANGLE_CHANGE;
         if (dAngle >= FULL_CIRCLE) {
             dAngle = 0;

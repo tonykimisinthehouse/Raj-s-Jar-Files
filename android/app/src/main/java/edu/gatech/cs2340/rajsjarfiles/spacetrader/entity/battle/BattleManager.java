@@ -10,7 +10,6 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
  */
 public abstract class BattleManager {
     final Player player;
-    private final Ship playerShip;
 
     final Ship otherShip;
 
@@ -21,7 +20,7 @@ public abstract class BattleManager {
      */
     public BattleManager(Player player) {
         this.player = player;
-        this.playerShip = player.getShip();
+        Ship playerShip = player.getShip();
 
         this.otherShip = Ship.getRandomShipWithWeapons();
     }

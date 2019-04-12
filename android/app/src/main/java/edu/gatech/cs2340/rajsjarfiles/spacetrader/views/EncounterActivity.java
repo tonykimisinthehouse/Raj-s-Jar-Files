@@ -17,7 +17,7 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 /**
  * An activity for an encounter between a player and another ship.
  */
-public abstract class EncounterActivity extends BaseActivity {
+public abstract class EncounterActivity extends AppCompatActivity {
 
     TextView eventDescriptionText;
 

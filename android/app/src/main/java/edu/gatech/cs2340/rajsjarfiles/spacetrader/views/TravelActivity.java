@@ -24,10 +24,6 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels.TravelViewModel;
  * Activity for when the player travels.
  */
 public class TravelActivity extends BaseActivity {
-    /**
-     * View model for Travel activity
-     */
-    private TravelViewModel viewModel;
 
     /**
      * Names of reachable Planet destinations
@@ -39,7 +35,10 @@ public class TravelActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel);
 
-        viewModel = ViewModelProviders.of(this).get(TravelViewModel.class);
+        /**
+         * View model for Travel activity
+         */
+        TravelViewModel viewModel = ViewModelProviders.of(this).get(TravelViewModel.class);
 
         GridView destinationGrid = findViewById(R.id.destinationGrid);
         ListAdapter adapter = new ArrayAdapter<>(this,

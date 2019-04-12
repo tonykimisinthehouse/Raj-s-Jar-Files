@@ -310,7 +310,7 @@ public class Player {
             this.points = new int[] {4, 4, 4, 4};
             this.wallet = new Wallet(START_CREDITS); //TODO STUB CREDIT AMOUNT
             this.ship = new Ship(ShipType.GNAT);
-            this.location = null;
+            this.location = new Location();
         }
 
         /**
@@ -362,9 +362,6 @@ public class Player {
          * @return the new Player object
          */
         public Player build() {
-            if (location == null) {
-                location = new Location();
-            }
             return new Player(this);
         }
     }

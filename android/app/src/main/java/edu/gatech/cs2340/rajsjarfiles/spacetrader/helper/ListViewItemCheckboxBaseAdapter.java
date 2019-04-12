@@ -52,35 +52,36 @@ public class ListViewItemCheckboxBaseAdapter extends BaseAdapter {
     @Override
     public View getView(int itemIndex, View convertView, ViewGroup viewGroup) {
 
+        View convertViewPointer = convertView;
         ListViewItemViewHolder viewHolder = null;
 
-        if (convertView != null) {
-            viewHolder = (ListViewItemViewHolder) convertView.getTag();
+        if (convertViewPointer != null) {
+            viewHolder = (ListViewItemViewHolder) convertViewPointer.getTag();
         } else {
-            convertView = View.inflate(
+            convertViewPointer = View.inflate(
                     ctx,
                     R.layout.activity_list_view_with_checkbox_item,
                     null);
 
-            CheckBox listItemCheckbox = convertView.findViewById(
+            CheckBox listItemCheckbox = convertViewPointer.findViewById(
                             R.id.list_view_item_checkbox);
 
-            TextView listItemText = convertView.findViewById(
+            TextView listItemText = convertViewPointer.findViewById(
                             R.id.list_view_item_text);
 
-            viewHolder = new ListViewItemViewHolder(convertView);
+            viewHolder = new ListViewItemViewHolder(convertViewPointer);
 
             viewHolder.setItemCheckbox(listItemCheckbox);
 
             viewHolder.setItemTextView(listItemText);
 
-            convertView.setTag(viewHolder);
+            convertViewPointer.setTag(viewHolder);
         }
 
         ListViewItemDTO listViewItemDto = listViewItemDtoList.get(itemIndex);
         viewHolder.getItemCheckbox().setChecked(listViewItemDto.isChecked());
         viewHolder.getItemTextView().setText(listViewItemDto.getItemText());
 
-        return convertView;
+        return convertViewPointer;
     }
 }

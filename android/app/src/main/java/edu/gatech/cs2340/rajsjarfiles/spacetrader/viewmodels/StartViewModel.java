@@ -16,7 +16,6 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
  * Represents the view model for Main Activity.
  */
 public class StartViewModel extends AndroidViewModel {
-    private Model model;
     private static final int MAX_CREDIT = 16;
     private final int[] points = new int[4];
 
@@ -100,7 +99,7 @@ public class StartViewModel extends AndroidViewModel {
     public void createNewModel(EditText editTextName, Spinner difficultySpinner) {
         String playerName = editTextName.getText().toString();
         GameDifficulty difficulty = (GameDifficulty) difficultySpinner.getSelectedItem();
-        model = new Model(playerName, points, difficulty);
+        Model model = new Model(playerName, points, difficulty);
     }
 
     /**
