@@ -180,7 +180,8 @@ public class Marketplace {
      * @return the market price
      */
     public int getMarketPrice(Good good) {
-        return tradeGoodsInMarketMap.get(good).getPrice();
+        Item i = tradeGoodsInMarketMap.get(good);
+        return i.getPrice();
     }
 
     /**
@@ -190,7 +191,8 @@ public class Marketplace {
      * @return the market quantity
      */
     public int getMarketQuantity(Good good) {
-        return tradeGoodsInMarketMap.get(good).getPrice();
+        Item i = tradeGoodsInMarketMap.get(good);
+        return i.getPrice();
     }
 
     @Override
