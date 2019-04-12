@@ -85,4 +85,11 @@ public class Location {
         return this.planet;
     }
 
+    /**
+     * @return a list of the planets in the solar system the player
+     * is in
+     */
+    public Planet[] getPlanets() {
+        return solarSystem.getPlanets();
+    }
 }

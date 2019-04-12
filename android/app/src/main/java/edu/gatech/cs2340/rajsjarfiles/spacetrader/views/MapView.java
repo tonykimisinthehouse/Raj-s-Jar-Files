@@ -72,7 +72,8 @@ class MapView extends View {
     }
 
     private void fillInOrbit(Canvas c) {
-        Planet[] planets = Model.getModel().getPlayer().getLocation().getSolarSystem().getPlanets();
+        Model m = Model.getModel();
+        Planet[] planets = m.getPlanets();
         Paint paint = new Paint();
         paint.setColor(Color.GRAY);
         paint.setStyle(Paint.Style.STROKE);
@@ -88,21 +89,20 @@ class MapView extends View {
     }
 
     private void fillInPlanet(Canvas c){
-
-        Planet[] planets = Model.getModel().getPlayer().getLocation().getSolarSystem().getPlanets();
-        Paint paint = new Paint();
+        Model m = Model.getModel();
+        Planet[] planets = m.getPlanets();        Paint paint = new Paint();
         paint.setStyle(Paint.Style.FILL);
 
         for (Planet planet: planets) {
             float[] coord = getXAndY(planet, c);
-            paint.setColor(Color.parseColor(planet.getHabitats().getColorHex()));
+            paint.setColor(Color.parseColor(planet.getColorHex()));
             c.drawCircle(coord[0],coord[1],planet.getRadius() * RATIO, paint);
         }
 
         for (Planet planet: planets) {
 
             String distanceLabel = "";
-            Planet currentPlanet = Model.getModel().getPlayer().getLocation().getPlanet();
+            Planet currentPlanet = Model.getPlanet();
             if (planet.equals(currentPlanet)) {
                 paint.setColor(Color.RED);
             } else {

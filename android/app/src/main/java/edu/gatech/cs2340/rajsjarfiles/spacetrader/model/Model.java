@@ -2,6 +2,7 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.model;
 
 import android.util.Log;
 
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Location;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Weapon;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Planet;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.utility.LogCustom;
@@ -65,6 +66,11 @@ public class Model {
      */
     public Player getPlayer() {
         return this.player;
+    }
+
+    public Planet[] getPlanets() {
+        Location l = player.getLocation();
+        return l.getPlanets();
     }
 
     /**
