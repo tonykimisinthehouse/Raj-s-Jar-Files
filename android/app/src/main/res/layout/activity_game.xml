@@ -38,7 +38,8 @@
             android:layout_height="75sp"
             android:layout_alignParentRight="true"
             android:layout_marginEnd="0dp"
-            android:background="@android:drawable/stat_notify_sync"/>
+            android:background="@android:drawable/stat_notify_sync"
+            android:onClick="openMarket"/>
 
     </RelativeLayout>
 

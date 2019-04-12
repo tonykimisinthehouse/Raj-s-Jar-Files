@@ -52,7 +52,7 @@ public class BattleTest {
 
         Ship ship = bm.getOtherShip();
         assertNotNull(ship);
-        assertTrue(ship.getWeapons().size() > 0);
+        assertTrue(!ship.getWeapons().isEmpty());
         assertTrue(ship.getHealth() > 0);
     }
 
@@ -130,7 +130,7 @@ public class BattleTest {
         System.out.println("The test is beginning :O");
 
         String option = "";
-        while (!option.equals("q") && !option.equals("Q")) {
+        while (!"q".equals(option) && !"Q".equals(option)) {
 
             System.out.println("---------------------------------------");
             System.out.println(player.getName()
@@ -151,14 +151,19 @@ public class BattleTest {
 
             EncounterState es = new EncounterState();
             String ret = "";
-            if (option.equals("1")) {
-                ret = bm.executeTurn(new AttackAction(), es);
-            } else if (option.equals("2")) {
-                ret = bm.executeTurn(new RunAction(), es);
-            } else if (option.equals("3")) {
-                ret = bm.executeTurn(new SubmitAction(), es);
-            } else if (option.equals("4")) {
-                ret = bm.executeTurn(new BribeAction(), es);
+            switch (option) {
+                case "1":
+                    ret = bm.executeTurn(new AttackAction(), es);
+                    break;
+                case "2":
+                    ret = bm.executeTurn(new RunAction(), es);
+                    break;
+                case "3":
+                    ret = bm.executeTurn(new SubmitAction(), es);
+                    break;
+                case "4":
+                    ret = bm.executeTurn(new BribeAction(), es);
+                    break;
             }
             System.out.println(ret);
             if (es.isOver()) {
@@ -189,7 +194,7 @@ public class BattleTest {
         System.out.println("The test is beginning :O");
 
         String option = "";
-        while (!option.equals("q") && !option.equals("Q")) {
+        while (!"q".equals(option) && !"Q".equals(option)) {
 
             System.out.println("---------------------------------------");
             System.out.println(player.getName()
@@ -209,12 +214,16 @@ public class BattleTest {
 
             EncounterState es = new EncounterState();
             String ret = "";
-            if (option.equals("1")) {
-                ret = bm.executeTurn(new AttackAction(), es);
-            } else if (option.equals("2")) {
-                ret = bm.executeTurn(new RunAction(), es);
-            } else if (option.equals("3")) {
-                ret = bm.executeTurn(new SurrenderAction(), es);
+            switch (option) {
+                case "1":
+                    ret = bm.executeTurn(new AttackAction(), es);
+                    break;
+                case "2":
+                    ret = bm.executeTurn(new RunAction(), es);
+                    break;
+                case "3":
+                    ret = bm.executeTurn(new SurrenderAction(), es);
+                    break;
             }
             System.out.println(ret);
             if (es.isOver()) {

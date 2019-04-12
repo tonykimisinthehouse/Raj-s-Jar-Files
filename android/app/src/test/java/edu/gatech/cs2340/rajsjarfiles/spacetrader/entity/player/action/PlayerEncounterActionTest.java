@@ -67,7 +67,7 @@ public class PlayerEncounterActionTest {
         assertTrue(es.isOver());
 
         //test that at least one is dead by the end of the encounter
-        assertTrue(player.getShip().getHealth() == 0 ^ other.getHealth() == 0);
+        assertTrue((player.getShip().getHealth() == 0) ^ (other.getHealth() == 0));
     }
 
     /**
@@ -93,7 +93,7 @@ public class PlayerEncounterActionTest {
         assertTrue(es.isOver());
 
         //test that at least one is dead by the end of the encounter
-        assertTrue(player.getShip().getHealth() == 0 ^ other.getHealth() == 0);
+        assertTrue((player.getShip().getHealth() == 0) ^ (other.getHealth() == 0));
     }
 
     /**
@@ -142,8 +142,8 @@ public class PlayerEncounterActionTest {
         assertTrue(es.isOver());
 
         //make sure goods are gone and money is 0.2 of the original value
-        assertTrue(player.getWallet().getCredits() == 0
-                || origMoney > player.getWallet().getCredits());
+        assertTrue((player.getWallet().getCredits() == 0)
+                || (origMoney > player.getWallet().getCredits()));
         assertTrue(!player.getShip().hasIllegalGoods());
     }
 
@@ -172,8 +172,8 @@ public class PlayerEncounterActionTest {
         assertTrue(es.isOver());
 
         //make sure goods are gone and money is halved
-        assertTrue(player.getWallet().getCredits() == 0
-                || origMoney > player.getWallet().getCredits());
+        assertTrue((player.getWallet().getCredits() == 0)
+                || (origMoney > player.getWallet().getCredits()));
     }
 
     /**
@@ -230,7 +230,7 @@ public class PlayerEncounterActionTest {
         assertTrue(!player.getShip().hasGoods());
 
         //make sure goods are gone and money is halved
-        assertTrue(player.getWallet().getCredits() == 0
-                || origMoney > player.getWallet().getCredits());
+        assertTrue((player.getWallet().getCredits() == 0)
+                || (origMoney > player.getWallet().getCredits()));
     }
 }

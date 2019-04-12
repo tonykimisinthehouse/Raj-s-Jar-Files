@@ -78,7 +78,7 @@ public class CoordinatesTester {
             int dx = Math.abs(x1 - x2);
             int dy = Math.abs(y1 - y2);
 
-            double expectedDist = Math.sqrt(dx * dx + dy * dy);
+            double expectedDist = Math.sqrt((dx * dx) + (dy * dy));
 
             Coordinate c1 = new Coordinate(x1, y1);
             Coordinate c2 = new Coordinate(x2, y2);
