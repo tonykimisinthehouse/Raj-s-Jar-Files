@@ -7,12 +7,12 @@ import java.util.Random;
  * Represents a solar system in the universe.
  */
 public class SolarSystem {
-    public static final int MIN_PLANETS = 1;
-    public static final int MAX_PLANETS = 10;
+    private static final int MIN_PLANETS = 1;
+    private static final int MAX_PLANETS = 10;
 
     private static final int FULL_CIRCLE = 360;
 
-    static Random rand = new Random();
+    private static final Random rand = new Random();
 
     //using an array because the size won't change
     private final Planet[] planets;
@@ -54,7 +54,7 @@ public class SolarSystem {
      * @param size the number of planets to generate
      * @return the array of planets
      */
-    public static Planet[] generatePlanets(int size) {
+    private static Planet[] generatePlanets(int size) {
 
         Planet[] planets = new Planet[size];
         String[] nameList = PlanetNames.generateName(planets.length);
@@ -139,8 +139,8 @@ public class SolarSystem {
         String ret = "";
         ret += String.format("%-12s", getName())
                 + " " + getCoordinate() + " " + "\n";
-        for (int i = 0; i < planets.length; i++) {
-            ret += "   - " + planets[i].toString() + "\n";
+        for (Planet planet : planets) {
+            ret += "   - " + planet.toString() + "\n";
         }
         return ret;
     }

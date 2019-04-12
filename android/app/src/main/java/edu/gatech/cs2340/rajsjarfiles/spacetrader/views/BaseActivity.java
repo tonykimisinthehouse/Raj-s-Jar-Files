@@ -6,7 +6,7 @@ import android.util.Log;
 /**
  * Base activity so that all activities will override onPause for saving.
  */
-public class BaseActivity extends AppCompatActivity {
+class BaseActivity extends AppCompatActivity {
     @Override
     public void onPause() {
         super.onPause();

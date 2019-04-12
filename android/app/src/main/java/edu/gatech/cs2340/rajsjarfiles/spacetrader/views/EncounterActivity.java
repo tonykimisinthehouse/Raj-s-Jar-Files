@@ -19,14 +19,14 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
  */
 public abstract class EncounterActivity extends AppCompatActivity {
 
-    protected TextView eventDescriptionText;
+    TextView eventDescriptionText;
 
-    protected Model model;
-    protected Player player;
-    protected BattleManager bm;
+    Model model;
+    Player player;
+    BattleManager bm;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
     }
@@ -40,7 +40,7 @@ public abstract class EncounterActivity extends AppCompatActivity {
      * Opens a dialog describing what happened at the end of the encounter
      * and opens the game activity.
      */
-    public void transitionToNextActivity() {
+    void transitionToNextActivity() {
         String text = "";
         final Intent intent;
         if (player.getHealth() == 0) {

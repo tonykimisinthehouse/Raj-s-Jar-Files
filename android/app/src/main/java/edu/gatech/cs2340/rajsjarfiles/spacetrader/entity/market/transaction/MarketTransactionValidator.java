@@ -96,10 +96,8 @@ public class MarketTransactionValidator implements TransactionValidator {
      * @return TransactionResult containing the transaction result.
      */
     public TransactionResult validateNTransaction(TransactionOrder order) {
-        Boolean isTransSuccess = validate(order);
-        TransactionResult result =
-                new TransactionResult(isTransSuccess, order.getItem());
-        return result;
+        boolean isTransSuccess = validate(order);
+        return new TransactionResult(isTransSuccess, order.getItem());
     }
 
     /**

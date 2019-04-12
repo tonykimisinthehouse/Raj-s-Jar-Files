@@ -25,7 +25,7 @@ public class Planet {
     private final ResourceClassification resourceClass;
     private final Marketplace marketplace;
 
-    static Random rand = new Random();
+    private static final Random rand = new Random();
 
     ///////////////////////////// CONSTRUCTOR /////////////////////////////
     /**
@@ -33,7 +33,7 @@ public class Planet {
      *
      * @param builder the planet builder
      */
-    public Planet(PlanetBuilder builder) {
+    private Planet(PlanetBuilder builder) {
         this.name = builder.name;
         this.radius = builder.radius;
         this.orbitRadius = builder.orbitRadius;
@@ -180,8 +180,7 @@ public class Planet {
         int a = this.orbitRadius;
         int b = other.orbitRadius;
 
-        int c = (int) Math.sqrt(((a * a) + (b * b)) - (2 * a * b * Math.cos(angle)));
-        return c;
+        return (int) Math.sqrt(((a * a) + (b * b)) - (2 * a * b * Math.cos(angle)));
     }
 
     /**

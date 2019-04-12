@@ -30,7 +30,7 @@ public class Location {
      *
      * @param solarSystem the new solar system.
      */
-    public void setSolarSystem(SolarSystem solarSystem) {
+    private void setSolarSystem(SolarSystem solarSystem) {
         this.solarSystem = solarSystem;
     }
 

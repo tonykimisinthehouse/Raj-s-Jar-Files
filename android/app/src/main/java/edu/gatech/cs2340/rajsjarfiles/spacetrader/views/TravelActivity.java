@@ -87,7 +87,7 @@ public class TravelActivity extends BaseActivity {
                     SolarSystem system = player.getLocation().getSolarSystem();
                     Log.d("Sonny",
                             system.getPlanetByName(planetName).toString());
-                    player.travel(system, system.getPlanetByName(planetName));
+                    boolean success = player.travel(system, system.getPlanetByName(planetName));
 
                     // Close this activity
                     Intent intent = new Intent(

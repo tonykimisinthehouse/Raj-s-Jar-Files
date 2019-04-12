@@ -53,8 +53,8 @@ public class Universe {
     @Override
     public String toString() {
         String ret = "The universe:\n";
-        for (int i = 0; i < solarSystem.length; i++) {
-            ret += "- " + solarSystem[i].toString() + "\n";
+        for (SolarSystem aSolarSystem : solarSystem) {
+            ret += "- " + aSolarSystem.toString() + "\n";
         }
         return ret;
     }

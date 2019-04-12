@@ -40,7 +40,7 @@ public class PirateActivity extends EncounterActivity {
      *
      * @param extra the new description
      */
-    public void updateDescription(String extra) {
+    private void updateDescription(String extra) {
         String text = "Your ship health: "
                 + player.getShip().getHealth() + "\n";
         text += "The pirate "

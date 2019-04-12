@@ -9,10 +9,10 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
  * Handles an encounter between the player and another ship.
  */
 public abstract class BattleManager {
-    protected Player player;
-    protected Ship playerShip;
+    final Player player;
+    private final Ship playerShip;
 
-    protected Ship otherShip;
+    final Ship otherShip;
 
     /**
      * Creates an encounter between the ship and another ship.
