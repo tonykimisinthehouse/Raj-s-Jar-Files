@@ -51,7 +51,7 @@ public class Ship {
      * @param shipType the ship type
      * @param cargoSize the size of the cargo
      */
-    public Ship(int cargoSize, ShipType shipType) {
+    private Ship(int cargoSize, ShipType shipType) {
         this.cargo = new HashMap<>(cargoSize);
         this.shipType = shipType;
         totalCap =  cargoSize;
@@ -123,9 +123,7 @@ public class Ship {
      */
     public boolean hasGoods(Good good, int quantity) {
         if (cargo.containsKey(good)) {
-            if (cargo.get(good).getQuantity() >= quantity) {
-                return true;
-            }
+            return cargo.get(good).getQuantity() >= quantity;
         }
         return false;
     }
@@ -178,7 +176,7 @@ public class Ship {
      */
     public void emptyCargo() {
         if (usedCap > 0) {
-            cargo = new HashMap<Good, Item>(totalCap);
+            cargo = new HashMap<>(totalCap);
             usedCap = 0;
         }
     }
@@ -279,7 +277,7 @@ public class Ship {
      * @param w the weapon
      * @return whether or not the ship is destroyed
      */
-    public boolean takeDamage(Weapon w) {
+    private boolean takeDamage(Weapon w) {
         health -= w.getStrength();
         if (health <= 0) {
             health = 0;

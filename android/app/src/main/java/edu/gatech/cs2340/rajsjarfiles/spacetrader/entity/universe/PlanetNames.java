@@ -12,7 +12,7 @@ public class PlanetNames {
     private static final int NUM_CHARS = 26;
     private static final int START_CHAR = 65;
 
-    public static final String[] NAMES = new String[] {
+    private static final String[] NAMES = new String[] {
         "Acamar",
         /*
          * The alternate personality for The Nameless One

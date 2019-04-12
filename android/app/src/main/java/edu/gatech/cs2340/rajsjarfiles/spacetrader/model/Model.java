@@ -57,7 +57,7 @@ public class Model {
      *
      * @param current the new model
      */
-    public static void setModel(Model current) {
+    private static void setModel(Model current) {
         Model.current = current;
     }
 

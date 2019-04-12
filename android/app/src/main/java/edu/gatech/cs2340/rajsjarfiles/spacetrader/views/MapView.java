@@ -26,7 +26,7 @@ class MapView extends View {
 
     private static final Random rand = new Random();
 
-    android.os.Handler rotationHandler = new android.os.Handler(Looper.myLooper());
+    private final android.os.Handler rotationHandler = new android.os.Handler(Looper.myLooper());
 
     public MapView(Context context, AttributeSet attrs) {
         super(context, attrs);

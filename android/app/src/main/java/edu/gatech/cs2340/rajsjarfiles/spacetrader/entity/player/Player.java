@@ -132,7 +132,7 @@ public class Player {
      *
      * @param wallet the new wallet
      */
-    public void setWallet(Wallet wallet) {
+    private void setWallet(Wallet wallet) {
         this.wallet = wallet;
         this.wallet.setOwner(this);
     }
@@ -144,7 +144,7 @@ public class Player {
      *
      * @param location the new location
      */
-    public void setLocation(Location location) {
+    private void setLocation(Location location) {
         this.location = location;
     }
 
@@ -257,7 +257,7 @@ public class Player {
      * @param points the new points
      * @throws java.lang.IllegalArgumentException if points are invalid
      */
-    public void setPoints(int[] points) {
+    private void setPoints(int[] points) {
         //check if sum is 16 or in the future, less than 16
         int sum = 0;
         for (int i = 0; i < points.length; i++) {

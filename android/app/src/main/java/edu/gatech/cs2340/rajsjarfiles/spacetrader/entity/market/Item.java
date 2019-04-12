@@ -16,7 +16,7 @@ public class Item {
      *
      * @param builder the item builder object
      */
-    Item(ItemBuilder builder) {
+    private Item(ItemBuilder builder) {
         good = builder.good;
         quantity = builder.quantity;
         price = builder.price;

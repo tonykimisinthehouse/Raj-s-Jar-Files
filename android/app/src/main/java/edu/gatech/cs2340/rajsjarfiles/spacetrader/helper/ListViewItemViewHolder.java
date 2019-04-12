@@ -8,7 +8,7 @@ import android.widget.TextView;
 /**
  * @see "https://www.dev2qa.com/android-custom-listview-with-checkbox-example/"
  */
-public class ListViewItemViewHolder extends RecyclerView.ViewHolder {
+class ListViewItemViewHolder extends RecyclerView.ViewHolder {
 
     private CheckBox itemCheckbox;
 

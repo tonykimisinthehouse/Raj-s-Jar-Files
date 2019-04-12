@@ -163,10 +163,6 @@ public class Wallet {
      * @return boolean of whether the user has enough credit
      */
     public Boolean checkCreditEnough(int marketPrice) {
-        if (marketPrice > credits) {
-            return false;
-        } else {
-            return true;
-        }
+        return marketPrice <= credits;
     }
 }
