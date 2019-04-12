@@ -37,7 +37,9 @@
         android:layout_marginBottom="22dp"
         android:gravity="center"
         android:textColor="@android:color/white"
-        android:hint="Name Input"/>
+        android:hint="Name Input"
+        android:inputType="text"
+        android:importantForAutofill="no" />
 
     <TextView
         android:layout_width="wrap_content"
