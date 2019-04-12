@@ -48,7 +48,8 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="150sp"
-        app:srcCompat="@drawable/planet" />
+        app:srcCompat="@drawable/planet"
+        android:contentDescription="Planet Icon"/>
 
     <TextView
         android:id="@+id/indicator_planet_name"
