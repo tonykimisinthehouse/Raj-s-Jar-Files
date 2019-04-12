@@ -41,6 +41,13 @@ public class Location {
         return this.solarSystem;
     }
 
+    /**
+     * Check if the travel is possible to desired location
+     * @param destinationSS destination solar system
+     * @param destinationP destination planet
+     * @return 0 - inside player's solar system, 1 = outside player's solar system,
+     * -1 = not possible
+     */
     public int checkIfTravelPossible(SolarSystem destinationSS, Planet destinationP) {
         // Yes possible (between planet)
         if (checkIfTravelInSS(destinationSS)) {

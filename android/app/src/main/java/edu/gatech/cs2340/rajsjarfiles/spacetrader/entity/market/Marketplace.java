@@ -120,7 +120,11 @@ public class Marketplace {
         return rand.nextInt(maxQuantity - minQuantity) + minQuantity;
     }
 
-    // Validate transaction.
+    /**
+     * Validate Transaction
+     * @param to transaction order to validate
+     * @return transaction validation result
+     */
     public TransactionResult validateTransaction(TransactionOrder to) {
         MarketTransactionValidator validator
                 = new MarketTransactionValidator(this);
@@ -137,10 +141,18 @@ public class Marketplace {
         return techLevel;
     }
 
+    /**
+     * Get planet event where this planet is located
+     * @return
+     */
     public Events getEvent() {
         return event;
     }
 
+    /**
+     * Get planet event in a string
+     * @return
+     */
     public String getEventString() {
         return event.toString();
     }

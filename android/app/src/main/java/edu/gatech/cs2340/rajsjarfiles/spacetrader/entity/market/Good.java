@@ -50,7 +50,16 @@ public interface Good {
      */
     Events getIE();
 
+    /**
+     * Get Resource classification where good's price changes
+     * @return resource classification
+     */
     ResourceClassification getCR();
+
+    /**
+     * Get Resource classification where good's price changes
+     * @return resource classification
+     */
     ResourceClassification getER();
 
     /**
@@ -62,6 +71,11 @@ public interface Good {
      * @return max price offered when trading
      */
     int getMTH();
+
+    /**
+     * Is this good illegal item?
+     * @return true if the good is illegal
+     */
     boolean isIllegal();
 
     Good[] ILLEGAL_GOODS

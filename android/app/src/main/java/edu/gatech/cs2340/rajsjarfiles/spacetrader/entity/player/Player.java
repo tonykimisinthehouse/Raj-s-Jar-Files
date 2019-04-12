@@ -68,6 +68,10 @@ public class Player {
         return ship.getHealth();
     }
 
+    /**
+     * Get all the goods that this ship holds
+     * @return collection of cargo goods
+     */
     public Collection<Item> getCargoGoods() {
         return ship.getCargoGoods();
     }
@@ -155,6 +159,10 @@ public class Player {
         return this.location;
     }
 
+    /**
+     * Get planet where this player is located
+     * @return
+     */
     public Planet getPlanet() {
         return location.getPlanet();
     }
