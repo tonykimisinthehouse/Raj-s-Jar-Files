@@ -18,6 +18,11 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.TechLevel;
  *  tech level and trade good's attributes
  */
 public class Marketplace {
+    private static final int START_MAX_QUANTITY = 30;
+    private static final int START_MIN_QUANTITY = 1;
+
+    private static final int CR_MIN_QUANTITY = 15;
+    private static final int ER_MAX_QUANTITY = 15;
 
     private static Random rand = new Random();
 
@@ -96,15 +101,15 @@ public class Marketplace {
      * @return the quantity
      */
     private int calculateQuantity(Good good) {
-        int maxQuantity = 30;
-        int minQuantity = 1;
+        int maxQuantity = START_MAX_QUANTITY;
+        int minQuantity = START_MIN_QUANTITY;
 
         if (resource == good.getCR()) {
-            minQuantity = 15;
+            minQuantity = CR_MIN_QUANTITY;
         }
 
         if (resource == good.getER()) {
-            maxQuantity = 15;
+            maxQuantity = ER_MAX_QUANTITY;
         }
 
         if (event == good.getIE()) {

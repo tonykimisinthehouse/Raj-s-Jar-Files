@@ -2,6 +2,7 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
@@ -57,8 +58,8 @@ public enum Habitats {
      *                           resources that cannot exists in this habitats
      * @param colorHex color tint of the planet
      */
-    Habitats(List<Species> species,
-             List<ResourceClassification> impossibleResource,
+    Habitats(Collection<Species> species,
+             Collection<ResourceClassification> impossibleResource,
              String colorHex) {
         this.habitableSpecies.addAll(species);
         if (impossibleResource != null) {

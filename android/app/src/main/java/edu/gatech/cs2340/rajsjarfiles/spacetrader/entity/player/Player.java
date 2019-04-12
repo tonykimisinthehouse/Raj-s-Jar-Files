@@ -10,6 +10,8 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.SolarSystem;
  */
 public class Player {
     private static final int MAX_POINTS = 16;
+    private static final int START_CREDITS = 9999;
+
     private String name;
 
     /**
@@ -69,13 +71,6 @@ public class Player {
             );
         }
         this.ship = ship;
-    }
-
-    /**
-     * Sets ship to null if a player has no ship.
-     */
-    public void setNoShip() {
-        this.ship = null;
     }
 
     ///////////////////////////// WALLET OPERATION /////////////////////////////
@@ -295,7 +290,7 @@ public class Player {
             // Default Values
             this.name = name;
             this.points = new int[] {4, 4, 4, 4};
-            this.wallet = new Wallet(9999); //TODO STUB CREDIT AMOUNT
+            this.wallet = new Wallet(START_CREDITS); //TODO STUB CREDIT AMOUNT
             this.ship = new Ship(ShipType.GNAT);
             this.location = null;
         }

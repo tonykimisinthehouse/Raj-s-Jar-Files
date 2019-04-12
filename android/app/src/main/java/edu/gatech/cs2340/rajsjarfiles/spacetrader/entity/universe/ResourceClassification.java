@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
@@ -64,7 +65,7 @@ public enum ResourceClassification {
         Random rand = new Random();
 
         // List that store possible resource classification
-        List<ResourceClassification> pr = new ArrayList<>();
+        Collection<ResourceClassification> pr = new ArrayList<>();
 
         // Filter out resources that are possible to exists in this habitat
         for (ResourceClassification resource

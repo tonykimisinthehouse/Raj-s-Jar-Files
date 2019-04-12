@@ -14,6 +14,9 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Planet;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 
 class MapView extends View {
+    private static final float ANGLE_CHANGE = 0.001f;
+    private static final int FULL_CIRCLE = 360;
+    private static final int PLANET_TEXT_SIZE = 27;
 
     private static final int SUN_RADIUS = 30;
     private static final int ORBIT_RATIO = 75;
@@ -49,8 +52,8 @@ class MapView extends View {
     };
 
     private void incrementdAngle() {
-        dAngle += 0.001;
-        if (dAngle >= 360) {
+        dAngle += ANGLE_CHANGE;
+        if (dAngle >= FULL_CIRCLE) {
             dAngle = 0;
         }
     }
@@ -108,7 +111,7 @@ class MapView extends View {
             }
 
             float[] coord = getXAndY(planet, c);
-            paint.setTextSize(27);
+            paint.setTextSize(PLANET_TEXT_SIZE);
 
             c.drawText(planet.getName() + " "
                     + distanceLabel,  coord[0] + planet.getRadius() * RATIO ,

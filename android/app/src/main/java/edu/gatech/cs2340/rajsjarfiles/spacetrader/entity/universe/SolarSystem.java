@@ -10,6 +10,8 @@ public class SolarSystem {
     public static final int MIN_PLANETS = 1;
     public static final int MAX_PLANETS = 10;
 
+    private static final int FULL_CIRCLE = 360;
+
     static Random rand = new Random();
 
     //using an array because the size won't change
@@ -60,7 +62,7 @@ public class SolarSystem {
         int orbitRadius = 0, orbitAngle = 0;
         for (int i = 0; i < nameList.length; i++) {
             orbitRadius = rand.nextInt(4) + 1;
-            orbitAngle = rand.nextInt(360);
+            orbitAngle = rand.nextInt(FULL_CIRCLE);
             planets[i] = new Planet.PlanetBuilder(nameList[i], orbitRadius, orbitAngle).build();
         }
         return planets;

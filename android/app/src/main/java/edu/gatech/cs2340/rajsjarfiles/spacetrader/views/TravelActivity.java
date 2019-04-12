@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.ListAdapter;
 
 import java.util.ArrayList;
 
@@ -41,7 +42,7 @@ public class TravelActivity extends BaseActivity {
         viewModel = ViewModelProviders.of(this).get(TravelViewModel.class);
 
         GridView destinationGrid = findViewById(R.id.destinationGrid);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+        ListAdapter adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, getDestinations());
         destinationGrid.setAdapter(adapter);
         destinationGrid.setOnItemClickListener(clickListener);

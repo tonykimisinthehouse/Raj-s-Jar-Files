@@ -14,6 +14,8 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
  * Represents a ship that a character or enemy can use.
  */
 public class Ship {
+    private static final int MAX_FUEL = 999999;
+
     private ShipType shipType;
 
     private Map<Good, Item> cargo;
@@ -59,7 +61,7 @@ public class Ship {
 
         weapons = new ArrayList<>(shipType.getMaxWeaponSlots());
 
-        fuel = 999999; //TODO STUB FUEL AMOUNT
+        fuel = MAX_FUEL; //TODO STUB FUEL AMOUNT
     }
 
     ///////////////////////////// FUEL OPERATION /////////////////////////////

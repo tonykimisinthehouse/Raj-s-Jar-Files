@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
@@ -27,8 +28,8 @@ public class Universe {
      */
     private void createUniverse() {
         for (int i = 0; i < solarSystem.length; i++) {
-            Set<String> nameSet = new HashSet<>();
-            Set<Coordinate> coordSet = new HashSet<>();
+            Collection<String> nameSet = new HashSet<>();
+            Collection<Coordinate> coordSet = new HashSet<>();
             String name = PlanetNames.generateName();
             Coordinate coordinate = new Coordinate();
             while (!nameSet.add(name)) {
