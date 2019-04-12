@@ -46,9 +46,6 @@ public class MarketActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_market);
 
-        /**
-         * View model for ShipMarket activity
-         */
         MarketViewModel viewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
 
         this.assignViews();
@@ -185,16 +182,6 @@ public class MarketActivity extends BaseActivity {
         } catch (NullPointerException e) {
             Log.e("RAJ", e.getMessage());
         }
-    }
-
-    public void buyGoods(View v) {
-        // TODO get list of checked goods
-        // TODO tell market to sell
-    }
-
-    public void sellGoods(View v) {
-        // TODO get list of checked goods
-        // TODO tell ship to sell
     }
 
     /**

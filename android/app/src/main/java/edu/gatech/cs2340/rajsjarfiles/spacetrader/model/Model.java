@@ -68,6 +68,10 @@ public class Model {
         return this.player;
     }
 
+    /**
+     * Get list of planets inside the solar system where the player is located
+     * @return array of planets
+     */
     public Planet[] getPlanets() {
         Location l = player.getLocation();
         return l.getPlanets();
@@ -80,6 +84,10 @@ public class Model {
         return this.game;
     }
 
+    /**
+     * Get planet where the player is located
+     * @return planet
+     */
     public Planet getPlanet() {
         Player player = current.getPlayer();
         return player.getPlanet();

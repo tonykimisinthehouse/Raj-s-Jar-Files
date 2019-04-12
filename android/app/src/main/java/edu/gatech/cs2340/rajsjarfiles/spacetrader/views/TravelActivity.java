@@ -35,9 +35,6 @@ public class TravelActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel);
 
-        /**
-         * View model for Travel activity
-         */
         TravelViewModel viewModel = ViewModelProviders.of(this).get(TravelViewModel.class);
 
         GridView destinationGrid = findViewById(R.id.destinationGrid);

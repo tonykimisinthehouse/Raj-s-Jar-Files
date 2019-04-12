@@ -87,9 +87,6 @@ public final class Item {
         this.quantity -= quantity;
     }
 
-    public Events getIE() {
-        return good.getIE();
-    }
 
     @Override
     public String toString() {
@@ -97,6 +94,10 @@ public final class Item {
                 + " at " + price + " units each.";
     }
 
+    /**
+     * Item to the text
+     * @return text information of the item
+     */
     public String toText() {
         return getGoodName() + " x"
                 + getQuantity() + " - $" + getPrice();

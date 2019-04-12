@@ -20,6 +20,11 @@ public class ListViewItemCheckboxBaseAdapter extends BaseAdapter {
 
     private Context ctx;
 
+    /**
+     * Adapter for list view Item checkbox
+     * @param ctx context
+     * @param listViewItemDtoList lsit
+     */
     public ListViewItemCheckboxBaseAdapter(
             Context ctx, List<ListViewItemDTO> listViewItemDtoList) {
         this.ctx = ctx;

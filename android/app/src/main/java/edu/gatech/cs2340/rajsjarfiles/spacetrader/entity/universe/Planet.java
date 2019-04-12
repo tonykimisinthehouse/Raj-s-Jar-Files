@@ -115,6 +115,10 @@ public final class Planet {
         return habitats;
     }
 
+    /**
+     * Get hex color that represents the habitat of the planet
+     * @return hex string
+     */
     public String getColorHex() {
         return habitats.getColorHex();
     }
@@ -126,6 +130,10 @@ public final class Planet {
         return species;
     }
 
+    /**
+     * Get species that live in this planet as a string
+     * @return string of specieis
+     */
     public String getSpeciesString() {
         return species.toString();
     }
@@ -137,6 +145,10 @@ public final class Planet {
         return resourceClass;
     }
 
+    /**
+     * Get resource class on this planet as a string
+     * @return string of resource class
+     */
     public String getResourceClassString() {
         return resourceClass.toString();
     }
@@ -148,6 +160,10 @@ public final class Planet {
         return marketplace;
     }
 
+    /**
+     * Get planet event of this planet
+     * @return planet event
+     */
     public Events getEvent() {
         return marketplace.getEvent();
     }
