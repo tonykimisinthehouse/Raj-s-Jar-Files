@@ -15,10 +15,10 @@ public class SolarSystem {
     static Random rand = new Random();
 
     //using an array because the size won't change
-    private Planet[] planets;
-    private HashMap<String, Planet> planetMap;
-    private String name;
-    private Coordinate coordinate;
+    private final Planet[] planets;
+    private final HashMap<String, Planet> planetMap;
+    private final String name;
+    private final Coordinate coordinate;
 
     /**
      * Constructor to create a solar system.

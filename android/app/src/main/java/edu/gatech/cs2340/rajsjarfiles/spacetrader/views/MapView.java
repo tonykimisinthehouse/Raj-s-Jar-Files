@@ -24,7 +24,7 @@ class MapView extends View {
 
     private static float dAngle = 0;
 
-    private static Random rand = new Random();
+    private static final Random rand = new Random();
 
     android.os.Handler rotationHandler = new android.os.Handler(Looper.myLooper());
 
@@ -42,7 +42,7 @@ class MapView extends View {
         fillInPlanet(canvas);
     }
 
-    private Runnable updateTimerThread = new Runnable() {
+    private final Runnable updateTimerThread = new Runnable() {
         @Override
         public void run() {
             incrementdAngle();
@@ -102,7 +102,7 @@ class MapView extends View {
         for (Planet planet: planets) {
 
             String distanceLabel = "";
-            Planet currentPlanet = Model.getPlanet();
+            Planet currentPlanet = m.getPlanet();
             if (planet.equals(currentPlanet)) {
                 paint.setColor(Color.RED);
             } else {

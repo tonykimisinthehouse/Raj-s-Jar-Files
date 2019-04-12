@@ -7,7 +7,7 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Events;
  */
 public class Item {
 
-    private Good good; //Types of good
+    private final Good good; //Types of good
     private int quantity; //Quantity of good
     private int price; //Price of good (price when traded)
 
@@ -105,7 +105,7 @@ public class Item {
      * Class for creating an Item using the builder pattern.
      */
     public static class ItemBuilder {
-        private Good good;
+        private final Good good;
         private int quantity = 1;
         private int price = 0;
 

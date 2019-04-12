@@ -17,7 +17,7 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.TechLevel;
 public class MarketTransactionValidator implements TransactionValidator {
 
     // Market place where this validator is working on.
-    private Marketplace marketplace;
+    private final Marketplace marketplace;
 
     /**
      * Constructor for this class

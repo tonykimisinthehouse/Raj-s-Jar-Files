@@ -76,7 +76,7 @@ public class TravelActivity extends BaseActivity {
         return this.destinations;
     }
 
-    private AdapterView.OnItemClickListener clickListener
+    private final AdapterView.OnItemClickListener clickListener
             = new AdapterView.OnItemClickListener() {
                 @Override
             public void onItemClick(

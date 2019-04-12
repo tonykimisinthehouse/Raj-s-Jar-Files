@@ -7,8 +7,8 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
  */
 public class TransactionResult {
 
-    private boolean isTransactionSuccess;
-    private Item item;
+    private final boolean isTransactionSuccess;
+    private final Item item;
 
     /**
      * Constructor for the transaction result

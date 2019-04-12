@@ -16,8 +16,8 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
 public class Model {
     private static Model current;
 
-    private Player player;
-    private Game game;
+    private final Player player;
+    private final Game game;
 
     /**
      * Constructor for creating a player and model with the valid inputs.

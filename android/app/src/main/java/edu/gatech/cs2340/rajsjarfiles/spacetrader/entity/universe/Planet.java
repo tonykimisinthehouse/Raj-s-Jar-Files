@@ -12,18 +12,18 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.utility.LogCustom;
  * Represents a planet within a solar system.
  */
 public class Planet {
-    private String name;
+    private final String name;
 
-    private int radius;         //radius of planet itself
-    private int orbitRadius;    //distance from center
-    private int orbitAngle;     //angle from center
+    private final int radius;         //radius of planet itself
+    private final int orbitRadius;    //distance from center
+    private final int orbitAngle;     //angle from center
     private boolean isWarpZone = false;
 
-    private TechLevel techLevel;
-    private Habitats habitats;
-    private Species species;
-    private ResourceClassification resourceClass;
-    private Marketplace marketplace;
+    private final TechLevel techLevel;
+    private final Habitats habitats;
+    private final Species species;
+    private final ResourceClassification resourceClass;
+    private final Marketplace marketplace;
 
     static Random rand = new Random();
 

@@ -7,9 +7,9 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Universe;
  * Represents a model of the game.
  */
 public class Game {
-    private GameDifficulty gameDiff;
+    private final GameDifficulty gameDiff;
 
-    private Universe universe;
+    private final Universe universe;
 
     /**
      * One arg constructor for creating a game.

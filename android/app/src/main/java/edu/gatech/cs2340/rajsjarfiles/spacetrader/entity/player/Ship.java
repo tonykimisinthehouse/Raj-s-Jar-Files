@@ -19,7 +19,7 @@ public class Ship {
     private ShipType shipType;
 
     private Map<Good, Item> cargo;
-    private int totalCap;
+    private final int totalCap;
     private int usedCap;
     private int fuel;
 
@@ -27,7 +27,7 @@ public class Ship {
 
     private int health;
 
-    private List<Weapon> weapons;
+    private final List<Weapon> weapons;
 
     /**
      * Default constructor that sets ShipType to GNAT.
@@ -335,7 +335,7 @@ public class Ship {
         return ret;
     }
 
-    private static Random rand = new Random();
+    private static final Random rand = new Random();
 
     /**
      * @return a random instance of a ship that has weapons and is slightly

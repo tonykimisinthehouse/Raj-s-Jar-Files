@@ -150,7 +150,7 @@ public class PlanetNames {
     private static final int MIN_MOD = 1;   //the max letter modifications
     private static final int MAX_MOD = 5;
 
-    private static Random rand = new Random();
+    private static final Random rand = new Random();
 
     /**
      * Generates a random name that is used for planets and solar systems.

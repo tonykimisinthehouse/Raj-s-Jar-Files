@@ -6,12 +6,12 @@ import java.util.Random;
  * Represents a coordinate in the universe.
  */
 public class Coordinate {
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
     private static final int MAX_X = 150;
     private static final int MAX_Y = 100;
 
-    private static Random rand = new Random();
+    private static final Random rand = new Random();
 
     /**
      * No arg constructor that makes a coordinate with random coordinates.

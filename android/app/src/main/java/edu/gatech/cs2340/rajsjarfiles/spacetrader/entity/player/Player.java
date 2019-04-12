@@ -295,7 +295,7 @@ public class Player {
         private final String name;
         private int[] points;
         private Ship ship;
-        private Wallet wallet;
+        private final Wallet wallet;
         private Location location;
 
         /**

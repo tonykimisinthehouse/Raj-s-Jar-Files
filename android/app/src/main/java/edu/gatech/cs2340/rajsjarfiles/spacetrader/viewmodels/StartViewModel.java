@@ -18,7 +18,7 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 public class StartViewModel extends AndroidViewModel {
     public Model model;
     private static final int MAX_CREDIT = 16;
-    private int[] points = new int[4];
+    private final int[] points = new int[4];
 
     /**
      * StartViewModel constructor with all arguments.
@@ -126,7 +126,7 @@ public class StartViewModel extends AndroidViewModel {
      */
     public int calculateRemainingCredit(EditText editSomePoints, int index) {
         int somePoints;
-        if (editSomePoints.getText().toString().equals("")) {
+        if ("".equals(editSomePoints.getText().toString())) {
             somePoints = 0;
         } else {
             somePoints = Integer.parseInt(editSomePoints.getText().toString());

@@ -18,9 +18,9 @@ public enum ShipType {
     TERMITE(200, 1),
     WASP(200, 3);
 
-    private int maxHealth;
+    private final int maxHealth;
 
-    private int maxWeaponSlots;
+    private final int maxWeaponSlots;
 
     /**
      * Constructor for a ship type.

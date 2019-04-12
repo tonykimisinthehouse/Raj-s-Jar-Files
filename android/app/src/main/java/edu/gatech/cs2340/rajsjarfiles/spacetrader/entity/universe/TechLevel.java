@@ -15,7 +15,7 @@ public enum TechLevel {
     POST_INDUSTRIAL,
     HI_TECH;
 
-    private static Random rand = new Random();
+    private static final Random rand = new Random();
 
     /**
      * Returns a random tech level. The implementation may vary (different

@@ -10,9 +10,9 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
 public class TransactionOrder {
 
 
-    private Item item; // Good + quantity to be transacted.
-    private Player initiator; // The initiator of this transaction.
-    private TransactionType transactionType; // The type of the transaction (buy or sell)
+    private final Item item; // Good + quantity to be transacted.
+    private final Player initiator; // The initiator of this transaction.
+    private final TransactionType transactionType; // The type of the transaction (buy or sell)
 
     /**
      * Constructor for the transaction order

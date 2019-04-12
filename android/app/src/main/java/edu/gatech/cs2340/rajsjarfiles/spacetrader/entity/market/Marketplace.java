@@ -24,15 +24,15 @@ public class Marketplace {
     private static final int CR_MIN_QUANTITY = 15;
     private static final int ER_MAX_QUANTITY = 15;
 
-    private static Random rand = new Random();
+    private static final Random rand = new Random();
 
     // EnumMap that store trade goods and its quantity
-    private EnumMap<TradeGoods, Item> tradeGoodsInMarketMap;
+    private final EnumMap<TradeGoods, Item> tradeGoodsInMarketMap;
 
-    private String planetName;
-    private TechLevel techLevel;
-    private ResourceClassification resource;
-    private Events event;
+    private final String planetName;
+    private final TechLevel techLevel;
+    private final ResourceClassification resource;
+    private final Events event;
 
     /**
      * Constructor for marketplace

@@ -213,7 +213,7 @@ public enum TradeGoods implements Good {
      * Builder for TradeGoods
      */
     private static class TradeGoodsBuilder {
-        private String name;
+        private final String name;
         private int MTLP;
         private int MTLU;
         private int TTP;
