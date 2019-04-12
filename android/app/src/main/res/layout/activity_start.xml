@@ -20,7 +20,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@android:color/white"
         android:textFontWeight="800"
-        android:textSize="32dp" />
+        android:textSize="32sp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -61,7 +61,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
 
-        >
+        android:baselineAligned="false">
 
         <LinearLayout
             android:layout_width="0dp"

@@ -5,5 +5,4 @@
     <string name="title_activity_travel">TravelActivity</string>
     <string name="title_activity_market">MarketActivity</string>
     <string name="title_activity_ship">ShipActivity</string>
-    <string name="title_activity_ship_market">ShipMarketActivity</string>
 </resources>

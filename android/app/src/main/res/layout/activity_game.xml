@@ -21,8 +21,7 @@
             android:id="@+id/button_map"
             android:layout_width="wrap_content"
             android:layout_height="75sp"
-            android:background="@android:drawable/ic_dialog_map"
-            android:onClick="openMap" />
+            android:background="@android:drawable/ic_dialog_map"/>
 
         <Button
             android:id="@+id/button_ship"
@@ -39,8 +38,7 @@
             android:layout_height="75sp"
             android:layout_alignParentRight="true"
             android:layout_marginEnd="0dp"
-            android:background="@android:drawable/stat_notify_sync"
-            android:onClick="openMarket" />
+            android:background="@android:drawable/stat_notify_sync"/>
 
     </RelativeLayout>
 
