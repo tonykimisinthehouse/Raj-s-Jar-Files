@@ -1,5 +1,8 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 
+import java.util.Collection;
+
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Planet;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.SolarSystem;
 
@@ -58,8 +61,15 @@ public class Player {
         return ship;
     }
 
+    /**
+     * @return the ship's health
+     */
     public int getHealth() {
         return ship.getHealth();
+    }
+
+    public Collection<Item> getCargoGoods() {
+        return ship.getCargoGoods();
     }
 
     /**

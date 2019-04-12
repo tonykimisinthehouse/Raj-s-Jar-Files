@@ -18,8 +18,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Good;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Planet;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.helper.ListViewItemCheckboxBaseAdapter;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.helper.ListViewItemDTO;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
@@ -129,15 +132,18 @@ public class MarketActivity extends BaseActivity {
     private void updateGoods() {
         // Get latest string representations of goods
         try {
-            Player player = Model.getModel().getPlayer();
-            int credits = player.getWallet().getCredits();
+            Model m = Model.getModel();
+            Player player = m.getPlayer();
+            int credits = player.getCredits();
 
-            int totalCargoCapacity = player.getShip().getCargoCapacity();
+            Ship ship = player.getShip();
+            int totalCargoCapacity = ship.getCargoCapacity();
             int availableCargoCapacity =
-                    player.getShip().getAvailableCargoCapacity();
+                    ship.getAvailableCargoCapacity();
+            Planet planet = m.getPlanet();
             Collection<Item> goodsForSale =
-                    player.getLocation().getPlanet().getMarketplace().getItems();
-            Collection<Item> goodsOnShip = player.getShip().getCargoGoods();
+                    planet.getItems();
+            Collection<Item> goodsOnShip = player.getCargoGoods();
 
             // Split by newlines to get arrays
             List<ListViewItemDTO> listGoodsForSale = new ArrayList<>();
@@ -175,8 +181,9 @@ public class MarketActivity extends BaseActivity {
             this.viewCargoCapacity.setText("Capacity: "
                     + (totalCargoCapacity - availableCargoCapacity)
                     + "/" + totalCargoCapacity);
-            this.viewPlanetName.setText(Model.getModel().getPlayer().
-                    getLocation().getPlanet().getName() + " Marketplace");
+
+
+            this.viewPlanetName.setText(planet.getName() + " Marketplace");
         } catch (NullPointerException e) {
             Log.e("RAJ", e.getMessage());
         }
@@ -199,17 +206,20 @@ public class MarketActivity extends BaseActivity {
         // Show dialog alerting price increase
         StringBuilder stringBuilder = new StringBuilder();
 
-        Player player = Model.getModel().getPlayer();
+        Model m = Model.getModel();
+        Player player = m.getPlayer();
+        Planet planet = player.getPlanet();
         Collection<Item> goodsForSale =
-                player.getLocation().getPlanet().getMarketplace().getItems();
+                planet.getItems();
 
         for (Item item : goodsForSale) {
-            if (item.getGood().getIE()
-                    == player.getLocation().getPlanet().getMarketplace().getEvent()) {
+            Good g = item.getGood();
+            if (g.getIE()
+                    == planet.getEvent()) {
                 int percentageIncrease =
-                        (item.getPrice() - item.getGood().getBasePrice())
-                                / item.getGood().getBasePrice() * 100;
-                stringBuilder.append("- " + item.getGood().getName()
+                        (item.getPrice() - g.getBasePrice())
+                                / g.getBasePrice() * 100;
+                stringBuilder.append("- " + g.getName()
                         + " is in shortage. ("
                         + (percentageIncrease)
                         + "% price increase)\n");
@@ -220,7 +230,7 @@ public class MarketActivity extends BaseActivity {
         if (stringBuilder.length() != 0) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("DUE TO "
-                    + player.getLocation().getPlanet().getMarketplace().getEvent().toString()
+                    + planet.getEventString()
                     + ", FOLLOWING ITEMS ARE UNDER PRICE SURGE!");
             builder.setMessage(stringBuilder.toString());
             builder.setCancelable(true);

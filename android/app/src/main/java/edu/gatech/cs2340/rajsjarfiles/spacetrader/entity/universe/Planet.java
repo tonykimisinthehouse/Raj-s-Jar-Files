@@ -1,7 +1,9 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
+import java.util.Collection;
 import java.util.Random;
 
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Marketplace;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.utility.LogCustom;
 
@@ -145,8 +147,22 @@ public class Planet {
         return marketplace;
     }
 
+    public Events getEvent() {
+        return marketplace.getEvent();
+    }
+
+    /**
+     * @return string representation of the event
+     */
     public String getEventString() {
         return marketplace.getEventString();
+    }
+
+    /**
+     * @return the marketplace items
+     */
+    public Collection<Item> getItems() {
+        return marketplace.getItems();
     }
 
     ///////////////////////////// PLANET UTILITY /////////////////////////////

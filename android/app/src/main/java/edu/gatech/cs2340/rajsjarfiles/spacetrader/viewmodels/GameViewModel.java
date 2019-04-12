@@ -77,6 +77,7 @@ public class GameViewModel extends AndroidViewModel {
     }
 
     private Planet getPlanet() {
-        return Model.getPlanet();
+        Model m = Model.getModel();
+        return m.getPlanet();
     }
 }

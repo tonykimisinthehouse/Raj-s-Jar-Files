@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market;
 
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Events;
+
 /**
  * Represents an item that can be sold on a planet.
  */
@@ -82,6 +84,10 @@ public class Item {
      */
     public void subQuantity(int quantity) {
         this.quantity -= quantity;
+    }
+
+    public Events getIE() {
+        return good.getIE();
     }
 
     @Override

@@ -80,7 +80,7 @@ public class Model {
         return this.game;
     }
 
-    public static Planet getPlanet() {
+    public Planet getPlanet() {
         Player player = current.getPlayer();
         return player.getPlanet();
     }
