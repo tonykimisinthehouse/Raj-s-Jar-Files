@@ -48,7 +48,7 @@ public class ShipActivity extends BaseActivity {
     /**
      * Changes the activity when a destination is chosen.
      *
-     * @param view
+     * @param view the current view.
      */
     public void chooseDestination(View view) {
         Intent intent = new Intent(this, TravelActivity.class);
