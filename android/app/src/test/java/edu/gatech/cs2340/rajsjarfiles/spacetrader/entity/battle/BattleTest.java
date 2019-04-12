@@ -47,7 +47,8 @@ public class BattleTest {
         };
 
         assertEquals(expectedStartText, bm.startBattle());
-        assertEquals(expectedExecuteTurnText, bm.executeTurn(new RunAction(), new EncounterState()));
+        assertEquals(expectedExecuteTurnText, bm.executeTurn(new RunAction()
+                , new EncounterState()));
 
         Ship ship = bm.getOtherShip();
         assertNotNull(ship);
@@ -117,9 +118,12 @@ public class BattleTest {
         Player.PlayerBuilder playerBuilder = new Player.PlayerBuilder("Justin");
         Player player = new Player(playerBuilder);
         player.getShip().addWeapon(Weapon.PULSE_LASER);
-        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.NARCOTICS).quantity(1).price(2).build());
-        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.FIREARMS).quantity(4).price(4).build());
-        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.ORE).quantity(2).price(18).build());
+        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.NARCOTICS).quantity(1).price(2)
+                .build());
+        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.FIREARMS).quantity(4).price(4)
+                .build());
+        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.ORE).quantity(2).price(18)
+                .build());
 
         BattleManager bm = new PoliceBattleManager(player);
         System.out.println(bm.startBattle());
@@ -171,9 +175,12 @@ public class BattleTest {
         Player.PlayerBuilder playerBuilder = new Player.PlayerBuilder("Justin");
         Player player = new Player(playerBuilder);
         player.getShip().addWeapon(Weapon.PULSE_LASER);
-        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.NARCOTICS).quantity(1).price(2).build());
-        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.FIREARMS).quantity(4).price(4).build());
-        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.ORE).quantity(2).price(18).build());
+        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.NARCOTICS).quantity(1).price(2)
+                .build());
+        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.FIREARMS).quantity(4).price(4)
+                .build());
+        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.ORE).quantity(2).price(18)
+                .build());
 
         player.getShip().emptyCargo();
 
