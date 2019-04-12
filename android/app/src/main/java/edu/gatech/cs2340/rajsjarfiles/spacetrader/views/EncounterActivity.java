@@ -17,7 +17,7 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 /**
  * An activity for an encounter between a player and another ship.
  */
-public abstract class EncounterActivity extends AppCompatActivity {
+public abstract class EncounterActivity extends BaseActivity {
 
     TextView eventDescriptionText;
 
@@ -26,7 +26,7 @@ public abstract class EncounterActivity extends AppCompatActivity {
     BattleManager bm;
 
     @Override
-    void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
     }
