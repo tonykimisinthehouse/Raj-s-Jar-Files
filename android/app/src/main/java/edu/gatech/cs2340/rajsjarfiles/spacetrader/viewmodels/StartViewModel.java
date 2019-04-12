@@ -66,10 +66,10 @@ public class StartViewModel extends AndroidViewModel {
         }
 
         // Validate Points
-        if (editPilotPoints.getText().length() == 0
-                || editFighterPoints.getText().length() == 0
-                || editTraderPoints.getText().length() == 0
-                || editEngineerPoints.getText().length() == 0) {
+        if ((editPilotPoints.getText().length() == 0)
+                || (editFighterPoints.getText().length() == 0)
+                || (editTraderPoints.getText().length() == 0)
+                || (editEngineerPoints.getText().length() == 0)) {
             return false;
         }
 

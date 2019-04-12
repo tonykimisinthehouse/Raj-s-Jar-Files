@@ -29,9 +29,9 @@ public class RandomEventActivity extends AppCompatActivity {
         Random rand = new Random();
         int chance = rand.nextInt(100);
         Intent intent;
-        if (chance >= 0 && chance <= POLICE_UPPER) {
+        if ((chance >= 0) && (chance <= POLICE_UPPER)) {
             intent = new Intent(getBaseContext(), PoliceActivity.class);
-        } else if (chance > POLICE_UPPER && chance <= PIRATE_UPPER) {
+        } else if ((chance > POLICE_UPPER) && (chance <= PIRATE_UPPER)) {
             intent = new Intent(getBaseContext(), PirateActivity.class);
         } else {
             intent = new Intent(getBaseContext(), GameActivity.class);

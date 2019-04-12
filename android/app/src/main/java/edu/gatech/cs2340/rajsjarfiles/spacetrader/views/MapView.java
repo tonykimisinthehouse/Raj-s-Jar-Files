@@ -22,7 +22,7 @@ class MapView extends View {
     private static final int ORBIT_RATIO = 75;
     private static final int RATIO = 7;
 
-    private static float dAngle = 0;
+    private static float dAngle;
 
     private static final Random rand = new Random();
 
@@ -114,27 +114,29 @@ class MapView extends View {
             paint.setTextSize(PLANET_TEXT_SIZE);
 
             c.drawText(planet.getName() + " "
-                    + distanceLabel,  coord[0] + planet.getRadius() * RATIO ,
-                    coord[1] - planet.getRadius() * RATIO, paint);
+                    + distanceLabel, coord[0] + (planet.getRadius() * RATIO),
+                    coord[1] - (planet.getRadius() * RATIO), paint);
         }
     }
 
     private float[] getXAndY(Planet planet, Canvas c) {
 
-        float x = c.getWidth()/2, y = c.getHeight()/2;
+        float x = c.getWidth()/2;
+        float y = c.getHeight()/2;
         float a = planet.getOrbitAngle() + dAngle;
-        float h = SUN_RADIUS * 2 + planet.getOrbitRadius() * ORBIT_RATIO;
+        float h = (SUN_RADIUS * 2) + (planet.getOrbitRadius() * ORBIT_RATIO);
 
-        float dx = 0, dy = 0;
+        float dx = 0;
+        float dy = 0;
 
-        if (a >= 0 && a < 90) {
+        if ((a >= 0) && (a < 90)) {
             dx = (float) (Math.sin(a) * h);
             dy = (float) (Math.cos(a) * h * -1);
-        } else if (a >= 90 && a < 180) {
+        } else if ((a >= 90) && (a < 180)) {
             a -= 90;
             dx = (float) (Math.cos(a) * h);
             dy = (float) (Math.sin(a) * h);
-        } else if (a >= 180 && a < 270) {
+        } else if ((a >= 180) && (a < 270)) {
             a -= 180;
             dx = (float) (Math.sin(a) * h * -1);
             dy = (float) (Math.cos(a) * h);

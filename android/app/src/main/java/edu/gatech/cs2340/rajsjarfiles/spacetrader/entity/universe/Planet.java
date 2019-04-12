@@ -17,7 +17,7 @@ public class Planet {
     private final int radius;         //radius of planet itself
     private final int orbitRadius;    //distance from center
     private final int orbitAngle;     //angle from center
-    private boolean isWarpZone = false;
+    private boolean isWarpZone;
 
     private final TechLevel techLevel;
     private final Habitats habitats;
@@ -175,12 +175,12 @@ public class Planet {
     public int getDist(Planet other) {
         // Use cosine rule (c^2 = a^2 + b^2 - 2ab*cos(c))
         int angleRaw = Math.abs(orbitAngle - other.getOrbitAngle());
-        int angle = (angleRaw <= 180 ? angleRaw : 360 - angleRaw);
+        int angle = ((angleRaw <= 180) ? angleRaw : (360 - angleRaw));
 
         int a = this.orbitRadius;
         int b = other.orbitRadius;
 
-        int c = (int) Math.sqrt((a*a)+(b*b)-(2*a*b*Math.cos(angle)));
+        int c = (int) Math.sqrt(((a * a) + (b * b)) - (2 * a * b * Math.cos(angle)));
         return c;
     }
 
@@ -219,8 +219,8 @@ public class Planet {
             return false;
         }
         Planet p = (Planet) that;
-        return this.name == p.name
-                && this.radius == p.radius;
+        return (this.name == p.name)
+                && (this.radius == p.radius);
     }
 
     /**
@@ -356,7 +356,7 @@ public class Planet {
          */
         private static int getRandomRadius() {
             return rand.nextInt(
-                    MAX_RADIUS - MIN_RADIUS + 1)
+                    (MAX_RADIUS - MIN_RADIUS) + 1)
                     + MIN_RADIUS;
         }
     }

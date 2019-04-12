@@ -8,7 +8,7 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
  */
 public class ListViewItemDTO {
 
-    private boolean checked = false;
+    private boolean checked;
 
     private Item good;
     private String itemText = "";

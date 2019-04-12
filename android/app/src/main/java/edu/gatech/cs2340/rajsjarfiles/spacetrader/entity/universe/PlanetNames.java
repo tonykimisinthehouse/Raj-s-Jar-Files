@@ -162,7 +162,7 @@ public class PlanetNames {
         int addMod = rand.nextInt(7);
         int randName = rand.nextInt(NAMES.length);
         if (addMod == 0) {  //add letter modifications
-            int iter = rand.nextInt(MAX_MOD - MIN_MOD + 1) + MIN_MOD;
+            int iter = rand.nextInt((MAX_MOD - MIN_MOD) + 1) + MIN_MOD;
             for (int i = 0; i < iter; i++) {
                 int randLetter = rand.nextInt(NUM_CHARS) + START_CHAR;
                 name += (char) randLetter;

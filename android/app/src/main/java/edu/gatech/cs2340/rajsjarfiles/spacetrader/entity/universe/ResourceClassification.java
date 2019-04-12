@@ -70,7 +70,7 @@ public enum ResourceClassification {
         // Filter out resources that are possible to exists in this habitat
         for (ResourceClassification resource
                 : ResourceClassification.values()) {
-            if (resource != null
+            if ((resource != null)
                     && !habitats.getImpossibleResources().contains(resource)) {
                 pr.add(resource);
             }

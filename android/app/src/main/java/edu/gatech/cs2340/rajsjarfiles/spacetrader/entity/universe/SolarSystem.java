@@ -30,7 +30,7 @@ public class SolarSystem {
         this.name = name;
         this.coordinate = coordinate;
         this.planets = generatePlanets(rand.nextInt(
-                MAX_PLANETS - MIN_PLANETS + 1) + MIN_PLANETS);
+                (MAX_PLANETS - MIN_PLANETS) + 1) + MIN_PLANETS);
         this.planetMap = new HashMap<>();
         this.computePlanetMap();
         assignWarpZone();
@@ -59,7 +59,8 @@ public class SolarSystem {
         Planet[] planets = new Planet[size];
         String[] nameList = PlanetNames.generateName(planets.length);
 
-        int orbitRadius = 0, orbitAngle = 0;
+        int orbitRadius = 0;
+        int orbitAngle = 0;
         for (int i = 0; i < nameList.length; i++) {
             orbitRadius = rand.nextInt(4) + 1;
             orbitAngle = rand.nextInt(FULL_CIRCLE);
@@ -153,7 +154,7 @@ public class SolarSystem {
             return false;
         }
         SolarSystem ss = (SolarSystem) that;
-        return this.name == ss.name
+        return (this.name == ss.name)
                 && this.getCoordinate().equals(ss.getCoordinate());
     }
 

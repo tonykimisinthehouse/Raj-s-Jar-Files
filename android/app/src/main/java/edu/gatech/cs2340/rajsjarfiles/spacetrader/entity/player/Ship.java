@@ -360,7 +360,7 @@ public class Ship {
         }
 
         ship.setHealth(rand.nextInt(st.getMaxHealth() / 2)
-                + st.getMaxHealth() / 2);
+                + (st.getMaxHealth() / 2));
         return ship;
     }
 }

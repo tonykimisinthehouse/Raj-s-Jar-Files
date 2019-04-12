@@ -217,8 +217,8 @@ public class MarketActivity extends BaseActivity {
             if (g.getIE()
                     == planet.getEvent()) {
                 int percentageIncrease =
-                        (item.getPrice() - g.getBasePrice())
-                                / g.getBasePrice() * 100;
+                        ((item.getPrice() - g.getBasePrice())
+                                / g.getBasePrice()) * 100;
                 stringBuilder.append("- " + g.getName()
                         + " is in shortage. ("
                         + (percentageIncrease)

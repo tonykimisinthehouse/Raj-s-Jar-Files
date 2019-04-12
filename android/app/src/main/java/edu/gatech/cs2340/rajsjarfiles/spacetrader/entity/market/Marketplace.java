@@ -79,11 +79,11 @@ public class Marketplace {
         int finalPrice = basePrice + dynamicPrice + variancePrice;
 
         if (resource == good.getCR()) {
-            finalPrice = finalPrice / 3 * 2;
+            finalPrice = (finalPrice / 3) * 2;
         }
 
         if (resource == good.getER()) {
-            finalPrice = finalPrice * 3 / 2;
+            finalPrice = (finalPrice * 3) / 2;
         }
 
         if (event == good.getIE()) {

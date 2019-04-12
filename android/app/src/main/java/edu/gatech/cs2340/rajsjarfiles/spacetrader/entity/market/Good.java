@@ -64,6 +64,6 @@ public interface Good {
     int getMTH();
     boolean isIllegal();
 
-    public static final Good[] ILLEGAL_GOODS
+    Good[] ILLEGAL_GOODS
             = new Good[] {FIREARMS, NARCOTICS};
 }

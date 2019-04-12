@@ -107,7 +107,7 @@ public class Item {
     public static class ItemBuilder {
         private final Good good;
         private int quantity = 1;
-        private int price = 0;
+        private int price;
 
         /**
          * Creates an item builder object for a specific good.
