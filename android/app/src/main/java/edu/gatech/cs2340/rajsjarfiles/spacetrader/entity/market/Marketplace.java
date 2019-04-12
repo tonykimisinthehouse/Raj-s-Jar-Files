@@ -143,7 +143,7 @@ public class Marketplace {
 
     /**
      * Get planet event where this planet is located
-     * @return
+     * @return planet event
      */
     public Events getEvent() {
         return event;
@@ -151,7 +151,7 @@ public class Marketplace {
 
     /**
      * Get planet event in a string
-     * @return
+     * @return planet event in a string
      */
     public String getEventString() {
         return event.toString();

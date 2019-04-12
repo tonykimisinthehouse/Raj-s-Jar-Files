@@ -161,7 +161,7 @@ public class Player {
 
     /**
      * Get planet where this player is located
-     * @return
+     * @return planet where the player is located
      */
     public Planet getPlanet() {
         return location.getPlanet();
