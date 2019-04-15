@@ -86,6 +86,10 @@ public class Player {
         return ship.getCargoGoods();
     }
 
+    public int getCargoCapacity() {
+        return ship.getCargoCapacity();
+    }
+
     /**
      * Sets the player's ship to a new ship.
      *
@@ -99,6 +103,14 @@ public class Player {
             );
         }
         this.ship = ship;
+    }
+
+    public int getFuelRemaining() {
+        return ship.getFuel();
+    }
+
+    public int getAvailableCargoCapacity() {
+        return ship.getAvailableCargoCapacity();
     }
 
     ///////////////////////////// WALLET OPERATION /////////////////////////////
