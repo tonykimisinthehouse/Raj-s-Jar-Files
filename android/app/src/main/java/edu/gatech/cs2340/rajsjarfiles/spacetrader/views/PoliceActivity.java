@@ -49,10 +49,10 @@ public class PoliceActivity extends EncounterActivity {
      */
     private void updateDescription(String extra) {
         String text = "Your ship health: "
-                + player.getShip().getHealth() + "\n";
+                + player.getHealth() + "\n";
         text += "The police "
-                + bm.getOtherShip().getShipType().toString() + ": "
-                + bm.getOtherShip().getHealth() + "\n"
+                + bm.getOtherShipString() + ": "
+                + bm.getOtherShipHealth() + "\n"
                 + "----------------------\n" + "\n\n";
         text += extra;
         eventDescriptionText.setText(text);

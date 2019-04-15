@@ -48,4 +48,12 @@ public abstract class BattleManager {
     public Ship getOtherShip() {
         return otherShip;
     }
+
+    public String getOtherShipString() {
+        return otherShip.toStringShipType();
+    }
+
+    public int getOtherShipHealth() {
+        return otherShip.getHealth();
+    }
 }

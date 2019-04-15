@@ -16,7 +16,7 @@ public class AttackAction implements PlayerEncounterAction {
         Ship playerShip = player.getShip();
 
         retString += "You attack the other ship.\n";
-        boolean otherShipDead = playerShip.attackShip(otherShip);
+        boolean otherShipDead = player.attackShip(otherShip);
         if (otherShipDead) {
             retString += "The other ship explodes.\n";
             es.conclude();

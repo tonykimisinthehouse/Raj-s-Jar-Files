@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Planet;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.SolarSystem;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Universe;
 
 /**
@@ -33,6 +34,10 @@ public class Game {
      */
     public Universe getUniverse() {
         return universe;
+    }
+
+    public SolarSystem getRandomSolarSystem() {
+        return universe.getRandomSolarSystem();
     }
 
     @Override

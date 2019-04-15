@@ -12,9 +12,9 @@ public class Location {
     private Planet planet; // Planet that the player is currently on.
     private SolarSystem solarSystem;
 
-    Location() {
-        this(Model.getModel().getGame().getUniverse().getRandomSolarSystem());
-    }
+//    Location() {
+//        this(Model.getModel().getGame().getUniverse().getRandomSolarSystem());
+//    }
 
     Location(SolarSystem solarSystem) {
         this(solarSystem, solarSystem.getRandomPlanet());
@@ -90,6 +90,18 @@ public class Location {
      */
     public Planet getPlanet() {
         return this.planet;
+    }
+
+    public String getPlanetName() {
+        return planet.getName();
+    }
+
+    public int getPlanetOrbitRadius() {
+        return planet.getOrbitRadius();
+    }
+
+    public String getResourceClassString() {
+        return planet.getResourceClassString();
     }
 
     /**

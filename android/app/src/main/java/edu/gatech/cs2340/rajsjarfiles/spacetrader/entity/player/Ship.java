@@ -333,6 +333,10 @@ public class Ship {
         return ret;
     }
 
+    public String toStringShipType() {
+        return shipType.toString();
+    }
+
     private static final Random rand = new Random();
 
     /**

@@ -5,6 +5,7 @@ import android.util.Log;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Location;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Weapon;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Planet;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.SolarSystem;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.utility.LogCustom;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.Game;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.GameDifficulty;
@@ -32,7 +33,7 @@ public class Model {
         Model.setModel(this);
 
         game = new Game(difficulty);
-        player = new Player.PlayerBuilder(name)
+        player = new Player.PlayerBuilder(name, game.getRandomSolarSystem())
                 .points(points)
                 .build();
 
@@ -61,12 +62,16 @@ public class Model {
         Model.current = current;
     }
 
+    ///////////////////////////// Game /////////////////////////////
+
     /**
-     * @return the player object
+     * @return the game object
      */
-    public Player getPlayer() {
-        return this.player;
+    public Game getGame() {
+        return this.game;
     }
+
+    ///////////////////////////// Universe  /////////////////////////////
 
     /**
      * Get list of planets inside the solar system where the player is located
@@ -78,19 +83,50 @@ public class Model {
     }
 
     /**
-     * @return the game object
-     */
-    public Game getGame() {
-        return this.game;
-    }
-
-    /**
      * Get planet where the player is located
      * @return planet
      */
     public Planet getPlanet() {
-        Player player = current.getPlayer();
-        return player.getPlanet();
+//        Player player = current.getPlayer();
+//        return player.getPlanet();
+        return current.getPlanet();
+    }
+
+    public String getPlanetName() {
+        return player.getPlanetName();
+    }
+
+    public int getPlanetOrbitRadius() {
+        return player.getPlanetOrbitRadius();
+    }
+
+    public String getResourceClassString() {
+        return player.getResourceClassString();
+    }
+
+    public String getPlanetTechLevel(Planet p) {
+        return p.getTechLevelString();
+    }
+
+    public String getPlanetEvent(Planet p) {
+        return p.getEventString();
+    }
+
+    public String getPlanetSpecies(Planet p) {
+        return p.getSpeciesString();
+    }
+
+    public String getPlanetColorHex(Planet p) {
+        return p.getColorHex();
+    }
+
+    ///////////////////////////// Player /////////////////////////////
+
+    /**
+     * @return the player object
+     */
+    public Player getPlayer() {
+        return this.player;
     }
 
 }

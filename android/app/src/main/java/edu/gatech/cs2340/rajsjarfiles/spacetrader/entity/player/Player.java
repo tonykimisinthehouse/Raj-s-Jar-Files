@@ -69,6 +69,16 @@ public class Player {
     }
 
     /**
+     * Attacks another ship.
+     *
+     * @param other the other ship
+     * @return whether or not the other ship is destroyed
+     */
+    public boolean attackShip(Ship other) {
+        return ship.attackShip(other);
+    }
+
+    /**
      * Get all the goods that this ship holds
      * @return collection of cargo goods
      */
@@ -165,6 +175,18 @@ public class Player {
      */
     public Planet getPlanet() {
         return location.getPlanet();
+    }
+
+    public String getPlanetName() {
+        return location.getPlanetName();
+    }
+
+    public int getPlanetOrbitRadius() {
+        return location.getPlanetOrbitRadius();
+    }
+
+    public String getResourceClassString() {
+        return location.getResourceClassString();
     }
 
     /**
@@ -292,7 +314,7 @@ public class Player {
                 + " - Fight: " + getFight() + "\n"
                 + "They also have "
                 + wallet.getCredits() + " credits and they fly a "
-                + getShip().toString();
+                + ship.toString();
     }
 
     /**
@@ -312,13 +334,13 @@ public class Player {
          *
          * @param name the player's name
          */
-        public PlayerBuilder(String name) {
+        public PlayerBuilder(String name, SolarSystem ss) {
             // Default Values
             this.name = name;
             this.points = new int[] {4, 4, 4, 4};
             this.wallet = new Wallet(START_CREDITS); //TODO STUB CREDIT AMOUNT
             this.ship = new Ship(ShipType.GNAT);
-            this.location = new Location();
+            this.location = new Location(ss);
         }
 
         /**

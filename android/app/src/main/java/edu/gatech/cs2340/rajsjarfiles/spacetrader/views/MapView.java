@@ -45,9 +45,10 @@ class MapView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        Model m = Model.getModel();
         fillInBackground(canvas);
-        fillInOrbit(canvas);
-        fillInPlanet(canvas);
+        fillInOrbit(canvas, m);
+        fillInPlanet(canvas, m);
     }
 
     private static void incrementdAngle() {
@@ -70,8 +71,7 @@ class MapView extends View {
         c.drawCircle(x, y, SUN_RADIUS * 2, paint);
     }
 
-    private void fillInOrbit(Canvas c) {
-        Model m = Model.getModel();
+    private void fillInOrbit(Canvas c, Model m) {
         Planet[] planets = m.getPlanets();
         Paint paint = new Paint();
         paint.setColor(Color.GRAY);
@@ -87,8 +87,7 @@ class MapView extends View {
         }
     }
 
-    private void fillInPlanet(Canvas c){
-        Model m = Model.getModel();
+    private void fillInPlanet(Canvas c, Model m){
         Planet[] planets = m.getPlanets();        Paint paint = new Paint();
         paint.setStyle(Paint.Style.FILL);
 

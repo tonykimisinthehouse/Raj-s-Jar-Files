@@ -23,61 +23,50 @@ public class GameViewModel extends AndroidViewModel {
     /**
      * @return the name of the planet the player is currently on
      */
-    public String getPlanetName() {
-        Planet p = getPlanet();
-        return p.getName();
+    public String getPlanetName(Model m) {
+        return m.getPlanetName();
     }
 
     /**
      * @return the orbit radius of the planet the player is currently on
      */
-    public int getPlanetOrbitRadius() {
-        Planet p = getPlanet();
-        return p.getOrbitRadius();
+    public int getPlanetOrbitRadius(Model m) {
+        return m.getPlanetOrbitRadius();
     }
 
     /**
-     * @return the resources of the planet the player is currently on
+     * @return the string representation of the resources of the planet
+     * the player is currently on
      */
-    public String getPlanetResources() {
-        Planet p = getPlanet();
-        return p.getResourceClassString();
+    public String getPlanetResources(Model m) {
+        return m.getResourceClassString();
     }
 
     /**
      * @return the tech level of the planet the player is currently on
      */
-    public String getPlanetTechLevel() {
-        Planet p = getPlanet();
-        return p.getTechLevelString();
+    public String getPlanetTechLevel(Model m) {
+        return m.getPlanetTechLevel(m.getPlanet());
     }
 
     /**
      * @return the planet event of the planet the player is currently on
      */
-    public String getPlanetEvent() {
-        Planet p = getPlanet();
-        return p.getEventString();
+    public String getPlanetEvent(Model m) {
+        return m.getPlanetEvent(m.getPlanet());
     }
 
     /**
      * @return the species on the planet the player is currently on
      */
-    public String getPlanetSpecies() {
-        Planet p = getPlanet();
-        return p.getSpeciesString();
+    public String getPlanetSpecies(Model m) {
+        return m.getPlanetSpecies(m.getPlanet());
     }
 
     /**
      * @return the color of the planet the player is currently on
      */
-    public String getPlanetColorHex() {
-        Planet p = getPlanet();
-        return p.getColorHex();
-    }
-
-    private Planet getPlanet() {
-        Model m = Model.getModel();
-        return m.getPlanet();
+    public String getPlanetColorHex(Model m) {
+        return m.getPlanetColorHex(m.getPlanet());
     }
 }
