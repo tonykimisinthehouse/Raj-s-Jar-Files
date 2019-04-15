@@ -20,6 +20,12 @@ public class StartViewModel extends AndroidViewModel {
     private static final int MAX_CREDIT = 16;
     private int[] points = new int[4];
 
+    private String playerName;
+    private int pilotPoints;
+    private int fighterPoints;
+    private int traderPoints;
+    private int engineerPoints;
+
     /**
      * StartViewModel constructor with all arguments.
      *
@@ -27,6 +33,39 @@ public class StartViewModel extends AndroidViewModel {
      */
     public StartViewModel(@NonNull Application application) {
         super(application);
+    }
+
+
+    /**
+     * Checks if the user name is valid.
+     * @param editPlayerName represents the value from the EditText for playerName
+     * in activity_start.xml
+     *
+     */
+    public static Boolean playerNameValid(String playerName) {
+        if (playerName == null) {
+            return false;
+        }
+        if (playerName.length() <= 0) {
+            return false;
+        }
+        // Regular expression for accepting alphabets, white spaces only
+        String regexForName = "^[a-zA-Z\\s]*$";
+        if (!Pattern.matches(regexForName, playerName)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public Boolean pointsAreValid(int PilotPoints,
+                                  int FighterPoints,
+                                  int TraderPoints,
+                                  int EngineerPoints) {
+        if ((pilotPoints + fighterPoints + traderPoints + engineerPoints) == MAX_CREDIT) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -45,7 +84,8 @@ public class StartViewModel extends AndroidViewModel {
      *                           in activity_start.xml
      * @return Returns boolean of whether the valids were valid or not.
      */
-    public Boolean isValid(EditText editPlayerName,
+    public Boolean isValid(
+            EditText editPlayerName,
                            EditText editPilotPoints,
                            EditText editFighterPoints,
                            EditText editTraderPoints,
@@ -53,15 +93,7 @@ public class StartViewModel extends AndroidViewModel {
 
         // Validate Name
         String playerName = editPlayerName.getText().toString();
-        if (playerName == null) {
-            return false;
-        }
-        if (playerName.length() <= 0) {
-            return false;
-        }
-        // Regular expression for accepting alphabets, white spaces only
-        String regexForName = "^[a-zA-Z\\s]*$";
-        if (!Pattern.matches(regexForName, playerName)) {
+        if (!playerNameValid(playerName)) {
             return false;
         }
 
@@ -79,7 +111,7 @@ public class StartViewModel extends AndroidViewModel {
         int engineerPoints = Integer.parseInt(editEngineerPoints.getText().toString());
 
         // Validate max points and assign them
-        if ((pilotPoints + fighterPoints + traderPoints + engineerPoints) == MAX_CREDIT) {
+        if (pointsAreValid(pilotPoints, fighterPoints, traderPoints, engineerPoints)) {
             points[0] = pilotPoints;
             points[1] = fighterPoints;
             points[2] = traderPoints;
