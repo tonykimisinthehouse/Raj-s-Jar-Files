@@ -119,8 +119,8 @@ class MapView extends View {
 
     private float[] getXAndY(Planet planet, Canvas c) {
 
-        float x = c.getWidth()/2;
-        float y = c.getHeight()/2;
+        float x = c.getWidth()/ 2.0f;
+        float y = c.getHeight()/2.0f;
         float a = planet.getOrbitAngle() + dAngle;
         float h = (SUN_RADIUS * 2) + (planet.getOrbitRadius() * ORBIT_RATIO);
 

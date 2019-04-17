@@ -2,7 +2,6 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Planet;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.SolarSystem;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 
 /**
  * Represents a location in the Universe.

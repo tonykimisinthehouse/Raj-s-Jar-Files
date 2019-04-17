@@ -1,6 +1,5 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market;
 
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Events;
 
 /**
  * Represents an item that can be sold on a planet.

@@ -3,10 +3,8 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.model;
 import android.util.Log;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Location;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Weapon;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Planet;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.SolarSystem;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.utility.LogCustom;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.Game;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.GameDifficulty;

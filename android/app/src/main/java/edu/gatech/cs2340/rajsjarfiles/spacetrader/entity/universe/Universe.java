@@ -3,7 +3,6 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Random;
-import java.util.Set;
 
 /**
  * Represents the entire universe of the game.

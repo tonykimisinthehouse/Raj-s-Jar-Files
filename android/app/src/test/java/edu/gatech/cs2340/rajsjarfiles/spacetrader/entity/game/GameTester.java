@@ -2,7 +2,6 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game;
 
 import org.junit.Test;
 
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Universe;
 
 /**
  * Tests the Game class.
