@@ -48,6 +48,7 @@ class MapView extends View {
 
     private Runnable updateTimerThread = new Runnable()
     {
+        @Override
         public void run()
         {
             incrementdAngle();
@@ -134,15 +135,18 @@ class MapView extends View {
             paint.setTextSize(PLANET_TEXT_SIZE);
 
             c.drawText(planet.getName() + " " + distanceLabel,
-                    coord[0] + planet.getRadius() * RATIO , coord[1] - planet.getRadius() * RATIO, paint);
+                    coord[0] + planet.getRadius() * RATIO ,
+                    coord[1] - planet.getRadius() * RATIO, paint);
 
             // Draw Warp Zone Indicator
             if (planet.getIsWarpZone()) {
                 paint.setColor(Color.parseColor("#01b9ff"));
                 paint.setStyle(Paint.Style.STROKE);
                 paint.setStrokeWidth(5);
-                c.drawCircle(coord[0], coord[1] - planet.getRadius() * RATIO - 20, RATIO,paint);
-                c.drawCircle(coord[0], coord[1] - planet.getRadius() * RATIO - 20, RATIO + 10,paint);
+                c.drawCircle(coord[0],
+                        coord[1] - planet.getRadius() * RATIO - 20, RATIO,paint);
+                c.drawCircle(coord[0],
+                        coord[1] - planet.getRadius() * RATIO - 20, RATIO + 10,paint);
             }
             paint.reset();
         }
