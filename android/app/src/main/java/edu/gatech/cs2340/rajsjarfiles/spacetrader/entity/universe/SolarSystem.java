@@ -2,6 +2,7 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -65,7 +66,7 @@ public class SolarSystem {
         for (int i = 0; i < nameList.length; i++) {
             orbitRadius = rand.nextInt(4) + 1;
 
-            ArrayList<Integer> arrayList = new ArrayList<>();
+            List<Integer> arrayList = new ArrayList<>();
             for (int r = 0; r < i; r++) {
                 if (planets[r].getOrbitRadius() == orbitRadius) {
                     arrayList.add(planets[r].getOrbitAngle());
