@@ -86,9 +86,7 @@ public class Model {
      * @return planet
      */
     public Planet getPlanet() {
-//        Player player = current.getPlayer();
-//        return player.getPlanet();
-        return current.getPlanet();
+        return current.getPlayer().getLocation().getPlanet();
     }
 
     public String getPlanetName() {

@@ -42,7 +42,7 @@ public class GameActivity extends BaseActivity {
         ImageView imageView = findViewById(R.id.imageView);
         imageView.setColorFilter(
                 Color.parseColor(
-                        viewModel.getPlanetColorHex()),
+                        viewModel.getPlanetColorHex(Model.getModel())),
                         PorterDuff.Mode.MULTIPLY); //Desert
     }
 
