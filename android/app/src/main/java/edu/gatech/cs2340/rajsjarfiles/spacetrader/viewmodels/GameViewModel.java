@@ -20,6 +20,7 @@ public class GameViewModel extends AndroidViewModel {
     }
 
     /**
+     * @param m the model
      * @return the name of the planet the player is currently on
      */
     public String getPlanetName(Model m) {
@@ -27,6 +28,7 @@ public class GameViewModel extends AndroidViewModel {
     }
 
     /**
+     * @param m the model
      * @return the orbit radius of the planet the player is currently on
      */
     public int getPlanetOrbitRadius(Model m) {
@@ -34,6 +36,7 @@ public class GameViewModel extends AndroidViewModel {
     }
 
     /**
+     * @param m the model
      * @return the string representation of the resources of the planet
      * the player is currently on
      */
@@ -42,6 +45,7 @@ public class GameViewModel extends AndroidViewModel {
     }
 
     /**
+     * @param m the model
      * @return the tech level of the planet the player is currently on
      */
     public String getPlanetTechLevel(Model m) {
@@ -49,6 +53,7 @@ public class GameViewModel extends AndroidViewModel {
     }
 
     /**
+     * @param m the model
      * @return the planet event of the planet the player is currently on
      */
     public String getPlanetEvent(Model m) {
@@ -56,6 +61,7 @@ public class GameViewModel extends AndroidViewModel {
     }
 
     /**
+     * @param m the model
      * @return the species on the planet the player is currently on
      */
     public String getPlanetSpecies(Model m) {
@@ -63,6 +69,7 @@ public class GameViewModel extends AndroidViewModel {
     }
 
     /**
+     * @param m the model
      * @return the color of the planet the player is currently on
      */
     public String getPlanetColorHex(Model m) {

@@ -89,30 +89,62 @@ public class Model {
         return current.getPlayer().getLocation().getPlanet();
     }
 
+    /**
+     * Get planet name
+     * @return string planet name
+     */
     public String getPlanetName() {
         return player.getPlanetName();
     }
 
+    /**
+     * Get planet orbit radius
+     * @return planet orbit radius
+     */
     public int getPlanetOrbitRadius() {
         return player.getPlanetOrbitRadius();
     }
 
+    /**
+     * Get planet resource classification
+     * @return string planet resource classification
+     */
     public String getResourceClassString() {
         return player.getResourceClassString();
     }
 
+    /**
+     * Get planet tech level
+     * @param p planet
+     * @return string plaent tech level
+     */
     public String getPlanetTechLevel(Planet p) {
         return p.getTechLevelString();
     }
 
+    /**
+     * Get planet event
+     * @param p planet
+     * @return stirng planet event
+     */
     public String getPlanetEvent(Planet p) {
         return p.getEventString();
     }
 
+    /**
+     * Get planet species
+     * @param p planet
+     * @return string planet species
+     */
     public String getPlanetSpecies(Planet p) {
         return p.getSpeciesString();
     }
 
+    /**
+     * Get planet color
+     * @param p planet
+     * @return hex string of the color of the planet
+     */
     public String getPlanetColorHex(Planet p) {
         return p.getColorHex();
     }
@@ -128,14 +160,29 @@ public class Model {
 
     ///////////////////////////// Ship /////////////////////////////
 
+    /**
+     * Get remaining fuel
+     * @param player player
+     * @return remaining fuel
+     */
     public int getFuelRemaining(Player player) {
         return player.getFuelRemaining();
     }
 
+    /**
+     * Get remaining cargo
+     * @param player player
+     * @return remaining cargo
+     */
     public int getCargoCapacity(Player player) {
         return player.getCargoCapacity();
     }
 
+    /**
+     * Get remaining cargo capacity
+     * @param player player
+     * @return remaining cargo capacity
+     */
     public int getAvailableCargoCapacity(Player player) {
         return player.getAvailableCargoCapacity();
     }
