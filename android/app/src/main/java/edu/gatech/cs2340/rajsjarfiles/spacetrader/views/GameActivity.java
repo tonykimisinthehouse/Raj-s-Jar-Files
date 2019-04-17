@@ -72,15 +72,15 @@ public class GameActivity extends BaseActivity {
         this.eventIndicator.setText("Event: " + viewModel.getPlanetEvent(m));
     }
 
-
-    /**
-     * Opens the Map activity.
-     *
-     * @param view the button view
-     */
-    public void openMap(View view) {
-        // TODO start map activity
-    }
+//
+//    /**
+//     * Opens the Map activity.
+//     *
+//     * @param view the button view
+//     */
+//    public void openMap(View view) {
+//        // TODO start map activity
+//    }
 
     /**
      * Opens the Market activity.
