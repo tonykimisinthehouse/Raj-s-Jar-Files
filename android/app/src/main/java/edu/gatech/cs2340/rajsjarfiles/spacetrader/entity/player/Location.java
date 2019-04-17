@@ -92,14 +92,23 @@ public class Location {
         return this.planet;
     }
 
+    /**
+     * @return the Planet's name in String
+     */
     public String getPlanetName() {
         return planet.getName();
     }
 
+    /**
+     * @return the Planet's Orbit Radius
+     */
     public int getPlanetOrbitRadius() {
         return planet.getOrbitRadius();
     }
 
+    /**
+     * @return the Planet's resource class in String
+     */
     public String getResourceClassString() {
         return planet.getResourceClassString();
     }

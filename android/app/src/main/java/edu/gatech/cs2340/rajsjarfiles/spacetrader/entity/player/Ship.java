@@ -333,6 +333,10 @@ public class Ship {
         return ret;
     }
 
+    /**
+     * Get the string of the ship type
+     * @return the ship type in String
+     */
     public String toStringShipType() {
         return shipType.toString();
     }

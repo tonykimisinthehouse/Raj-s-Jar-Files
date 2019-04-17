@@ -49,10 +49,16 @@ public abstract class BattleManager {
         return otherShip;
     }
 
+    /**
+     * @return the other ship in string format
+     */
     public String getOtherShipString() {
         return otherShip.toStringShipType();
     }
 
+    /**
+     * @return the other ship's health
+     */
     public int getOtherShipHealth() {
         return otherShip.getHealth();
     }

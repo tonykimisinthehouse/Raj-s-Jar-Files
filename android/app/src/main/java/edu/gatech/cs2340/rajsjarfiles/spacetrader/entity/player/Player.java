@@ -86,6 +86,10 @@ public class Player {
         return ship.getCargoGoods();
     }
 
+    /**
+     * Get the capacity of the cargo
+     * @return the capacity of the cargo
+     */
     public int getCargoCapacity() {
         return ship.getCargoCapacity();
     }
@@ -105,10 +109,18 @@ public class Player {
         this.ship = ship;
     }
 
+    /**
+     * Get the remaining fuel
+     * @return the value of the remaining fuel
+     */
     public int getFuelRemaining() {
         return ship.getFuel();
     }
 
+    /**
+     * Get available cargo capacity
+     * @return available cargo capacity
+     */
     public int getAvailableCargoCapacity() {
         return ship.getAvailableCargoCapacity();
     }
@@ -189,14 +201,26 @@ public class Player {
         return location.getPlanet();
     }
 
+    /**
+     * Get the name of the planet
+     * @return the name of the planet
+     */
     public String getPlanetName() {
         return location.getPlanetName();
     }
 
+    /**
+     * Get the orbit radius of the planet
+     * @return the orbit radius of the planet
+     */
     public int getPlanetOrbitRadius() {
         return location.getPlanetOrbitRadius();
     }
 
+    /**
+     * Get the string of the resource class
+     * @return the string of the resource class
+     */
     public String getResourceClassString() {
         return location.getResourceClassString();
     }
@@ -345,6 +369,7 @@ public class Player {
          * Gives other fields default values.
          *
          * @param name the player's name
+         * @param ss the Solar System the player is at
          */
         public PlayerBuilder(String name, SolarSystem ss) {
             // Default Values

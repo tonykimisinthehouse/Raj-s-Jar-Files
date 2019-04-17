@@ -141,25 +141,9 @@ public class MarketActivity extends BaseActivity {
             Collection<Item> goodsOnShip = player.getCargoGoods();
 
             // Split by newlines to get arrays
-            List<ListViewItemDTO> listGoodsForSale = new ArrayList<>();
-            List<ListViewItemDTO> listGoodsOnShip = new ArrayList<>();
+            List<ListViewItemDTO> listGoodsForSale = addItemsToList(goodsForSale);
+            List<ListViewItemDTO> listGoodsOnShip = addItemsToList(goodsOnShip);
 
-            for (Item item : goodsForSale) {
-                // Only add with a positive quantity of item
-                if (item.getQuantity() > 0) {
-                    ListViewItemDTO view = new ListViewItemDTO();
-                    view.setGood(item);
-                    listGoodsForSale.add(view);
-                }
-            }
-            for (Item item : goodsOnShip) {
-                // Only add with a positive quantity of item
-                if (item.getQuantity() > 0) {
-                    ListViewItemDTO view = new ListViewItemDTO();
-                    view.setGood(item);
-                    listGoodsOnShip.add(view);
-                }
-            }
 
             final ListViewItemCheckboxBaseAdapter adapterGoodsForSale = new
                     ListViewItemCheckboxBaseAdapter(this, listGoodsForSale);
@@ -182,6 +166,24 @@ public class MarketActivity extends BaseActivity {
         } catch (NullPointerException e) {
             Log.e("RAJ", e.getMessage());
         }
+    }
+
+    /**
+     * Helper method that generates an ArrayList that contains view for goods in the list
+     * @param goodsList list of goods
+     * @return an ArrayList that contains view for goods in the list
+     */
+    private List<ListViewItemDTO> addItemsToList(Collection<Item> goodsList) {
+        List<ListViewItemDTO> listGoods = new ArrayList<>();
+        for (Item item : goodsList) {
+            // Only add with a positive quantity of item
+            if (item.getQuantity() > 0) {
+                ListViewItemDTO view = new ListViewItemDTO();
+                view.setGood(item);
+                listGoods.add(view);
+            }
+        }
+        return listGoods;
     }
 
     /**

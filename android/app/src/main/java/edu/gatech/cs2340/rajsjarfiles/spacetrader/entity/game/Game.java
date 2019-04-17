@@ -36,6 +36,9 @@ public class Game {
         return universe;
     }
 
+    /**
+     * @return a random solar system
+     */
     public SolarSystem getRandomSolarSystem() {
         return universe.getRandomSolarSystem();
     }
