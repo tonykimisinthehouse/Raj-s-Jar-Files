@@ -1,5 +1,8 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
+import android.util.Log;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -7,7 +10,7 @@ import java.util.Random;
  * Represents a solar system in the universe.
  */
 public class SolarSystem {
-    private static final int MIN_PLANETS = 1;
+    private static final int MIN_PLANETS = 3;
     private static final int MAX_PLANETS = 10;
 
     private static final int FULL_CIRCLE = 360;
@@ -63,7 +66,33 @@ public class SolarSystem {
         int orbitAngle = 0;
         for (int i = 0; i < nameList.length; i++) {
             orbitRadius = rand.nextInt(4) + 1;
-            orbitAngle = rand.nextInt(FULL_CIRCLE);
+
+            ArrayList<Integer> arrayList = new ArrayList<>();
+            for (int r = 0; r < i; r++) {
+                if (planets[r].getOrbitRadius() == orbitRadius) {
+                    arrayList.add(planets[r].getOrbitAngle());
+                }
+            }
+
+            boolean angleAssignmentPass = false;
+
+            while (!angleAssignmentPass) {
+
+                orbitAngle = rand.nextInt(360);
+                boolean isAllAnglePassed = true;
+
+                for (int usedAngle : arrayList) {
+                    int dAngle = Math.abs(usedAngle - orbitAngle);
+                    dAngle = (dAngle <= 180 ? dAngle : 360 - dAngle);
+                    if (dAngle <= 20) {
+                        isAllAnglePassed = false;
+                    }
+                }
+
+                if (isAllAnglePassed) {
+                    angleAssignmentPass = true;
+                }
+            }
             planets[i] = new Planet.PlanetBuilder(nameList[i], orbitRadius, orbitAngle).build();
         }
         return planets;

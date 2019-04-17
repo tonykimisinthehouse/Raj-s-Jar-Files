@@ -192,7 +192,9 @@ public final class Planet {
     public int getDist(Planet other) {
         // Use cosine rule (c^2 = a^2 + b^2 - 2ab*cos(c))
         int angleRaw = Math.abs(orbitAngle - other.getOrbitAngle());
-        int angle = ((angleRaw <= 180) ? angleRaw : (360 - angleRaw));
+
+        double angle = ((angleRaw <= 180) ? angleRaw : (360 - angleRaw));
+        angle = Math.toRadians(angle);
 
         int a = this.orbitRadius;
         int b = other.orbitRadius;
@@ -218,6 +220,7 @@ public final class Planet {
         return String.format("%-16s", name)
                 + "| Radius: " + radius
                 + String.format(", orbit radius: %2d", orbitRadius)
+                + String.format(", orbit angle: %3d", orbitAngle)
                 + String.format(" | tech level: %-20s", techLevel.toString())
                 + String.format(" | resource class: %-20s",
                 resourceClass.toString())

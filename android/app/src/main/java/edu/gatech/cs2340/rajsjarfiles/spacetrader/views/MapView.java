@@ -8,13 +8,14 @@ import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.View;
 
-import java.util.Random;
-
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Planet;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 
+/**
+ * Customized view for solar System Map
+ */
 class MapView extends View {
-    private static final float ANGLE_CHANGE = 0.001f;
+    private static final float ANGLE_CHANGE = 0.1f;
     private static final int FULL_CIRCLE = 360;
     private static final int PLANET_TEXT_SIZE = 27;
 
@@ -22,26 +23,20 @@ class MapView extends View {
     private static final int ORBIT_RATIO = 75;
     private static final int RATIO = 7;
 
-    private static float dAngle;
+    private static float dAngle = 0;
 
-    private static final Random rand = new Random();
 
     private final android.os.Handler rotationHandler = new android.os.Handler(Looper.myLooper());
 
     public MapView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        Runnable updateTimerThread = new Runnable() {
-            @Override
-            public void run() {
-                incrementdAngle();
-                invalidate();
-                rotationHandler.postDelayed(this, 10);
-            }
-        };
         updateTimerThread.run();
-
     }
 
+    /**
+     * onDraw methods (starts when view is created and shown)
+     * @param canvas canvas to draw on
+     */
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -51,6 +46,19 @@ class MapView extends View {
         fillInPlanet(canvas, m);
     }
 
+    private Runnable updateTimerThread = new Runnable()
+    {
+        public void run()
+        {
+            incrementdAngle();
+            invalidate();
+            rotationHandler.postDelayed(this, 10);
+        }
+    };
+
+    /**
+     * Increment angle of every planet periodically for animation
+     */
     private static void incrementdAngle() {
         dAngle += ANGLE_CHANGE;
         if (dAngle >= FULL_CIRCLE) {
@@ -58,6 +66,10 @@ class MapView extends View {
         }
     }
 
+    /**
+     * Fill in black background to the canvas
+     * @param c canvas to draw on
+     */
     private void fillInBackground(Canvas c) {
         Paint paint = new Paint();
         paint.setColor(Color.BLACK);
@@ -71,6 +83,10 @@ class MapView extends View {
         c.drawCircle(x, y, SUN_RADIUS * 2, paint);
     }
 
+    /**
+     * Fill in gray orbits to the canvas
+     * @param c canvas to draw on
+     */
     private void fillInOrbit(Canvas c, Model m) {
         Planet[] planets = m.getPlanets();
         Paint paint = new Paint();
@@ -87,8 +103,13 @@ class MapView extends View {
         }
     }
 
+    /**
+     * Fill in planets on to the canvas
+     * @param c canvas to draw on
+     */
     private void fillInPlanet(Canvas c, Model m){
-        Planet[] planets = m.getPlanets();        Paint paint = new Paint();
+        Planet[] planets = m.getPlanets();
+        Paint paint = new Paint();
         paint.setStyle(Paint.Style.FILL);
 
         for (Planet planet: planets) {
@@ -108,22 +129,41 @@ class MapView extends View {
                 distanceLabel = currentPlanet.getDist(planet) + "LY";
             }
 
+
             float[] coord = getXAndY(planet, c);
             paint.setTextSize(PLANET_TEXT_SIZE);
 
-            c.drawText(planet.getName() + " "
-                    + distanceLabel, coord[0] + (planet.getRadius() * RATIO),
-                    coord[1] - (planet.getRadius() * RATIO), paint);
+            c.drawText(planet.getName() + " " + distanceLabel,
+                    coord[0] + planet.getRadius() * RATIO , coord[1] - planet.getRadius() * RATIO, paint);
+
+            // Draw Warp Zone Indicator
+            if (planet.getIsWarpZone()) {
+                paint.setColor(Color.parseColor("#01b9ff"));
+                paint.setStyle(Paint.Style.STROKE);
+                paint.setStrokeWidth(5);
+                c.drawCircle(coord[0], coord[1] - planet.getRadius() * RATIO - 20, RATIO,paint);
+                c.drawCircle(coord[0], coord[1] - planet.getRadius() * RATIO - 20, RATIO + 10,paint);
+            }
+            paint.reset();
         }
     }
 
+    /**
+     * Get X and Y coordinates on canvas of the planet
+     * @param planet planet to be drawn
+     * @param c canvas to be drawn on
+     * @return array [0] = x, [1] = y
+     */
     private float[] getXAndY(Planet planet, Canvas c) {
 
         float x = c.getWidth()/ 2.0f;
         float y = c.getHeight()/2.0f;
-        float a = planet.getOrbitAngle() + dAngle;
-        float h = (SUN_RADIUS * 2) + (planet.getOrbitRadius() * ORBIT_RATIO);
+        double a = planet.getOrbitAngle() + dAngle;
 
+        if (a >= 360) a -= 360;
+        a = Math.toRadians(a);
+
+        float h = (SUN_RADIUS * 2) + (planet.getOrbitRadius() * ORBIT_RATIO);
         float dx = 0;
         float dy = 0;
 
@@ -152,5 +192,12 @@ class MapView extends View {
         array[1] = y;
 
         return array;
+    }
+
+    /**
+     * Turn off the animation when activity is in paused
+     */
+    protected void turnOffView() {
+        rotationHandler.removeCallbacks(updateTimerThread);
     }
 }

@@ -44,8 +44,16 @@ public class TravelActivity extends BaseActivity {
         destinationGrid.setOnItemClickListener(clickListener);
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        MapView mapView = findViewById(R.id.solarSystemMapView);
+        mapView.turnOffView();
+    }
+
     /**
-     * @return list of possible destinations
+     * Return possible destinations within in the solar system
+     * @return arraylist of the names of destination planets
      */
     private ArrayList<String> getDestinations() {
         // Get object references
@@ -85,12 +93,14 @@ public class TravelActivity extends BaseActivity {
                             system.getPlanetByName(planetName).toString());
                     boolean success = player.travel(system, system.getPlanetByName(planetName));
 
-                    // Close this activity
+            /// Close this activity
                     Intent intent = new Intent(
                             getApplicationContext(), RandomEventActivity.class);
                     TravelActivity.this.finish();
                     startActivity(intent);
-                }
-            };
+                    MapView mapView = findViewById(R.id.solarSystemMapView);
+                    mapView.turnOffView();
+        }
+    };
 }
 
