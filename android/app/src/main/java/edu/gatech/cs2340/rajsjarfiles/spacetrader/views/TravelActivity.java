@@ -8,12 +8,16 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.util.ArrayList;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.game.GameDifficulty;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Location;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Planet;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.SolarSystem;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
@@ -42,6 +46,25 @@ public class TravelActivity extends BaseActivity {
                 android.R.layout.simple_list_item_1, getDestinations());
         destinationGrid.setAdapter(adapter);
         destinationGrid.setOnItemClickListener(clickListener);
+    }
+
+    @Test()
+    public void test() {
+        Model model = new Model("tom", new int[] { 4, 4, 4, 4 }, GameDifficulty.BEGINNER);
+        Assert.assertNotNull(model);
+        Assert.assertEquals(model, Model.getModel());
+
+        Ship ship = new Ship();
+        Assert.assertNotNull(ship);
+        Assert.assertEquals(999999, ship.getFuel());
+
+        Player player = model.getPlayer();
+        Assert.assertNotNull(player);
+        Assert.assertEquals("tom", player.getName());
+        Assert.assertEquals(4, player.getPoints()[0]);
+
+        player.setShip(ship);
+        Assert.assertEquals(ship, player.getShip());
     }
 
     /**
