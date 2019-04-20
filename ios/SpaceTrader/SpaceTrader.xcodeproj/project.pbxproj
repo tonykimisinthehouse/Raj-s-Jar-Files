@@ -8,20 +8,114 @@
 
 /* Begin PBXBuildFile section */
 		E2AF6CA1226B87DA00B0C7BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CA0226B87DA00B0C7BA /* AppDelegate.swift */; };
-		E2AF6CA3226B87DA00B0C7BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CA2226B87DA00B0C7BA /* ViewController.swift */; };
 		E2AF6CA6226B87DA00B0C7BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2AF6CA4226B87DA00B0C7BA /* Main.storyboard */; };
 		E2AF6CA8226B87DB00B0C7BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2AF6CA7226B87DB00B0C7BA /* Assets.xcassets */; };
 		E2AF6CAB226B87DB00B0C7BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2AF6CA9226B87DB00B0C7BA /* LaunchScreen.storyboard */; };
+		E2AF6CF7226B8B3300B0C7BA /* BattleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CBF226B8B3300B0C7BA /* BattleManager.swift */; };
+		E2AF6CF8226B8B3300B0C7BA /* PoliceBattleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CC0226B8B3300B0C7BA /* PoliceBattleManager.swift */; };
+		E2AF6CF9226B8B3300B0C7BA /* PirateBattleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CC1226B8B3300B0C7BA /* PirateBattleManager.swift */; };
+		E2AF6CFA226B8B3300B0C7BA /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CC3226B8B3300B0C7BA /* Game.swift */; };
+		E2AF6CFB226B8B3300B0C7BA /* GameDifficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CC4226B8B3300B0C7BA /* GameDifficulty.swift */; };
+		E2AF6CFC226B8B3300B0C7BA /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CC7226B8B3300B0C7BA /* TransactionType.swift */; };
+		E2AF6CFD226B8B3300B0C7BA /* TransactionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CC8226B8B3300B0C7BA /* TransactionResult.swift */; };
+		E2AF6CFE226B8B3300B0C7BA /* TransactionOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CC9226B8B3300B0C7BA /* TransactionOrder.swift */; };
+		E2AF6CFF226B8B3300B0C7BA /* MarketTransactionValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CCA226B8B3300B0C7BA /* MarketTransactionValidator.swift */; };
+		E2AF6D00226B8B3300B0C7BA /* TranscationValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CCB226B8B3300B0C7BA /* TranscationValidator.swift */; };
+		E2AF6D01226B8B3300B0C7BA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CCC226B8B3300B0C7BA /* Item.swift */; };
+		E2AF6D02226B8B3300B0C7BA /* Marketplace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CCD226B8B3300B0C7BA /* Marketplace.swift */; };
+		E2AF6D03226B8B3300B0C7BA /* Good.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CCE226B8B3300B0C7BA /* Good.swift */; };
+		E2AF6D04226B8B3300B0C7BA /* TradeGoods.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CCF226B8B3300B0C7BA /* TradeGoods.swift */; };
+		E2AF6D05226B8B3300B0C7BA /* PlanetEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CD1226B8B3300B0C7BA /* PlanetEvents.swift */; };
+		E2AF6D06226B8B3300B0C7BA /* SolarSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CD2226B8B3300B0C7BA /* SolarSystem.swift */; };
+		E2AF6D07226B8B3300B0C7BA /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CD3226B8B3300B0C7BA /* Coordinate.swift */; };
+		E2AF6D08226B8B3300B0C7BA /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CD4226B8B3300B0C7BA /* Planet.swift */; };
+		E2AF6D09226B8B3300B0C7BA /* ResourceClassification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CD5226B8B3300B0C7BA /* ResourceClassification.swift */; };
+		E2AF6D0A226B8B3300B0C7BA /* Species.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CD6226B8B3300B0C7BA /* Species.swift */; };
+		E2AF6D0B226B8B3300B0C7BA /* TechLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CD7226B8B3300B0C7BA /* TechLevel.swift */; };
+		E2AF6D0C226B8B3300B0C7BA /* Habitats.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CD8226B8B3300B0C7BA /* Habitats.swift */; };
+		E2AF6D0D226B8B3300B0C7BA /* PlanetNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CD9226B8B3300B0C7BA /* PlanetNames.swift */; };
+		E2AF6D0E226B8B3300B0C7BA /* Universe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CDA226B8B3300B0C7BA /* Universe.swift */; };
+		E2AF6D0F226B8B3300B0C7BA /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CDC226B8B3300B0C7BA /* Location.swift */; };
+		E2AF6D10226B8B3300B0C7BA /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CDD226B8B3300B0C7BA /* Weapon.swift */; };
+		E2AF6D11226B8B3300B0C7BA /* SurrenderAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CDF226B8B3300B0C7BA /* SurrenderAction.swift */; };
+		E2AF6D12226B8B3300B0C7BA /* SubmitAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CE0226B8B3300B0C7BA /* SubmitAction.swift */; };
+		E2AF6D13226B8B3300B0C7BA /* PlayerEncounterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CE1226B8B3300B0C7BA /* PlayerEncounterAction.swift */; };
+		E2AF6D14226B8B3300B0C7BA /* AttackAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CE2226B8B3300B0C7BA /* AttackAction.swift */; };
+		E2AF6D15226B8B3300B0C7BA /* EncounterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CE3226B8B3300B0C7BA /* EncounterState.swift */; };
+		E2AF6D16226B8B3300B0C7BA /* RunAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CE4226B8B3300B0C7BA /* RunAction.swift */; };
+		E2AF6D17226B8B3300B0C7BA /* BribeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CE5226B8B3300B0C7BA /* BribeAction.swift */; };
+		E2AF6D18226B8B3300B0C7BA /* Ship.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CE6226B8B3300B0C7BA /* Ship.swift */; };
+		E2AF6D19226B8B3300B0C7BA /* ShipType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CE7226B8B3300B0C7BA /* ShipType.swift */; };
+		E2AF6D1A226B8B3300B0C7BA /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CE8226B8B3300B0C7BA /* Player.swift */; };
+		E2AF6D1B226B8B3300B0C7BA /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CE9226B8B3300B0C7BA /* Wallet.swift */; };
+		E2AF6D1C226B8B3300B0C7BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CEB226B8B3300B0C7BA /* ViewController.swift */; };
+		E2AF6D1D226B8B3300B0C7BA /* PoliceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CEC226B8B3300B0C7BA /* PoliceController.swift */; };
+		E2AF6D1E226B8B3300B0C7BA /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CED226B8B3300B0C7BA /* GameController.swift */; };
+		E2AF6D1F226B8B3300B0C7BA /* MarketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CEE226B8B3300B0C7BA /* MarketController.swift */; };
+		E2AF6D20226B8B3300B0C7BA /* PirateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CEF226B8B3300B0C7BA /* PirateController.swift */; };
+		E2AF6D21226B8B3300B0C7BA /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CF0226B8B3300B0C7BA /* StartController.swift */; };
+		E2AF6D22226B8B3300B0C7BA /* RandomEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CF1226B8B3300B0C7BA /* RandomEventController.swift */; };
+		E2AF6D23226B8B3300B0C7BA /* ShipController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CF2226B8B3300B0C7BA /* ShipController.swift */; };
+		E2AF6D24226B8B3300B0C7BA /* TravelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CF3226B8B3300B0C7BA /* TravelController.swift */; };
+		E2AF6D25226B8B3300B0C7BA /* EncounterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CF4226B8B3300B0C7BA /* EncounterController.swift */; };
+		E2AF6D26226B8B3300B0C7BA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CF6226B8B3300B0C7BA /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E2AF6C9D226B87DA00B0C7BA /* SpaceTrader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceTrader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2AF6CA0226B87DA00B0C7BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E2AF6CA2226B87DA00B0C7BA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E2AF6CA5226B87DA00B0C7BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E2AF6CA7226B87DB00B0C7BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2AF6CAA226B87DB00B0C7BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E2AF6CAC226B87DB00B0C7BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E2AF6CBF226B8B3300B0C7BA /* BattleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleManager.swift; sourceTree = "<group>"; };
+		E2AF6CC0226B8B3300B0C7BA /* PoliceBattleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoliceBattleManager.swift; sourceTree = "<group>"; };
+		E2AF6CC1226B8B3300B0C7BA /* PirateBattleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PirateBattleManager.swift; sourceTree = "<group>"; };
+		E2AF6CC3226B8B3300B0C7BA /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		E2AF6CC4226B8B3300B0C7BA /* GameDifficulty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDifficulty.swift; sourceTree = "<group>"; };
+		E2AF6CC7226B8B3300B0C7BA /* TransactionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
+		E2AF6CC8226B8B3300B0C7BA /* TransactionResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionResult.swift; sourceTree = "<group>"; };
+		E2AF6CC9226B8B3300B0C7BA /* TransactionOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionOrder.swift; sourceTree = "<group>"; };
+		E2AF6CCA226B8B3300B0C7BA /* MarketTransactionValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketTransactionValidator.swift; sourceTree = "<group>"; };
+		E2AF6CCB226B8B3300B0C7BA /* TranscationValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranscationValidator.swift; sourceTree = "<group>"; };
+		E2AF6CCC226B8B3300B0C7BA /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		E2AF6CCD226B8B3300B0C7BA /* Marketplace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Marketplace.swift; sourceTree = "<group>"; };
+		E2AF6CCE226B8B3300B0C7BA /* Good.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Good.swift; sourceTree = "<group>"; };
+		E2AF6CCF226B8B3300B0C7BA /* TradeGoods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeGoods.swift; sourceTree = "<group>"; };
+		E2AF6CD1226B8B3300B0C7BA /* PlanetEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetEvents.swift; sourceTree = "<group>"; };
+		E2AF6CD2226B8B3300B0C7BA /* SolarSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolarSystem.swift; sourceTree = "<group>"; };
+		E2AF6CD3226B8B3300B0C7BA /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
+		E2AF6CD4226B8B3300B0C7BA /* Planet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
+		E2AF6CD5226B8B3300B0C7BA /* ResourceClassification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceClassification.swift; sourceTree = "<group>"; };
+		E2AF6CD6226B8B3300B0C7BA /* Species.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Species.swift; sourceTree = "<group>"; };
+		E2AF6CD7226B8B3300B0C7BA /* TechLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TechLevel.swift; sourceTree = "<group>"; };
+		E2AF6CD8226B8B3300B0C7BA /* Habitats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Habitats.swift; sourceTree = "<group>"; };
+		E2AF6CD9226B8B3300B0C7BA /* PlanetNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetNames.swift; sourceTree = "<group>"; };
+		E2AF6CDA226B8B3300B0C7BA /* Universe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Universe.swift; sourceTree = "<group>"; };
+		E2AF6CDC226B8B3300B0C7BA /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		E2AF6CDD226B8B3300B0C7BA /* Weapon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
+		E2AF6CDF226B8B3300B0C7BA /* SurrenderAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurrenderAction.swift; sourceTree = "<group>"; };
+		E2AF6CE0226B8B3300B0C7BA /* SubmitAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitAction.swift; sourceTree = "<group>"; };
+		E2AF6CE1226B8B3300B0C7BA /* PlayerEncounterAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerEncounterAction.swift; sourceTree = "<group>"; };
+		E2AF6CE2226B8B3300B0C7BA /* AttackAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttackAction.swift; sourceTree = "<group>"; };
+		E2AF6CE3226B8B3300B0C7BA /* EncounterState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncounterState.swift; sourceTree = "<group>"; };
+		E2AF6CE4226B8B3300B0C7BA /* RunAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunAction.swift; sourceTree = "<group>"; };
+		E2AF6CE5226B8B3300B0C7BA /* BribeAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BribeAction.swift; sourceTree = "<group>"; };
+		E2AF6CE6226B8B3300B0C7BA /* Ship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ship.swift; sourceTree = "<group>"; };
+		E2AF6CE7226B8B3300B0C7BA /* ShipType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShipType.swift; sourceTree = "<group>"; };
+		E2AF6CE8226B8B3300B0C7BA /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		E2AF6CE9226B8B3300B0C7BA /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		E2AF6CEB226B8B3300B0C7BA /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E2AF6CEC226B8B3300B0C7BA /* PoliceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoliceController.swift; sourceTree = "<group>"; };
+		E2AF6CED226B8B3300B0C7BA /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
+		E2AF6CEE226B8B3300B0C7BA /* MarketController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketController.swift; sourceTree = "<group>"; };
+		E2AF6CEF226B8B3300B0C7BA /* PirateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PirateController.swift; sourceTree = "<group>"; };
+		E2AF6CF0226B8B3300B0C7BA /* StartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
+		E2AF6CF1226B8B3300B0C7BA /* RandomEventController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomEventController.swift; sourceTree = "<group>"; };
+		E2AF6CF2226B8B3300B0C7BA /* ShipController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShipController.swift; sourceTree = "<group>"; };
+		E2AF6CF3226B8B3300B0C7BA /* TravelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelController.swift; sourceTree = "<group>"; };
+		E2AF6CF4226B8B3300B0C7BA /* EncounterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncounterController.swift; sourceTree = "<group>"; };
+		E2AF6CF6226B8B3300B0C7BA /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +148,149 @@
 		E2AF6C9F226B87DA00B0C7BA /* SpaceTrader */ = {
 			isa = PBXGroup;
 			children = (
+				E2AF6CBC226B8B3300B0C7BA /* src */,
 				E2AF6CA0226B87DA00B0C7BA /* AppDelegate.swift */,
-				E2AF6CA2226B87DA00B0C7BA /* ViewController.swift */,
 				E2AF6CA4226B87DA00B0C7BA /* Main.storyboard */,
 				E2AF6CA7226B87DB00B0C7BA /* Assets.xcassets */,
 				E2AF6CA9226B87DB00B0C7BA /* LaunchScreen.storyboard */,
 				E2AF6CAC226B87DB00B0C7BA /* Info.plist */,
 			);
 			path = SpaceTrader;
+			sourceTree = "<group>";
+		};
+		E2AF6CBC226B8B3300B0C7BA /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E2AF6CBD226B8B3300B0C7BA /* entity */,
+				E2AF6CEA226B8B3300B0C7BA /* viewcontrollers */,
+				E2AF6CF5226B8B3300B0C7BA /* model */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		E2AF6CBD226B8B3300B0C7BA /* entity */ = {
+			isa = PBXGroup;
+			children = (
+				E2AF6CBE226B8B3300B0C7BA /* battle */,
+				E2AF6CC2226B8B3300B0C7BA /* game */,
+				E2AF6CC5226B8B3300B0C7BA /* market */,
+				E2AF6CDB226B8B3300B0C7BA /* player */,
+				E2AF6CD0226B8B3300B0C7BA /* universe */,
+			);
+			path = entity;
+			sourceTree = "<group>";
+		};
+		E2AF6CBE226B8B3300B0C7BA /* battle */ = {
+			isa = PBXGroup;
+			children = (
+				E2AF6CBF226B8B3300B0C7BA /* BattleManager.swift */,
+				E2AF6CC0226B8B3300B0C7BA /* PoliceBattleManager.swift */,
+				E2AF6CC1226B8B3300B0C7BA /* PirateBattleManager.swift */,
+			);
+			path = battle;
+			sourceTree = "<group>";
+		};
+		E2AF6CC2226B8B3300B0C7BA /* game */ = {
+			isa = PBXGroup;
+			children = (
+				E2AF6CC3226B8B3300B0C7BA /* Game.swift */,
+				E2AF6CC4226B8B3300B0C7BA /* GameDifficulty.swift */,
+			);
+			path = game;
+			sourceTree = "<group>";
+		};
+		E2AF6CC5226B8B3300B0C7BA /* market */ = {
+			isa = PBXGroup;
+			children = (
+				E2AF6CC6226B8B3300B0C7BA /* transaction */,
+				E2AF6CCC226B8B3300B0C7BA /* Item.swift */,
+				E2AF6CCD226B8B3300B0C7BA /* Marketplace.swift */,
+				E2AF6CCE226B8B3300B0C7BA /* Good.swift */,
+				E2AF6CCF226B8B3300B0C7BA /* TradeGoods.swift */,
+			);
+			path = market;
+			sourceTree = "<group>";
+		};
+		E2AF6CC6226B8B3300B0C7BA /* transaction */ = {
+			isa = PBXGroup;
+			children = (
+				E2AF6CC7226B8B3300B0C7BA /* TransactionType.swift */,
+				E2AF6CC8226B8B3300B0C7BA /* TransactionResult.swift */,
+				E2AF6CC9226B8B3300B0C7BA /* TransactionOrder.swift */,
+				E2AF6CCA226B8B3300B0C7BA /* MarketTransactionValidator.swift */,
+				E2AF6CCB226B8B3300B0C7BA /* TranscationValidator.swift */,
+			);
+			path = transaction;
+			sourceTree = "<group>";
+		};
+		E2AF6CD0226B8B3300B0C7BA /* universe */ = {
+			isa = PBXGroup;
+			children = (
+				E2AF6CD1226B8B3300B0C7BA /* PlanetEvents.swift */,
+				E2AF6CD2226B8B3300B0C7BA /* SolarSystem.swift */,
+				E2AF6CD3226B8B3300B0C7BA /* Coordinate.swift */,
+				E2AF6CD4226B8B3300B0C7BA /* Planet.swift */,
+				E2AF6CD5226B8B3300B0C7BA /* ResourceClassification.swift */,
+				E2AF6CD6226B8B3300B0C7BA /* Species.swift */,
+				E2AF6CD7226B8B3300B0C7BA /* TechLevel.swift */,
+				E2AF6CD8226B8B3300B0C7BA /* Habitats.swift */,
+				E2AF6CD9226B8B3300B0C7BA /* PlanetNames.swift */,
+				E2AF6CDA226B8B3300B0C7BA /* Universe.swift */,
+			);
+			path = universe;
+			sourceTree = "<group>";
+		};
+		E2AF6CDB226B8B3300B0C7BA /* player */ = {
+			isa = PBXGroup;
+			children = (
+				E2AF6CDC226B8B3300B0C7BA /* Location.swift */,
+				E2AF6CDD226B8B3300B0C7BA /* Weapon.swift */,
+				E2AF6CDE226B8B3300B0C7BA /* action */,
+				E2AF6CE6226B8B3300B0C7BA /* Ship.swift */,
+				E2AF6CE7226B8B3300B0C7BA /* ShipType.swift */,
+				E2AF6CE8226B8B3300B0C7BA /* Player.swift */,
+				E2AF6CE9226B8B3300B0C7BA /* Wallet.swift */,
+			);
+			path = player;
+			sourceTree = "<group>";
+		};
+		E2AF6CDE226B8B3300B0C7BA /* action */ = {
+			isa = PBXGroup;
+			children = (
+				E2AF6CDF226B8B3300B0C7BA /* SurrenderAction.swift */,
+				E2AF6CE0226B8B3300B0C7BA /* SubmitAction.swift */,
+				E2AF6CE1226B8B3300B0C7BA /* PlayerEncounterAction.swift */,
+				E2AF6CE2226B8B3300B0C7BA /* AttackAction.swift */,
+				E2AF6CE3226B8B3300B0C7BA /* EncounterState.swift */,
+				E2AF6CE4226B8B3300B0C7BA /* RunAction.swift */,
+				E2AF6CE5226B8B3300B0C7BA /* BribeAction.swift */,
+			);
+			path = action;
+			sourceTree = "<group>";
+		};
+		E2AF6CEA226B8B3300B0C7BA /* viewcontrollers */ = {
+			isa = PBXGroup;
+			children = (
+				E2AF6CEB226B8B3300B0C7BA /* ViewController.swift */,
+				E2AF6CEC226B8B3300B0C7BA /* PoliceController.swift */,
+				E2AF6CED226B8B3300B0C7BA /* GameController.swift */,
+				E2AF6CEE226B8B3300B0C7BA /* MarketController.swift */,
+				E2AF6CEF226B8B3300B0C7BA /* PirateController.swift */,
+				E2AF6CF0226B8B3300B0C7BA /* StartController.swift */,
+				E2AF6CF1226B8B3300B0C7BA /* RandomEventController.swift */,
+				E2AF6CF2226B8B3300B0C7BA /* ShipController.swift */,
+				E2AF6CF3226B8B3300B0C7BA /* TravelController.swift */,
+				E2AF6CF4226B8B3300B0C7BA /* EncounterController.swift */,
+			);
+			path = viewcontrollers;
+			sourceTree = "<group>";
+		};
+		E2AF6CF5226B8B3300B0C7BA /* model */ = {
+			isa = PBXGroup;
+			children = (
+				E2AF6CF6226B8B3300B0C7BA /* Model.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +364,55 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2AF6CA3226B87DA00B0C7BA /* ViewController.swift in Sources */,
+				E2AF6D17226B8B3300B0C7BA /* BribeAction.swift in Sources */,
+				E2AF6D0B226B8B3300B0C7BA /* TechLevel.swift in Sources */,
+				E2AF6D03226B8B3300B0C7BA /* Good.swift in Sources */,
+				E2AF6D0E226B8B3300B0C7BA /* Universe.swift in Sources */,
+				E2AF6D15226B8B3300B0C7BA /* EncounterState.swift in Sources */,
+				E2AF6D0A226B8B3300B0C7BA /* Species.swift in Sources */,
+				E2AF6D21226B8B3300B0C7BA /* StartController.swift in Sources */,
+				E2AF6D24226B8B3300B0C7BA /* TravelController.swift in Sources */,
+				E2AF6D23226B8B3300B0C7BA /* ShipController.swift in Sources */,
+				E2AF6D1B226B8B3300B0C7BA /* Wallet.swift in Sources */,
+				E2AF6CF9226B8B3300B0C7BA /* PirateBattleManager.swift in Sources */,
+				E2AF6D25226B8B3300B0C7BA /* EncounterController.swift in Sources */,
+				E2AF6D19226B8B3300B0C7BA /* ShipType.swift in Sources */,
+				E2AF6D20226B8B3300B0C7BA /* PirateController.swift in Sources */,
+				E2AF6D26226B8B3300B0C7BA /* Model.swift in Sources */,
+				E2AF6D0D226B8B3300B0C7BA /* PlanetNames.swift in Sources */,
+				E2AF6D0F226B8B3300B0C7BA /* Location.swift in Sources */,
+				E2AF6CFA226B8B3300B0C7BA /* Game.swift in Sources */,
+				E2AF6D09226B8B3300B0C7BA /* ResourceClassification.swift in Sources */,
 				E2AF6CA1226B87DA00B0C7BA /* AppDelegate.swift in Sources */,
+				E2AF6D13226B8B3300B0C7BA /* PlayerEncounterAction.swift in Sources */,
+				E2AF6D14226B8B3300B0C7BA /* AttackAction.swift in Sources */,
+				E2AF6CF7226B8B3300B0C7BA /* BattleManager.swift in Sources */,
+				E2AF6D1D226B8B3300B0C7BA /* PoliceController.swift in Sources */,
+				E2AF6D07226B8B3300B0C7BA /* Coordinate.swift in Sources */,
+				E2AF6D1F226B8B3300B0C7BA /* MarketController.swift in Sources */,
+				E2AF6D04226B8B3300B0C7BA /* TradeGoods.swift in Sources */,
+				E2AF6D05226B8B3300B0C7BA /* PlanetEvents.swift in Sources */,
+				E2AF6D01226B8B3300B0C7BA /* Item.swift in Sources */,
+				E2AF6D1C226B8B3300B0C7BA /* ViewController.swift in Sources */,
+				E2AF6D18226B8B3300B0C7BA /* Ship.swift in Sources */,
+				E2AF6D06226B8B3300B0C7BA /* SolarSystem.swift in Sources */,
+				E2AF6CFB226B8B3300B0C7BA /* GameDifficulty.swift in Sources */,
+				E2AF6D10226B8B3300B0C7BA /* Weapon.swift in Sources */,
+				E2AF6D00226B8B3300B0C7BA /* TranscationValidator.swift in Sources */,
+				E2AF6CF8226B8B3300B0C7BA /* PoliceBattleManager.swift in Sources */,
+				E2AF6D1E226B8B3300B0C7BA /* GameController.swift in Sources */,
+				E2AF6D11226B8B3300B0C7BA /* SurrenderAction.swift in Sources */,
+				E2AF6D08226B8B3300B0C7BA /* Planet.swift in Sources */,
+				E2AF6D16226B8B3300B0C7BA /* RunAction.swift in Sources */,
+				E2AF6CFC226B8B3300B0C7BA /* TransactionType.swift in Sources */,
+				E2AF6CFE226B8B3300B0C7BA /* TransactionOrder.swift in Sources */,
+				E2AF6D12226B8B3300B0C7BA /* SubmitAction.swift in Sources */,
+				E2AF6D22226B8B3300B0C7BA /* RandomEventController.swift in Sources */,
+				E2AF6D0C226B8B3300B0C7BA /* Habitats.swift in Sources */,
+				E2AF6D02226B8B3300B0C7BA /* Marketplace.swift in Sources */,
+				E2AF6CFF226B8B3300B0C7BA /* MarketTransactionValidator.swift in Sources */,
+				E2AF6CFD226B8B3300B0C7BA /* TransactionResult.swift in Sources */,
+				E2AF6D1A226B8B3300B0C7BA /* Player.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
