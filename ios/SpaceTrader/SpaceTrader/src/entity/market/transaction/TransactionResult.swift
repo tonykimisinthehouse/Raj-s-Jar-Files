@@ -10,4 +10,20 @@ import Foundation
 
 class TransactionResult {
     
+    private var isTransactionSuccess : Bool
+    private var item : Item
+    
+    init(isTranS : Bool, item : Item) {
+        self.isTransactionSuccess = isTranS
+        self.item = item
+    }
+    
+    func getIsTransactionSuccess() {
+        return self.isTransactionSuccess
+    }
+    
+    func getItem() -> Item {
+        return self.item
+    }
+    
 }

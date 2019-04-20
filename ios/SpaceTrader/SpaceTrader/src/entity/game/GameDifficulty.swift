@@ -9,5 +9,9 @@
 import Foundation
 
 enum GameDifficulty {
-    
+    case BEGINNER
+    case EASY
+    case NORMAL
+    case HARD
+    case IMPOSSIBLE
 }

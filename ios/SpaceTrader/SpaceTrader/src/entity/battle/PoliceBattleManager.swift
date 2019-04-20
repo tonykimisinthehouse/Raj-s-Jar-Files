@@ -10,4 +10,12 @@ import Foundation
 
 class PoliceBattleManager : BattleManager {
     
+    override init(player : Player) {
+        super.init(player: player)
+    }
+    
+    override func startBattle() -> String {
+        return "The police have found your ship and will be boarding soon! Attack, run, surrender, or bribe?"
+    }
+    
 }

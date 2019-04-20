@@ -9,5 +9,6 @@
 import Foundation
 
 enum TransactionType {
-    
+    case BUY
+    case SELL
 }

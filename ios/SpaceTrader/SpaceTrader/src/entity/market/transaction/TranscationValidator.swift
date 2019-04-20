@@ -8,6 +8,8 @@
 
 import Foundation
 
-class TransactionValidator {
+protocol TransactionValidator {
+    
+    func validate(to : TransactionOrder) -> Bool
     
 }

@@ -9,5 +9,26 @@
 import Foundation
 
 class BattleManager {
+    var player : Player
+    var playerShip : Ship
+    var otherShip : Ship
+    
+    init(player : Player) {
+        self.player = player
+        self.playerShip = player.getShip()
+        self.otherShip = Ship.getRandomShipWithWeapons()
+    }
+    
+    func startBattle() -> String {
+        // abstract
+    }
+    
+    func executeTurn(pea : PlayerEncounterAction, es : EncounterState) -> String {
+        // abstract
+    }
+    
+    func getOtherShip() -> Ship {
+        return self.otherShip
+    }
     
 }

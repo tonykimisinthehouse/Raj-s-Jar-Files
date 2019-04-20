@@ -10,4 +10,20 @@ import Foundation
 
 class MarketTransactionValidator : TransactionValidator {
     
+    private var marketplace : Marketplace
+    
+    init(mp : Marketplace) {
+        self.marketplace = mp
+    }
+    
+    func validate(order : TransactionOrder) -> Bool {
+        // TODO stubbed
+        return true
+    }
+    
+    func validateNTransaction(order : TransactionOrder) -> TransactionResult {
+        let isTransSuccess = validate(order)
+        let result = TransactionResult(isTranS: isTransSuccess, item: order.getItem())
+    }
+    
 }
