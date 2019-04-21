@@ -10,4 +10,6 @@ import Foundation
 
 protocol PlayerEncounterAction {
     
+    func doAction(player : Player, otherShip : Ship, es : EncounterState) -> String
+    
 }

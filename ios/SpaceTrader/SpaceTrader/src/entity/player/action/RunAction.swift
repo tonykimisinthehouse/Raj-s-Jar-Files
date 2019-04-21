@@ -10,4 +10,10 @@ import Foundation
 
 class RunAction : PlayerEncounterAction {
     
+    func doAction(player: Player, otherShip: Ship, es: EncounterState) -> String {
+        let retString = "You escape to live another day!"
+        es.conclude()
+        return retString
+    }
+    
 }

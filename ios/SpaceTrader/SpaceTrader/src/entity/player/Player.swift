@@ -58,8 +58,8 @@ class Player {
         
         if (statusCode == -1) {
             let travelFare : Int = 1000
-            if (self.wallet.checkCreditEnough(travelFare)) {
-                self.wallet.useCredits(travelFare)
+            if (self.wallet.checkCreditEnough(marketPrice: travelFare)) {
+                self.wallet.useCredits(amount: travelFare)
                 self.location = Location(solarSystem: destinationSS, planet: destinationSS.getPlanetWithWarp())
             }
             return true
@@ -71,7 +71,7 @@ class Player {
         var points : [Int]
         var ship : Ship
         var wallet : Wallet
-        var location : Location
+        var location : Location!
         
         init(name : String) {
             self.name = name

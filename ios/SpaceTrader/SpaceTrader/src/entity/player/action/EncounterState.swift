@@ -10,4 +10,14 @@ import Foundation
 
 class EncounterState {
     
+    var isOver : Bool
+    
+    init() {
+        self.isOver = false
+    }
+    
+    func conclude() {
+        self.isOver = true
+    }
+    
 }
