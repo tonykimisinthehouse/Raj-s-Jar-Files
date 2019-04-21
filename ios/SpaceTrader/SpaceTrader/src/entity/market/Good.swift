@@ -8,6 +8,22 @@
 
 import Foundation
 
-protocol Good {
+protocol Good : Codable {
+    
+    func getName() -> String
+    func getMLTP() -> Int
+    func getMLTU() -> Int
+    func getTTP() -> Int
+    func getBasePrice() -> Int
+    func getIPL() -> Int
+    func getVar() -> Int
+    func getIE() -> Events
+    
+    func getCR() -> ResourceClassification
+    func getER() -> ResourceClassification
+    
+    func getMTL() -> Int
+    func getMTH() -> Int
+    func isIllegal() -> Bool
     
 }

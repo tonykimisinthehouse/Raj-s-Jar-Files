@@ -10,4 +10,8 @@ import Foundation
 
 class Marketplace {
     
+//    var tradeGoodsInMarketMap = [TradeGoods : Item]()
+    
+    var 
+    
 }

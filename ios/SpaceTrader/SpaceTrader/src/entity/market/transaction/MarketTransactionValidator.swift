@@ -22,7 +22,7 @@ class MarketTransactionValidator : TransactionValidator {
     }
     
     func validateNTransaction(order : TransactionOrder) -> TransactionResult {
-        let isTransSuccess = validate(order)
+        let isTransSuccess = validate(order: order)
         let result = TransactionResult(isTranS: isTransSuccess, item: order.getItem())
     }
     
