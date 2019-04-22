@@ -8,20 +8,39 @@
 
 import Foundation
 
-struct Events {
-    public static let DROUGHT = Events()
-    public static let COLD = Events()
-    public static let CROP_FAIL = Events()
-    public static let WAR = Events()
-    public static let BOREDOM = Events()
-    public static let PLAGUE = Events()
-    public static let LACK_OF_WORKERS = Events()
+struct Events : CustomStringConvertible {
+    public static let DROUGHT = Events("Drought")
+    public static let COLD = Events("Cold")
+    public static let CROP_FAIL = Events("Crop Fail")
+    public static let WAR = Events("War")
+    public static let BOREDOM = Events("Boredom")
+    public static let PLAGUE = Events("Plague")
+    public static let LACK_OF_WORKERS = Events("Lack of Workers")
     
-    init() {
-        
+    static var values : [Events] = [
+        DROUGHT,
+        COLD,
+        CROP_FAIL,
+        WAR,
+        BOREDOM,
+        PLAGUE,
+        LACK_OF_WORKERS
+    ]
+    
+    var description: String {
+        get {
+            return self.name
+        }
+    }
+    
+    var name : String
+    
+    init(_ name : String) {
+        self.name = name
     }
     
     static func getRandomEvent() -> Events {
-        return Events.DROUGHT // TODO not random
+        let r = Int.random(in: 0..<Events.values.count)
+        return Events.values[r]
     }
 }
