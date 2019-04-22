@@ -10,7 +10,7 @@ import Foundation
 
 class Item : CustomStringConvertible {
     
-    var good : Good
+    var good : TradeGoods
     var quantity : Int
     var price : Int
     
@@ -22,7 +22,7 @@ class Item : CustomStringConvertible {
     
     // Java-like Getters and Setters
     func getGoodName() -> String {
-        return self.good.getName()
+        return self.good.name
     }
     func addQuantity(quantity : Int) {
         self.quantity += quantity
@@ -32,16 +32,16 @@ class Item : CustomStringConvertible {
     }
     
     var description: String {
-        return self.quantity + " " + self.good.getName() + " at " + self.price + " units each."
+        return "\(self.quantity) \(self.good.name)s at \(self.price) units each."
     }
     
     class ItemBuilder {
         
-        var good : Good
+        var good : TradeGoods
         var quantity : Int = -1
         var price : Int = 0
         
-        init(tg : Good) {
+        init(tg : TradeGoods) {
             self.good = tg
         }
         

@@ -22,8 +22,8 @@ class Location {
     }
     
     init(solarSystem : SolarSystem, planet : Planet) {
-        self.setSolarSystem(solarSystem)
-        self.setPlanet(planet)
+        self.solarSystem = solarSystem
+        self.planet = planet
     }
     
     func setSolarSystem(_ solarSystem : SolarSystem) {

@@ -13,9 +13,11 @@ class Player {
     let MAX_POINTS : Int = 16
     var name : String
     
+    var _points : [Int]
+    
     var points : [Int] {
         get {
-            return self.points
+            return _points
         }
         set {
             var sum : Int = 0
@@ -30,7 +32,7 @@ class Player {
                 fatalError("Points do not sum to \(MAX_POINTS).")
             }
             
-            self.points = newValue // TODO potential cyclic loop
+            self._points = newValue // TODO potential cyclic loop
         }
     }
     
@@ -40,9 +42,10 @@ class Player {
     
     init(builder : PlayerBuilder) {
         self.name = builder.name
-        self.points = builder.points
-        self.wallet = builder.wallet
+        self._points = builder.points
         self.ship = builder.ship
+        self.wallet = builder.wallet
+        self.location = builder.location
     }
     
     func checkCargoCapacityEnough(quantity : Int) -> Bool {
@@ -54,7 +57,7 @@ class Player {
     }
     
     func travel(destinationSS : SolarSystem, destinationP : Planet) -> Bool {
-        var statusCode : Int = location.checkIfTravelPossible(destinationSS: destinationSS, destinationP: destinationP)
+        let statusCode : Int = location.checkIfTravelPossible(destinationSS: destinationSS, destinationP: destinationP)
         
         if (statusCode == -1) {
             let travelFare : Int = 1000
@@ -64,6 +67,8 @@ class Player {
             }
             return true
         }
+        
+        return false
     }
     
     class PlayerBuilder {

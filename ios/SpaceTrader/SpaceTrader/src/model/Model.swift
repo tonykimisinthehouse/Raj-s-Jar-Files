@@ -16,11 +16,11 @@ class Model {
     var game : Game
     
     init(name : String, points : [Int], difficulty : GameDifficulty) {
-        Model.current = self
-        
         self.game = Game(gameDiff: difficulty)
         self.player = Player.PlayerBuilder(name: name).points(points: points).build()
         self.player.ship!.addWeapon(w: Weapon.PULSE_LASER)
+        
+        Model.current = self
     }
     
 }

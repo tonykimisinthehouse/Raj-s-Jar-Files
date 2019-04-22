@@ -24,6 +24,7 @@ class MarketTransactionValidator : TransactionValidator {
     func validateNTransaction(order : TransactionOrder) -> TransactionResult {
         let isTransSuccess = validate(to: order)
         let result = TransactionResult(isTranS: isTransSuccess, item: order.item)
+        return result
     }
     
 }

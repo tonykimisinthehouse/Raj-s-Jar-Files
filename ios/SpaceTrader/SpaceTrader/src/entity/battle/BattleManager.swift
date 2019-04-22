@@ -21,10 +21,12 @@ class BattleManager {
     
     func startBattle() -> String {
         // abstract
+        return ""
     }
     
     func executeTurn(pea : PlayerEncounterAction, es : EncounterState) -> String {
         // abstract
+        return ""
     }
     
     func getOtherShip() -> Ship {

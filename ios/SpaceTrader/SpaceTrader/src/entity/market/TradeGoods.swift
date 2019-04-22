@@ -8,7 +8,11 @@
 
 import Foundation
 
-struct TradeGoods : Hashable {
+struct TradeGoods : Good {
+    
+    static func == (lhs: TradeGoods, rhs: TradeGoods) -> Bool {
+        return lhs.name == rhs.name // TODO may not be an ideal equals() comparison
+    }
     
     public static let Water = TradeGoods("Water", 0, 0, 2, 30, 3, 4, Events.DROUGHT, ResourceClassification.LOTS_OF_WATER, ResourceClassification.DESERT, 30, 50)
     public static let Furs = TradeGoods("Desert", 0, 0, 2, 30, 3, 4, Events.DROUGHT, ResourceClassification.LOTS_OF_WATER, ResourceClassification.DESERT, 30, 50)

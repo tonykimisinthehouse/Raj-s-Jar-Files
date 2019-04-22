@@ -24,7 +24,7 @@ struct ResourceClassification {
     public static let LIFELESS = ResourceClassification(5)
     public static let DESERT = ResourceClassification(10)
     
-    var values = [
+    public static let values = [
         NO_SPECIAL_RESOURCES,
         MINERAL_RICH,
         MINERAL_POOR,
@@ -46,9 +46,9 @@ struct ResourceClassification {
         self.probOfHavingResource = prob
     }
     
-    func getRandomResourceClass() -> ResourceClassification {
-        let r = Int.random(in: 0..<values.count)
-        return values[r]
+    static func getRandomResourceClass() -> ResourceClassification {
+        let r = Int.random(in: 0..<ResourceClassification.values.count)
+        return ResourceClassification.values[r]
     }
     
 }

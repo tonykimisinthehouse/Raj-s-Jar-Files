@@ -60,8 +60,8 @@ class Planet : CustomStringConvertible {
     
     class PlanetBuilder {
         
-        static let MIN_RADIUS = 2
-        static let MAX_RADIUS = 5
+        let MIN_RADIUS = 2
+        let MAX_RADIUS = 5
         
         var name : String
         
@@ -74,11 +74,19 @@ class Planet : CustomStringConvertible {
         var species : Species
         var resourceClass : ResourceClassification
         var marketplace : Marketplace
+        var event: Events
         
         init(name : String, orbitRadius : Int, orbitAngle : Int) {
             self.name = name
+            self.radius = 0
             self.orbitRadius = orbitRadius
             self.orbitAngle = orbitAngle
+            self.techLevel = TechLevel.AGRICULTURE
+            self.habitats = Habitats.DESERT
+            self.species = Species.MACHINE
+            self.resourceClass = ResourceClassification.ARTISTIC
+            self.marketplace = Marketplace(pn: "MarketPlace", techLevel: TechLevel.AGRICULTURE, event: Events.BOREDOM, resource: ResourceClassification.ARTISTIC)
+            self.event = Events.BOREDOM
         }
         
         func radius(r : Int) -> PlanetBuilder {
@@ -111,12 +119,16 @@ class Planet : CustomStringConvertible {
                 self.radius = self.getRandomRadius()
             }
             self.habitats = Habitats.getRandomHabitat()
-            self.resourceClass = ResourceClassification.getRandomResourceClass(self.habitats)
-            self.species = Species.getRandomHabitableSpecies(self.habitats)
+            self.resourceClass = ResourceClassification.getRandomResourceClass()
+            self.species = Species.getRandomHabitableSpecies(habitats: self.habitats)
             self.techLevel = TechLevel.getRandomTechLevel()
             self.event = Events.getRandomEvent()
-            self.marketplace = Marketplace(self.name, self.techlevel, self.event, self.resourceClass)
+            self.marketplace = Marketplace(pn: self.name, techLevel: self.techLevel, event: self.event, resource: self.resourceClass)
             return Planet(builder: self)
+        }
+        
+        func getRandomRadius() -> Int {
+            return Int.random(in: self.MIN_RADIUS..<self.MAX_RADIUS)
         }
         
     }

@@ -32,14 +32,14 @@ class Marketplace : CustomStringConvertible {
         self.tradeGoodsInMarketMap = [TradeGoods : Item]()
         
         for goods in TradeGoods.ALL_GOODS {
-            let item = Item.ItemBuilder(tg: goods as! Good).quantity(self.calculateQuantity(good: goods as! Good)).price(self.calculatePrice(goods)).build()
+            let item = Item.ItemBuilder(tg: goods as! TradeGoods).quantity(self.calculateQuantity(good: goods as! TradeGoods)).price(self.calculatePrice(good: goods)).build()
             self.tradeGoodsInMarketMap[goods] = item
         }
     }
     
-    func calculatePrice(good : Good) -> Int {
-        let basePrice = good.getBasePrice()
-        let dynamicPrice = good.getIPL()
+    func calculatePrice(good : TradeGoods) -> Int {
+        let basePrice = good.BasePrice
+        let dynamicPrice = good.IPL
         let variancePrice = Double(basePrice) * 1.1
         var finalPrice = Double(basePrice + dynamicPrice) + variancePrice
         
@@ -49,7 +49,7 @@ class Marketplace : CustomStringConvertible {
         return Int(finalPrice)
     }
     
-    func calculateQuantity(good : Good) -> Int {
+    func calculateQuantity(good : TradeGoods) -> Int {
         let maxQ = 30
         let minQ = 1
         return Int.random(in: minQ..<maxQ)

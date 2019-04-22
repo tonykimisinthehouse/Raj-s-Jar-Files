@@ -17,7 +17,7 @@ class Wallet {
         self.credits = credits
     }
     
-    func makePurchase(good : Good, quantity : Int) -> Bool {
+    func makePurchase(good : TradeGoods, quantity : Int) -> Bool {
         var newTransactionOrder = TransactionOrder(good: good, quantity: quantity, initiator: owner, transactionType: TransactionType.BUY)
         var newTransactionResult = owner.location.planet.marketplace.validateTransaction(to: newTransactionOrder)
         
@@ -30,7 +30,7 @@ class Wallet {
         return newTransactionResult.isTransactionSuccess
     }
     
-    func makeSales(good : Good, quantity: Int) -> Bool {
+    func makeSales(good : TradeGoods, quantity: Int) -> Bool {
         var newTransactionOrder = TransactionOrder(good: good, quantity: quantity, initiator: owner, transactionType: TransactionType.SELL)
         var newTransactionResult = owner.location.planet.marketplace.validateTransaction(to: newTransactionOrder)
         

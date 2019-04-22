@@ -11,7 +11,7 @@ import Foundation
 class Ship {
     
     var type : ShipType
-    var cargo : [Good : Item]
+    var cargo : [TradeGoods : Item]
     var totalCap : Int
     var usedCap : Int
     var fuel : Int
@@ -27,7 +27,7 @@ class Ship {
     }
     
     init(cargoSize : Int, type : ShipType) {
-        self.cargo = [Good : Item]()
+        self.cargo = [TradeGoods : Item]()
         self.type = type
         self.totalCap = cargoSize
         self.usedCap = 0
@@ -66,7 +66,7 @@ class Ship {
         }
         
         if (self.cargo[good] != nil) {
-            self.cargo[good].addQuantity(quantity: quantity)
+            self.cargo[good]!.addQuantity(quantity: quantity)
         } else {
             self.cargo[good] = Item.ItemBuilder(tg: good).price(price).quantity(quantity).build()
         }
@@ -78,26 +78,26 @@ class Ship {
         let good = item.good
         let quantity = item.quantity
         if (self.hasGoods()) {
-            self.cargo[good].subQuantity(quantity: quantity)
+            self.cargo[good]!.subQuantity(quantity: quantity)
             self.usedCap -= quantity
         }
     }
     
     func emptyCargo() {
         if (self.usedCap > 0) {
-            self.cargo = [Good : Item]()
+            self.cargo = [TradeGoods : Item]()
             self.usedCap = 0
         }
     }
     
-    func getCargoGoods() -> [Item] {
+    func getCargoGoods() -> [TradeGoods] {
         return Array(self.cargo.keys)
     }
     
     func hasIllegalGoods() -> Bool {
         for good in TradeGoods.ILLEGAL_GOODS {
             if (cargo[good] != nil) {
-                if (cargo[good].quantity > 0) {
+                if (cargo[good]!.quantity > 0) {
                     return true
                 }
             }
@@ -108,8 +108,8 @@ class Ship {
     func removeIllegalGoods() {
         for good in TradeGoods.ILLEGAL_GOODS {
             if (cargo[good] != nil) {
-                if (cargo[good].quantity > 0) {
-                    cargo.remove(at: good)
+                if (cargo[good]!.quantity > 0) {
+                    cargo.removeValue(forKey: good)
                 }
             }
         }

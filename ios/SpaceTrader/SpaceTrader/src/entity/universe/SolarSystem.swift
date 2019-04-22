@@ -10,6 +10,10 @@ import Foundation
 
 class SolarSystem : Equatable {
     
+    static func == (lhs: SolarSystem, rhs: SolarSystem) -> Bool {
+        return lhs.name == rhs.name // TODO may not be an ideal equals() comparison
+    }
+    
     static let MIN_PLANETS : Int = 1
     static let MAX_PLANETS : Int = 10
     
