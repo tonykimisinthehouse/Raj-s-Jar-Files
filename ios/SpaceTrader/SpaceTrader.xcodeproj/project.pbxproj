@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E26E78E1226E05ED00D92F83 /* planet.png in Resources */ = {isa = PBXBuildFile; fileRef = E26E78DF226E05EC00D92F83 /* planet.png */; };
+		E26E78E2226E05ED00D92F83 /* rocket.png in Resources */ = {isa = PBXBuildFile; fileRef = E26E78E0226E05EC00D92F83 /* rocket.png */; };
 		E2AF6CA1226B87DA00B0C7BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CA0226B87DA00B0C7BA /* AppDelegate.swift */; };
 		E2AF6CA6226B87DA00B0C7BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2AF6CA4226B87DA00B0C7BA /* Main.storyboard */; };
 		E2AF6CA8226B87DB00B0C7BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2AF6CA7226B87DB00B0C7BA /* Assets.xcassets */; };
@@ -62,6 +64,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E26E78DF226E05EC00D92F83 /* planet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = planet.png; sourceTree = "<group>"; };
+		E26E78E0226E05EC00D92F83 /* rocket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rocket.png; sourceTree = "<group>"; };
 		E2AF6C9D226B87DA00B0C7BA /* SpaceTrader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceTrader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2AF6CA0226B87DA00B0C7BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2AF6CA5226B87DA00B0C7BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -129,6 +133,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E26E78DE226E05EC00D92F83 /* res */ = {
+			isa = PBXGroup;
+			children = (
+				E26E78DF226E05EC00D92F83 /* planet.png */,
+				E26E78E0226E05EC00D92F83 /* rocket.png */,
+			);
+			path = res;
+			sourceTree = "<group>";
+		};
 		E2AF6C94226B87D900B0C7BA = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +161,7 @@
 		E2AF6C9F226B87DA00B0C7BA /* SpaceTrader */ = {
 			isa = PBXGroup;
 			children = (
+				E26E78DE226E05EC00D92F83 /* res */,
 				E2AF6CBC226B8B3300B0C7BA /* src */,
 				E2AF6CA0226B87DA00B0C7BA /* AppDelegate.swift */,
 				E2AF6CA4226B87DA00B0C7BA /* Main.storyboard */,
@@ -352,6 +366,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2AF6CAB226B87DB00B0C7BA /* LaunchScreen.storyboard in Resources */,
+				E26E78E2226E05ED00D92F83 /* rocket.png in Resources */,
+				E26E78E1226E05ED00D92F83 /* planet.png in Resources */,
 				E2AF6CA8226B87DB00B0C7BA /* Assets.xcassets in Resources */,
 				E2AF6CA6226B87DA00B0C7BA /* Main.storyboard in Resources */,
 			);
