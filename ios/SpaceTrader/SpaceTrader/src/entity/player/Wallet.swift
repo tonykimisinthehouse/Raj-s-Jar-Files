@@ -19,10 +19,10 @@ class Wallet {
     
     func makePurchase(good : Good, quantity : Int) -> Bool {
         var newTransactionOrder = TransactionOrder(good: good, quantity: quantity, initiator: owner, transactionType: TransactionType.BUY)
-        var newTransactionResult = owner.location.planet.marketplace.validateTransaction(newTransactionOrder)
+        var newTransactionResult = owner.location.planet.marketplace.validateTransaction(to: newTransactionOrder)
         
-        if (newTransactionResult.getIsTransactionSuccess()) {
-            var item : Item = newTransactionResult.getItem()
+        if (newTransactionResult.isTransactionSuccess) {
+            let item : Item = newTransactionResult.item
             owner.ship!.addGood(item: item)
             self.useCredits(amount: item.price * item.quantity)
         }
@@ -30,13 +30,13 @@ class Wallet {
         return newTransactionResult.isTransactionSuccess
     }
     
-    func makeSales(good : Good, quantity: Int) {
+    func makeSales(good : Good, quantity: Int) -> Bool {
         var newTransactionOrder = TransactionOrder(good: good, quantity: quantity, initiator: owner, transactionType: TransactionType.SELL)
-        var newTransactionResult = owner.location.planet.marketplace.validateTransaction(newTransactionOrder)
+        var newTransactionResult = owner.location.planet.marketplace.validateTransaction(to: newTransactionOrder)
         
         if (newTransactionResult.isTransactionSuccess) {
-            let item = newTransactionResult.getItem()
-            owner.getShip().sellGood(item)
+            let item = newTransactionResult.item
+            owner.ship!.sellGood(item: item)
             earnCredits(amount: item.price * item.quantity)
         }
         

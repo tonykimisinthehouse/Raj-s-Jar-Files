@@ -38,11 +38,13 @@ class Planet : CustomStringConvertible {
         let angleRaw = abs(orbitAngle - other.orbitAngle)
         let angle = (angleRaw <= 180 ? angleRaw : 360 - angleRaw)
         
-        let a = self.orbitRadius
-        let b = other.orbitRadius
+        let a = Double(self.orbitRadius)
+        let b = Double(other.orbitRadius)
         
-        let sqrtVal = (a*a)+(b*b)-(2*a*b*cos(Double(angle)))
-        var c = sqrt(sqrtVal)
+        var sqrtVal = (a*a)+(b*b)
+        sqrtVal -= (2.0*a*b*cos(Double(angle)))
+        var c = Int(sqrt(sqrtVal))
+        
         return c
     }
     

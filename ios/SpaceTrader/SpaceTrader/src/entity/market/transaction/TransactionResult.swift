@@ -10,8 +10,8 @@ import Foundation
 
 class TransactionResult {
     
-    private var isTransactionSuccess : Bool
-    private var item : Item
+    var isTransactionSuccess : Bool
+    var item : Item
     
     init(isTranS : Bool, item : Item) {
         self.isTransactionSuccess = isTranS

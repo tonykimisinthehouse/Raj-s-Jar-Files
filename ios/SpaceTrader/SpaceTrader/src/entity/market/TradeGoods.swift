@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct TradeGoods {
+struct TradeGoods : Hashable {
+    
     public static let Water = TradeGoods("Water", 0, 0, 2, 30, 3, 4, Events.DROUGHT, ResourceClassification.LOTS_OF_WATER, ResourceClassification.DESERT, 30, 50)
     public static let Furs = TradeGoods("Desert", 0, 0, 2, 30, 3, 4, Events.DROUGHT, ResourceClassification.LOTS_OF_WATER, ResourceClassification.DESERT, 30, 50)
     public static let Food = TradeGoods("Food", 0, 0, 2, 30, 3, 4, Events.DROUGHT, ResourceClassification.LOTS_OF_WATER, ResourceClassification.DESERT, 30, 50)
@@ -20,7 +21,7 @@ struct TradeGoods {
     public static let Narcotics = TradeGoods("Narcotics", 0, 0, 2, 30, 3, 4, Events.DROUGHT, ResourceClassification.LOTS_OF_WATER, ResourceClassification.DESERT, 30, 50)
     public static let Robots = TradeGoods("Robots", 0, 0, 2, 30, 3, 4, Events.DROUGHT, ResourceClassification.LOTS_OF_WATER, ResourceClassification.DESERT, 30, 50)
     
-    var goods = [
+    static var ALL_GOODS = [
         Water,
         Furs,
         Food,
@@ -60,8 +61,12 @@ struct TradeGoods {
         self.MTH = MTH
     }
     
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.name.hashValue)
+    }
+    
     func isIllegal() -> Bool {
-        for g in ILLEGAL_GOODS {
+        for g in TradeGoods.ILLEGAL_GOODS {
             if self.name == g.name {
                 return true
             }

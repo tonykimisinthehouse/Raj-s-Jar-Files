@@ -18,11 +18,11 @@ class Ship {
     var health : Int
     var weapons : [Weapon]
     
-    init() {
+    convenience init() {
         self.init(cargoSize: 10, type: ShipType.Gnat)
     }
     
-    init(type : ShipType) {
+    convenience init(type : ShipType) {
         self.init(cargoSize: 10, type: type)
     }
     
@@ -95,7 +95,7 @@ class Ship {
     }
     
     func hasIllegalGoods() -> Bool {
-        for g in TradeGoods.ILLEGAL_GOODS {
+        for good in TradeGoods.ILLEGAL_GOODS {
             if (cargo[good] != nil) {
                 if (cargo[good].quantity > 0) {
                     return true

@@ -15,7 +15,7 @@ class TransactionOrder {
     var transactionType : TransactionType
     
     init(good : Good, quantity : Int, initiator : Player, transactionType : TransactionType) {
-        self.item = Item.ItemBuilder(good).quantity(quantity).build()
+        self.item = Item.ItemBuilder(tg: good).quantity(quantity).build()
         self.initiator = initiator
         self.transactionType = transactionType
     }

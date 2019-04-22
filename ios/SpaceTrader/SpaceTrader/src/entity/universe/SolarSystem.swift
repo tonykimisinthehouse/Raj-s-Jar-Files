@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SolarSystem {
+class SolarSystem : Equatable {
     
     static let MIN_PLANETS : Int = 1
     static let MAX_PLANETS : Int = 10
@@ -56,6 +56,21 @@ class SolarSystem {
         for planet in self.planets {
             self.planetMap[planet.name] = planet
         }
+    }
+    
+    func getRandomPlanet() -> Planet {
+        let r = Int.random(in: 0..<self.planets.count)
+        return self.planets[r]
+    }
+    
+    func getPlanetWithWarp() -> Planet {
+        for planet in self.planets {
+            if planet.isWarpZone {
+                return planet
+            }
+        }
+        
+        return self.planets[0]
     }
     
 }

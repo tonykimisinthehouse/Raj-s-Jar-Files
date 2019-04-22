@@ -27,7 +27,7 @@ class Game: CustomStringConvertible {
     }
     
     public var description: String {
-        return "The game difficulty is set to " + getGameDiff()
+        return "The game difficulty is set to " + getGameDiff().description
     }
     
 }

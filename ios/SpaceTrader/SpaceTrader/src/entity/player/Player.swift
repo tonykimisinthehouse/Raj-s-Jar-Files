@@ -92,7 +92,7 @@ class Player {
         }
         
         func credits(credits : Int) -> PlayerBuilder {
-            self.credits = credits
+            self.wallet.credits = credits
             return self
         }
         
