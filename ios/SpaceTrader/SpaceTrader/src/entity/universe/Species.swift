@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct Species {
+struct Species : CustomStringConvertible {
     
-    public static let HUMANOID = Species()
-    public static let MACHINE = Species()
-    public static let FUNGOID = Species()
-    public static let REPTILIAN = Species()
+    public static let HUMANOID = Species("Humanoid")
+    public static let MACHINE = Species("Machine")
+    public static let FUNGOID = Species("Fungoid")
+    public static let REPTILIAN = Species("Reptilian")
     
     public static var values = [
         HUMANOID,
@@ -22,8 +22,16 @@ struct Species {
         REPTILIAN
     ]
     
-    init() {
-        
+    var description: String {
+        get {
+            return self.name
+        }
+    }
+    
+    var name : String
+    
+    init(_ name : String) {
+        self.name = name
     }
     
     static func getRandomHabitableSpecies(habitats : Habitats) -> Species {

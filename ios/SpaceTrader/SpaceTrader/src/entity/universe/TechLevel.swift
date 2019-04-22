@@ -8,16 +8,16 @@
 
 import Foundation
 
-struct TechLevel {
+struct TechLevel : CustomStringConvertible {
     
-    public static let PRE_AGRICULTURE = TechLevel()
-    public static let AGRICULTURE = TechLevel()
-    public static let MEDIEVAL = TechLevel()
-    public static let RENAISSANCE = TechLevel()
-    public static let EARLY_INDUSTRIAL = TechLevel()
-    public static let INDUSTRIAL = TechLevel()
-    public static let POST_INDUSTRIAL = TechLevel()
-    public static let HI_TECH = TechLevel()
+    public static let PRE_AGRICULTURE = TechLevel("Pre-Agriculture")
+    public static let AGRICULTURE = TechLevel("Agriculture")
+    public static let MEDIEVAL = TechLevel("Medieval")
+    public static let RENAISSANCE = TechLevel("Renaissance")
+    public static let EARLY_INDUSTRIAL = TechLevel("Early Industrial")
+    public static let INDUSTRIAL = TechLevel("Industrial")
+    public static let POST_INDUSTRIAL = TechLevel("Post-Industrial")
+    public static let HI_TECH = TechLevel("Hi-Tech")
     
     public static var values = [
         PRE_AGRICULTURE,
@@ -30,8 +30,16 @@ struct TechLevel {
         HI_TECH
     ]
     
-    init() {
-        
+    var description: String {
+        get {
+            return self.name
+        }
+    }
+    
+    var name : String
+    
+    init(_ name : String) {
+        self.name = name
     }
     
     static func getRandomTechLevel() -> TechLevel {
