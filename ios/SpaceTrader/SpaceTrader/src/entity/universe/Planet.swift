@@ -21,6 +21,7 @@ class Planet : CustomStringConvertible {
     var species : Species
     var resourceClass : ResourceClassification
     var marketplace : Marketplace
+    var event : Events
     
     init(builder : PlanetBuilder) {
         self.name = builder.name
@@ -32,6 +33,7 @@ class Planet : CustomStringConvertible {
         self.species = builder.species
         self.resourceClass = builder.resourceClass
         self.marketplace = builder.marketplace
+        self.event = builder.event
     }
     
     func getDist(other : Planet) -> Int {
@@ -43,7 +45,7 @@ class Planet : CustomStringConvertible {
         
         var sqrtVal = (a*a)+(b*b)
         sqrtVal -= (2.0*a*b*cos(Double(angle)))
-        var c = Int(sqrt(sqrtVal))
+        let c = Int(sqrt(sqrtVal))
         
         return c
     }
