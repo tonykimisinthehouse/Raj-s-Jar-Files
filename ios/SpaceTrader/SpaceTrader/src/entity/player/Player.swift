@@ -83,7 +83,7 @@ class Player {
             self.points = [4, 4, 4, 4]
             self.wallet = Wallet(credits: 9999)
             self.ship = Ship(type: ShipType.Gnat)
-            self.location = nil
+            self.location = Location(solarSystem: Model.current.game.getUniverse().solarSystem[0])
         }
         
         func points(points : [Int]) -> PlayerBuilder {

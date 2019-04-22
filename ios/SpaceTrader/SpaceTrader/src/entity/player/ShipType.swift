@@ -20,7 +20,7 @@ struct ShipType {
     public static let Termite = ShipType(200, 1)
     public static let Wasp = ShipType(200, 3)
     
-    var types = [
+    static var types = [
         Flea,
         Gnat,
         Firefly,
@@ -43,7 +43,7 @@ struct ShipType {
     
     func getShipsWithWeapons() -> [ShipType] {
         var ships : [ShipType] = []
-        for s in types {
+        for s in ShipType.types {
             if s.maxWeaponSlots > 0 {
                 ships.append(s)
             }

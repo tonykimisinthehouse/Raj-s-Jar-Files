@@ -25,11 +25,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="6nH-sn-gdi" kind="show" id="pKc-JT-ezh"/>
+                                    <segue destination="KAy-Pr-ARk" kind="show" id="37K-Qs-bkS"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Api-Na-3GC" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="BhS-We-V1V"/>
                             <constraint firstItem="Api-Na-3GC" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="Gf4-PC-wAh"/>
@@ -41,6 +41,141 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="599" y="27"/>
+        </scene>
+        <!--Start Controller-->
+        <scene sceneID="DdL-Ft-e3f">
+            <objects>
+                <viewController id="KAy-Pr-ARk" customClass="StartController" customModule="SpaceTrader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bWP-B2-Bpd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Embark on Your Journey:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJo-GW-uf7">
+                                <rect key="frame" x="0.0" y="52" width="375" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V5W-k3-4qC">
+                                <rect key="frame" x="47" y="97" width="281" height="29"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="24"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pilot" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cZA-Cw-lhl">
+                                <rect key="frame" x="16" y="203" width="169" height="29"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <action selector="validateCreditEntries" destination="KAy-Pr-ARk" eventType="editingChanged" id="e7I-RV-Cnd"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skill Points (0/16):" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zJ-8i-zJe">
+                                <rect key="frame" x="90" y="158" width="195.5" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Fighter" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e5Q-ii-WYx">
+                                <rect key="frame" x="190.5" y="203" width="168.5" height="29"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <action selector="validateCreditEntries" destination="KAy-Pr-ARk" eventType="editingChanged" id="ngC-1B-mFk"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Trader" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NDr-Ql-qW4">
+                                <rect key="frame" x="16" y="248" width="169" height="29"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <action selector="validateCreditEntries" destination="KAy-Pr-ARk" eventType="editingChanged" id="UIh-Xu-Pvg"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Engineer" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QTz-rH-HEm">
+                                <rect key="frame" x="190.5" y="248" width="168.5" height="29"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <action selector="validateCreditEntries" destination="KAy-Pr-ARk" eventType="editingChanged" id="BAN-5b-CW9"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Difficulty:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUo-wm-em2">
+                                <rect key="frame" x="0.0" y="309" width="375" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQB-fg-9jM">
+                                <rect key="frame" x="0.0" y="354" width="375" height="216"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0g6-db-2vl">
+                                <rect key="frame" x="0.0" y="567" width="375" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="NuI-Bo-hJj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <state key="normal" title="Let's Go &gt;">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="letsGo" destination="KAy-Pr-ARk" eventType="touchUpInside" id="qdx-Ux-j3f"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="0g6-db-2vl" secondAttribute="bottom" id="1jy-Vh-RCb"/>
+                            <constraint firstItem="cZA-Cw-lhl" firstAttribute="top" secondItem="9zJ-8i-zJe" secondAttribute="bottom" constant="16" id="24G-Oa-gca"/>
+                            <constraint firstItem="QTz-rH-HEm" firstAttribute="width" secondItem="NDr-Ql-qW4" secondAttribute="width" id="2SP-Yq-waK"/>
+                            <constraint firstItem="RQB-fg-9jM" firstAttribute="width" secondItem="bWP-B2-Bpd" secondAttribute="width" id="3Zh-wy-UDS"/>
+                            <constraint firstItem="V5W-k3-4qC" firstAttribute="width" secondItem="bWP-B2-Bpd" secondAttribute="width" multiplier="0.75" id="42q-ch-Rme"/>
+                            <constraint firstItem="V5W-k3-4qC" firstAttribute="centerX" secondItem="bWP-B2-Bpd" secondAttribute="centerX" id="8Nc-n0-Uog"/>
+                            <constraint firstItem="mJo-GW-uf7" firstAttribute="top" secondItem="3Ei-pt-wP4" secondAttribute="top" constant="32" id="ALy-Km-nbb"/>
+                            <constraint firstItem="cZA-Cw-lhl" firstAttribute="width" secondItem="bWP-B2-Bpd" secondAttribute="width" multiplier="0.45" id="C3b-L8-RGk"/>
+                            <constraint firstItem="mJo-GW-uf7" firstAttribute="width" secondItem="bWP-B2-Bpd" secondAttribute="width" id="EFW-0t-bU3"/>
+                            <constraint firstItem="NDr-Ql-qW4" firstAttribute="width" secondItem="cZA-Cw-lhl" secondAttribute="width" id="FZy-hO-Ime"/>
+                            <constraint firstItem="NDr-Ql-qW4" firstAttribute="top" secondItem="cZA-Cw-lhl" secondAttribute="bottom" constant="16" id="G2G-n6-UwK"/>
+                            <constraint firstItem="QTz-rH-HEm" firstAttribute="width" secondItem="cZA-Cw-lhl" secondAttribute="width" id="Hj2-UX-cyJ"/>
+                            <constraint firstItem="QTz-rH-HEm" firstAttribute="centerY" secondItem="NDr-Ql-qW4" secondAttribute="centerY" id="IWQ-R7-Es3"/>
+                            <constraint firstItem="V5W-k3-4qC" firstAttribute="top" secondItem="mJo-GW-uf7" secondAttribute="bottom" constant="16" id="LcG-zT-luP"/>
+                            <constraint firstItem="yUo-wm-em2" firstAttribute="centerX" secondItem="bWP-B2-Bpd" secondAttribute="centerX" id="NXn-D8-6eP"/>
+                            <constraint firstItem="e5Q-ii-WYx" firstAttribute="centerY" secondItem="cZA-Cw-lhl" secondAttribute="centerY" id="OKw-8b-88V"/>
+                            <constraint firstItem="e5Q-ii-WYx" firstAttribute="width" secondItem="cZA-Cw-lhl" secondAttribute="width" id="PjH-vt-pWv"/>
+                            <constraint firstItem="0g6-db-2vl" firstAttribute="width" secondItem="bWP-B2-Bpd" secondAttribute="width" id="QjK-fW-reI"/>
+                            <constraint firstItem="3Ei-pt-wP4" firstAttribute="trailing" secondItem="e5Q-ii-WYx" secondAttribute="trailing" constant="16" id="Rze-b5-lvs"/>
+                            <constraint firstItem="mJo-GW-uf7" firstAttribute="centerX" secondItem="bWP-B2-Bpd" secondAttribute="centerX" id="TUG-WO-iE2"/>
+                            <constraint firstItem="yUo-wm-em2" firstAttribute="top" secondItem="NDr-Ql-qW4" secondAttribute="bottom" constant="32" id="U29-So-THQ"/>
+                            <constraint firstItem="yUo-wm-em2" firstAttribute="width" secondItem="mJo-GW-uf7" secondAttribute="width" id="WSg-7X-24V"/>
+                            <constraint firstItem="RQB-fg-9jM" firstAttribute="top" secondItem="yUo-wm-em2" secondAttribute="bottom" constant="16" id="a5T-jF-2O2"/>
+                            <constraint firstItem="9zJ-8i-zJe" firstAttribute="top" secondItem="V5W-k3-4qC" secondAttribute="bottom" constant="32" id="dJt-57-9vY"/>
+                            <constraint firstItem="0g6-db-2vl" firstAttribute="centerX" secondItem="bWP-B2-Bpd" secondAttribute="centerX" id="eMR-Vf-JuN"/>
+                            <constraint firstItem="9zJ-8i-zJe" firstAttribute="centerX" secondItem="bWP-B2-Bpd" secondAttribute="centerX" id="ec5-tH-8rL"/>
+                            <constraint firstItem="RQB-fg-9jM" firstAttribute="centerX" secondItem="bWP-B2-Bpd" secondAttribute="centerX" id="ekj-wo-QJP"/>
+                            <constraint firstItem="cZA-Cw-lhl" firstAttribute="leading" secondItem="3Ei-pt-wP4" secondAttribute="leading" constant="16" id="hqA-Jb-OLQ"/>
+                            <constraint firstItem="3Ei-pt-wP4" firstAttribute="trailing" secondItem="QTz-rH-HEm" secondAttribute="trailing" constant="16" id="kqf-xG-hYq"/>
+                            <constraint firstItem="NDr-Ql-qW4" firstAttribute="leading" secondItem="3Ei-pt-wP4" secondAttribute="leading" constant="16" id="l4N-aD-i0g"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3Ei-pt-wP4"/>
+                    </view>
+                    <connections>
+                        <outlet property="difficultySpinner" destination="RQB-fg-9jM" id="GUb-LS-WOB"/>
+                        <outlet property="editEngineerPoints" destination="QTz-rH-HEm" id="nkp-KK-AAv"/>
+                        <outlet property="editFighterPoints" destination="e5Q-ii-WYx" id="8o9-Zb-MCg"/>
+                        <outlet property="editPilotPoints" destination="cZA-Cw-lhl" id="SSI-tT-gzg"/>
+                        <outlet property="editPlayerName" destination="V5W-k3-4qC" id="SwS-ej-P0m"/>
+                        <outlet property="editTraderPoints" destination="NDr-Ql-qW4" id="hD3-Mm-1QO"/>
+                        <outlet property="indicatorSkillPoints" destination="9zJ-8i-zJe" id="gc1-XT-tEG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LAz-os-OYv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1296.8" y="26.53673163418291"/>
         </scene>
         <!--Game Controller-->
         <scene sceneID="thr-uP-xKu">
@@ -158,7 +293,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PyB-3M-FnS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1375" y="27"/>
+            <point key="canvasLocation" x="2015" y="27"/>
         </scene>
         <!--Market Controller-->
         <scene sceneID="iIr-S8-x2G">
@@ -173,7 +308,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L1i-UV-9c7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2095" y="27"/>
+            <point key="canvasLocation" x="2735" y="27"/>
         </scene>
     </scenes>
     <resources>
