@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,171 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SpaceTrader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Api-Na-3GC">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="32"/>
+                                <state key="normal" title="START &gt;">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="6nH-sn-gdi" kind="show" id="pKc-JT-ezh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Api-Na-3GC" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="BhS-We-V1V"/>
+                            <constraint firstItem="Api-Na-3GC" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="Gf4-PC-wAh"/>
+                            <constraint firstItem="Api-Na-3GC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HG4-jt-MS5"/>
+                            <constraint firstItem="Api-Na-3GC" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="cTa-XH-meO"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--Game Controller-->
+        <scene sceneID="thr-uP-xKu">
+            <objects>
+                <viewController id="6nH-sn-gdi" customClass="GameController" customModule="SpaceTrader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="14T-ST-EsR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Xg-1A-e1v">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AXR - Centauri" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CuO-UL-P4m">
+                                <rect key="frame" x="0.0" y="70" width="375" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="aeL-bB-NKe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="planet.png" translatesAutoresizingMaskIntoConstraints="NO" id="qS9-NV-QfO">
+                                <rect key="frame" x="-68.5" y="170" width="512" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="S2n-SL-KMe"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="olb-TW-7g0">
+                                <rect key="frame" x="137.5" y="350" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="olb-TW-7g0" secondAttribute="height" multiplier="1:1" id="EVi-Fp-p55"/>
+                                    <constraint firstAttribute="height" constant="100" id="kaI-Cp-CDM"/>
+                                </constraints>
+                                <state key="normal" image="rocket.png"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Orbit Radius: 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRa-Ka-QNv">
+                                <rect key="frame" x="122.5" y="470" width="130" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tech Level: Renaissance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sbl-5Z-zQg">
+                                <rect key="frame" x="81.5" y="502" width="212.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resources: Poor Soil" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCG-qo-Rv8">
+                                <rect key="frame" x="98.5" y="534" width="178" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Species: Humanoid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqY-oo-Ohm">
+                                <rect key="frame" x="102.5" y="566" width="170" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event: Boredom" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWl-SN-jsh">
+                                <rect key="frame" x="118.5" y="598" width="138" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U8Y-UT-aTI">
+                                <rect key="frame" x="257.5" y="350" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="U8Y-UT-aTI" secondAttribute="height" multiplier="1:1" id="aT7-1f-FDM"/>
+                                </constraints>
+                                <state key="normal" title="MARKET"/>
+                                <connections>
+                                    <segue destination="92Z-A1-UC6" kind="show" id="9ez-qH-eDi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="U8Y-UT-aTI" firstAttribute="top" secondItem="olb-TW-7g0" secondAttribute="top" id="08e-Mt-qcB"/>
+                            <constraint firstItem="0Xg-1A-e1v" firstAttribute="centerY" secondItem="14T-ST-EsR" secondAttribute="centerY" id="1SA-G6-Gzo"/>
+                            <constraint firstItem="qS9-NV-QfO" firstAttribute="top" secondItem="CuO-UL-P4m" secondAttribute="bottom" constant="50" id="3Ct-fZ-pHr"/>
+                            <constraint firstItem="U8Y-UT-aTI" firstAttribute="bottom" secondItem="olb-TW-7g0" secondAttribute="bottom" id="7ZC-xo-aW2"/>
+                            <constraint firstItem="CuO-UL-P4m" firstAttribute="centerX" secondItem="14T-ST-EsR" secondAttribute="centerX" id="7vh-xV-zwb"/>
+                            <constraint firstItem="CuO-UL-P4m" firstAttribute="top" secondItem="jHt-zj-To4" secondAttribute="top" constant="50" id="8h7-4I-YK5"/>
+                            <constraint firstItem="U8Y-UT-aTI" firstAttribute="leading" secondItem="olb-TW-7g0" secondAttribute="trailing" constant="20" id="A6K-RK-XF0"/>
+                            <constraint firstItem="GRa-Ka-QNv" firstAttribute="top" secondItem="olb-TW-7g0" secondAttribute="bottom" constant="20" id="EYo-WH-H0d"/>
+                            <constraint firstItem="qS9-NV-QfO" firstAttribute="centerX" secondItem="14T-ST-EsR" secondAttribute="centerX" id="FUi-bx-AwQ"/>
+                            <constraint firstItem="olb-TW-7g0" firstAttribute="top" secondItem="qS9-NV-QfO" secondAttribute="bottom" constant="30" id="FdY-q8-TAX"/>
+                            <constraint firstItem="CuO-UL-P4m" firstAttribute="width" secondItem="14T-ST-EsR" secondAttribute="width" id="SkL-Q6-Jv6"/>
+                            <constraint firstItem="ZCG-qo-Rv8" firstAttribute="centerX" secondItem="14T-ST-EsR" secondAttribute="centerX" id="TWC-C1-lHU"/>
+                            <constraint firstItem="0Xg-1A-e1v" firstAttribute="width" secondItem="14T-ST-EsR" secondAttribute="width" id="Uta-QM-RpI"/>
+                            <constraint firstItem="ZCG-qo-Rv8" firstAttribute="top" secondItem="Sbl-5Z-zQg" secondAttribute="bottom" constant="8" id="Wcy-jt-ngT"/>
+                            <constraint firstItem="oWl-SN-jsh" firstAttribute="top" secondItem="uqY-oo-Ohm" secondAttribute="bottom" constant="8" id="aCm-k4-h8H"/>
+                            <constraint firstItem="uqY-oo-Ohm" firstAttribute="centerX" secondItem="14T-ST-EsR" secondAttribute="centerX" id="c48-77-Rmz"/>
+                            <constraint firstItem="GRa-Ka-QNv" firstAttribute="centerX" secondItem="14T-ST-EsR" secondAttribute="centerX" id="cbS-YG-bdW"/>
+                            <constraint firstItem="0Xg-1A-e1v" firstAttribute="centerX" secondItem="14T-ST-EsR" secondAttribute="centerX" id="fRD-Iq-Nrk"/>
+                            <constraint firstItem="olb-TW-7g0" firstAttribute="centerX" secondItem="14T-ST-EsR" secondAttribute="centerX" id="iNT-RA-wbQ"/>
+                            <constraint firstItem="0Xg-1A-e1v" firstAttribute="height" secondItem="14T-ST-EsR" secondAttribute="height" id="k06-Ae-zr0"/>
+                            <constraint firstItem="oWl-SN-jsh" firstAttribute="centerX" secondItem="14T-ST-EsR" secondAttribute="centerX" id="pIN-EU-8Xh"/>
+                            <constraint firstItem="Sbl-5Z-zQg" firstAttribute="centerX" secondItem="14T-ST-EsR" secondAttribute="centerX" id="sG6-I0-xTe"/>
+                            <constraint firstItem="Sbl-5Z-zQg" firstAttribute="top" secondItem="GRa-Ka-QNv" secondAttribute="bottom" constant="8" id="tu2-Bq-WKp"/>
+                            <constraint firstItem="uqY-oo-Ohm" firstAttribute="top" secondItem="ZCG-qo-Rv8" secondAttribute="bottom" constant="8" id="v9N-ro-ejT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jHt-zj-To4"/>
+                    </view>
+                    <connections>
+                        <outlet property="eventIndicator" destination="oWl-SN-jsh" id="a3k-5Y-RfY"/>
+                        <outlet property="orbitRadiusIndicator" destination="GRa-Ka-QNv" id="Gkn-o7-vDd"/>
+                        <outlet property="planetNameIndicator" destination="CuO-UL-P4m" id="Ark-a6-iU5"/>
+                        <outlet property="resourceIndicator" destination="ZCG-qo-Rv8" id="o85-6t-zbo"/>
+                        <outlet property="speciesIndicator" destination="uqY-oo-Ohm" id="qAC-oR-OSS"/>
+                        <outlet property="techLevelIndicator" destination="Sbl-5Z-zQg" id="L8x-nx-rdA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PyB-3M-FnS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1375" y="27"/>
+        </scene>
+        <!--Market Controller-->
+        <scene sceneID="iIr-S8-x2G">
+            <objects>
+                <viewController id="92Z-A1-UC6" customClass="MarketController" customModule="SpaceTrader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NKt-VX-o29">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="pxa-iY-GLD"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L1i-UV-9c7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2095" y="27"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="planet.png" width="512" height="512"/>
+        <image name="rocket.png" width="512" height="512"/>
+    </resources>
 </document>
