@@ -14,8 +14,7 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         
         // Segue immediately
-        let vc = StartController()
-        // TODO auto-segue not working // self.present(vc, animated: true, completion: nil)
+        self.performSegue(withIdentifier: "start", sender: self)
     }
 
 }

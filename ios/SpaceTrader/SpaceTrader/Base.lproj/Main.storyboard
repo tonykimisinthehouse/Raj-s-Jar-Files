@@ -25,7 +25,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="KAy-Pr-ARk" kind="show" id="37K-Qs-bkS"/>
+                                    <segue destination="KAy-Pr-ARk" kind="show" identifier="start" id="37K-Qs-bkS"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -171,6 +171,7 @@
                         <outlet property="editPlayerName" destination="V5W-k3-4qC" id="SwS-ej-P0m"/>
                         <outlet property="editTraderPoints" destination="NDr-Ql-qW4" id="hD3-Mm-1QO"/>
                         <outlet property="indicatorSkillPoints" destination="9zJ-8i-zJe" id="gc1-XT-tEG"/>
+                        <segue destination="6nH-sn-gdi" kind="show" identifier="game" id="ETy-CT-1PS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LAz-os-OYv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -249,7 +250,7 @@
                                 </constraints>
                                 <state key="normal" title="MARKET"/>
                                 <connections>
-                                    <segue destination="92Z-A1-UC6" kind="show" id="9ez-qH-eDi"/>
+                                    <segue destination="92Z-A1-UC6" kind="show" identifier="market" id="9ez-qH-eDi"/>
                                 </connections>
                             </button>
                         </subviews>

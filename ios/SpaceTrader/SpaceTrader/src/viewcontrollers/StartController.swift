@@ -37,10 +37,7 @@ class StartController: UIViewController {
             let index = self.difficultySpinner.selectedRow(inComponent: 0)
             let diff = self.difficultyArray[index]
             Model.current = Model(name: self.editPlayerName.text!, points: self.getDifficultyArray(), difficulty: diff)
-            
-            // Segue
-            let vc = GameController()
-            self.present(vc, animated: true, completion: nil)
+            self.performSegue(withIdentifier: "game", sender: self)
         }
     }
 
