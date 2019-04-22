@@ -25,7 +25,7 @@
 		E2AF6D02226B8B3300B0C7BA /* Marketplace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CCD226B8B3300B0C7BA /* Marketplace.swift */; };
 		E2AF6D03226B8B3300B0C7BA /* Good.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CCE226B8B3300B0C7BA /* Good.swift */; };
 		E2AF6D04226B8B3300B0C7BA /* TradeGoods.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CCF226B8B3300B0C7BA /* TradeGoods.swift */; };
-		E2AF6D05226B8B3300B0C7BA /* PlanetEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CD1226B8B3300B0C7BA /* PlanetEvents.swift */; };
+		E2AF6D05226B8B3300B0C7BA /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CD1226B8B3300B0C7BA /* Events.swift */; };
 		E2AF6D06226B8B3300B0C7BA /* SolarSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CD2226B8B3300B0C7BA /* SolarSystem.swift */; };
 		E2AF6D07226B8B3300B0C7BA /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CD3226B8B3300B0C7BA /* Coordinate.swift */; };
 		E2AF6D08226B8B3300B0C7BA /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF6CD4226B8B3300B0C7BA /* Planet.swift */; };
@@ -82,7 +82,7 @@
 		E2AF6CCD226B8B3300B0C7BA /* Marketplace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Marketplace.swift; sourceTree = "<group>"; };
 		E2AF6CCE226B8B3300B0C7BA /* Good.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Good.swift; sourceTree = "<group>"; };
 		E2AF6CCF226B8B3300B0C7BA /* TradeGoods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeGoods.swift; sourceTree = "<group>"; };
-		E2AF6CD1226B8B3300B0C7BA /* PlanetEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetEvents.swift; sourceTree = "<group>"; };
+		E2AF6CD1226B8B3300B0C7BA /* Events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		E2AF6CD2226B8B3300B0C7BA /* SolarSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolarSystem.swift; sourceTree = "<group>"; };
 		E2AF6CD3226B8B3300B0C7BA /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		E2AF6CD4226B8B3300B0C7BA /* Planet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
@@ -226,7 +226,7 @@
 		E2AF6CD0226B8B3300B0C7BA /* universe */ = {
 			isa = PBXGroup;
 			children = (
-				E2AF6CD1226B8B3300B0C7BA /* PlanetEvents.swift */,
+				E2AF6CD1226B8B3300B0C7BA /* Events.swift */,
 				E2AF6CD2226B8B3300B0C7BA /* SolarSystem.swift */,
 				E2AF6CD3226B8B3300B0C7BA /* Coordinate.swift */,
 				E2AF6CD4226B8B3300B0C7BA /* Planet.swift */,
@@ -391,7 +391,7 @@
 				E2AF6D07226B8B3300B0C7BA /* Coordinate.swift in Sources */,
 				E2AF6D1F226B8B3300B0C7BA /* MarketController.swift in Sources */,
 				E2AF6D04226B8B3300B0C7BA /* TradeGoods.swift in Sources */,
-				E2AF6D05226B8B3300B0C7BA /* PlanetEvents.swift in Sources */,
+				E2AF6D05226B8B3300B0C7BA /* Events.swift in Sources */,
 				E2AF6D01226B8B3300B0C7BA /* Item.swift in Sources */,
 				E2AF6D1C226B8B3300B0C7BA /* ViewController.swift in Sources */,
 				E2AF6D18226B8B3300B0C7BA /* Ship.swift in Sources */,

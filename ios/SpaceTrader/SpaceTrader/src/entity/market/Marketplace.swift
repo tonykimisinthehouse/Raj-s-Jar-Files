@@ -12,6 +12,6 @@ class Marketplace {
     
 //    var tradeGoodsInMarketMap = [TradeGoods : Item]()
     
-    var 
+    // TODO marketplace
     
 }

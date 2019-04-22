@@ -13,12 +13,12 @@ class Location {
     var planet : Planet
     var solarSystem : SolarSystem
     
-    init() {
-        self.init(Model.getModel().getUniverse().getRandomSolarSystem())
+    convenience init() {
+        self.init(solarSystem: Model.current.game.getUniverse().getRandomSolarSystem())
     }
     
-    init(solarSystem : SolarSystem) {
-        self.init(solarSystem, solarSystem.getRandomPlanet())
+    convenience init(solarSystem : SolarSystem) {
+        self.init(solarSystem: solarSystem, planet: solarSystem.getRandomPlanet())
     }
     
     init(solarSystem : SolarSystem, planet : Planet) {
@@ -26,15 +26,15 @@ class Location {
         self.setPlanet(planet)
     }
     
-    func setSolarSystem(solarSystem : SolarSystem) {
+    func setSolarSystem(_ solarSystem : SolarSystem) {
         self.solarSystem = solarSystem
     }
     
     func checkIfTravelPossible(destinationSS : SolarSystem, destinationP : Planet) -> Int {
-        if (self.checkIfTravelInSS(destinationSS)) {
+        if (self.checkIfTravelInSS(destinationSS: destinationSS)) {
             return 0
         } else {
-            if (planet.getIsWarpZone()) {
+            if (planet.isWarpZone) {
                 return 1
             }
         }
@@ -42,15 +42,15 @@ class Location {
     }
     
     func checkIfTravelInSS(destinationSS : SolarSystem) -> Bool {
-        return solarSystem.equals(destinationSS)
+        return solarSystem == destinationSS
     }
     
     func calculateFuelRq(destinationP : Planet) -> Int {
-        let distance = self.planet.getDist(destinationP)
+        let distance = self.planet.getDist(other: destinationP)
         return distance + 5
     }
     
-    func setPlanet(planet : Planet) {
+    func setPlanet(_ planet : Planet) {
         self.planet = planet
     }
     

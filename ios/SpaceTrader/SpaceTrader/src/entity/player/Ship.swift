@@ -95,7 +95,7 @@ class Ship {
     }
     
     func hasIllegalGoods() -> Bool {
-        for (g in Good.ILLEGAL_GOODS) {
+        for g in TradeGoods.ILLEGAL_GOODS {
             if (cargo[good] != nil) {
                 if (cargo[good].quantity > 0) {
                     return true
@@ -106,7 +106,7 @@ class Ship {
     }
     
     func removeIllegalGoods() {
-        for (g in Good.ILLEGAL_GOODS) {
+        for good in TradeGoods.ILLEGAL_GOODS {
             if (cargo[good] != nil) {
                 if (cargo[good].quantity > 0) {
                     cargo.remove(at: good)
@@ -124,7 +124,7 @@ class Ship {
     }
     
     func attackShip(other : Ship) -> Bool {
-        for (w in self.getWeapons()) {
+        for w in self.weapons {
             let playerHit = 0
             let dead = other.takeDamage(w: w)
             if (dead) {

@@ -20,8 +20,8 @@ class PirateBattleManager : BattleManager {
     
     override func executeTurn(pea: PlayerEncounterAction, es: EncounterState) -> String {
         let newES = EncounterState()
-        let ret = pea.doAction(player, otherShip, newES)
-        es.setOver(newES.isOver())
+        let ret = pea.doAction(player: player, otherShip: otherShip, es: newES)
+        es.isOver = newES.isOver
         return ret
     }
     

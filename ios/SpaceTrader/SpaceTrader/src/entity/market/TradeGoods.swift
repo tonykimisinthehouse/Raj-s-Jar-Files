@@ -18,7 +18,7 @@ struct TradeGoods {
     public static let Medicine = TradeGoods("Medicine", 0, 0, 2, 30, 3, 4, Events.DROUGHT, ResourceClassification.LOTS_OF_WATER, ResourceClassification.DESERT, 30, 50)
     public static let Machines = TradeGoods("Machines", 0, 0, 2, 30, 3, 4, Events.DROUGHT, ResourceClassification.LOTS_OF_WATER, ResourceClassification.DESERT, 30, 50)
     public static let Narcotics = TradeGoods("Narcotics", 0, 0, 2, 30, 3, 4, Events.DROUGHT, ResourceClassification.LOTS_OF_WATER, ResourceClassification.DESERT, 30, 50)
-    public static let Robots = TradeGood("Robots", 0, 0, 2, 30, 3, 4, Events.DROUGHT, ResourceClassification.LOTS_OF_WATER, ResourceClassification.DESERT, 30, 50)
+    public static let Robots = TradeGoods("Robots", 0, 0, 2, 30, 3, 4, Events.DROUGHT, ResourceClassification.LOTS_OF_WATER, ResourceClassification.DESERT, 30, 50)
     
     var goods = [
         Water,
@@ -30,7 +30,7 @@ struct TradeGoods {
         Medicine
     ]
     
-    var ILLEGAL_GOODS = [TradeGoods.FirearmsTradeGoods.Narcotics]
+    static var ILLEGAL_GOODS = [TradeGoods.Firearms, TradeGoods.Narcotics]
     
     var name : String
     var MLTP : Int
@@ -38,19 +38,21 @@ struct TradeGoods {
     var TTP : Int
     var BasePrice : Int
     var IPL : Int
+    var Var : Int
     var IE : Events
     var CR : ResourceClassification
     var ER : ResourceClassification
     var MTL : Int
     var MTH : Int
     
-    init(_ name : String, _ MLTP : Int, _ MLTU : Int, _ TTP : Int, _ BasePrice : Int, _ IPL : Int, _ IE : Events, _ CR : ResourceClassification, _ ER : ResourceClassification, _ MTL : Int, _ MTH : Int) {
+    init(_ name : String, _ MLTP : Int, _ MLTU : Int, _ TTP : Int, _ Var : Int, _ BasePrice : Int, _ IPL : Int, _ IE : Events, _ CR : ResourceClassification, _ ER : ResourceClassification, _ MTL : Int, _ MTH : Int) {
         self.name = name
         self.MLTP = MLTP
         self.MLTU = MLTU
         self.TTP = TTP
         self.BasePrice = BasePrice
         self.IPL = IPL
+        self.Var = Var
         self.IE = IE
         self.CR = CR
         self.ER = ER

@@ -39,21 +39,21 @@ class Player {
     var location : Location
     
     init(builder : PlayerBuilder) {
-        self.setName(builder.name)
-        self.setPoints(builder.points)
-        self.setWallet(builder.wallet)
-        self.setShip(builder.ship)
+        self.name = builder.name
+        self.points = builder.points
+        self.wallet = builder.wallet
+        self.ship = builder.ship
     }
     
     func checkCargoCapacityEnough(quantity : Int) -> Bool {
-        return quantity <= self.ship!.getAvailableCargoCapacity()
+        return quantity <= self.ship!.availableCargoCapacity
     }
     
     func setNoShip() {
         self.ship = nil
     }
     
-    func travel(destinationSS : SolarSystem, destinationP : Planet) {
+    func travel(destinationSS : SolarSystem, destinationP : Planet) -> Bool {
         var statusCode : Int = location.checkIfTravelPossible(destinationSS: destinationSS, destinationP: destinationP)
         
         if (statusCode == -1) {

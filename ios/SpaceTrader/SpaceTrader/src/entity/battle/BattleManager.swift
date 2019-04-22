@@ -15,7 +15,7 @@ class BattleManager {
     
     init(player : Player) {
         self.player = player
-        self.playerShip = player.getShip()
+        self.playerShip = player.ship!
         self.otherShip = Ship.getRandomShipWithWeapons()
     }
     

@@ -16,7 +16,7 @@ class AttackAction : PlayerEncounterAction {
         let playerShip = player.ship!
         
         retString += "You attack the other ship.\n"
-        let otherShipDead = playerShip.attackShip(otherShip)
+        let otherShipDead = playerShip.attackShip(other: otherShip)
         
         if (otherShipDead) {
             retString += "The other ship explodes.\n"
@@ -25,7 +25,7 @@ class AttackAction : PlayerEncounterAction {
         }
         
         retString += "The other ship attacks you.\n"
-        let playerShipDead = otherShip.attackShip(playerShip)
+        let playerShipDead = otherShip.attackShip(other: playerShip)
         
         if (playerShipDead) {
             retString += "Your ship explodes. You died!\n"

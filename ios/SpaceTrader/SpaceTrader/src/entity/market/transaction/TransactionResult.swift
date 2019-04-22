@@ -18,12 +18,4 @@ class TransactionResult {
         self.item = item
     }
     
-    func getIsTransactionSuccess() {
-        return self.isTransactionSuccess
-    }
-    
-    func getItem() -> Item {
-        return self.item
-    }
-    
 }

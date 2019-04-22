@@ -16,14 +16,14 @@ class MarketTransactionValidator : TransactionValidator {
         self.marketplace = mp
     }
     
-    func validate(order : TransactionOrder) -> Bool {
+    func validate(to order : TransactionOrder) -> Bool {
         // TODO stubbed
         return true
     }
     
     func validateNTransaction(order : TransactionOrder) -> TransactionResult {
-        let isTransSuccess = validate(order: order)
-        let result = TransactionResult(isTranS: isTransSuccess, item: order.getItem())
+        let isTransSuccess = validate(to: order)
+        let result = TransactionResult(isTranS: isTransSuccess, item: order.item)
     }
     
 }
