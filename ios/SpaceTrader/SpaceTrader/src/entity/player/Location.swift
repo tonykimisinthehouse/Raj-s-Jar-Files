@@ -14,7 +14,7 @@ class Location {
     var solarSystem : SolarSystem
     
     convenience init() {
-        self.init(solarSystem: Model.current.game.getUniverse().getRandomSolarSystem())
+        self.init(solarSystem: Model.current.game!.getUniverse().getRandomSolarSystem())
     }
     
     convenience init(solarSystem : SolarSystem) {

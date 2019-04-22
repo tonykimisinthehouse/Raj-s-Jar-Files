@@ -44,14 +44,14 @@ class SolarSystem : Equatable {
     
     class func generatePlanets(size : Int) -> [Planet] {
         var planets : [Planet] = [Planet]()
-        var nameList = PlanetNames.generateName(numOfNames: planets.count)
+        var nameList = PlanetNames.generateName(numOfNames: MAX_PLANETS)
         
         var orbitRadius : Int = 0
         var orbitAngle : Int = 0
         for i in 0..<nameList.count {
             orbitRadius = Int.random(in: 0..<4)
             orbitAngle = Int.random(in: 0..<360)
-            planets[i] = Planet.PlanetBuilder(name: nameList[i], orbitRadius: orbitRadius, orbitAngle: orbitAngle).build()
+            planets.append(Planet.PlanetBuilder(name: nameList[i], orbitRadius: orbitRadius, orbitAngle: orbitAngle).build())
         }
         return planets
     }

@@ -24,12 +24,12 @@ class GameController: UIViewController {
     }
     
     func updateData() {
-        self.planetNameIndicator.text = Model.current.player.location.planet.name
-        self.orbitRadiusIndicator.text = "Orbit Radius: \(Model.current.player.location.planet.orbitRadius)"
-        self.techLevelIndicator.text = "Tech Level: \(Model.current.player.location.planet.techLevel)"
-        self.resourceIndicator.text = "Resources: \(Model.current.player.location.planet.resourceClass)"
-        self.eventIndicator.text = "Event: \(Model.current.player.location.planet.event)"
-        self.speciesIndicator.text = "Species: \(Model.current.player.location.planet.species)"
+        self.planetNameIndicator.text = Model.current.player!.location.planet.name
+        self.orbitRadiusIndicator.text = "Orbit Radius: \(Model.current.player!.location.planet.orbitRadius)"
+        self.techLevelIndicator.text = "Tech Level: \(Model.current.player!.location.planet.techLevel)"
+        self.resourceIndicator.text = "Resources: \(Model.current.player!.location.planet.resourceClass)"
+        self.eventIndicator.text = "Event: \(Model.current.player!.location.planet.event)"
+        self.speciesIndicator.text = "Species: \(Model.current.player!.location.planet.species)"
     }
 
 }

@@ -26,12 +26,12 @@ class Universe : CustomStringConvertible {
     }
     
     func createUniverse() {
-        for i in 0..<self.solarSystem.count {
+        for i in 0..<Universe.MAX_SOLAR_SYSTEMS {
             var nameSet : [String] = [String]()
             var coordSet : [Coordinate] = [Coordinate]()
             let name : String = PlanetNames.generateName()
             let coordinate : Coordinate = Coordinate(x: 0, y: 0)
-            solarSystem[i] = SolarSystem(name: name, coordinate: coordinate)
+            self.solarSystem.append(SolarSystem(name: name, coordinate: coordinate))
         }
     }
     
