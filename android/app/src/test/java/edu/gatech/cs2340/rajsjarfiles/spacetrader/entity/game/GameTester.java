@@ -12,9 +12,9 @@ public class GameTester {
     /**
      * Outputs the game to the console.
      */
-    @Test
-    public void testGameToString() {
-        Game game = new Game(GameDifficulty.BEGINNER);
-        System.out.println(game);
-    }
+//    @Test
+//    public void testGameToString() {
+//        Game game = new Game(GameDifficulty.BEGINNER);
+//        System.out.println(game);
+//    }
 }

@@ -23,11 +23,11 @@ public class SolarSystemTester {
     /**
      * Checks for correct solar system generation.
      */
-    @Test
-    public void testSolarSystemGeneration() {
-        for (int i = 0; i < 100; i++) {
-            SolarSystem s = new SolarSystem("Raj", new Coordinate());
-            System.out.println(s.toString());
-        }
-    }
+//    @Test
+//    public void testSolarSystemGeneration() {
+//        for (int i = 0; i < 100; i++) {
+//            SolarSystem s = new SolarSystem("Raj", new Coordinate());
+//            System.out.println(s.toString());
+//        }
+//    }
 }

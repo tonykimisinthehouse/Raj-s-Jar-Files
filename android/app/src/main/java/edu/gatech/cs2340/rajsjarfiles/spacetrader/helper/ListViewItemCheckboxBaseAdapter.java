@@ -16,7 +16,7 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
  */
 public class ListViewItemCheckboxBaseAdapter extends BaseAdapter {
 
-    private List<ListViewItemDTO> listViewItemDtoList;
+    private final List<ListViewItemDTO> listViewItemDtoList;
 
     private Context ctx;
 
