@@ -1,25 +1,26 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 /**
  * Represents a solar system in the universe.
  */
 public class SolarSystem {
-    public static final int MIN_PLANETS = 3;
-    public static final int MAX_PLANETS = 10;
+    private static final int MIN_PLANETS = 3;
+    private static final int MAX_PLANETS = 10;
 
-    static Random rand = new Random();
+    private static final int FULL_CIRCLE = 360;
+
+    private static final Random rand = new Random();
 
     //using an array because the size won't change
-    private Planet[] planets;
-    private HashMap<String, Planet> planetMap;
-    private String name;
-    private Coordinate coordinate;
+    private final Planet[] planets;
+    private final HashMap<String, Planet> planetMap;
+    private final String name;
+    private final Coordinate coordinate;
 
     /**
      * Constructor to create a solar system.
@@ -31,7 +32,7 @@ public class SolarSystem {
         this.name = name;
         this.coordinate = coordinate;
         this.planets = generatePlanets(rand.nextInt(
-                MAX_PLANETS - MIN_PLANETS + 1) + MIN_PLANETS);
+                (MAX_PLANETS - MIN_PLANETS) + 1) + MIN_PLANETS);
         this.planetMap = new HashMap<>();
         this.computePlanetMap();
         assignWarpZone();
@@ -55,18 +56,17 @@ public class SolarSystem {
      * @param size the number of planets to generate
      * @return the array of planets
      */
-    public static Planet[] generatePlanets(int size) {
+    private static Planet[] generatePlanets(int size) {
 
         Planet[] planets = new Planet[size];
         String[] nameList = PlanetNames.generateName(planets.length);
 
-        int orbitRadius = 0, orbitAngle = 0;
-
+        int orbitRadius = 0;
+        int orbitAngle = 0;
         for (int i = 0; i < nameList.length; i++) {
-
             orbitRadius = rand.nextInt(4) + 1;
 
-            ArrayList<Integer> arrayList = new ArrayList<>();
+            List<Integer> arrayList = new ArrayList<>();
             for (int r = 0; r < i; r++) {
                 if (planets[r].getOrbitRadius() == orbitRadius) {
                     arrayList.add(planets[r].getOrbitAngle());
@@ -150,6 +150,9 @@ public class SolarSystem {
         return planets[rand.nextInt(planets.length)];
     }
 
+    /**
+     * @return the planet with a warp zone
+     */
     public Planet getPlanetWithWarp() {
         for (Planet planet : planets) {
             if (planet.getIsWarpZone()) {
@@ -164,8 +167,8 @@ public class SolarSystem {
         String ret = "";
         ret += String.format("%-12s", getName())
                 + " " + getCoordinate() + " " + "\n";
-        for (int i = 0; i < planets.length; i++) {
-            ret += "   - " + planets[i].toString() + "\n";
+        for (Planet planet : planets) {
+            ret += "   - " + planet.toString() + "\n";
         }
         return ret;
     }
@@ -179,7 +182,7 @@ public class SolarSystem {
             return false;
         }
         SolarSystem ss = (SolarSystem) that;
-        return this.name == ss.name
+        return (this.name == ss.name)
                 && this.getCoordinate().equals(ss.getCoordinate());
     }
 

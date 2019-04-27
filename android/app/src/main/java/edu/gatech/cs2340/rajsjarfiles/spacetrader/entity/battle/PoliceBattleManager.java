@@ -4,6 +4,9 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.EncounterState;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.PlayerEncounterAction;
 
+/**
+ * Manages an encounter with the police.
+ */
 public class PoliceBattleManager extends BattleManager {
 
     /**

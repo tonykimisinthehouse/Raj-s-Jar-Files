@@ -3,16 +3,13 @@ package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
 
+/**
+ * Represents a player's submit action.
+ */
 public class SubmitAction implements PlayerEncounterAction {
+    private static final float TAKEN_CREDITS_RATIO = 0.8f;
 
-    /**
-     * Player submits to a police inspection.
-     *
-     * @param player the player
-     * @param otherShip the other ship
-     * @param es the state of the encounter (over or not over)
-     * @return a description of what's happening
-     */
+    @Override
     public String doAction(Player player, Ship otherShip, EncounterState es) {
         String retString = "";
 
@@ -23,7 +20,7 @@ public class SubmitAction implements PlayerEncounterAction {
                     + "and confiscate all your goods.\n"; //all or just illegal?
             retString += "You pay a fine.\n";
 
-            player.getWallet().setCredits(0.8f);
+            player.getWallet().setCredits(TAKEN_CREDITS_RATIO);
 
             retString += "Your ship was: \n";
             retString += playerShip.toString() + "\n\n";

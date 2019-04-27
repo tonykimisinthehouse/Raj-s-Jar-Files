@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Random;
 
@@ -7,7 +8,10 @@ import java.util.Random;
  * All of the possible names for the planets and solar system.
  */
 public class PlanetNames {
-    public static final String[] NAMES = new String[] {
+    private static final int NUM_CHARS = 26;
+    private static final int START_CHAR = 65;
+
+    private static final String[] NAMES = new String[] {
         "Acamar",
         /*
          * The alternate personality for The Nameless One
@@ -145,7 +149,7 @@ public class PlanetNames {
     private static final int MIN_MOD = 1;   //the max letter modifications
     private static final int MAX_MOD = 5;
 
-    private static Random rand = new Random();
+    private static final Random rand = new Random();
 
     /**
      * Generates a random name that is used for planets and solar systems.
@@ -157,9 +161,9 @@ public class PlanetNames {
         int addMod = rand.nextInt(7);
         int randName = rand.nextInt(NAMES.length);
         if (addMod == 0) {  //add letter modifications
-            int iter = rand.nextInt(MAX_MOD - MIN_MOD + 1) + MIN_MOD;
+            int iter = rand.nextInt((MAX_MOD - MIN_MOD) + 1) + MIN_MOD;
             for (int i = 0; i < iter; i++) {
-                int randLetter = rand.nextInt(26) + 65;
+                int randLetter = rand.nextInt(NUM_CHARS) + START_CHAR;
                 name += (char) randLetter;
             }
             name += "-";
@@ -176,7 +180,7 @@ public class PlanetNames {
      */
     public static String[] generateName(int numOfNames) {
         String[] nameList = new String[numOfNames];
-        HashSet<String> nameSet = new HashSet<>();
+        Collection<String> nameSet = new HashSet<>();
         String name = PlanetNames.generateName();
         for (int i = 0; i < numOfNames; i++) {
             while (!nameSet.add(name)) {

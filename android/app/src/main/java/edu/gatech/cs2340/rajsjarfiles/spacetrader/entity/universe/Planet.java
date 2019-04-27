@@ -1,29 +1,32 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
+import java.util.Collection;
 import java.util.Random;
 
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Marketplace;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.utility.LogCustom;
 
 
 /**
  * Represents a planet within a solar system.
+ * Can only be instantiated by PlanetBuilder!!
  */
-public class Planet {
-    private String name;
+public final class Planet {
+    private final String name;
 
-    private int radius;         //radius of planet itself
-    private int orbitRadius;    //distance from center
-    private int orbitAngle;     //angle from center
-    private boolean isWarpZone = false;
+    private final int radius;         //radius of planet itself
+    private final int orbitRadius;    //distance from center
+    private final int orbitAngle;     //angle from center
+    private boolean isWarpZone;
 
-    private TechLevel techLevel;
-    private Habitats habitats;
-    private Species species;
-    private ResourceClassification resourceClass;
-    private Marketplace marketplace;
+    private final TechLevel techLevel;
+    private final Habitats habitats;
+    private final Species species;
+    private final ResourceClassification resourceClass;
+    private final Marketplace marketplace;
 
-    static Random rand = new Random();
+    private static final Random rand = new Random();
 
     ///////////////////////////// CONSTRUCTOR /////////////////////////////
     /**
@@ -31,7 +34,7 @@ public class Planet {
      *
      * @param builder the planet builder
      */
-    public Planet(PlanetBuilder builder) {
+    private Planet(PlanetBuilder builder) {
         this.name = builder.name;
         this.radius = builder.radius;
         this.orbitRadius = builder.orbitRadius;
@@ -68,21 +71,24 @@ public class Planet {
     }
 
     /**
-     * Get orbital angle of a planet (0 - 360)
-     * @return orbital angle of a planet
+     * @return the planet's orbit angle
      */
     public int getOrbitAngle() {
         return orbitAngle;
     }
 
     /**
-     * Set waprp zone to the planet
-     * @param bool
+     * Set this planet as a warp zone.
+     *
+     * @param bool if it is a warp zone or not
      */
     public void setIsWarpZone(Boolean bool) {
         this.isWarpZone = bool;
     }
 
+    /**
+     * @return if this planet is a warp zone
+     */
     public boolean getIsWarpZone() {
         return isWarpZone;
     }
@@ -96,10 +102,25 @@ public class Planet {
     }
 
     /**
+     * @return string representation of tech level
+     */
+    public String getTechLevelString() {
+        return techLevel.toString();
+    }
+
+    /**
      * @return the planet's habitat
      */
     public Habitats getHabitats() {
         return habitats;
+    }
+
+    /**
+     * Get hex color that represents the habitat of the planet
+     * @return hex string
+     */
+    public String getColorHex() {
+        return habitats.getColorHex();
     }
 
     /**
@@ -110,10 +131,26 @@ public class Planet {
     }
 
     /**
+     * Get species that live in this planet as a string
+     * @return string of specieis
+     */
+    public String getSpeciesString() {
+        return species.toString();
+    }
+
+    /**
      * @return the planet's resource classification
      */
     public ResourceClassification getResourceClass() {
         return resourceClass;
+    }
+
+    /**
+     * Get resource class on this planet as a string
+     * @return string of resource class
+     */
+    public String getResourceClassString() {
+        return resourceClass.toString();
     }
 
     /**
@@ -123,6 +160,27 @@ public class Planet {
         return marketplace;
     }
 
+    /**
+     * Get planet event of this planet
+     * @return planet event
+     */
+    public Events getEvent() {
+        return marketplace.getEvent();
+    }
+
+    /**
+     * @return string representation of the event
+     */
+    public String getEventString() {
+        return marketplace.getEventString();
+    }
+
+    /**
+     * @return the marketplace items
+     */
+    public Collection<Item> getItems() {
+        return marketplace.getItems();
+    }
 
     ///////////////////////////// PLANET UTILITY /////////////////////////////
     /**
@@ -135,14 +193,13 @@ public class Planet {
         // Use cosine rule (c^2 = a^2 + b^2 - 2ab*cos(c))
         int angleRaw = Math.abs(orbitAngle - other.getOrbitAngle());
 
-        double angle = (angleRaw <= 180 ? angleRaw : 360 - angleRaw);
+        double angle = ((angleRaw <= 180) ? angleRaw : (360 - angleRaw));
         angle = Math.toRadians(angle);
 
         int a = this.orbitRadius;
         int b = other.orbitRadius;
 
-        int c = (int) Math.sqrt((a*a)+(b*b)-(2*a*b*Math.cos(angle)));
-        return c;
+        return (int) Math.sqrt(((a * a) + (b * b)) - (2 * a * b * Math.cos(angle)));
     }
 
     /**
@@ -181,8 +238,8 @@ public class Planet {
             return false;
         }
         Planet p = (Planet) that;
-        return this.name == p.name
-                && this.radius == p.radius;
+        return (this.name == p.name)
+                && (this.radius == p.radius);
     }
 
     /**
@@ -204,7 +261,7 @@ public class Planet {
         private Species species;
         private ResourceClassification resourceClass;
         private Marketplace marketplace;
-        private PlanetEvents event;
+        private Events event;
 
         /**
          * Creates a planet with a given name, radius, and orbit radius (how far
@@ -212,6 +269,7 @@ public class Planet {
          *
          * @param name the name of the planet
          * @param orbitRadius the orbit radius of the planet
+         * @param orbitAngle the orbit angle of the planet
          */
         public PlanetBuilder(String name, int orbitRadius, int orbitAngle) {
             this.name = name;
@@ -296,7 +354,7 @@ public class Planet {
             }
 
             if (this.event == null) {
-                this.event = PlanetEvents.getRandomEvent();
+                this.event = Events.getRandomEvent();
             }
 
             if (this.marketplace == null) {
@@ -317,7 +375,7 @@ public class Planet {
          */
         private static int getRandomRadius() {
             return rand.nextInt(
-                    MAX_RADIUS - MIN_RADIUS + 1)
+                    (MAX_RADIUS - MIN_RADIUS) + 1)
                     + MIN_RADIUS;
         }
     }

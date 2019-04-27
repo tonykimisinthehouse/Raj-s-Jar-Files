@@ -16,7 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="150sp"
         android:layout_marginBottom="10sp"
-        app:srcCompat="@drawable/rocket" />
+        app:srcCompat="@drawable/rocket"
+        android:contentDescription="Ship Icon"/>
 
     <TextView
         android:id="@+id/welcomeText"

@@ -7,6 +7,8 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.TradeGoods;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Weapon;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Coordinate;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.SolarSystem;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertNotEquals;
@@ -16,13 +18,15 @@ import static org.junit.Assert.assertNotNull;
  * Test different actions the player can take during an encounter.
  */
 public class PlayerEncounterActionTest {
+    SolarSystem ss = new SolarSystem("Test planet", new Coordinate(1,1));
+
 
     /**
      * Test the run action.
      */
     @Test
     public void testRunAction() {
-        Player player = new Player(new Player.PlayerBuilder("Justin"));
+        Player player = new Player(new Player.PlayerBuilder("Justin", ss));
         player.getShip().addWeapon(Weapon.BEAM_LASER);
 
         PlayerEncounterAction pea = new RunAction();
@@ -49,7 +53,7 @@ public class PlayerEncounterActionTest {
      */
     @Test
     public void testAttackActionPlayerWins() {
-        Player player = new Player(new Player.PlayerBuilder("Justin"));
+        Player player = new Player(new Player.PlayerBuilder("Justin", ss));
         player.getShip().addWeapon(Weapon.BEAM_LASER);
 
         PlayerEncounterAction pea = new AttackAction();
@@ -67,7 +71,7 @@ public class PlayerEncounterActionTest {
         assertTrue(es.isOver());
 
         //test that at least one is dead by the end of the encounter
-        assertTrue(player.getShip().getHealth() == 0 ^ other.getHealth() == 0);
+        assertTrue((player.getShip().getHealth() == 0) ^ (other.getHealth() == 0));
     }
 
     /**
@@ -75,7 +79,7 @@ public class PlayerEncounterActionTest {
      */
     @Test
     public void testAttackActionPoliceWin() {
-        Player player = new Player(new Player.PlayerBuilder("Justin"));
+        Player player = new Player(new Player.PlayerBuilder("Justin", ss));
         player.getShip().addWeapon(Weapon.BEAM_LASER);
 
         PlayerEncounterAction pea = new AttackAction();
@@ -93,7 +97,7 @@ public class PlayerEncounterActionTest {
         assertTrue(es.isOver());
 
         //test that at least one is dead by the end of the encounter
-        assertTrue(player.getShip().getHealth() == 0 ^ other.getHealth() == 0);
+        assertTrue((player.getShip().getHealth() == 0) ^ (other.getHealth() == 0));
     }
 
     /**
@@ -101,7 +105,7 @@ public class PlayerEncounterActionTest {
      */
     @Test
     public void testSubmitNoIllegalGoods() {
-        Player player = new Player(new Player.PlayerBuilder("Justin"));
+        Player player = new Player(new Player.PlayerBuilder("Justin", ss));
         player.getShip().addWeapon(Weapon.BEAM_LASER);
 
         PlayerEncounterAction pea = new SubmitAction();
@@ -122,7 +126,7 @@ public class PlayerEncounterActionTest {
      */
     @Test
     public void testSubmitIllegalGoods() {
-        Player player = new Player(new Player.PlayerBuilder("Justin"));
+        Player player = new Player(new Player.PlayerBuilder("Justin", ss));
         player.getShip().addWeapon(Weapon.BEAM_LASER);
         player.getShip().addGood(
                 new Item.ItemBuilder(TradeGoods.NARCOTICS).price(2).quantity(3).build());
@@ -142,8 +146,8 @@ public class PlayerEncounterActionTest {
         assertTrue(es.isOver());
 
         //make sure goods are gone and money is 0.2 of the original value
-        assertTrue(player.getWallet().getCredits() == 0
-                || origMoney > player.getWallet().getCredits());
+        assertTrue((player.getWallet().getCredits() == 0)
+                || (origMoney > player.getWallet().getCredits()));
         assertTrue(!player.getShip().hasIllegalGoods());
     }
 
@@ -152,7 +156,7 @@ public class PlayerEncounterActionTest {
      */
     @Test
     public void testBribeAction() {
-        Player player = new Player(new Player.PlayerBuilder("Justin"));
+        Player player = new Player(new Player.PlayerBuilder("Justin", ss));
         player.getShip().addWeapon(Weapon.BEAM_LASER);
         player.getShip().addGood(
                 new Item.ItemBuilder(TradeGoods.NARCOTICS).price(2).quantity(3).build());
@@ -172,8 +176,8 @@ public class PlayerEncounterActionTest {
         assertTrue(es.isOver());
 
         //make sure goods are gone and money is halved
-        assertTrue(player.getWallet().getCredits() == 0
-                || origMoney > player.getWallet().getCredits());
+        assertTrue((player.getWallet().getCredits() == 0)
+                || (origMoney > player.getWallet().getCredits()));
     }
 
     /**
@@ -181,7 +185,7 @@ public class PlayerEncounterActionTest {
      */
     @Test
     public void testSurrenderAction() {
-        Player player = new Player(new Player.PlayerBuilder("Justin"));
+        Player player = new Player(new Player.PlayerBuilder("Justin", ss));
         player.getShip().addWeapon(Weapon.BEAM_LASER);
         player.getShip().addGood(
                 new Item.ItemBuilder(TradeGoods.NARCOTICS).price(2).quantity(3).build());
@@ -208,7 +212,7 @@ public class PlayerEncounterActionTest {
      */
     @Test
     public void testSurrenderActionNoGoods() {
-        Player player = new Player(new Player.PlayerBuilder("Justin"));
+        Player player = new Player(new Player.PlayerBuilder("Justin", ss));
         player.getShip().addWeapon(Weapon.BEAM_LASER);
 
         int origMoney = player.getWallet().getCredits();
@@ -230,7 +234,7 @@ public class PlayerEncounterActionTest {
         assertTrue(!player.getShip().hasGoods());
 
         //make sure goods are gone and money is halved
-        assertTrue(player.getWallet().getCredits() == 0
-                || origMoney > player.getWallet().getCredits());
+        assertTrue((player.getWallet().getCredits() == 0)
+                || (origMoney > player.getWallet().getCredits()));
     }
 }

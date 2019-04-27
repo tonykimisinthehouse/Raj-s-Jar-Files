@@ -9,10 +9,9 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
  * Handles an encounter between the player and another ship.
  */
 public abstract class BattleManager {
-    protected Player player;
-    protected Ship playerShip;
+    final Player player;
 
-    protected Ship otherShip;
+    final Ship otherShip;
 
     /**
      * Creates an encounter between the ship and another ship.
@@ -21,7 +20,7 @@ public abstract class BattleManager {
      */
     public BattleManager(Player player) {
         this.player = player;
-        this.playerShip = player.getShip();
+        Ship playerShip = player.getShip();
 
         this.otherShip = Ship.getRandomShipWithWeapons();
     }
@@ -48,5 +47,19 @@ public abstract class BattleManager {
      */
     public Ship getOtherShip() {
         return otherShip;
+    }
+
+    /**
+     * @return the other ship in string format
+     */
+    public String getOtherShipString() {
+        return otherShip.toStringShipType();
+    }
+
+    /**
+     * @return the other ship's health
+     */
+    public int getOtherShipHealth() {
+        return otherShip.getHealth();
     }
 }

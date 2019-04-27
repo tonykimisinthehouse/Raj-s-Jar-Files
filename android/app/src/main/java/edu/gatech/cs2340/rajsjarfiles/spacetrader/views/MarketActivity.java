@@ -18,8 +18,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Good;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Planet;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.helper.ListViewItemCheckboxBaseAdapter;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.helper.ListViewItemDTO;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
@@ -27,12 +30,10 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels.MarketViewModel;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
 
+/**
+ * Activity for a planet's market.
+ */
 public class MarketActivity extends BaseActivity {
-
-    /**
-     * View model for ShipMarket activity
-     */
-    private MarketViewModel viewModel;
 
     private TextView viewCreditCount;
     private ListView viewGoodsForSale;
@@ -45,7 +46,7 @@ public class MarketActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_market);
 
-        this.viewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
+        MarketViewModel viewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
 
         this.assignViews();
         this.alertDialog();
@@ -109,10 +110,10 @@ public class MarketActivity extends BaseActivity {
 
                     // Buy
                     if (buyNotSell) {
-                        boolean result = Model.getCurrent().getPlayer().getWallet().
+                        boolean result = Model.getModel().getPlayer().getWallet().
                                 makePurchase(item.getGood().getGood(), 1);
                     } else {
-                        boolean result = Model.getCurrent().getPlayer().getWallet().
+                        boolean result = Model.getModel().getPlayer().getWallet().
                                 makeSales(item.getGood().getGood(), 1);
                     }
 
@@ -126,35 +127,23 @@ public class MarketActivity extends BaseActivity {
     private void updateGoods() {
         // Get latest string representations of goods
         try {
-            Player player = Model.getCurrent().getPlayer();
-            int credits = player.getWallet().getCredits();
-            int totalCargoCapacity = player.getShip().getCargoCapacity();
+            Model m = Model.getModel();
+            Player player = m.getPlayer();
+            int credits = player.getCredits();
+
+            Ship ship = player.getShip();
+            int totalCargoCapacity = ship.getCargoCapacity();
             int availableCargoCapacity =
-                    player.getShip().getAvailableCargoCapacity();
+                    ship.getAvailableCargoCapacity();
+            Planet planet = m.getPlanet();
             Collection<Item> goodsForSale =
-                    player.getLocation().getPlanet().getMarketplace().getItems();
-            Collection<Item> goodsOnShip = player.getShip().getCargoGoods();
+                    planet.getItems();
+            Collection<Item> goodsOnShip = player.getCargoGoods();
 
             // Split by newlines to get arrays
-            List<ListViewItemDTO> listGoodsForSale = new ArrayList<>();
-            List<ListViewItemDTO> listGoodsOnShip = new ArrayList<>();
+            List<ListViewItemDTO> listGoodsForSale = addItemsToList(goodsForSale);
+            List<ListViewItemDTO> listGoodsOnShip = addItemsToList(goodsOnShip);
 
-            for (Item item : goodsForSale) {
-                // Only add with a positive quantity of item
-                if (item.getQuantity() > 0) {
-                    ListViewItemDTO view = new ListViewItemDTO();
-                    view.setGood(item);
-                    listGoodsForSale.add(view);
-                }
-            }
-            for (Item item : goodsOnShip) {
-                // Only add with a positive quantity of item
-                if (item.getQuantity() > 0) {
-                    ListViewItemDTO view = new ListViewItemDTO();
-                    view.setGood(item);
-                    listGoodsOnShip.add(view);
-                }
-            }
 
             final ListViewItemCheckboxBaseAdapter adapterGoodsForSale = new
                     ListViewItemCheckboxBaseAdapter(this, listGoodsForSale);
@@ -168,25 +157,33 @@ public class MarketActivity extends BaseActivity {
             this.viewCreditCount.setText("Credits: " + credits);
             this.viewGoodsForSale.setAdapter(adapterGoodsForSale);
             this.viewGoodsOnShip.setAdapter(adapterGoodsOnShip);
-
             this.viewCargoCapacity.setText("Capacity: "
                     + (totalCargoCapacity - availableCargoCapacity)
                     + "/" + totalCargoCapacity);
-            this.viewPlanetName.setText(Model.getCurrent().getPlayer().
-                    getLocation().getPlanet().getName() + " Marketplace");
+
+
+            this.viewPlanetName.setText(planet.getName() + " Marketplace");
         } catch (NullPointerException e) {
             Log.e("RAJ", e.getMessage());
         }
     }
 
-    public void buyGoods(View v) {
-        // TODO get list of checked goods
-        // TODO tell market to sell
-    }
-
-    public void sellGoods(View v) {
-        // TODO get list of checked goods
-        // TODO tell ship to sell
+    /**
+     * Helper method that generates an ArrayList that contains view for goods in the list
+     * @param goodsList list of goods
+     * @return an ArrayList that contains view for goods in the list
+     */
+    private List<ListViewItemDTO> addItemsToList(Collection<Item> goodsList) {
+        List<ListViewItemDTO> listGoods = new ArrayList<>();
+        for (Item item : goodsList) {
+            // Only add with a positive quantity of item
+            if (item.getQuantity() > 0) {
+                ListViewItemDTO view = new ListViewItemDTO();
+                view.setGood(item);
+                listGoods.add(view);
+            }
+        }
+        return listGoods;
     }
 
     /**
@@ -196,17 +193,20 @@ public class MarketActivity extends BaseActivity {
         // Show dialog alerting price increase
         StringBuilder stringBuilder = new StringBuilder();
 
-        Player player = Model.getCurrent().getPlayer();
+        Model m = Model.getModel();
+        Player player = m.getPlayer();
+        Planet planet = player.getPlanet();
         Collection<Item> goodsForSale =
-                player.getLocation().getPlanet().getMarketplace().getItems();
+                planet.getItems();
 
         for (Item item : goodsForSale) {
-            if (item.getGood().getIE()
-                    == player.getLocation().getPlanet().getMarketplace().getEvent()) {
+            Good g = item.getGood();
+            if (g.getIE()
+                    == planet.getEvent()) {
                 int percentageIncrease =
-                        (item.getPrice() - item.getGood().getBasePrice())
-                                / item.getGood().getBasePrice() * 100;
-                stringBuilder.append("- " + item.getGood().getName()
+                        ((item.getPrice() - g.getBasePrice())
+                                / g.getBasePrice()) * 100;
+                stringBuilder.append("- " + g.getName()
                         + " is in shortage. ("
                         + (percentageIncrease)
                         + "% price increase)\n");
@@ -217,7 +217,7 @@ public class MarketActivity extends BaseActivity {
         if (stringBuilder.length() != 0) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("DUE TO "
-                    + player.getLocation().getPlanet().getMarketplace().getEvent().toString()
+                    + planet.getEventString()
                     + ", FOLLOWING ITEMS ARE UNDER PRICE SURGE!");
             builder.setMessage(stringBuilder.toString());
             builder.setCancelable(true);

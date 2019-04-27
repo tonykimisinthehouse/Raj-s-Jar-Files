@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market;
 
+import java.util.AbstractMap;
 import java.util.Collection;
 import java.util.EnumMap;
 import java.util.Random;
@@ -7,7 +8,7 @@ import java.util.Random;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.MarketTransactionValidator;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionOrder;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionResult;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.PlanetEvents;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Events;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.ResourceClassification;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.TechLevel;
 
@@ -17,16 +18,21 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.TechLevel;
  *  tech level and trade good's attributes
  */
 public class Marketplace {
+    private static final int START_MAX_QUANTITY = 30;
+    private static final int START_MIN_QUANTITY = 1;
 
-    private static Random rand = new Random();
+    private static final int CR_MIN_QUANTITY = 15;
+    private static final int ER_MAX_QUANTITY = 15;
+
+    private static final Random rand = new Random();
 
     // EnumMap that store trade goods and its quantity
-    private EnumMap<TradeGoods, Item> tradeGoodsInMarketMap;
+    private final EnumMap<TradeGoods, Item> tradeGoodsInMarketMap;
 
-    private String planetName;
-    private TechLevel techLevel;
-    private ResourceClassification resource;
-    private PlanetEvents event;
+    private final String planetName;
+    private final TechLevel techLevel;
+    private final ResourceClassification resource;
+    private final Events event;
 
     /**
      * Constructor for marketplace
@@ -37,7 +43,7 @@ public class Marketplace {
      * @param resource resource class
      */
     public Marketplace(String pn, TechLevel techLevel,
-                       PlanetEvents event, ResourceClassification resource) {
+                       Events event, ResourceClassification resource) {
 
         this.planetName = pn;
         this.techLevel = techLevel;
@@ -60,7 +66,7 @@ public class Marketplace {
     }
 
     /**
-     * Calcuate the price of a good based on all the factors.
+     * Calculate the price of a good based on all the factors.
      *
      * @param good the good
      * @return the price of the good
@@ -73,11 +79,11 @@ public class Marketplace {
         int finalPrice = basePrice + dynamicPrice + variancePrice;
 
         if (resource == good.getCR()) {
-            finalPrice = finalPrice / 3 * 2;
+            finalPrice = (finalPrice / 3) * 2;
         }
 
         if (resource == good.getER()) {
-            finalPrice = finalPrice * 3 / 2;
+            finalPrice = (finalPrice * 3) / 2;
         }
 
         if (event == good.getIE()) {
@@ -95,15 +101,15 @@ public class Marketplace {
      * @return the quantity
      */
     private int calculateQuantity(Good good) {
-        int maxQuantity = 30;
-        int minQuantity = 1;
+        int maxQuantity = START_MAX_QUANTITY;
+        int minQuantity = START_MIN_QUANTITY;
 
         if (resource == good.getCR()) {
-            minQuantity = 15;
+            minQuantity = CR_MIN_QUANTITY;
         }
 
         if (resource == good.getER()) {
-            maxQuantity = 15;
+            maxQuantity = ER_MAX_QUANTITY;
         }
 
         if (event == good.getIE()) {
@@ -114,7 +120,11 @@ public class Marketplace {
         return rand.nextInt(maxQuantity - minQuantity) + minQuantity;
     }
 
-    // Validate transaction.
+    /**
+     * Validate Transaction
+     * @param to transaction order to validate
+     * @return transaction validation result
+     */
     public TransactionResult validateTransaction(TransactionOrder to) {
         MarketTransactionValidator validator
                 = new MarketTransactionValidator(this);
@@ -125,18 +135,26 @@ public class Marketplace {
      * Getter for getting tech level of the planet which the
      * marketplace is located.
      *
-     * @return techlevel of the planet which the marketplace is located
+     * @return techLevel of the planet which the marketplace is located
      */
     public TechLevel getTechLevel() {
         return techLevel;
     }
 
     /**
-     * Get planet event
-     * @return event on the planet
+     * Get planet event where this planet is located
+     * @return planet event
      */
-    public PlanetEvents getEvent() {
+    public Events getEvent() {
         return event;
+    }
+
+    /**
+     * Get planet event in a string
+     * @return planet event in a string
+     */
+    public String getEventString() {
+        return event.toString();
     }
 
     /**
@@ -144,7 +162,7 @@ public class Marketplace {
      *
      * @return enumMap containing index of goods that this marketplace has.
      */
-    public EnumMap<TradeGoods, Item> getTradeGoodsInMarket() {
+    public AbstractMap<TradeGoods, Item> getTradeGoodsInMarket() {
         return tradeGoodsInMarketMap;
     }
 
@@ -162,7 +180,7 @@ public class Marketplace {
      * @return the item associated with the good
      */
     public Item getItem(Good good) {
-        return tradeGoodsInMarketMap.get((TradeGoods) good);
+        return tradeGoodsInMarketMap.get(good);
     }
 
     //getMarketPrice and getMarketQuantity could probably be static...
@@ -174,7 +192,8 @@ public class Marketplace {
      * @return the market price
      */
     public int getMarketPrice(Good good) {
-        return tradeGoodsInMarketMap.get(good).getPrice();
+        Item i = tradeGoodsInMarketMap.get(good);
+        return i.getPrice();
     }
 
     /**
@@ -184,7 +203,8 @@ public class Marketplace {
      * @return the market quantity
      */
     public int getMarketQuantity(Good good) {
-        return tradeGoodsInMarketMap.get(good).getPrice();
+        Item i = tradeGoodsInMarketMap.get(good);
+        return i.getPrice();
     }
 
     @Override

@@ -1,16 +1,10 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.views;
 
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.battle.BattleManager;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.battle.PoliceBattleManager;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.AttackAction;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.BribeAction;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.EncounterState;
@@ -18,6 +12,9 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.RunAction
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.SubmitAction;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 
+/**
+ * Activity for when the player encounters the police.
+ */
 public class PoliceActivity extends EncounterActivity {
 
     @Override
@@ -37,7 +34,7 @@ public class PoliceActivity extends EncounterActivity {
 
         eventDescriptionText = findViewById(R.id.police_event_description);
 
-        model = Model.getCurrent();
+        model = Model.getModel();
         player = model.getPlayer();
         bm = new PoliceBattleManager(player);
 
@@ -50,12 +47,12 @@ public class PoliceActivity extends EncounterActivity {
      *
      * @param extra the new description
      */
-    public void updateDescription(String extra) {
+    private void updateDescription(String extra) {
         String text = "Your ship health: "
-                + player.getShip().getHealth() + "\n";
+                + player.getHealth() + "\n";
         text += "The police "
-                + bm.getOtherShip().getShipType().toString() + ": "
-                + bm.getOtherShip().getHealth() + "\n"
+                + bm.getOtherShipString() + ": "
+                + bm.getOtherShipHealth() + "\n"
                 + "----------------------\n" + "\n\n";
         text += extra;
         eventDescriptionText.setText(text);

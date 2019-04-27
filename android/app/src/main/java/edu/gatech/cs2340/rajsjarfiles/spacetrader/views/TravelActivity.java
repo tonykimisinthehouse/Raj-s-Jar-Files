@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.ListAdapter;
 
 import java.util.ArrayList;
 
@@ -19,11 +20,10 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.SolarSystem;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels.TravelViewModel;
 
+/**
+ * Activity for when the player travels.
+ */
 public class TravelActivity extends BaseActivity {
-    /**
-     * View model for Travel activity
-     */
-    private TravelViewModel viewModel;
 
     /**
      * Names of reachable Planet destinations
@@ -35,10 +35,10 @@ public class TravelActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel);
 
-        viewModel = ViewModelProviders.of(this).get(TravelViewModel.class);
+        TravelViewModel viewModel = ViewModelProviders.of(this).get(TravelViewModel.class);
 
         GridView destinationGrid = findViewById(R.id.destinationGrid);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+        ListAdapter adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, getDestinations());
         destinationGrid.setAdapter(adapter);
         destinationGrid.setOnItemClickListener(clickListener);
@@ -57,7 +57,7 @@ public class TravelActivity extends BaseActivity {
      */
     private ArrayList<String> getDestinations() {
         // Get object references
-        Model model = Model.getCurrent();
+        Model model = Model.getModel();
         Player player = model.getPlayer();
         Location location = player.getLocation();
         Planet currentPlanet = location.getPlanet();
@@ -80,18 +80,18 @@ public class TravelActivity extends BaseActivity {
         return this.destinations;
     }
 
-    private AdapterView.OnItemClickListener clickListener
+    private final AdapterView.OnItemClickListener clickListener
             = new AdapterView.OnItemClickListener() {
                 @Override
             public void onItemClick(
                     AdapterView<?> adapterView, View view, int i, long l) {
                     // Travel to that destination
                     String planetName = TravelActivity.this.destinations.get(i);
-                    Player player = Model.getCurrent().getPlayer();
+                    Player player = Model.getModel().getPlayer();
                     SolarSystem system = player.getLocation().getSolarSystem();
                     Log.d("Sonny",
                             system.getPlanetByName(planetName).toString());
-                    player.travel(system, system.getPlanetByName(planetName));
+                    boolean success = player.travel(system, system.getPlanetByName(planetName));
 
             /// Close this activity
                     Intent intent = new Intent(

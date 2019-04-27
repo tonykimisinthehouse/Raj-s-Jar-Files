@@ -1,6 +1,6 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market;
 
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.PlanetEvents;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Events;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.ResourceClassification;
 
 /**
@@ -9,61 +9,61 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.ResourceClassi
 public enum TradeGoods implements Good {
     WATER(new TradeGoodsBuilder("Water")
             .MTLP(0).MTLU(0).TTP(2).BasePrice(30).IPL(3).Var(4)
-            .IE(PlanetEvents.DROUGHT)
+            .IE(Events.DROUGHT)
             .CR(ResourceClassification.LOTS_OF_WATER)
             .ER(ResourceClassification.DESERT)
             .MTL(30).MTH(50)
     ), FURS(new TradeGoodsBuilder("Furs")
             .MTLP(0).MTLU(0).TTP(0).BasePrice(250).IPL(10).Var(10)
-            .IE(PlanetEvents.COLD)
+            .IE(Events.COLD)
             .CR(ResourceClassification.RICH_FAUNA)
             .ER(ResourceClassification.LIFELESS)
             .MTL(230).MTH(280)
     ), FOOD(new TradeGoodsBuilder("Food")
             .MTLP(1).MTLU(0).TTP(1).BasePrice(100).IPL(5).Var(5)
-            .IE(PlanetEvents.CROP_FAIL)
+            .IE(Events.CROP_FAIL)
             .CR(ResourceClassification.RICH_SOIL)
             .ER(ResourceClassification.POOR_SOIL)
             .MTL(90).MTH(160)
     ), ORE(new TradeGoodsBuilder("Ore").
             MTLP(2).MTLU(2).TTP(3).BasePrice(350).IPL(20).Var(10)
-            .IE(PlanetEvents.WAR)
+            .IE(Events.WAR)
             .CR(ResourceClassification.MINERAL_RICH)
             .ER(ResourceClassification.MINERAL_POOR)
             .MTL(350).MTH(420)
     ), GAMES(new TradeGoodsBuilder("Games")
             .MTLP(3).MTLU(1).TTP(6).BasePrice(250).IPL(-10).Var(5)
-            .IE(PlanetEvents.BOREDOM)
+            .IE(Events.BOREDOM)
             .CR(ResourceClassification.ARTISTIC)
             .ER(null)
             .MTL(160).MTH(270)
     ), FIREARMS(new TradeGoodsBuilder("Firearms")
             .MTLP(3).MTLU(1).TTP(5).BasePrice(1250).IPL(-75).Var(100)
-            .IE(PlanetEvents.WAR)
+            .IE(Events.WAR)
             .CR(ResourceClassification.WARLIKE)
             .ER(null)
             .MTL(600).MTH(1100)
     ), MEDICINE(new TradeGoodsBuilder("Medicine")
             .MTLP(4).MTLU(1).TTP(6).BasePrice(650).IPL(-20).Var(10)
-            .IE(PlanetEvents.PLAGUE)
+            .IE(Events.PLAGUE)
             .CR(ResourceClassification.LOTS_OF_HERBS)
             .ER(null)
             .MTL(400).MTH(700)
     ), MACHINES(new TradeGoodsBuilder("Machines")
             .MTLP(4).MTLU(3).TTP(5).BasePrice(900).IPL(-30).Var(5)
-            .IE(PlanetEvents.LACK_OF_WORKERS)
+            .IE(Events.LACK_OF_WORKERS)
             .CR(null)
             .ER(null)
             .MTL(400).MTH(700)
     ), NARCOTICS(new TradeGoodsBuilder("Narcotics")
             .MTLP(5).MTLU(0).TTP(5).BasePrice(3500).IPL(-125).Var(150)
-            .IE(PlanetEvents.BOREDOM)
+            .IE(Events.BOREDOM)
             .CR(ResourceClassification.WEIRD_MUSHROOMS)
             .ER(null)
             .MTL(2000).MTH(3000)
     ), ROBOTS(new TradeGoodsBuilder("Robots")
             .MTLP(6).MTLU(5).TTP(7).BasePrice(5000).IPL(-150).Var(100)
-            .IE(PlanetEvents.LACK_OF_WORKERS)
+            .IE(Events.LACK_OF_WORKERS)
             .CR(null)
             .ER(null)
             .MTL(3000).MTH(5000));
@@ -94,7 +94,7 @@ public enum TradeGoods implements Good {
 
     /** Int representation of Radical price increase event, when this even happens on a planet,
      * the price may increase astronomically */
-    private final PlanetEvents IE;
+    private final Events IE;
 
     /**  When this condition is present, the price of this resource is unusually low */
     private final ResourceClassification CR;
@@ -131,50 +131,62 @@ public enum TradeGoods implements Good {
     }
 
     /////// GETTER ////////
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public int getMTLP() {
         return MTLP;
     }
 
+    @Override
     public int getMTLU() {
         return MTLU;
     }
 
+    @Override
     public int getTTP() {
         return TTP;
     }
 
+    @Override
     public int getBasePrice() {
         return BasePrice;
     }
 
+    @Override
     public int getIPL() {
         return IPL;
     }
 
+    @Override
     public int getVar() {
         return Var;
     }
 
-    public PlanetEvents getIE() {
+    @Override
+    public Events getIE() {
         return IE;
     }
 
+    @Override
     public ResourceClassification getCR() {
         return CR;
     }
 
+    @Override
     public ResourceClassification getER() {
         return ER;
     }
 
+    @Override
     public int getMTL() {
         return MTL;
     }
 
+    @Override
     public int getMTH() {
         return MTH;
     }
@@ -182,6 +194,7 @@ public enum TradeGoods implements Good {
     /**
      * @return whether this good is illegal or not
      */
+    @Override
     public boolean isIllegal() {
         for (Good g : Good.ILLEGAL_GOODS) {
             if (this.name == g.getName()) {
@@ -200,14 +213,14 @@ public enum TradeGoods implements Good {
      * Builder for TradeGoods
      */
     private static class TradeGoodsBuilder {
-        private String name;
+        private final String name;
         private int MTLP;
         private int MTLU;
         private int TTP;
         private int BasePrice;
         private int IPL;
         private int Var;
-        private PlanetEvents IE;
+        private Events IE;
         private ResourceClassification CR;
         private ResourceClassification ER;
         private int MTL;
@@ -241,7 +254,7 @@ public enum TradeGoods implements Good {
             this.Var = Var;
             return this;
         }
-        private TradeGoodsBuilder IE(PlanetEvents IE) {
+        private TradeGoodsBuilder IE(Events IE) {
             this.IE = IE;
             return this;
         }

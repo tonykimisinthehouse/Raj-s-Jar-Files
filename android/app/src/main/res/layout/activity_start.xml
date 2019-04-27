@@ -20,7 +20,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@android:color/white"
         android:textFontWeight="800"
-        android:textSize="32dp" />
+        android:textSize="32sp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -36,7 +36,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="22dp"
         android:gravity="center"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:hint="Name Input"
+        android:inputType="text"
+        android:importantForAutofill="no" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -60,7 +63,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
 
-        >
+        android:baselineAligned="false">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -84,7 +87,8 @@
                 android:inputType="number"
                 android:maxLength="2"
                 android:textAlignment="center"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:hint="Pilot Skill"/>
         </LinearLayout>
 
         <LinearLayout
@@ -110,7 +114,8 @@
                 android:inputType="number"
                 android:maxLength="2"
                 android:textAlignment="center"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:hint="Fighter Skill"/>
         </LinearLayout>
 
     </LinearLayout>
@@ -142,7 +147,8 @@
                 android:inputType="number"
                 android:maxLength="2"
                 android:textAlignment="center"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:hint="Trader Skill"/>
         </LinearLayout>
 
         <LinearLayout
@@ -168,7 +174,8 @@
                 android:inputType="number"
                 android:maxLength="2"
                 android:textAlignment="center"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:hint="Engineer Skill"/>
         </LinearLayout>
 
     </LinearLayout>

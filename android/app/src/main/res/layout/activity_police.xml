@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textSize="20sp"
-        android:text="The police have found your ship and will be boarding soon! You can choose to either run, surrender, or bribe the police to make it out alive."
+        android:text=""
         android:textColor="@android:color/white" />
 
     <LinearLayout

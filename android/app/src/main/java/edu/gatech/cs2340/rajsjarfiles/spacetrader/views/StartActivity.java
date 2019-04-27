@@ -40,7 +40,7 @@ public class StartActivity extends BaseActivity {
     private StartViewModel viewModel;
 
     /**
-     * Method that return new Textwatcher to set.
+     * Method that return new TextWatcher to set.
      *
      * @param editText represents the EditText in activity_start.xml
      * @param index indicates the type of skill points
@@ -117,11 +117,11 @@ public class StartActivity extends BaseActivity {
                 android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(adapter);
 
-        Button submitButton = (Button) findViewById(R.id.submit_button);
+        Button submitButton = findViewById(R.id.submit_button);
     }
 
     /**
-     * Method for hooking up the view with viewmodel that does the logic.
+     * Method for hooking up the view with ViewModel that does the logic.
      *
      * @param view the current view
      */
@@ -147,6 +147,11 @@ public class StartActivity extends BaseActivity {
         }
     }
 
+    /**
+     * Finish activity on exit.
+     *
+     * @param view the current view.
+     */
     public void onExit(View view) {
         this.finish();
     }

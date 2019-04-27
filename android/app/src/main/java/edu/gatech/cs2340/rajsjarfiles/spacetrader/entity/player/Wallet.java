@@ -6,6 +6,9 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.Tran
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionResult;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction.TransactionType;
 
+/**
+ * Represents a player's wallet.
+ */
 public class Wallet {
 
     private int credits;
@@ -38,7 +41,7 @@ public class Wallet {
 
         // Use credit, Get Good to cargo based on the transaction
         // result (success, fail)
-        if (newTransactionResult.getisTransactionSuccess()) {
+        if (newTransactionResult.getIsTransactionSuccess()) {
             Item item = newTransactionResult.getItem();
             // Add good to the cargo
             owner.getShip().addGood(item);
@@ -47,7 +50,7 @@ public class Wallet {
         }
 
         // Return if the transaction is success or not.
-        return newTransactionResult.getisTransactionSuccess();
+        return newTransactionResult.getIsTransactionSuccess();
     }
 
     /**
@@ -70,21 +73,30 @@ public class Wallet {
                 .validateTransaction(newTransactionOrder);
 
         // Remove cargo, and earn credit based on the transaction result
-        if (newTransactionResult.getisTransactionSuccess()) {
+        if (newTransactionResult.getIsTransactionSuccess()) {
             Item item = newTransactionResult.getItem();
             // Sell goods from cargo.
             owner.getShip().sellGood(item);
             // Earn credits.
             earnCredits(item.getPrice() * item.getQuantity());
         }
-        return newTransactionResult.getisTransactionSuccess();
+        return newTransactionResult.getIsTransactionSuccess();
     }
 
     ///////////////////////////// OWNER OPERATION /////////////////////////////
+
+    /**
+     * Sets the wallet's owner to the respective player.
+     *
+     * @param owner the player
+     */
     public void setOwner(Player owner) {
         this.owner = owner;
     }
 
+    /**
+     * @return the wallet's owner
+     */
     public Player getOwner() {
         return owner;
     }
@@ -115,13 +127,15 @@ public class Wallet {
      * Subtracts a certain ratio from the player's credits.
      *
      * @param takenRatio the ratio to remove (0 to 1)
+     * @return the player's remaining credits
      */
-    public void setCredits(float takenRatio) {
+    public int setCredits(float takenRatio) {
         if (takenRatio > 1) {
             throw new IllegalArgumentException("Ratio cannot be larger than one.");
         }
 
         credits -= (int) (credits * takenRatio);
+        return credits;
     }
 
     /**
@@ -149,10 +163,6 @@ public class Wallet {
      * @return boolean of whether the user has enough credit
      */
     public Boolean checkCreditEnough(int marketPrice) {
-        if (marketPrice > credits) {
-            return false;
-        } else {
-            return true;
-        }
+        return marketPrice <= credits;
     }
 }

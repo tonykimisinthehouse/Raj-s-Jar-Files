@@ -8,7 +8,12 @@ import java.util.Random;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
 
+/**
+ * Activity for a random event that can occur while traveling.
+ */
 public class RandomEventActivity extends AppCompatActivity {
+    private static final int POLICE_UPPER = 40;
+    private static final int PIRATE_UPPER = 80;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +29,9 @@ public class RandomEventActivity extends AppCompatActivity {
         Random rand = new Random();
         int chance = rand.nextInt(100);
         Intent intent;
-        if (chance >= 0 && chance <= 50) {
+        if ((chance >= 0) && (chance <= POLICE_UPPER)) {
             intent = new Intent(getBaseContext(), PoliceActivity.class);
-        } else if (chance > 50 && chance <= 99) {
+        } else if ((chance > POLICE_UPPER) && (chance <= PIRATE_UPPER)) {
             intent = new Intent(getBaseContext(), PirateActivity.class);
         } else {
             intent = new Intent(getBaseContext(), GameActivity.class);

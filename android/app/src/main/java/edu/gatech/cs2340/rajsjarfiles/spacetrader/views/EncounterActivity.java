@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.battle.BattleManager;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.EncounterState;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 
 /**
@@ -20,11 +19,11 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
  */
 public abstract class EncounterActivity extends AppCompatActivity {
 
-    protected TextView eventDescriptionText;
+    TextView eventDescriptionText;
 
-    protected Model model;
-    protected Player player;
-    protected BattleManager bm;
+    Model model;
+    Player player;
+    BattleManager bm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +38,12 @@ public abstract class EncounterActivity extends AppCompatActivity {
 
     /**
      * Opens a dialog describing what happened at the end of the encounter
-     * and opens the game actvitiy.
+     * and opens the game activity.
      */
-    public void transitionToNextActivity() {
+    void transitionToNextActivity() {
         String text = "";
         final Intent intent;
-        if (player.getShip().getHealth() == 0) {
+        if (player.getHealth() == 0) {
             text += "You died! Better luck next time :)";
             intent = new Intent(getApplicationContext(), StartActivity.class);
         } else {
@@ -55,6 +54,7 @@ public abstract class EncounterActivity extends AppCompatActivity {
         builder.setMessage(text)
                 .setCancelable(false)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
                     public void onClick(DialogInterface dialog, int id) {
                         EncounterActivity.this.finish();
                         startActivity(intent);

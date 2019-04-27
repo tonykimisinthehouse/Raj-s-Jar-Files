@@ -1,11 +1,13 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market;
 
+
 /**
  * Represents an item that can be sold on a planet.
+ * Can only be instantiated by ItemBuilder!!
  */
-public class Item {
+public final class Item {
 
-    private Good good; //Types of good
+    private final Good good; //Types of good
     private int quantity; //Quantity of good
     private int price; //Price of good (price when traded)
 
@@ -14,7 +16,7 @@ public class Item {
      *
      * @param builder the item builder object
      */
-    Item(ItemBuilder builder) {
+    private Item(ItemBuilder builder) {
         good = builder.good;
         quantity = builder.quantity;
         price = builder.price;
@@ -84,6 +86,7 @@ public class Item {
         this.quantity -= quantity;
     }
 
+
     @Override
     public String toString() {
         return quantity + " " + good.getName()
@@ -91,12 +94,21 @@ public class Item {
     }
 
     /**
+     * Item to the text
+     * @return text information of the item
+     */
+    public String toText() {
+        return getGoodName() + " x"
+                + getQuantity() + " - $" + getPrice();
+    }
+
+    /**
      * Class for creating an Item using the builder pattern.
      */
     public static class ItemBuilder {
-        private Good good;
+        private final Good good;
         private int quantity = 1;
-        private int price = 0;
+        private int price;
 
         /**
          * Creates an item builder object for a specific good.

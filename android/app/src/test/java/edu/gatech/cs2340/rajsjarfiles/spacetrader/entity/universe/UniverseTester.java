@@ -13,7 +13,7 @@ public class UniverseTester {
     @Test
     public void testUniverseCreation() {
         Universe uni = new Universe();
-        System.out.println(uni.toString());
+        //System.out.println(uni.toString());
     }
 
     /**

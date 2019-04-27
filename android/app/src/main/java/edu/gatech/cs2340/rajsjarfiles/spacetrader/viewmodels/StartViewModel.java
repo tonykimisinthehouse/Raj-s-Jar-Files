@@ -16,9 +16,8 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
  * Represents the view model for Main Activity.
  */
 public class StartViewModel extends AndroidViewModel {
-    public Model model;
     private static final int MAX_CREDIT = 16;
-    private int[] points = new int[4];
+    private final int[] points = new int[4];
 
     /**
      * StartViewModel constructor with all arguments.
@@ -43,7 +42,7 @@ public class StartViewModel extends AndroidViewModel {
      *                         in activity_start.xml
      * @param editEngineerPoints represents the value from the EditText for engineerPoints
      *                           in activity_start.xml
-     * @return Returns boolean of whether the valids were valid or not.
+     * @return Returns boolean of whether the points were valid or not.
      */
     public Boolean isValid(EditText editPlayerName,
                            EditText editPilotPoints,
@@ -66,10 +65,10 @@ public class StartViewModel extends AndroidViewModel {
         }
 
         // Validate Points
-        if (editPilotPoints.getText().length() == 0
-                || editFighterPoints.getText().length() == 0
-                || editTraderPoints.getText().length() == 0
-                || editEngineerPoints.getText().length() == 0) {
+        if ((editPilotPoints.getText().length() == 0)
+                || (editFighterPoints.getText().length() == 0)
+                || (editTraderPoints.getText().length() == 0)
+                || (editEngineerPoints.getText().length() == 0)) {
             return false;
         }
 
@@ -100,10 +99,7 @@ public class StartViewModel extends AndroidViewModel {
     public void createNewModel(EditText editTextName, Spinner difficultySpinner) {
         String playerName = editTextName.getText().toString();
         GameDifficulty difficulty = (GameDifficulty) difficultySpinner.getSelectedItem();
-        model = new Model(playerName, points, difficulty);
-        //Ship playerShip = new Ship();
-        //playerShip.addWeapon(Weapon.PULSE_LASER);
-        //model = new Model(playerName, points, defaultCredit, playerShip, difficulty);
+        Model model = new Model(playerName, points, difficulty);
     }
 
     /**
@@ -129,7 +125,7 @@ public class StartViewModel extends AndroidViewModel {
      */
     public int calculateRemainingCredit(EditText editSomePoints, int index) {
         int somePoints;
-        if (editSomePoints.getText().toString().equals("")) {
+        if ("".equals(editSomePoints.getText().toString())) {
             somePoints = 0;
         } else {
             somePoints = Integer.parseInt(editSomePoints.getText().toString());

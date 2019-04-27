@@ -1,5 +1,8 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player;
 
+import java.util.Collection;
+
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Planet;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.SolarSystem;
 
@@ -10,6 +13,8 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.SolarSystem;
  */
 public class Player {
     private static final int MAX_POINTS = 16;
+    private static final int START_CREDITS = 9999;
+
     private String name;
 
     /**
@@ -57,6 +62,39 @@ public class Player {
     }
 
     /**
+     * @return the ship's health
+     */
+    public int getHealth() {
+        return ship.getHealth();
+    }
+
+    /**
+     * Attacks another ship.
+     *
+     * @param other the other ship
+     * @return whether or not the other ship is destroyed
+     */
+    public boolean attackShip(Ship other) {
+        return ship.attackShip(other);
+    }
+
+    /**
+     * Get all the goods that this ship holds
+     * @return collection of cargo goods
+     */
+    public Collection<Item> getCargoGoods() {
+        return ship.getCargoGoods();
+    }
+
+    /**
+     * Get the capacity of the cargo
+     * @return the capacity of the cargo
+     */
+    public int getCargoCapacity() {
+        return ship.getCargoCapacity();
+    }
+
+    /**
      * Sets the player's ship to a new ship.
      *
      * @param ship the new ship
@@ -72,31 +110,129 @@ public class Player {
     }
 
     /**
-     * Sets ship to null if a player has no ship.
+     * Get the remaining fuel
+     * @return the value of the remaining fuel
      */
-    public void setNoShip() {
-        this.ship = null;
+    public int getFuelRemaining() {
+        return ship.getFuel();
+    }
+
+    /**
+     * Get available cargo capacity
+     * @return available cargo capacity
+     */
+    public int getAvailableCargoCapacity() {
+        return ship.getAvailableCargoCapacity();
     }
 
     ///////////////////////////// WALLET OPERATION /////////////////////////////
+
+    /**
+     * @return the player's credits
+     */
+    public int getCredits() {
+        return wallet.getCredits();
+    }
+
+    /**
+     * Set the player's credits to a new value.
+     *
+     * @param credits the new credits
+     */
+    public void setCredits(int credits) {
+        try {
+            wallet.setCredits(credits);
+        } catch (IllegalArgumentException e) {
+            wallet.setCredits(0);
+        }
+    }
+
+    /**
+     * Set the player's credits to a new amount based on the
+     * ratio left.
+     *
+     * @param takenRatio the ratio of money to remove
+     * @return the new credits
+     */
+    public int setCredits(float takenRatio) {
+        return wallet.setCredits(takenRatio);
+    }
+
+    /**
+     * @return the player's wallet
+     */
     public Wallet getWallet() {
         return this.wallet;
     }
 
-    public void setWallet(Wallet wallet) {
+    /**
+     * Sets the player's wallet to a new wallet.
+     *
+     * @param wallet the new wallet
+     */
+    private void setWallet(Wallet wallet) {
         this.wallet = wallet;
         this.wallet.setOwner(this);
     }
 
     ///////////////////////////// LOCATION OPERATION ///////////////////////////
-    public void setLocation(Location location) {
+
+    /**
+     * Set the player's location to a new location.
+     *
+     * @param location the new location
+     */
+    private void setLocation(Location location) {
         this.location = location;
     }
 
+    /**
+     * @return the player's current location
+     */
     public Location getLocation() {
         return this.location;
     }
 
+    /**
+     * Get planet where this player is located
+     * @return planet where the player is located
+     */
+    public Planet getPlanet() {
+        return location.getPlanet();
+    }
+
+    /**
+     * Get the name of the planet
+     * @return the name of the planet
+     */
+    public String getPlanetName() {
+        return location.getPlanetName();
+    }
+
+    /**
+     * Get the orbit radius of the planet
+     * @return the orbit radius of the planet
+     */
+    public int getPlanetOrbitRadius() {
+        return location.getPlanetOrbitRadius();
+    }
+
+    /**
+     * Get the string of the resource class
+     * @return the string of the resource class
+     */
+    public String getResourceClassString() {
+        return location.getResourceClassString();
+    }
+
+    /**
+     * Determines if the player can travel to a new destination and if so,
+     * moves the player to the new destination.
+     *
+     * @param destinationSS the destination solar system
+     * @param destinationP the destination planet
+     * @return if the travel was successful
+     */
     public boolean travel(SolarSystem destinationSS, Planet destinationP) {
 
         final int statusCODE = this.location.checkIfTravelPossible(
@@ -187,7 +323,7 @@ public class Player {
      * @param points the new points
      * @throws java.lang.IllegalArgumentException if points are invalid
      */
-    public void setPoints(int[] points) {
+    private void setPoints(int[] points) {
         //check if sum is 16 or in the future, less than 16
         int sum = 0;
         for (int i = 0; i < points.length; i++) {
@@ -214,7 +350,7 @@ public class Player {
                 + " - Fight: " + getFight() + "\n"
                 + "They also have "
                 + wallet.getCredits() + " credits and they fly a "
-                + getShip().toString();
+                + ship.toString();
     }
 
     /**
@@ -225,7 +361,7 @@ public class Player {
         private final String name;
         private int[] points;
         private Ship ship;
-        private Wallet wallet;
+        private final Wallet wallet;
         private Location location;
 
         /**
@@ -233,14 +369,15 @@ public class Player {
          * Gives other fields default values.
          *
          * @param name the player's name
+         * @param ss the Solar System the player is at
          */
-        public PlayerBuilder(String name) {
+        public PlayerBuilder(String name, SolarSystem ss) {
             // Default Values
             this.name = name;
             this.points = new int[] {4, 4, 4, 4};
-            this.wallet = new Wallet(9999); //TODO STUB CREDIT AMOUNT
+            this.wallet = new Wallet(START_CREDITS); //TODO STUB CREDIT AMOUNT
             this.ship = new Ship(ShipType.GNAT);
-            this.location = null;
+            this.location = new Location(ss);
         }
 
         /**
@@ -254,6 +391,12 @@ public class Player {
             return this;
         }
 
+        /**
+         * Sets the builder's location.
+         *
+         * @param ss the solar system
+         * @return the builder object
+         */
         public PlayerBuilder location(SolarSystem ss) {
             this.location = new Location(ss);
             return this;
@@ -286,9 +429,6 @@ public class Player {
          * @return the new Player object
          */
         public Player build() {
-            if (location == null) {
-                location = new Location();
-            }
             return new Player(this);
         }
     }

@@ -37,7 +37,7 @@ public class ShipTester {
     }
 
     /**
-     * Tests ship's overriden equals method.
+     * Tests ship's overridden equals method.
      */
     @Test(timeout = TIMEOUT)
     public void shipEquals() {
@@ -88,7 +88,7 @@ public class ShipTester {
         for (int j = 0; j < 200; j++) {
             Ship ship = Ship.getRandomShipWithWeapons();
 
-            assertTrue(ship.getWeapons().size() > 0);
+            assertTrue(!ship.getWeapons().isEmpty());
             assertTrue("Enemy ships should not start with 0 health.",
                     ship.getHealth() > 0);
             assertTrue("Enemy ships should not have more health than max.",

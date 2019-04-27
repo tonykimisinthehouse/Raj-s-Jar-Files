@@ -4,7 +4,6 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 
 /**
@@ -26,8 +25,11 @@ public class TravelViewModel extends AndroidViewModel {
         super(application);
     }
 
-    public void checkDestination() {
-        // Verify the chosen destination is reachable by the ship
-    }
+//    /**
+//     * Verifies that the chosen destination is reachable by the ship.
+//     */
+//    public void checkDestination() {
+//        // Verify the chosen destination is reachable by the ship
+//    }
 
 }

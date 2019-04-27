@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.model.Model;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.viewmodels.GameViewModel;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.R;
 
@@ -41,7 +42,7 @@ public class GameActivity extends BaseActivity {
         ImageView imageView = findViewById(R.id.imageView);
         imageView.setColorFilter(
                 Color.parseColor(
-                        viewModel.getPlanetColorHex()),
+                        viewModel.getPlanetColorHex(Model.getModel())),
                         PorterDuff.Mode.MULTIPLY); //Desert
     }
 
@@ -61,27 +62,25 @@ public class GameActivity extends BaseActivity {
     }
 
     private void updateData() {
-
-        ImageView imageView = findViewById(R.id.imageView);
-        imageView.setColorFilter(Color.parseColor(viewModel.getPlanetColorHex()), PorterDuff.Mode.MULTIPLY); //Desert
-
-        this.planetNameIndicator.setText(viewModel.getPlanetName());
-        this.orbitRadiusIndicator.setText("Orbit Radius: " + String.valueOf(viewModel.getPlanetOrbitRadius()));
-        this.techLevelIndicator.setText("Tech Level: " + viewModel.getPlanetTechLevel());
-        this.resourceIndicator.setText("Resources: " + viewModel.getPlanetResources());
-        this.speciesIndicator.setText("Species: " + viewModel.getPlanetSpecies());
-        this.eventIndicator.setText("Event: " + viewModel.getPlanetEvent());
+        Model m = Model.getModel();
+        this.planetNameIndicator.setText(viewModel.getPlanetName(m));
+        this.orbitRadiusIndicator.setText("Orbit Radius: "
+                + String.valueOf(viewModel.getPlanetOrbitRadius(m)));
+        this.techLevelIndicator.setText("Tech Level: " + viewModel.getPlanetTechLevel(m));
+        this.resourceIndicator.setText("Resources: " + viewModel.getPlanetResources(m));
+        this.speciesIndicator.setText("Species: " + viewModel.getPlanetSpecies(m));
+        this.eventIndicator.setText("Event: " + viewModel.getPlanetEvent(m));
     }
 
-
-    /**
-     * Opens the Map activity.
-     *
-     * @param view the button view
-     */
-    public void openMap(View view) {
-        // TODO start map activity
-    }
+//
+//    /**
+//     * Opens the Map activity.
+//     *
+//     * @param view the button view
+//     */
+//    public void openMap(View view) {
+//        // TODO start map activity
+//    }
 
     /**
      * Opens the Market activity.

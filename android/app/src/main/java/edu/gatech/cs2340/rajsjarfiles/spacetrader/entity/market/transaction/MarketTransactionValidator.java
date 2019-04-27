@@ -1,8 +1,15 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.transaction;
 
+import java.util.AbstractMap;
+
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Good;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Item;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.Marketplace;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.TradeGoods;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Ship;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Wallet;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.TechLevel;
 
 /**
  * Transaction Validator for transaction with marketplace.
@@ -10,7 +17,7 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.Player;
 public class MarketTransactionValidator implements TransactionValidator {
 
     // Market place where this validator is working on.
-    private Marketplace marketplace;
+    private final Marketplace marketplace;
 
     /**
      * Constructor for this class
@@ -21,20 +28,15 @@ public class MarketTransactionValidator implements TransactionValidator {
         this.marketplace = mp;
     }
 
-    /**
-     * Validate the transaction order
-     *
-     * @param order transaction order from player
-     * @return true if the transaction can be initiated.
-     */
+    @Override
     public boolean validate(TransactionOrder order) {
-
-        Good goodInOrder = order.getItem().getGood();
-        int quantityInOrder = order.getItem().getQuantity();
+        Item item = order.getItem();
+        Good goodInOrder = item.getGood();
+        int quantityInOrder = item.getQuantity();
         Player playerInOrder = order.getInitiator();
 
 
-
+        Item marketItem = marketplace.getItem(goodInOrder);
         if (order.getTransactionType() == TransactionType.BUY) {
 
             // Check if the market place has good
@@ -44,8 +46,10 @@ public class MarketTransactionValidator implements TransactionValidator {
 
             int marketPrice = marketplace.getMarketPrice(goodInOrder);
 
+            Wallet wallet = playerInOrder.getWallet();
+
             // Check if the initiator has enough credits
-            if (!playerInOrder.getWallet().checkCreditEnough(
+            if (!wallet.checkCreditEnough(
                     marketPrice * quantityInOrder)) {
                 return false;
             }
@@ -56,10 +60,11 @@ public class MarketTransactionValidator implements TransactionValidator {
             }
 
             // Set a market price to the good that the player is trying to buy
-            order.getItem().setPrice(marketPrice);
+            item.setPrice(marketPrice);
 
-            // Subract amount of quantity of good from the market
-            marketplace.getItem(goodInOrder).subQuantity(quantityInOrder);
+            // Subtract amount of quantity of good from the market
+
+            marketItem.subQuantity(quantityInOrder);
 
             return true;
 
@@ -77,10 +82,10 @@ public class MarketTransactionValidator implements TransactionValidator {
 
             // Update price for selling goods
             int marketPrice = marketplace.getMarketPrice(goodInOrder);
-            order.getItem().setPrice(marketPrice);
+            item.setPrice(marketPrice);
 
-            marketplace.getItem(goodInOrder).addQuantity(quantityInOrder);
 
+            marketItem.addQuantity(quantityInOrder);
             return true;
         }
     }
@@ -91,10 +96,8 @@ public class MarketTransactionValidator implements TransactionValidator {
      * @return TransactionResult containing the transaction result.
      */
     public TransactionResult validateNTransaction(TransactionOrder order) {
-        Boolean isTransSuccess = validate(order);
-        TransactionResult result =
-                new TransactionResult(isTransSuccess, order.getItem());
-        return result;
+        boolean isTransSuccess = validate(order);
+        return new TransactionResult(isTransSuccess, order.getItem());
     }
 
     /**
@@ -103,10 +106,14 @@ public class MarketTransactionValidator implements TransactionValidator {
      * @return true if the marketplace has goods and has enough quantity.
      */
     private boolean hasGoods(TransactionOrder order) {
-        Good good = order.getItem().getGood();
-        if (marketplace.getTradeGoodsInMarket().containsKey(good)) {
-            return marketplace.getItem(good).getQuantity()
-                    >= order.getItem().getQuantity();
+        Item item = order.getItem();
+        Good good = item.getGood();
+
+        AbstractMap<TradeGoods, Item> tradeGoods = marketplace.getTradeGoodsInMarket();
+        Item marketItem = marketplace.getItem(good);
+        if (tradeGoods.containsKey(good)) {
+            return marketItem.getQuantity()
+                    >= item.getQuantity();
         }
         return false;
     }
@@ -117,8 +124,12 @@ public class MarketTransactionValidator implements TransactionValidator {
      * @return true if this good can be sold to the marketplace
      */
     private boolean isSellPossible(TransactionOrder order) {
-        int mtlu = order.getItem().getGood().getMTLU();
-        return marketplace.getTechLevel().ordinal() >= mtlu;
+        Item item = order.getItem();
+        Good g = item.getGood();
+        int mtlu = g.getMTLU();
+
+        TechLevel t = marketplace.getTechLevel();
+        return t.ordinal() >= mtlu;
     }
 
     /**
@@ -129,9 +140,13 @@ public class MarketTransactionValidator implements TransactionValidator {
      * @return true if the player has enough goods that can sell.
      */
     private boolean playerHasGoods(TransactionOrder order) {
-        int quantity = order.getItem().getQuantity();
-        Good good = order.getItem().getGood();
-        return order.getInitiator().getShip().hasGoods(good, quantity);
+        Item item = order.getItem();
+        int quantity = item.getQuantity();
+        Good good = item.getGood();
+
+        Player initiator = order.getInitiator();
+        Ship s = initiator.getShip();
+        return s.hasGoods(good, quantity);
     }
 
 }

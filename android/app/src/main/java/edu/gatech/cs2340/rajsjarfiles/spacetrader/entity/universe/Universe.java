@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Random;
 
@@ -10,7 +11,7 @@ public class Universe {
     private static final int MAX_SOLAR_SYSTEMS = 20;
 
     //using an array because the size won't change
-    private SolarSystem[] solarSystem;
+    private final SolarSystem[] solarSystem;
 
     /**
      * Constructor to create the universe.
@@ -26,8 +27,8 @@ public class Universe {
      */
     private void createUniverse() {
         for (int i = 0; i < solarSystem.length; i++) {
-            HashSet<String> nameSet = new HashSet<>();
-            HashSet<Coordinate> coordSet = new HashSet<>();
+            Collection<String> nameSet = new HashSet<>();
+            Collection<Coordinate> coordSet = new HashSet<>();
             String name = PlanetNames.generateName();
             Coordinate coordinate = new Coordinate();
             while (!nameSet.add(name)) {
@@ -40,6 +41,9 @@ public class Universe {
         }
     }
 
+    /**
+     * @return a random solar system in the universe
+     */
     public SolarSystem getRandomSolarSystem() {
         Random rand = new Random();
         return solarSystem[rand.nextInt(solarSystem.length)];
@@ -48,8 +52,8 @@ public class Universe {
     @Override
     public String toString() {
         String ret = "The universe:\n";
-        for (int i = 0; i < solarSystem.length; i++) {
-            ret += "- " + solarSystem[i].toString() + "\n";
+        for (SolarSystem aSolarSystem : solarSystem) {
+            ret += "- " + aSolarSystem.toString() + "\n";
         }
         return ret;
     }

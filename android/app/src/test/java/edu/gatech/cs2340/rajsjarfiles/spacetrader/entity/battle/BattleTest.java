@@ -18,6 +18,8 @@ import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.PlayerEnc
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.RunAction;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.SubmitAction;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.player.action.SurrenderAction;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Coordinate;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.SolarSystem;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.views.EncounterActivity;
 
 import static junit.framework.TestCase.assertTrue;
@@ -27,9 +29,12 @@ import static org.junit.Assert.assertNotNull;
 
 public class BattleTest {
 
+    SolarSystem ss = new SolarSystem("Test planet", new Coordinate(1,1));
+
     @Test
     public void testBattleManagerConstructor() {
-        Player player = new Player(new Player.PlayerBuilder("Justin"));
+
+        Player player = new Player(new Player.PlayerBuilder("Justin", ss));
 
         final String expectedStartText = "Battle has started.";
         final String expectedExecuteTurnText = "Turn has executed.";
@@ -47,17 +52,18 @@ public class BattleTest {
         };
 
         assertEquals(expectedStartText, bm.startBattle());
-        assertEquals(expectedExecuteTurnText, bm.executeTurn(new RunAction(), new EncounterState()));
+        assertEquals(expectedExecuteTurnText, bm.executeTurn(new RunAction()
+                , new EncounterState()));
 
         Ship ship = bm.getOtherShip();
         assertNotNull(ship);
-        assertTrue(ship.getWeapons().size() > 0);
+        assertTrue(!ship.getWeapons().isEmpty());
         assertTrue(ship.getHealth() > 0);
     }
 
     @Test
     public void testPoliceBattleManager() {
-        Player player = new Player(new Player.PlayerBuilder("Justin"));
+        Player player = new Player(new Player.PlayerBuilder("Justin", ss));
 
         BattleManager bm = new PoliceBattleManager(player);
 
@@ -70,63 +76,66 @@ public class BattleTest {
         assertNotEquals("", executeText);
     }
 
-//    @Test
-//    public void testRunAction() {
-//        Player player = new Player(new Player.PlayerBuilder("Justin"));
-//        player.getShip().addWeapon(Weapon.BEAM_LASER);
-//
-//        BattleManager bm = new PoliceBattleManager(player);
-//        bm.startBattle();
-//
-//        EncounterState es = new EncounterState();
-//
-//        while (!es.isOver()) {
-//            String ret = bm.executeTurn(new RunAction(), es);
-//            assertNotNull(ret);
-//            assertNotEquals("", ret);
-//        }
-//        assertTrue(es.isOver());
-//    }
-//
-//    @Test
-//    public void testAttackAction() {
-//        Player player = new Player(new Player.PlayerBuilder("Justin"));
-//        player.getShip().addWeapon(Weapon.BEAM_LASER);
-//
-//        BattleManager bm = new PoliceBattleManager(player);
-//        bm.startBattle();
-//
-//        EncounterState es = new EncounterState();
-//
-//        while (!es.isOver()) {
-//            String ret = bm.executeTurn(new AttackAction(), es);
-//            assertNotNull(ret);
-//            assertNotEquals("", ret);
-//        }
-//        assertTrue(es.isOver());
-//
-//        //test that at least one is dead by the end of the encounter
-//        Ship other = bm.getOtherShip();
-//        assertTrue(player.getShip().getHealth() == 0 ^ other.getHealth() == 0);
-//    }
+    @Test
+    public void testRunAction() {
+        Player player = new Player(new Player.PlayerBuilder("Justin", ss));
+        player.getShip().addWeapon(Weapon.BEAM_LASER);
+
+        BattleManager bm = new PoliceBattleManager(player);
+        bm.startBattle();
+
+        EncounterState es = new EncounterState();
+
+        while (!es.isOver()) {
+            String ret = bm.executeTurn(new RunAction(), es);
+            assertNotNull(ret);
+            assertNotEquals("", ret);
+        }
+        assertTrue(es.isOver());
+    }
+
+    @Test
+    public void testAttackAction() {
+        Player player = new Player(new Player.PlayerBuilder("Justin", ss));
+        player.getShip().addWeapon(Weapon.BEAM_LASER);
+
+        BattleManager bm = new PoliceBattleManager(player);
+        bm.startBattle();
+
+        EncounterState es = new EncounterState();
+
+        while (!es.isOver()) {
+            String ret = bm.executeTurn(new AttackAction(), es);
+            assertNotNull(ret);
+            assertNotEquals("", ret);
+        }
+        assertTrue(es.isOver());
+
+        //test that at least one is dead by the end of the encounter
+        Ship other = bm.getOtherShip();
+        assertTrue(player.getShip().getHealth() == 0 ^ other.getHealth() == 0);
+    }
 
     //public static void main(String[] args) {
     public void testPoliceEncounter() {
         Scanner scan = new Scanner(System.in);
 
-        Player.PlayerBuilder playerBuilder = new Player.PlayerBuilder("Justin");
+        Player.PlayerBuilder playerBuilder = new Player.PlayerBuilder("Justin", ss);
         Player player = new Player(playerBuilder);
         player.getShip().addWeapon(Weapon.PULSE_LASER);
-        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.NARCOTICS).quantity(1).price(2).build());
-        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.FIREARMS).quantity(4).price(4).build());
-        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.ORE).quantity(2).price(18).build());
+        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.NARCOTICS).quantity(1).price(2)
+                .build());
+        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.FIREARMS).quantity(4).price(4)
+                .build());
+        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.ORE).quantity(2).price(18)
+                .build());
 
         BattleManager bm = new PoliceBattleManager(player);
         System.out.println(bm.startBattle());
         System.out.println("The test is beginning :O");
 
         String option = "";
-        while (!option.equals("q") && !option.equals("Q")) {
+        while (!"q".equals(option) && !"Q".equals(option)) {
 
             System.out.println("---------------------------------------");
             System.out.println(player.getName()
@@ -147,14 +156,19 @@ public class BattleTest {
 
             EncounterState es = new EncounterState();
             String ret = "";
-            if (option.equals("1")) {
-                ret = bm.executeTurn(new AttackAction(), es);
-            } else if (option.equals("2")) {
-                ret = bm.executeTurn(new RunAction(), es);
-            } else if (option.equals("3")) {
-                ret = bm.executeTurn(new SubmitAction(), es);
-            } else if (option.equals("4")) {
-                ret = bm.executeTurn(new BribeAction(), es);
+            switch (option) {
+                case "1":
+                    ret = bm.executeTurn(new AttackAction(), es);
+                    break;
+                case "2":
+                    ret = bm.executeTurn(new RunAction(), es);
+                    break;
+                case "3":
+                    ret = bm.executeTurn(new SubmitAction(), es);
+                    break;
+                case "4":
+                    ret = bm.executeTurn(new BribeAction(), es);
+                    break;
             }
             System.out.println(ret);
             if (es.isOver()) {
@@ -164,56 +178,63 @@ public class BattleTest {
         }
     }
 
-    public static void main(String[] args) {
-//    public void testPirateEncounter() {
-        Scanner scan = new Scanner(System.in);
-
-        Player.PlayerBuilder playerBuilder = new Player.PlayerBuilder("Justin");
-        Player player = new Player(playerBuilder);
-        player.getShip().addWeapon(Weapon.PULSE_LASER);
-        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.NARCOTICS).quantity(1).price(2).build());
-        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.FIREARMS).quantity(4).price(4).build());
-        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.ORE).quantity(2).price(18).build());
-
-        player.getShip().emptyCargo();
-
-        BattleManager bm = new PirateBattleManager(player);
-        System.out.println(bm.startBattle());
-        System.out.println("The test is beginning :O");
-
-        String option = "";
-        while (!option.equals("q") && !option.equals("Q")) {
-
-            System.out.println("---------------------------------------");
-            System.out.println(player.getName()
-                    + " has a " + player.getShip().toString()
-                    + " with " + player.getShip().getHealth() + " health.");
-            System.out.println("The (maybe) enemy has a " + bm.getOtherShip().getShipType()
-                    + " with " + bm.getOtherShip().getHealth() + " health.");
-            System.out.println("---------------------------------------\n");
-
-            System.out.println("What will you do? (Type in a number)");
-            System.out.println("1. Attack");
-            System.out.println("2. Run");
-            System.out.println("3. Surrender");
-            System.out.println("Q. Quit\n\n");
-
-            option = scan.nextLine();
-
-            EncounterState es = new EncounterState();
-            String ret = "";
-            if (option.equals("1")) {
-                ret = bm.executeTurn(new AttackAction(), es);
-            } else if (option.equals("2")) {
-                ret = bm.executeTurn(new RunAction(), es);
-            } else if (option.equals("3")) {
-                ret = bm.executeTurn(new SurrenderAction(), es);
-            }
-            System.out.println(ret);
-            if (es.isOver()) {
-                System.out.println("The encounter is over.");
-                break;
-            }
-        }
-    }
+//    public static void main(String[] args) {
+//        public void testPirateEncounter() {
+//        Scanner scan = new Scanner(System.in);
+//
+//        Player.PlayerBuilder playerBuilder = new Player.PlayerBuilder("Justin", ss);
+//        Player player = new Player(playerBuilder);
+//        player.getShip().addWeapon(Weapon.PULSE_LASER);
+//        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.NARCOTICS).quantity(1).price(2)
+//                .build());
+//        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.FIREARMS).quantity(4).price(4)
+//                .build());
+//        player.getShip().addGood(new Item.ItemBuilder(TradeGoods.ORE).quantity(2).price(18)
+//                .build());
+//
+//        player.getShip().emptyCargo();
+//
+//        BattleManager bm = new PirateBattleManager(player);
+//        System.out.println(bm.startBattle());
+//        System.out.println("The test is beginning :O");
+//
+//        String option = "";
+//        while (!"q".equals(option) && !"Q".equals(option)) {
+//
+//            System.out.println("---------------------------------------");
+//            System.out.println(player.getName()
+//                    + " has a " + player.getShip().toString()
+//                    + " with " + player.getShip().getHealth() + " health.");
+//            System.out.println("The (maybe) enemy has a " + bm.getOtherShip().getShipType()
+//                    + " with " + bm.getOtherShip().getHealth() + " health.");
+//            System.out.println("---------------------------------------\n");
+//
+//            System.out.println("What will you do? (Type in a number)");
+//            System.out.println("1. Attack");
+//            System.out.println("2. Run");
+//            System.out.println("3. Surrender");
+//            System.out.println("Q. Quit\n\n");
+//
+//            option = scan.nextLine();
+//
+//            EncounterState es = new EncounterState();
+//            String ret = "";
+//            switch (option) {
+//                case "1":
+//                    ret = bm.executeTurn(new AttackAction(), es);
+//                    break;
+//                case "2":
+//                    ret = bm.executeTurn(new RunAction(), es);
+//                    break;
+//                case "3":
+//                    ret = bm.executeTurn(new SurrenderAction(), es);
+//                    break;
+//            }
+//            System.out.println(ret);
+//            if (es.isOver()) {
+//                System.out.println("The encounter is over.");
+//                break;
+//            }
+//        }
+//    }
 }

@@ -11,24 +11,6 @@
     android:padding="20dp"
     tools:context="edu.gatech.cs2340.rajsjarfiles.spacetrader.views.GameActivity">
 
-    <TextView
-        android:id="@+id/indicator_planet_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:gravity="center"
-        android:text="AXR - CENTAURI"
-        android:textAppearance="@style/TextAppearance.AppCompat"
-        android:textColor="@android:color/white"
-        android:textFontWeight="800"
-        android:textSize="36sp" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="150sp"
-        app:srcCompat="@drawable/planet" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,8 +21,7 @@
             android:id="@+id/button_map"
             android:layout_width="wrap_content"
             android:layout_height="75sp"
-            android:background="@android:drawable/ic_dialog_map"
-            android:onClick="openMap" />
+            android:background="@android:drawable/ic_dialog_map"/>
 
         <Button
             android:id="@+id/button_ship"
@@ -58,9 +39,28 @@
             android:layout_alignParentRight="true"
             android:layout_marginEnd="0dp"
             android:background="@android:drawable/stat_notify_sync"
-            android:onClick="openMarket" />
+            android:onClick="openMarket"/>
 
     </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="150sp"
+        app:srcCompat="@drawable/planet"
+        android:contentDescription="Planet Icon"/>
+
+    <TextView
+        android:id="@+id/indicator_planet_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:gravity="center"
+        android:text="AXR - CENTAURI"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@android:color/white"
+        android:textFontWeight="800"
+        android:textSize="36sp" />
 
     <TextView
         android:id="@+id/indicator_orbit_radius"
@@ -106,6 +106,4 @@
         android:text="Event: Boredom"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
-
-
 </LinearLayout>

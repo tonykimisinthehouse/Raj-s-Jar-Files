@@ -1,6 +1,6 @@
 package edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market;
 
-import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.PlanetEvents;
+import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.Events;
 import edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.universe.ResourceClassification;
 
 import static edu.gatech.cs2340.rajsjarfiles.spacetrader.entity.market.TradeGoods.FIREARMS;
@@ -48,9 +48,18 @@ public interface Good {
     /**
      * @return radical price increase event
      */
-    PlanetEvents getIE();
+    Events getIE();
 
+    /**
+     * Get Resource classification where good's price changes
+     * @return resource classification
+     */
     ResourceClassification getCR();
+
+    /**
+     * Get Resource classification where good's price changes
+     * @return resource classification
+     */
     ResourceClassification getER();
 
     /**
@@ -62,8 +71,13 @@ public interface Good {
      * @return max price offered when trading
      */
     int getMTH();
+
+    /**
+     * Is this good illegal item?
+     * @return true if the good is illegal
+     */
     boolean isIllegal();
 
-    public static final Good[] ILLEGAL_GOODS
+    Good[] ILLEGAL_GOODS
             = new Good[] {FIREARMS, NARCOTICS};
 }
